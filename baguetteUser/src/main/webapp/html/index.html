@@ -8,26 +8,28 @@
     <!-- css -->
     <link rel="stylesheet" href="../lib/jquery-mobile-bower/css/jquery.mobile-1.4.5.css" />
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="../css/storeList.css">
 
     <!-- js -->
     <script src="../lib/jquery/jquery.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
+
     
-     <script type="text/javascript">
-        $(document).on("pagecreate", function () {
-            $("#content").load("./login.html");
-        });
-    </script>
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
+    
+    <!-- 추후 세션 체크후 바로 리스트로 보낼 예정 - minho -->
+    <script type="text/javascript">
+        $(document).on("pagecreate", function () {
+            $("#content").load("login.html");
+        });
+        
+    </script>
+    
     
 </head>
 
 <body>
     <div data-role="page">
-<!--        <div data-role="header" data-fullscreen="true" data-position="fixed" style="border:0px"></div>-->
-        <div data-role="main" class="ui-content" id="content">asdasdasdasdasdasdas da sm ndmsadsnm</div>
-<!--        <div data-role="footer" data-fullscreen="true" data-position="fixed"></div>-->
+        <div data-role="main" class="ui-content" id="content"></div>
     </div>
     <!-- jqm header, footer 브라우저 양 끝 단 위치 및 높이 조절-->
     <script>
@@ -38,7 +40,7 @@
         function getRealContentHeight() {
             var header = $.mobile.activePage.find("div[data-role='header']:visible");
             var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
-            var content = $.mobile.activePage.find("div[data-role='content']:visible:visible");
+            var content = $.mobile.activePage.find("div[data-role='main']:visible:visible");
             var viewport_height = $(window).height();
 
             var content_height = viewport_height - header.outerHeight() - footer.outerHeight();

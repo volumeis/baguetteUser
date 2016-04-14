@@ -15,7 +15,6 @@
 
     <!-- js -->
     <script src="../lib/jquery/jquery.js"></script>
-    <script src="../js/jquery.session.js"></script>
     <script src="../js/jQery.headroom.js"></script>
     <script src="../js/headroom.js"></script>
     <script src="../lib/slider-pro/js/jquery.sliderPro.js"></script>
@@ -23,49 +22,17 @@
     <script src="../js/storeList.js"></script>
     <script src="../js/swipeNav.js"></script>
     <!--  jquery-mobile 은 최하단에 놓음-->
-    <script type="text/javascript">
-    $(function() {
-        alert($.session.get("customer"));
-    });
-    
+    <script>
+        $(document).bind('mobileinit', function () {
+            $.mobile.loader.prototype.options.text = "loading";
+            $.mobile.loader.prototype.options.textVisible = false;
+            $.mobile.loader.prototype.options.theme = "a";
+            $.mobile.loader.prototype.options.html = "";
+        });
     </script>
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
 
-    <script type="text/javascript">
-        $(document).one("pagecreate", function () {
 
-            $.get("./menuPanel.html", function (data) {
-                $.mobile.pageContainer.append(data);
-                $("[data-role=panel]").panel().enhanceWithin();
-            }, "html");
-            $.get("./cartPanel.html", function (data) {
-                $.mobile.pageContainer.append(data);
-                $("[data-role=panel]").panel().enhanceWithin();
-            }, "html");
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function ($) {
-            $('#my-slider').sliderPro({
-                fade: true,
-                buttons: false,
-                height: 250,
-                forceSize: 'fullWidth'
-
-                //                autoWidth : true
-            });
-
-            $("header").headroom({
-                "offset": 205,
-                "tolerance": 5,
-                "classes": {
-                    "initial": "animated",
-                    "pinned": "slideDown",
-                    "unpinned": "slideUp"
-                }
-            });
-        });
-    </script>
 </head>
 <!-- //////////////////////////////////////////////////////////////////////////   -->
 
@@ -74,25 +41,22 @@
 <body>
     <div data-role="page" class="pages" id="storeList">
 
-       
+
         <!--header start  -->
 
-        <div data-role="header" class="header" data-theme="b" data-position="fixed">
-            <form>
-                <input type="search" name="search-1" id="search-1" value="">
-            </form>
-            <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
-                <span class="glyphicon glyphicon-menu-hamburger" ></span>
-            </a>
-            <a id="right-panel" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
-                <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-            </a>
+        <div data-role="header"  id="header" class="header headroom" data-theme="b"  >
+                <form>
+                    <input type="search" name="search-1" value="Serch">
+                </form>
+
+                <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </a>
+                <a id="right-panel" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
+                    <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                </a>
+            
         </div>
-
-        <!--header end-->
-
-
-
 
         <div data-role="main" class="ui-content" style="z-index: 1">
             <!-- carouselStart-->
@@ -156,7 +120,7 @@
                         </figcaption>
                     </figure>
                 </div>
-                <div id ="testtest"></div>
+                <div id="testtest"></div>
 
             </div>
             <!-- storeListEnd -->
@@ -172,7 +136,7 @@
             function getRealContentHeight() {
                 var header = $.mobile.activePage.find("div[data-role='header']:visible");
                 var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
-                var content = $.mobile.activePage.find("div[data-role='content']:visible:visible");
+                var content = $.mobile.activePage.find("div[data-role='main']:visible:visible");
                 var viewport_height = $(window).height();
 
                 var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
@@ -183,6 +147,43 @@
             }
         </script>
     </div>
+
+
+    <script type="text/javascript">
+        $(document).one("pagecreate", function () {
+
+            $.get("./menuPanel.html", function (data) {
+                $.mobile.pageContainer.append(data);
+                $("[data-role=panel]").panel().enhanceWithin();
+            }, "html");
+            $.get("./cartPanel.html", function (data) {
+                $.mobile.pageContainer.append(data);
+                $("[data-role=panel]").panel().enhanceWithin();
+            }, "html");
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            $('#my-slider').sliderPro({
+                fade: true,
+                buttons: false,
+                height: 250,
+                forceSize: 'fullWidth'
+
+                //                autoWidth : true
+            });
+
+            $("#header").headroom({
+                "offset": 205,
+                "tolerance": 5,
+                "classes": {
+                     initial : "headroom",
+                  pinned : "headroom--pinned",
+                   unpinned : "headroom--unpinned",
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

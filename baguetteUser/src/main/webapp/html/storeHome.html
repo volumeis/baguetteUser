@@ -4,16 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--css-->
+    <!-- css -->
     <link rel="stylesheet" href="../lib/jquery-mobile-bower/css/jquery.mobile-1.4.5.css" />
-    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../lib/jquery.rateit/rateit.css">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/header.css" />
 
     <!-- js -->
     <script src="../lib/jquery/jquery.js"></script>
+    <script src="../js/jQery.headroom.js"></script>
+    <script src="../js/headroom.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../js/swipeNav.js"></script>
+    <!--  jquery-mobile 은 최하단에 놓음-->
+    <script src="../lib/jquery.rateit/jquery.rateit.js"></script>
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-
+    
 
 </head>
 
@@ -38,9 +43,6 @@
 
         <!--header end-->
         <div data-role="main" class="ui-content">
-ㄴㅇㅁㅇㄴㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ
-            ㅁㄴㅇㅁㄴㅇㅁㄴ
-            ㅇㅁㄴㅇㅁㄴㅇㅁasdㄴㅇ
             <div class="row store-info">
                 <div class="col-xs-4">
                     <div class="rate-score">
@@ -64,12 +66,12 @@
 
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
                 <div class="btn-group" role="group">
-                    <a href="./storeHome.html">
+                    <a href="./storeHome.html" data-prefetch>
                         <button type="button" data-role="none" class="btn btn-primary">메뉴</button>
                     </a>
                 </div>
                 <div class="btn-group" role="group">
-                    <a href="./storeInfo.html">
+                    <a href="./storeInfo.html" data-prefetch>
                         <button type="button" data-role="none" class="btn btn-primary">정보</button>
                     </a>
                 </div>
@@ -104,7 +106,20 @@
 
         </div>
     </div>
-    <script src="../lib/jquery.rateit/jquery.rateit.js"></script>
+    
+    <script type="text/javascript">
+        $(document).one("pagecreate", function () {
+
+            $.get("./menuPanel.html", function (data) {
+                $.mobile.pageContainer.append(data);
+                $("[data-role=panel]").panel().enhanceWithin();
+            }, "html");
+            $.get("./cartPanel.html", function (data) {
+                $.mobile.pageContainer.append(data);
+                $("[data-role=panel]").panel().enhanceWithin();
+            }, "html");
+        });
+    </script>
 </body>
 
 </html>
