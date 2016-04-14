@@ -1,0 +1,70 @@
+/*
+html, body {
+  height: 100%;
+}
+*/
+
+.ui-grid-solo .ui-block-a {
+    padding: 0.1em 0px;
+    background-color: darkblue;
+    
+    /*    padding-left: 0px;*/
+    /*    padding-right: 0px;*/
+    /*    border: 1px solid cornflowerblue;*/
+    /*    height: ;*/
+    /*    border: 2px solid #ddd;*/
+}
+
+.ui-grid-solo .ui-block-a figure {
+    position: relative;
+    padding: 0px;
+    max-height: 370px;
+    /*    height: 100px;*/
+}
+
+.ui-grid-solo .ui-block-a figure img {
+    /*     사진비율 :  370*150 */
+    height: auto;
+    width: 100%;
+}
+
+.ui-grid-solo .ui-block-a figure figcaption {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    box-sizing: border-box;
+    width: 33%;
+    padding: 3px;
+    background: white;
+    color:gray;
+/*    font-size: 1.em;*/
+    transition: 0.7s;
+    opacity: 0.9;
+}
+
+.ui-grid-solo .ui-block-a figure figcaption .address {
+/*    color: white;*/
+    
+    font-size: 1.2em;
+    text-align: right;
+}
+
+.ui-grid-solo .ui-block-a figure figcaption .name {
+/*    color: white;*/
+    font-size: 1.5em;
+    font-style: Bold;
+    text-align: right;
+}
+
+.ui-content {
+    margin: 0 0;
+    padding: 0;
+}
+
+sp-slide {
+    height: 100px;
+    width: 200px;
+}
+
+
+/* :last-child :first-child 가상선택자*/

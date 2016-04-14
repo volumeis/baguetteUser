@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>index.html</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- css -->
+    <link rel="stylesheet" href="../lib/jquery-mobile-bower/css/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.css">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css" />
+    <!--    <link rel="stylesheet" href="../css/storeList.css">-->
+
+    <!-- js -->
+    <script src="../lib/jquery/jquery.js"></script>
+    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
+    <scropt src="../lib/slider-pro/js/jquery.sliderPro.js"></scropt>
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../js/cart.js"></script>
+
+</head>
+
+<body>
+    <div data-role="page">
+        <div data-role="panel" id="menuPanel" data-position-fixed="true"></div>
+        <div data-role="panel" id="cartPanel" data-position="right"></div>
+
+        <!--        <div data-role="header" data-fullscreen="true" data-position="fixed"></div>-->
+        <div data-role="main" class="ui-content" id="content">
+
+            <div id="cartcon">
+                <div id="cartcontop" class="ui-grid-b">
+                    <div id="cartcontopL" class="ui-block-a">
+                        <div class="ui-bar ui-bar-c" style="height:100px">
+                            <img src="../image/dl.jpeg" class="img-rounded" width="100%"></div>
+                    </div>
+                    <div class="ui-block-b">
+                        <div class="ui-bar ui-bar-c" style="height:100px"></div>
+                    </div>
+                    <div id="cartcontopR" class="ui-block-c">
+                        <div class="ui-bar ui-bar-c" style="height:100px">
+                            <div id="price" style="text-align : right">4000</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id="cartconbot" class="ui-grid-b">
+                    <div id="cartconbotL" class="ui-block-a">
+                        <div class="ui-bar ui-bar-c" style="height:50px">
+                                <select name="select-qty" id="select-qty" data-mini="true">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <div class="ui-bar ui-bar-c" style="height:50px"></div>
+                    </div>
+                    <div id="cartconbotR" class="ui-block-c">
+                        <div id="cartconbotRtable" class="ui-grid-b">
+                            <div class="ui-bar ui-bar-c" style="height:50px">
+                                
+                                <div id="delect-cart" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="float:right"></div>
+                                <div id="money" style="float:right; margin-top:12px"></div>
+                                                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <hr>
+        <div style="text-align:right">
+            <div id="totalmoney"></div>
+        </div>
+
+        <hr>
+
+        <!-- 최종결제Start -->
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>상품금액</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td style="text-align:right">8000원</td>
+                    </tr>
+                </tfoot>
+                <!-- 구현 예정 : 금액에 대한 상세 -->
+                <tbody>
+                    <td></td>
+                </tbody>
+            </table>
+        </div>
+        <!-- 최종결제End -->
+        
+        <div id="pay" style="text-align:center">
+            <button class="ui-btn">결제하기</button>    
+        </div>
+        
+        <div style="text-align:center">
+            <button id="add-cart" class="ui-btn">추가(Test)</button>    
+        </div>
+            
+    </div>
+    <div data-role="footer" data-fullscreen="true" data-position="fixed"></div>
+    </div>
+
+    <!--    //////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <script>
+        $(document).on('pagebeforeshow', '[data-role="page"]', function () {
+            $.mobile.activePage.find('[data-role="header"]').load("header.html", function () {
+                $(this).parent().trigger('pagecreate');
+            });
+            $.mobile.activePage.find('[data-role="footer"]').load("footer.html", function () {
+                $(this).parent().trigger('pagecreate');
+            });
+            //            $.mobile.activePage.find('[data-role="panel"]').load("menuPanel.html", function () {
+            //                $(this).parent().trigger('pagecreate');
+            //            });
+        });
+    </script>
+
+    <script>
+        $(document).on('pageshow', '#index', function (e, data) {
+            $('#content').height(getRealContentHeight());
+        });
+
+        function getRealContentHeight() {
+            var header = $.mobile.activePage.find("div[data-role='header']:visible");
+            var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
+            var content = $.mobile.activePage.find("div[data-role='content']:visible:visible");
+            var viewport_height = $(window).height();
+
+            var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
+            if ((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
+                content_height -= (content.outerHeight() - content.height());
+            }
+            return content_height;
+        }
+    </script>
+</body>
+
+</html>

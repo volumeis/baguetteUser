@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--css-->
+    <link rel="stylesheet" href="../lib/jquery-mobile-bower/css/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/jquery.rateit/rateit.css">
+
+    <!-- js -->
+    <script src="../lib/jquery/jquery.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
+
+
+</head>
+
+<body>
+    
+
+    <div data-role="page" class="pages" id="menu-list">
+        
+        <!--header start  -->
+
+        <div data-role="header" class="header" data-theme="b" data-position="fixed">
+            <form>
+                <input type="search" name="search-1" id="search-1" value="">
+            </form>
+            <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
+                <span class="glyphicon glyphicon-menu-hamburger" ></span>
+            </a>
+            <a id="right-panel" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
+                <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+            </a>
+        </div>
+
+        <!--header end-->
+        <div data-role="main" class="ui-content">
+ㄴㅇㅁㅇㄴㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ
+            ㅁㄴㅇㅁㄴㅇㅁㄴ
+            ㅇㅁㄴㅇㅁㄴㅇㅁasdㄴㅇ
+            <div class="row store-info">
+                <div class="col-xs-4">
+                    <div class="rate-score">
+                        <div id="ratevalue"></div>
+                    </div>
+                    <div class="rateit" id="ratestar" data-rateit-resetable="false" data-rateit-ispreset="true"></div>
+
+                    <script type="text/javascript">
+                        $("#ratestar").bind('rated', function (event, value) {
+                            $('#ratevalue').text(value);
+                        });
+                    </script>
+
+                    <div class="rate-floater"></div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="floater"></div>
+                    <div class="graph-text">그래프</div>
+                </div>
+            </div>
+
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <a href="./storeHome.html">
+                        <button type="button" data-role="none" class="btn btn-primary">메뉴</button>
+                    </a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="./storeInfo.html">
+                        <button type="button" data-role="none" class="btn btn-primary">정보</button>
+                    </a>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" data-role="none" class="btn btn-primary">리뷰</button>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <a class="thumbnail"> <img src="../image/01menu01.png" class="img-rounded">
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a class="thumbnail"> <img src="../image/01menu02.png" class="img-rounded">
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a class="thumbnail"> <img src="../image/01menu03.png" class="img-rounded">
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a class="thumbnail"> <img src="../image/01menu04.png" class="img-rounded">
+                    </a>
+                </div>
+            </div>
+
+            <div class="row" style="text-align:center">
+                <a href="lastpurchaseend.html" data-transition=”slide” type="button" class="btn btn-primary">바로구매</a>
+            </div>
+
+        </div>
+    </div>
+    <script src="../lib/jquery.rateit/jquery.rateit.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!--css-->
+    <link rel="stylesheet" href="../lib/jquery-mobile-bower/css/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/jquery.rateit/rateit.css">
+
+    <!-- js -->
+    <script src="../lib/jquery/jquery.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
+
+
+</head>
+
+<body>
+
+    <div data-role="page" class="pages" id="home">
+        <!--    leftPanelStart-->
+        <div data-role="panel" id="menuPanel" data-position="left" data-display="push" data-theme="a">
+            <div data-role="header">
+                <h1>Panel</h1>
+            </div>
+            <ul data-role="listview" data-inset="true">
+                <li><a>Listview</a></li>
+                <li><a href="#locale">locale</a></li>
+                <li><a href="./storeList.html">상점리스트</a></li>
+            </ul>
+        </div>
+        <!--    leftPanelEnd-->
+
+        <!--header start-->
+        <div data-role="header" data-fullscreen="true" style="border:0px">
+            <link rel="stylesheet" href="../css/header.css" />
+
+            <div id="nav-header" class="ui-grid-b">
+                <div class="ui-block-a">
+                    <div id="header-left" class="menu">
+                        <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn ui-btn-inline "><span class="glyphicon glyphicon-menu-hamburger" style="font-size:2em"></span></a>
+                    </div>
+                </div>
+                <div class="ui-block-b">
+                    <div style="height : 10px, alien=left;"></div>
+                    <div id="header-title">
+                        <h1 class="ui-title" role="heading">검색 및 </h1>
+                    </div>
+                </div>
+                <div class="ui-block-c">
+                    <div id="header-right" class="menu">
+                        <a id="right-panel" href="cart.html" data-transition="slide" data-display="push" class="ui-btn ui-btn-inline "> <span class="glyphicon glyphicon glyphicon-shopping-cart
+" style="font-size:2em"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header end-->
+
+        <div data-role="main" class="ui-content">
+
+            <div class="row store-info">
+                <div class="col-xs-4">
+                    <div class="rate-score">
+                        <div id="ratevalue"></div>
+                    </div>
+                    <div class="rateit" id="ratestar" data-rateit-resetable="false" data-rateit-ispreset="true"></div>
+
+                    <script type="text/javascript">
+                        $("#ratestar").bind('rated', function (event, value) {
+                            $('#ratevalue').text(value);
+                        });
+                    </script>
+
+                    <div class="rate-floater"></div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="floater"></div>
+                    <div class="graph-text">그래프</div>
+                </div>
+            </div>
+
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <a href="./storeHome.html">
+                        <button type="button" data-role="none" class="btn btn-primary">메뉴</button>
+                    </a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="./storeInfo.html">
+                        <button type="button" data-role="none" class="btn btn-primary">정보</button>
+                    </a>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" data-role="none" class="btn btn-primary">리뷰</button>
+                </div>
+            </div>
+
+
+            <div class="row">
+                상점명 : 전화번호 :
+            </div>
+        </div>
+    </div>
+    <script src="../lib/jquery.rateit/jquery.rateit.js"></script>
+</body>
+
+</html>
