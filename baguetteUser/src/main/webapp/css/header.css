@@ -1,10 +1,25 @@
 html body{
     height: 100%;
 }
+
+
 .header{
     height: 60px;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;    
 }
-.header form{
+
+.ui-content {
+    
+}
+.main-content{
+    margin: 0;
+    padding: 0;
+    margin-top: 60px;
+}
+
+.header input{
 /*    top : 10;*/
     margin-left: 25%;
     width: 50%;
@@ -22,4 +37,15 @@ html body{
     padding: 0;
 /*    border: */
     background-color: transparent !important;
+}
+
+.headroom {
+    will-change: transform;
+    transition: transform 200ms linear;
+}
+.headroom--pinned {
+    transform: translateY(0%);
+}
+.headroom--unpinned {
+    transform: translateY(-100%);
 }

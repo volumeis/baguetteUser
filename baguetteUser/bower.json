@@ -1,6 +1,6 @@
 {
-  "name": "baguetteUsr",
-  "homepage": "https://github.com/volumeis/baguetteUsr",
+  "name": "baguetteUser",
+  "homepage": "https://github.com/volumeis/baguetteUser",
   "authors": [
     "Minho <minho.yoo.dev@gmail.com>"
   ],
@@ -30,8 +30,10 @@
       "jquery": "bower_components/jquery/dist/**",
       "blueimp-file-upload": "bower_components/blueimp-file-upload/**",
       "jquery-mobile-bower": "bower_components/jquery-mobile-bower/**",
-      "jquery.rateit": "bower_components/jquery.rateit/src/**",
+      "jquery.rateit": "bower_components/jquery.rateit/scripts/**",
       "slider-pro": "bower_components/slider-pro/dist/**"
+        
+    
     }
   }
 }

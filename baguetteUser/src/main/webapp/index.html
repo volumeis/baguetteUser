@@ -1,81 +1,30 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-    
-    <head>
-        
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--jQuery v2.2.2 -->
-        <script src="../lib/jquery/jquery.js"></script>
-        
-        <!--bootstrap 3.3.6-->
-        <script src="../lib/bootstrap/js/bootstrap.js"></script>
-        <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
-        
-        <title>User Login</title>\
-               
-    </head>
-    <body>
-     
-        <div style ="margin-top:60px">
-            <div>
-                <img src="../image/login.png" class="center-block" style="width:70%">
-            </div>
-        </div>
-        <div>
-			<div class="center-block" style="width:70%;">
-				<input type="text" class="form-control" id="customerTel" name="customerTel" placeholder="휴대폰">
-			</div>
-			<div class="center-block" style="width:70%; margin-top:10px">
-				<input type="text" class="form-control" id="password" name="password" placeholder="비밀번호">
-			</div>
-			</div>
-			<div class="center-block" style="width:70%; margin-top:20px">     
-				<button type="button" id="login" class="btn btn-default btn-block">로그인</button>
-			</div>
-			
-		<div style="margin:65px 0px 0px 0px; text-align:center">
-			<a >새 Baguette 계정 만들기</a>
-            </div>
-            
-            
-            <!-- test jquery -->
-             <script type="text/javascript">
-		 $(function() {
-			 
-			$( "#login" ).click( function() {
-					var customerTel = $("#customerTel").val().trim();
-					var customerPwd = $("#password").val().trim();
-					$.ajax( 
-							{
-								/* url : "/customer/getJsonCustomer/"+userId , */
-								url : "/customer/getJsonCustomer/"+customerTel ,
-								method : "GET" ,
-								dataType : "json" ,
-								headers : {
-									"Accept" : "application/json",
-									"Content-Type" : "application/json"
-								},
-								success : function(JSONData , status) {
-									
-									if(JSONData.customer != null){
-										if(customerTel == JSONData.customer.customerTel){
-											alert("존재하는 계정입니다.비밀번호 일치 : " + (customerPwd == JSONData.customer.password));
-										}
-										if(customerTel == JSONData.customer.customerTel && customerPwd == JSONData.customer.password){
-											
-											location.href="./html/storeList.html";
-											return;
-										}
-									} 
-									alert("없는 계정입니다. ");
-								},
-                                error : function(JSONData , status) {
-                                    alert("잘못된 요청입니다.");  
-                                }
-                            });
-            });
-         });
-        </script>
-    </body>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>User Login</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1404.34">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 11.0px; font: 11.0px '.Apple SD Gothic NeoI'; color: #000000; -webkit-text-stroke: #000000}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+    span.s2 {font-kerning: none; background-color: #c0c0c0}
+    span.s3 {font: 12.0px Times; font-kerning: none}
+    span.s4 {font: 12.0px AppleMyungjo; font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">\</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1"><br>
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p3"><span class="s2">로그인</span><span class="s3"><span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s4">새</span><span class="s1"> Baguette </span><span class="s4">계정</span><span class="s1"> </span><span class="s4">만들기</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
+</body>
 </html>

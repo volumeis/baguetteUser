@@ -1,8 +1,8 @@
-/*
+
 html, body {
   height: 100%;
 }
-*/
+
 
 .ui-grid-solo .ui-block-a {
     padding: 0.1em 0px;
@@ -60,11 +60,13 @@ html, body {
     margin: 0 0;
     padding: 0;
 }
+/*
 
 sp-slide {
     height: 100px;
     width: 200px;
 }
+*/
 
 
 /* :last-child :first-child 가상선택자*/
