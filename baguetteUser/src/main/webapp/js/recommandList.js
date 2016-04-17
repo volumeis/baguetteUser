@@ -1,8 +1,8 @@
 $( document ).on( "pageshow", ".demo", function() {
 
-    var thePage = $( this ),
+혻혻혻혻var thePage = $( this ),
         title = thePage.jqmData("title");
     
-    $( "#header" ).text( "title" );
- 
+혻혻혻혻$( "#header" ).text( "title" );
+혻
 });

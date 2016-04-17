@@ -22,12 +22,17 @@
     <script src="../js/storeList.js"></script>
     <script src="../js/swipeNav.js"></script>
     <!--  jquery-mobile 은 최하단에 놓음-->
-    <script>
-        $(document).bind('mobileinit', function () {
-            $.mobile.loader.prototype.options.text = "loading";
-            $.mobile.loader.prototype.options.textVisible = false;
-            $.mobile.loader.prototype.options.theme = "a";
-            $.mobile.loader.prototype.options.html = "";
+    <script type="text/javascript">
+        $(document).one("pagecreate", function () {
+
+            $.get("./menuPanel.html", function (data) {
+                $.mobile.pageContainer.append(data);
+                $("[data-role=panel]").panel().enhanceWithin();
+            }, "html");
+            $.get("./cartPanel.html", function (data) {
+                $.mobile.pageContainer.append(data);
+                $("[data-role=panel]").panel().enhanceWithin();
+            }, "html");
         });
     </script>
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
@@ -39,28 +44,24 @@
 
 
 <body>
-    <div data-role="page" class="pages" id="storeList">
-
+    <div data-role="page" class="pages" id="page-store-list">
 
         <!--header start  -->
+        <div data-role="header" id="header" class="header headroom" data-theme="b">
+            <!--            <input type="search" name="search-1" value="Serch">-->
+            <input>
+            <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </a>
+            <a id="right-panel" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
+                <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+            </a>
 
-        <div data-role="header"  id="header" class="header headroom" data-theme="b"  >
-                <form>
-                    <input type="search" name="search-1" value="Serch">
-                </form>
-
-                <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span>
-                </a>
-                <a id="right-panel" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
-                    <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-                </a>
-            
         </div>
 
-        <div data-role="main" class="ui-content" style="z-index: 1">
-            <!-- carouselStart-->
+        <div data-role="main" class="ui-content main-content">
 
+            <!-- carouselStart-->
             <div class="ui-grid-solo">
                 <div class="ui-block-a">
                     <div class="slider-pro" id="my-slider">
@@ -85,82 +86,70 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- carouselEnd-->
 
                 <!-- storeListStart -->
-                <div class="ui-block-a">
-                    <figure>
-                        <a href="./storeHome.html">
-                            <img id="image01" src="../image/store01.jpg">
+                <div id="list-store">
+
+                    <div class="ui-block-a">
+                        <a href="storeHome.html">
+                            <figure>
+                                <img id="image01" src="../image/store01.jpg">
+                                <figcaption>
+                                    <div class="address">강남구 강남대로</div>
+                                    <div class="name"><strong>ABC 빵집</strong></div>
+                                </figcaption>
+                            </figure>
                         </a>
-                        <figcaption>
-                            <div class="address">강남구 강남대로</div>
-                            <div class="name"><strong>ABC 빵집</strong></div>
-                        </figcaption>
-                    </figure>
-                </div>
+                    </div>
 
-                <div class="ui-block-a">
-                    <figure>
-                        <img src="../image/store02.jpg">
-                        <figcaption>
-                            <div class="address">강남구 테헤란로</div>
-                            <div class="name"><strong>DEF 빵집</strong></div>
-                        </figcaption>
-                    </figure>
-                </div>
+                    <div class="ui-block-a">
+                        <a href="storeHomeTest.html">
+                            <figure>
+                                <img src="../image/store02.jpg">
+                                <figcaption>
+                                    <div class="address">강남구 테헤란로</div>
+                                    <div class="name"><strong>DEF 빵집</strong></div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
 
-                <div class="ui-block-a">
-                    <figure>
-                        <img src="../image/store03.jpg">
-                        <figcaption>
-                            <div class="address">강서구 강서로</div>
-                            <div class="name"><strong>GHI 빵집</strong></div>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div id="testtest"></div>
+                    <div class="ui-block-a">
+                        <figure>
+                            <img src="../image/store03.jpg">
+                            <figcaption>
+                                <div class="address">강서구 강서로</div>
+                                <div class="name"><strong>GHI 빵집</strong></div>
+                            </figcaption>
+                        </figure>
+                    </div>
 
+                </div>
+                <!-- storeListEnd -->
             </div>
-            <!-- storeListEnd -->
         </div>
         <div data-role="footer" data-fullscreen="true" data-position="fixed"></div>
 
-        <!-- jqm header, footer 브라우저 양 끝 단 위치 및 높이 조절-->
-        <script>
-            $(document).on('pageshow', '#index', function (e, data) {
-                $('#content').height(getRealContentHeight());
-            });
-
-            function getRealContentHeight() {
-                var header = $.mobile.activePage.find("div[data-role='header']:visible");
-                var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
-                var content = $.mobile.activePage.find("div[data-role='main']:visible:visible");
-                var viewport_height = $(window).height();
-
-                var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
-                if ((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
-                    content_height -= (content.outerHeight() - content.height());
-                }
-                return content_height;
-            }
-        </script>
     </div>
-
-
-    <script type="text/javascript">
-        $(document).one("pagecreate", function () {
-
-            $.get("./menuPanel.html", function (data) {
-                $.mobile.pageContainer.append(data);
-                $("[data-role=panel]").panel().enhanceWithin();
-            }, "html");
-            $.get("./cartPanel.html", function (data) {
-                $.mobile.pageContainer.append(data);
-                $("[data-role=panel]").panel().enhanceWithin();
-            }, "html");
+    <!-- jqm header, footer 브라우저 양 끝 단 위치 및 높이 조절-->
+    <script>
+        $(document).on('pageshow', '#index', function (e, data) {
+            $('#content').height(getRealContentHeight());
         });
+
+        function getRealContentHeight() {
+            var header = $.mobile.activePage.find("div[data-role='header']:visible");
+            var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
+            var content = $.mobile.activePage.find("div[data-role='main']:visible:visible");
+            var viewport_height = $(window).height();
+
+            var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
+            if ((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
+                content_height -= (content.outerHeight() - content.height());
+            }
+            return content_height;
+        }
     </script>
     <script type="text/javascript">
         $(document).ready(function ($) {
@@ -169,17 +158,15 @@
                 buttons: false,
                 height: 250,
                 forceSize: 'fullWidth'
-
-                //                autoWidth : true
             });
 
             $("#header").headroom({
                 "offset": 205,
                 "tolerance": 5,
                 "classes": {
-                     initial : "headroom",
-                  pinned : "headroom--pinned",
-                   unpinned : "headroom--unpinned",
+                    initial: "headroom",
+                    pinned: "headroom--pinned",
+                    unpinned: "headroom--unpinned",
                 }
             });
         });
