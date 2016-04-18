@@ -20,13 +20,11 @@
 	</resultMap>
 	
 	<!-- SQL : INSERT -->
-	<!-- <insert 	id="addUser"		parameterType="user" >
+	<insert 	id="addCustomer"		parameterType="customer" >
 	 	INSERT
-		INTO users( user_id , user_name , password , role , ssn, cell_phone, addr, email , reg_date) 
-		VALUES	 (	#{userId} , #{userName} , #{password} , 'user' , #{ssn:VARCHAR} , 
-							#{phone:VARCHAR} , #{addr:VARCHAR} , #{email:VARCHAR} , SYSDATE )
+		INTO customer(ctel,cpwd) 
+		VALUES	 (#{customerTel} , #{password})
 	 </insert>
-	  -->
 	 <!-- SQL : SELECT ONE -->
 	 <select 	id="getCustomer"	parameterType="string"	resultMap="customerSelectMap">
 		SELECT
