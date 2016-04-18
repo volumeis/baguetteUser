@@ -1,5 +1,7 @@
 package com.model2.mvc.service.store.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -45,9 +47,15 @@ public class StoreDaoImpl implements StoreDao{
 //		return sqlSession.selectList("UserMapper.getUserList", search);
 //	}
 //
+	@Override
+	public List<Store> getStoreList(String address) throws Exception {
+		return sqlSession.selectList("StoreMapper.getStoreList", address);
+	}
 //	// 게시판 Page 처리를 위한 전체 Row(totalCount)  return
 //	public int getTotalCount(Search search) throws Exception {
 //		return sqlSession.selectOne("UserMapper.getTotalCount", search);
 //	}
+
+
 
 }

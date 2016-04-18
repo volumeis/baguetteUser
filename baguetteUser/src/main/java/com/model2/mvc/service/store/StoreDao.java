@@ -1,5 +1,7 @@
 package com.model2.mvc.service.store;
 
+import java.util.List;
+
 import com.model2.mvc.service.domain.Store;
 
 
@@ -12,8 +14,8 @@ public interface StoreDao {
 	// SELECT ONE
 	public Store getStore(int storeNo) throws Exception ;
 
-//	// SELECT LIST
-//	public List<User> getUserList(Search search) throws Exception ;
+	// SELECT LIST
+	public List<Store> getStoreList(String address) throws Exception ;
 //
 //	// UPDATE
 //	public void updateUser(User user) throws Exception ;

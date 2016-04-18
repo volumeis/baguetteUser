@@ -33,9 +33,8 @@ public class StoreContorller {
 	//===========================================
 	//===========================================
 	@RequestMapping( value="getJsonStore/{storeNo}", method=RequestMethod.GET)
-	public void getJsonStore(	@PathVariable int storeNo,
-		HttpSession ssesion,	Model model	) throws Exception{
-		System.out.println("/getJsonStore/getStore : GET" + storeNo);
+	public void getJsonStore(	@PathVariable int storeNo,	Model model	) throws Exception{
+		System.out.println("/getJsonStore/{storeNo} : GET " + storeNo);
 		//Business Logic
 		Store store = storeService.getStore(storeNo);
 		
@@ -43,6 +42,12 @@ public class StoreContorller {
 		model.addAttribute("store",store);
 	}
 	//===========================================
+	@RequestMapping( value="getJsonStoreList/{address}", produces = "application/json; charset=utf8", method=RequestMethod.GET)
+	public void getJsonStoreList( @PathVariable String address) throws Exception{
+		System.out.println("/getJsonStoreList/{storeNo} : POST " + address);
+		
+		//Business Logic
+	}
 	//===========================================
 	
 }

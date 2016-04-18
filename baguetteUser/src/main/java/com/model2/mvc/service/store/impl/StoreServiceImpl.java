@@ -1,5 +1,9 @@
 package com.model2.mvc.service.store.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -36,7 +40,13 @@ public class StoreServiceImpl implements StoreService{
 	public Store getStore(int storeNo) throws Exception {
 		return storeDao.getStore(storeNo);
 	}
-//
+
+	@Override
+	public Map<String, Object> geStoreList(String address) throws Exception {
+		List<Store> list = storeDao.getStoreList(address);
+		return (Map<String, Object>) new HashMap<String, Object>().put("list", list);
+	}
+
 //	public Map<String , Object > getUserList(Search search) throws Exception {
 //		List<User> list= userDao.getUserList(search);
 //		int totalCount = userDao.getTotalCount(search);
