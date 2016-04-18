@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.model2.mvc.service.customer.CustomerService;
 import com.model2.mvc.service.domain.Customer;
+
 
 
 //==> Customer관리 Controller
@@ -28,6 +30,15 @@ public class CustomerContorller {
 		System.out.println(this.getClass());
 	}
 	
+	@RequestMapping( value="addCustomer", method=RequestMethod.POST )
+	public String addUser( @ModelAttribute("customer") Customer customer ) throws Exception {
+
+		System.out.println("/customer/addCustomer : POST");
+	
+		customerService.addCustomer(customer);
+		
+		return "redirect:/custoemr/가입.jsp";
+	}
 	//===========================================
 	//===========================================
 	@RequestMapping( value="getJsonCustomer/{customerTel}", method=RequestMethod.GET)

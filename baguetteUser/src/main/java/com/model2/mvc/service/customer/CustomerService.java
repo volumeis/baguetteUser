@@ -7,7 +7,7 @@ import com.model2.mvc.service.domain.Customer;
 public interface CustomerService {
 	
 //	// 회원가입
-//	public void addUser(User user) throws Exception;
+	public void addCustomer(Customer customer) throws Exception;
 	
 	// 내정보확인 / 로그인
 	public Customer getCustomer(String customerTel) throws Exception;

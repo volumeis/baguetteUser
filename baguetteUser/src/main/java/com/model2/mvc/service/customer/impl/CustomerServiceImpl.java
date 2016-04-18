@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.model2.mvc.service.customer.CustomerDao;
 import com.model2.mvc.service.customer.CustomerService;
-import com.model2.mvc.service.domain.Customer;;
+import com.model2.mvc.service.domain.Customer;
 
 
 //==> 회원관리 서비스 구현
@@ -30,6 +30,10 @@ public class CustomerServiceImpl implements CustomerService{
 //	public void addUser(User user) throws Exception {
 //		userDao.addUser(user);
 //	}
+	@Override
+	public void addCustomer(Customer customer) throws Exception {
+		customerDao.addCustomer(customer);
+	}
 
 	public Customer getCustomer(String customerTel) throws Exception {
 		return customerDao.getCustomer(customerTel);
@@ -58,4 +62,5 @@ public class CustomerServiceImpl implements CustomerService{
 //		}
 //		return result;
 //	}
+
 }

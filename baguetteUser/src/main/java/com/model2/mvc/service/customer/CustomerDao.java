@@ -7,7 +7,7 @@ import com.model2.mvc.service.domain.Customer;
 public interface CustomerDao {
 	
 //	// INSERT
-//	public void addUser(User user) throws Exception ;
+	public void addCustomer(Customer customer) throws Exception ;
 
 	// SELECT ONE
 	public Customer getCustomer(String customerTel) throws Exception ;

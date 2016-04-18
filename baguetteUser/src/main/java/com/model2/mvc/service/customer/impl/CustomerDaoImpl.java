@@ -27,9 +27,9 @@ public class CustomerDaoImpl implements CustomerDao{
 	}
 
 	///Method
-//	public void addUser(User user) throws Exception {
-//		sqlSession.insert("UserMapper.addUser", user);
-//	}
+	public void addCustomer(Customer customer) throws Exception {
+		sqlSession.insert("CustomerMapper.addCustomer", customer);
+	}
 
 	public Customer getCustomer(String customerTel) throws Exception {
 		Customer customer = sqlSession.selectOne("CustomerMapper.getCustomer", customerTel);
