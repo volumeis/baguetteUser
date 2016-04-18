@@ -30,14 +30,14 @@ public class CustomerContorller {
 		System.out.println(this.getClass());
 	}
 	
-	@RequestMapping( value="addCustomer", method=RequestMethod.POST )
-	public String addUser( @ModelAttribute("customer") Customer customer ) throws Exception {
+	@RequestMapping( value="addCustomer", method=RequestMethod.POST)
+	public String addCustomer( @ModelAttribute("customer") Customer customer ) throws Exception {
 
 		System.out.println("/customer/addCustomer : POST");
 	
 		customerService.addCustomer(customer);
 		
-		return "redirect:/custoemr/가입.jsp";
+		return "redirect:/customer/가입.jsp";
 	}
 	//===========================================
 	//===========================================
@@ -54,10 +54,10 @@ public class CustomerContorller {
 	}
 	//===========================================
 	//===========================================
-	@RequestMapping( value="test", method=RequestMethod.GET)
+/*	@RequestMapping( value="test", method=RequestMethod.GET)
 	public String getJsonCustomer() throws Exception{
 		System.out.println("/getJsonCustomer/getUser : GET");
 		return "/yhh.jsp";
-	}
+	}*/
 	
 }
