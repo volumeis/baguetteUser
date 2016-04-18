@@ -1,5 +1,7 @@
 package com.model2.mvc.service.bread;
 
+import java.util.List;
+
 import com.model2.mvc.service.domain.Bread;
 
 
@@ -13,7 +15,7 @@ public interface BreadDao {
 	public Bread getBread(int breadNo) throws Exception ;
 
 //	// SELECT LIST
-//	public List<User> getUserList(Search search) throws Exception ;
+	public List<Bread> getBreadList(int storeNo) throws Exception ;
 //
 //	// UPDATE
 //	public void updateUser(User user) throws Exception ;

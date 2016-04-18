@@ -1,5 +1,7 @@
 package com.model2.mvc.service.bread;
 
+import java.util.Map;
+
 import com.model2.mvc.service.domain.Bread;
 
 
@@ -13,7 +15,7 @@ public interface BreadService {
 	public Bread getBread(int breadNo) throws Exception ;
 	
 //	// 회원정보리스트 
-//	public Map<String , Object> getUserList(Search search) throws Exception;
+	public Map<String , Object> getBreadList(int storeNo) throws Exception;
 //	
 //	// 회원정보수정
 //	public void updateUser(User user) throws Exception;

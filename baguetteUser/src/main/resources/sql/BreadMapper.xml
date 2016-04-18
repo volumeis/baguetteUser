@@ -14,7 +14,7 @@
 		<result property="desc" 	column="bdesc"	 		jdbcType="CLOB" />
 		<result property="img"	 	column="bimg" 			jdbcType="VARCHAR" />
 		<result property="qty" 		column="bqty" 			jdbcType="INTEGER" />
-		<result property="sno" 		column="storeNo" 		jdbcType="INTEGER" />
+		<result property="storeNo" 	column="sno" 			jdbcType="INTEGER" />
 	</resultMap>
 	
 	<!-- SQL : INSERT -->
@@ -33,6 +33,15 @@
 		WHERE bno = #{value}
 	 </select>
 	 
+	<!-- SQL : SELECT LIST -->
+	<select  id="getBreadList"  parameterType="string"	resultMap="breadSelectMap">
+	  	SELECT
+	  	bname, bprice
+	  	FROM bread
+	  	WHERE sno = #{value}
+	</select>
+	
+	
 	 <!-- SQL : UPDATE -->
 	<!--  <update	id="updateUser"	parameterType="user" >
 	   	UPDATE users

@@ -1,5 +1,9 @@
 package com.model2.mvc.service.bread.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -35,16 +39,14 @@ public class BreadServiceImpl implements BreadService{
 		return breadDao.getBread(breadNo);
 	}
 //
-//	public Map<String , Object > getUserList(Search search) throws Exception {
-//		List<User> list= userDao.getUserList(search);
-//		int totalCount = userDao.getTotalCount(search);
-//		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("list", list );
-//		map.put("totalCount", new Integer(totalCount));
-//		
-//		return map;
-//	}
+	public Map<String , Object > getBreadList(int storeNo) throws Exception {
+		List<Bread> list= breadDao.getBreadList(storeNo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("breadlist", list );
+		
+		return map;
+	}
 //
 //	public void updateUser(User user) throws Exception {
 //		userDao.updateUser(user);

@@ -1,5 +1,7 @@
 package com.model2.mvc.service.bread.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,14 +38,16 @@ public class BreadDaoImpl implements BreadDao{
 		System.out.println(bread);
 		return bread;
 	}
-//	
+
+	public List<Bread> getBreadList(int storeNo) throws Exception {
+	return sqlSession.selectList("BreadMapper.getBreadList", storeNo);
+	}	
+	
 //	public void updateUser(User user) throws Exception {
 //		sqlSession.update("UserMapper.updateUser", user);
 //	}
 //
-//	public List<User> getUserList(Search search) throws Exception {
-//		return sqlSession.selectList("UserMapper.getUserList", search);
-//	}
+
 //
 //	// 게시판 Page 처리를 위한 전체 Row(totalCount)  return
 //	public int getTotalCount(Search search) throws Exception {

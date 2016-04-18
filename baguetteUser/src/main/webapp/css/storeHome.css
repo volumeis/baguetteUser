@@ -8,13 +8,13 @@ html, body {
 
 .store-info {
     position: relative;
-/*    margin: 13px;*/
+    margin: 13px;
     border: 1px blue solid;
     height: 80px;
     text-align:center
 } 
 
-/*store-info*/
+store-info
 .store-info .col-xs-4,
 .store-info .col-xs-8{
     padding: 0px;
@@ -27,10 +27,12 @@ html, body {
     font-size: 40
     
 }
+/*
 .store-info .rate-floater{
     height: 10px;
     float:left;
 }
+*/
 
 .store-info .rateit{
     margin-top: 5px;
