@@ -16,13 +16,14 @@
 	<typeAliases>
 		<!-- <typeAlias alias="store" type="com.model2.mvc.service.domain.Store" /> -->
 		<typeAlias alias="customer" type="com.model2.mvc.service.domain.Customer" />
+		<typeAlias alias="bread" type="com.model2.mvc.service.domain.Bread" />
 	</typeAliases>
 	
 	 <!-- SQL Definition :: file include -->
 	<mappers>
 		<!-- <mapper resource="sql/StoreMapper.xml"/> -->
 		<mapper resource="sql/CustomerMapper.xml"/>
-		
+		<mapper resource="sql/BreadMapper.xml"/>		
 	</mappers>
 
 </configuration>
