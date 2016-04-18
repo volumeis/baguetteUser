@@ -4,35 +4,33 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="CustomerMapper">
+<mapper namespace="StoreMapper">
  	
  	
-	<resultMap id="customerSelectMap" type="customer">
-		<result property="customerNo" 	column="cno" 		jdbcType="INTEGER"/>
-		<result property="customerTel"	column="ctel" 		jdbcType="VARCHAR" />
-		<result property="password" 	column="cpwd" 		jdbcType="VARCHAR" />
-		<!-- <result property="role" 				column="role" 					jdbcType="VARCHAR" />
-		<result property="ssn" 				column="ssn" 					jdbcType="VARCHAR" />
-		<result property="phone" 			column="cell_phone" 		jdbcType="VARCHAR" />
-		<result property="addr" 				column="addr" 					jdbcType="VARCHAR" />
-		<result property="email" 			column="email" 				jdbcType="NUMERIC"  />
-		<result property="regDate" 		column="reg_date" 			jdbcType="DATE" /> -->
+	<resultMap id="storeSelectMap" type="store">
+		<result property="storeNo" 		column="sno" 		jdbcType="INTEGER"/>
+		<result property="storeName"	column="sname" 		jdbcType="VARCHAR" />
+		<result property="storeAddr" 	column="saddr" 		jdbcType="VARCHAR" />
+		<result property="storeTel" 	column="stel" 		jdbcType="VARCHAR" />
+		<result property="storeTime" 	column="stime" 		jdbcType="VARCHAR" />
+		<result property="storeImg" 	column="simg" 		jdbcType="VARCHAR" />
+		<result property="storeInfo" 	column="sinfo" 		jdbcType="VARCHAR" />
 	</resultMap>
 	
 	<!-- SQL : INSERT -->
-	<!-- <insert 	id="addUser"		parameterType="user" >
+	<insert 	id="addStore"		parameterType="store" >
 	 	INSERT
-		INTO users( user_id , user_name , password , role , ssn, cell_phone, addr, email , reg_date) 
-		VALUES	 (	#{userId} , #{userName} , #{password} , 'user' , #{ssn:VARCHAR} , 
-							#{phone:VARCHAR} , #{addr:VARCHAR} , #{email:VARCHAR} , SYSDATE )
-	 </insert>
-	  -->
+		INTO users( sno, sname, saddr, stel, stime, stimg, sinfo) 
+		VALUES	 (	seq_store_no.NETVAL , #{storeName} , #{storeAddr} , #{storeTel} , #{storeTime} , 
+							#{#{storeImg} , #{storeInfo})
+	</insert>
+	 
 	 <!-- SQL : SELECT ONE -->
-	 <select 	id="getCustomer"	parameterType="string"	resultMap="customerSelectMap">
+	 <select 	id="getStore"	parameterType="int"	resultMap="storeSelectMap">
 		SELECT
-		ctel, cpwd 		
-		FROM customer
-		WHERE ctel = #{value}
+		sno, sname, saddr, stel, stime, simg, sinfo
+		FROM store
+		WHERE sno = #{value}
 	 </select>
 	 
 	 <!-- SQL : UPDATE -->
