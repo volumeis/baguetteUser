@@ -18,7 +18,7 @@
 	</resultMap>
 	
 	<!-- SQL : INSERT -->
-	<insert 	id="addStore"		parameterType="store" >
+	<insert 	id="addStore"	parameterType="store" >
 	 	INSERT
 		INTO users( sno, sname, saddr, stel, stime, stimg, sinfo) 
 		VALUES	 (	seq_store_no.NETVAL , #{storeName} , #{storeAddr} , #{storeTel} , #{storeTime} , 
@@ -43,29 +43,36 @@
 			email				=	#{email}
 	   	</set>
 	   	WHERE user_id = #{userId}
-	 </update>
+	 </update>-->
 		 
-	SQL : SELECT LIST
-	<select  id="getUserList"  parameterType="search"	resultMap="userSelectMap">
+	<!-- SQL : SELECT LIST -->
+	<select  id="getStoreList"  parameterType="string"	resultMap="storeSelectMap">
+		SELECT sno , sname, saddr, simg
+		FROM store
+		<where>
+		<!-- <if test="searchCondition == 1 and searchKeyword !='' "> -->
+		saddr Like '%${value}%'
+		<!-- </if> -->
+		</where>
+		ORDER BY sno  
+	 </select>
+	 <!-- <select  id="getStoreList"  parameterType="string"	resultMap="storeSelectMap">
 	  	SELECT *
 	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
-	  					FROM		(	SELECT user_id , user_name , email
-											FROM users
+	  					FROM		(	SELECT sno , sname, saddr, simg
+											FROM store
 											<if test="searchCondition != null">
 												<where>
-													<if test="searchCondition == 0 and searchKeyword !='' ">
-										 				user_id Like '%${searchKeyword}%'
-													</if>
 													<if test="searchCondition == 1 and searchKeyword !='' ">
-										 				user_name Like '%${searchKeyword}%'
+										 				saddr Like '%${value}%'
 													</if>
 												</where>
 											</if>
-											ORDER BY user_id ) inner_table
+											ORDER BY sno ) inner_table
 						WHERE ROWNUM &lt;= #{endRowNum} )
 		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
-	 </select>
-	 	 위 두번째 subQuery 의  
+	 </select> -->
+	 	<!-- 위 두번째 subQuery 의  
 	 			WHERE ROWNUM &lt;= #{endRowNum} ) 는
 	 			WHERE ROWNUM <= #{endRowNum} ) 의미이며..
 	 			< 는 keyword 로 &lt; 를	사용.
