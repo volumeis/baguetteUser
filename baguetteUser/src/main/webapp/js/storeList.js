@@ -38,6 +38,7 @@ $(function () {
             $('#st' + j).fadeIn(1000, function () {});
             $(window).scrollTop($(document).height() - $(window).height() - 1);
 
+            //http://java78bit404.iptime.org:8025/image/storeImg/artisee_sansungtown.jpg
             if (i == 3) {
                 i = 0;
             }
