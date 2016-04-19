@@ -56,7 +56,7 @@ public class BreadContorller {
 //		map.put("바게트", qwe);
 //		System.out.println(qwe);
 //		System.out.println(map);
-		model.addAttribute("bread", map);
+		model.addAttribute("breadmap", map);
 	}
 	
 	

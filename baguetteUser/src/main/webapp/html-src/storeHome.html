@@ -77,16 +77,19 @@
                     </ul>
                 </div>
                 <div data-role="ui-content" id="one">
-                    
+                	<div id="cartdiv"></div>
+                     <!-- 
                     <div class="ui-grid-a">
-                        <div class="ui-block-a"><div class="ui-bar ui-bar-a">
+                        <div class="ui-block-a">
                             <a class="thumbnail"> <img src="../image/01menu01.png" class="img-rounded" style="height:100%">
-                            </a></div></div>
-                        <div class="ui-block-b"><div class="ui-bar ui-bar-a">
-                            <a class="thumbnail"> <img src="../image/01menu02.png" class="img-rounded" style="height:100%">                            </a></div></div>
-                        <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">딸기빵 6,000원</div></div>
-                        <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">초코빵 4,000원원</div></div>
-                    </div><!-- /grid-c -->
+                            </a></div>
+                        <div class="ui-block-b">
+                            <a class="thumbnail"> <img src="../image/01menu02.png" class="img-rounded" style="height:100%"></a></div>
+                        <div class="ui-block-a">딸기빵 6,000원</div>
+                        <div class="ui-block-b">초코빵 4,000원</div>
+                         
+                        
+                    </div>-->
                     <button id="testbutton">테스트</button>
                     <div id="testview"></div>
                 </div>
@@ -117,17 +120,35 @@
                     },
                     success: function (JSONData, status) {
 
-                    	$.each(JSONData.bread.breadlist, function(i,item){
-                    	var displayValue ="이  름 : "+JSONData.bread.breadlist[i].name+"<br/>"
-							+"가  격 : "+JSONData.bread.breadlist[i].price+"<br/>";
+                    	$.each(JSONData.breadmap.breadlist, function(i,item){
+                    		var displayValue ="이  름 : "+JSONData.breadmap.breadlist[i].name+"<br/>"
+								+"가  격 : "+JSONData.breadmap.breadlist[i].price+"<br/>";
+							var breadindex = i;
+							var cartdiv = $(document.createElement('div')).addClass('ui-grid-a');
+							var cartimgdivL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'imgL'+breadindex);
+							var cartimgdivR = $(document.createElement('div')).addClass('ui-block-b');
 							
-						//Debug...									
-						//alert(displayValue);
-						$("#testview").append(displayValue);
+							var cartimg =
+								$(document.createElement('img')).attr({
+				                    src: "../image/01menu02.png",
+				                    class: "img-rounded",
+				                    style: "height:100%"
+				                });
+							
+							var carttextL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'textL'+breadindex);
+							var carttextR = $(document.createElement('div')).addClass('ui-block-b');
+							
+							if(i%2 == 0){
+								$('#cartdiv').append(cartdiv.html(cartimgdivL.html(cartimg).add(carttextL.append(displayValue))));
+								
+							}else if(i%2 == 1){
+								breadindex = i-1;
+								$('#imgL'+breadindex).after(cartimgdivR.html(cartimg));
+								$('#textL'+breadindex).after(carttextR.append(displayValue));
+								breadindex = i;
+							}
 						
-						//$.each(JSONData.bread.breadlist, function(i,item){
-						//	alert(JSONData.bread.breadlist[i].name);
-						//});
+						
                     });
                 }
                     	
