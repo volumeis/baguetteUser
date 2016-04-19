@@ -1,30 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- css -->
-    <link rel="stylesheet" href="../lib/jquery-mobile-bower/css/jquery.mobile-1.4.5.css" />
-    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="../css/header.css" />
-    <link rel="stylesheet" href="../css/storeHome.css" />
-
-    <!-- js -->
-    <script src="../lib/jquery/jquery.js"></script>
-    <script src="../js/jQery.headroom.js"></script>
-    <script src="../js/headroom.js"></script>
-    <script src="../lib/bootstrap/js/bootstrap.js"></script>
-    <script src="../js/swipeNav.js"></script>
-    <!--  jquery-mobie 은 최하단에 놓음-->
-    <script src="../lib/jquery.rateit/jquery.rateit.js"></script>
-    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-
-
-</head>
-
-<body>
-
     <div data-role="page" class="pages" id="store-home-01">
 
         <!--header start  -->
@@ -44,10 +17,13 @@
         <div data-role="main" class="ui-content main-content">
 
             <div class="row store-info">
-                <div class="col-xs-4">
+                
+                <div class="col-xs-4" id="rate-div">
+                    
                     <div class="rate-score">
                         <div id="ratevalue"></div>
                     </div>
+                    
                     <div class="rateit" id="ratestar" data-rateit-resetable="false" data-rateit-ispreset="true"></div>
 
                     <script type="text/javascript">
@@ -56,9 +32,10 @@
                         });
                     </script>
 
-                    <div class="rate-floater"></div>
+<!--                    <div class="rate-floater"></div>-->
                 </div>
-                <div class="col-xs-8">
+                
+                <div class="col-xs-8" id="rate-graph">
                     <div class="floater"></div>
                     <div class="graph-text">그래프</div>
                 </div>
@@ -67,30 +44,27 @@
             <div data-role="tabs">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#one" data-ajax="false">one</a></li>
+                        <li><a href="#one" data-ajax="false" id="one">one</a></li>
                         <li><a href="#two" data-ajax="false">two</a></li>
                         <li><a href="#asd" data-ajax="false">three</a></li>
                     </ul>
                 </div>
                 <div data-role="ui-content" id="one">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a class="thumbnail"> <img src="../image/01menu01.png" class="img-rounded">
-                            </a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a class="thumbnail"> <img src="../image/01menu02.png" class="img-rounded">
-                            </a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a class="thumbnail"> <img src="../image/01menu03.png" class="img-rounded">
-                            </a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a class="thumbnail"> <img src="../image/01menu04.png" class="img-rounded">
-                            </a>
-                        </div>
-                    </div>
+                	<div id="cartdiv"></div>
+                     <!-- 
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <a class="thumbnail"> <img src="../image/01menu01.png" class="img-rounded" style="height:100%">
+                            </a></div>
+                        <div class="ui-block-b">
+                            <a class="thumbnail"> <img src="../image/01menu02.png" class="img-rounded" style="height:100%"></a></div>
+                        <div class="ui-block-a">딸기빵 6,000원</div>
+                        <div class="ui-block-b">초코빵 4,000원</div>
+                         
+                        
+                    </div>-->
+                    <button id="testbutton">테스트</button>
+                    <div id="testview"></div>
                 </div>
                 <div data-role="ui-content" id="two">456 </div>
             </div>
@@ -102,8 +76,57 @@
                 $.mobile.page.prototype.options.domCache = true;
             });
         </script>
+        
+            <script type="text/javascript">
+        $(function () {
+
+            $("#testbutton").click(function () {
+                
+            	$.ajax({
+            		url: "/bread/getJsonBreadList/"+2002,
+                    //url: "/bread/getJsonBread/"+3002,
+                    method: "GET",
+                    dataType: "json",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    success: function (JSONData, status) {
+
+                    	$.each(JSONData.breadmap.breadlist, function(i,item){
+                    		var displayValue ="이  름 : "+JSONData.breadmap.breadlist[i].name+"<br/>"
+								+"가  격 : "+JSONData.breadmap.breadlist[i].price+"<br/>";
+							var breadindex = i;
+							var cartdiv = $(document.createElement('div')).addClass('ui-grid-a');
+							var cartimgdivL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'imgL'+breadindex);
+							var cartimgdivR = $(document.createElement('div')).addClass('ui-block-b');
+							
+							var cartimg =
+								$(document.createElement('img')).attr({
+				                    src: "../image/01menu02.png",
+				                    class: "img-rounded",
+				                    style: "height:100%"
+				                });
+							
+							var carttextL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'textL'+breadindex);
+							var carttextR = $(document.createElement('div')).addClass('ui-block-b');
+							
+							if(i%2 == 0){
+								$('#cartdiv').append(cartdiv.html(cartimgdivL.html(cartimg).add(carttextL.append(displayValue))));
+								
+							}else if(i%2 == 1){
+								breadindex = i-1;
+								$('#imgL'+breadindex).after(cartimgdivR.html(cartimg));
+								$('#textL'+breadindex).after(carttextR.append(displayValue));
+								breadindex = i;
+							}
+						
+						
+                    });
+                }
+                    	
+            });
+        });
+            });
+    </script>
     </div>
-
-</body>
-
-</html>
