@@ -12,73 +12,57 @@
 	 <script src="../lib/jquery/jquery.js"></script>
 	 <script src="../lib/bootstrap/js/bootstrap.js"></script>
 	 
-	 
 	 <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
 	 <script type="text/javascript">   
-		function getCustomerInfo01(){
-			
-			$.ajax(
-					   {
-						   url : "/customer/addCustomer/",
-						   method : "POST",
-						   data :{
-							   		customerTel : $("#customerTel").val(),
-							   		password : $("#password").val()
-						   		 },
-						   dataType : "json",
-						   success : function(JSONData, status) {
-							   
-							   alert(status);
-							   
-							   alert("JSONData: \n"+JSONData);
-							   
-							  // var displayValue = "고객번호:"+JSONData.customerTel+"\n"
-							   						//+"패스워드:"+JSONData.password;
-							   						
-							  // $("#address").val(displayValue);
-						   }	
-						}	
-					);
-				}
-	
-		
-		$(function(){
-			$(".btn btn-default btn-block").on("click",function(){
+
+		 $(function(){
+			$("#addCustomer").on("click",function(){
 				
- 				//[Test 01 : getCustomerInfo01()];
-				
-				getCustomerInfo01(); 
-				
-				//[Test02 : getCustomerInfo02()];
-/* 				alert("Test02 : getCustomerInfo02()");
-				getCustomerInfo02();  */
-				alert("회원가입완료");
+				$.ajax(
+						   {
+							   url : "/customer/addCustomer",
+							   method : "POST",
+							   data :{
+								   		customerTel : $("#customerTel").val().trim(),
+								   		password : $("#password").val().trim()
+							   		 },
+							   dataType : "json",
+							
+							   success : function(JSONData, status) {
+								   
+								   location.href = "./login.html";
+								
+							   }	
+							}	
+						);
+		 		alert("회원가입완료");
 			});
-			
-			$("form")[0].reset();
-		});
+		}); 
+		
 	</script>
+	
 </head>
 
 <body>
 	<form>
-	
-		 <div>
-        <div class="center-block" style="width:70%;">
-            <input type="text" class="form-control" id="customerTel" name="customerTel" placeholder="휴대폰">
-        </div>
-        <div class="center-block" style="width:70%; margin-top:10px">
-            <input type="text" class="form-control" id="password" name="password" placeholder="비밀번호">
-        </div>
-    </div>
-		<div class="center-block" style="width:70%; margin-top:20px">
-        <a href="login.html" rel="external" data-role="none" type="button" class="btn btn-default btn-block">회원가입</a>
-        <!--                <button data-role="none" type="button" id="login" class="btn btn-default btn-block">로그인</button>-->
-    </div>
-		
-		
-		
-		
+
+		<div>
+			<div class="center-block" style="width: 70%;">
+				<input type="text" class="form-control" id="customerTel"
+					name="customerTel" placeholder="휴대폰">
+			</div>
+			<div class="center-block" style="width: 70%; margin-top: 10px">
+				<input type="text" class="form-control" id="password"
+					name="password" placeholder="비밀번호">
+			</div>
+		</div>
+		<div class="center-block" style="width: 70%; margin-top: 20px">
+			<button data-role="none" type="button" id="addCustomer"
+				class="btn btn-default btn-block">회원가입</button>
+			<!--  <a href="login.html" rel="external" data-role="none" type="button" class="btn btn-default btn-block">회원가입</a> -->
+			<!--                <button data-role="none" type="button" id="login" class="btn btn-default btn-block">로그인</button>-->
+		</div>
+
 	</form>
 
 </body>
