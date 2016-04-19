@@ -99,7 +99,7 @@ $(function () {
 
             },
             error: function (JSONData, status) {
-                alert("잘못된 요청입니다.");
+//                alert("잘못된 요청입니다.");
             }
         });
     });
