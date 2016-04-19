@@ -23,7 +23,7 @@
 	<insert 	id="addCustomer"		parameterType="customer" >
 	 	INSERT
 		INTO customer(cno, ctel, cpwd) 
-		VALUES	 (seq_customer_cno.nextval, #{customerTel}, #{password})
+		VALUES	 (seq_customer_no.nextval, #{customerTel}, #{password})
 	 </insert>
 	 <!-- SQL : SELECT ONE -->
 	 <select 	id="getCustomer"	parameterType="string"	resultMap="customerSelectMap">
