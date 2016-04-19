@@ -1,5 +1,8 @@
 package com.model2.mvc.web.customer;
 
+import java.net.URLDecoder;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,11 +45,16 @@ public class StoreContorller {
 		model.addAttribute("store",store);
 	}
 	//===========================================
-	@RequestMapping( value="getJsonStoreList/{address}", produces = "application/json; charset=utf8", method=RequestMethod.GET)
-	public void getJsonStoreList( @PathVariable String address) throws Exception{
-		System.out.println("/getJsonStoreList/{storeNo} : POST " + address);
-		
+	@RequestMapping( value="getJsonStoreList/{address}", method=RequestMethod.GET)
+	public void getJsonStoreList( @PathVariable String address, Model model) throws Exception{
+		System.out.println("/getJsonStoreList/{storeNo} : GET " + address);
+		//System.out.println(URLDecoder.decode((URLDecoder.decode(address, "8859_1")), "UTF-8"));
+		//System.out.println( URLDecoder.decode(address, "UTF-8"));
+		address =  new String(address.getBytes("8859_1"), "utf-8");
 		//Business Logic
+		Map<String, Object> storeMap = storeService.getStoreList(address);
+		//System.out.println(storeMap);
+		model.addAttribute("storeMap", storeMap);
 	}
 	//===========================================
 	
