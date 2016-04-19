@@ -3,85 +3,130 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User Login</title>
+
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
 
 
-    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
- 	
- 	
-    <script src="../lib/jquery/jquery.js"></script>
-    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+<script src="../lib/jquery/jquery.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.js"></script>
 
-    
-    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
 
-    <title>User Login</title>
+<script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
 
+
+
+
+
+<!-- test jquery -->
+<script type="text/javascript">
+	$( function() {
+		
+		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+		$("#customerTel").focus();
+		
+		//==>"Login"  Event 연결
+		$("#login").on("click" , function() {
+
+			var id=$("input:text").val().trim();
+			var pw=$("input:password").val().trim();
+			
+			if(id == null || id.length <1) {
+				alert('ID 를 입력하지 않으셨습니다.');
+				$("input:text").focus();
+				return;
+			}
+			
+			if(pw == null || pw.length <1) {
+				alert('패스워드를 입력하지 않으셨습니다.');
+				$("input:password").focus();
+				return;
+			}
+			
+			////////////////////////////////////////////////// 추가 , 변경된 부분 ////////////////////////////////////////////////////////////
+			//$("form").attr("method","POST").attr("action","/user/login").attr("target","_parent").submit();
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			$.ajax( 
+					{
+						url : "/customer/jsonLogin",
+						method : "POST" ,
+						dataType : "json" ,
+						headers : {
+							"Accept" : "application/json",
+							"Content-Type" : "application/json"
+						},
+						data : JSON.stringify({
+							customerTel : id,
+							password : pw
+						}),
+						success : function(JSONData , status) {
+
+							//Debug...
+							//alert(status);
+							//alert("JSONData : \n"+JSONData);
+							//alert( "JSON.stringify(JSONData) : \n"+JSON.stringify(JSONData) );
+							//alert("JSONData.user : \n"+JSONData.user);
+							//alert("JSON.stringify(jsonUser) : \n"+JSON.stringify(JSONData.user));
+							//alert( JSONData.user != null );
+							
+							if (JSONData.customer != null) {
+								 
+
+		                                location.href = "./storeList.html";
+		                                return;
+		                            
+								//==> 방법 1 , 2 , 3 결과 학인
+							}else{
+								alert("아이디 , 패스워드를 확인하시고 다시 로그인...");
+							}
+						}
+				}); 
+				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							
+		});
+	});
+	
+	
+	//============= 회원원가입화면이동 =============
+	$( function() {
+		//==> 추가된부분 : "addUser"  Event 연결
+		$("#new").on("click" , function() {
+			self.location = "./addCustomer.html"
+		});
+	});
+	
+    </script>
 </head>
 
 <body>
 
-    <div style="margin-top:60px">
-        <div>
-            <img src="../image/login.png" class="center-block" style="width:70%">
-        </div>
-    </div>
-    <div>
-        <div class="center-block" style="width:70%;">
-            <input type="text" class="form-control" id="customerTel" name="customerTel" placeholder="휴대폰">
-        </div>
-        <div class="center-block" style="width:70%; margin-top:10px">
-            <input type="text" class="form-control" id="password" name="password" placeholder="비밀번호">
-        </div>
-    </div>
-    <div class="center-block" style="width:70%; margin-top:20px">
-        <!-- <a href="storeList.html" rel="external" data-role="none" type="button" class="btn btn-default btn-block">로그인</a> -->
-             <button data-role="none" type="button" id="login" class="btn btn-default btn-block">로그인</button>
-    </div>
+	<div style="margin-top: 60px">
+		<div>
+			<img src="../image/login.png" class="center-block" style="width: 70%">
+		</div>
+	</div>
+	<div>
+		<div class="center-block" style="width: 70%;">
+			<input type="text" class="form-control" id="customerTel"
+				name="customerTel" placeholder="휴대폰">
+		</div>
+		<div class="center-block" style="width: 70%; margin-top: 10px">
+			<input type="password" class="form-control" id="password"
+				name="password" placeholder="비밀번호">
+		</div>
+	</div>
+	<div class="center-block" style="width: 70%; margin-top: 20px">
+		<!-- <a href="storeList.html" rel="external" data-role="none" type="button" class="btn btn-default btn-block">로그인</a> -->
+		<button data-role="none" type="button" id="login"
+			class="btn btn-default btn-block">로그인</button>
+	</div>
 
-    <div style="margin:65px 0px 0px 0px; text-align:center">
-        <a href="addCustomer.html" rel="external">새 Baguette 계정 만들기</a>
-    </div>
-
-
-    <!-- test jquery -->
-    <script type="text/javascript">
-        $(function () {
-
-            $("#login").click(function () {
-                var customerTel = $("#customerTel").val().trim();
-                var customerPwd = $("#password").val().trim();
-                $.ajax({
-                    /* url : "/customer/getJsonCustomer/"+userId , */
-                    url: "/customer/getJsonCustomer/" + customerTel,
-                    method: "GET",
-                    dataType: "json",
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-Type": "application/json"
-                    },
-                    success: function (JSONData, status) {
-
-                        if (JSONData.customer != null) {
-                            if (customerTel == JSONData.customer.customerTel) {
-                                alert("존재하는 계정입니다.비밀번호 일치 : " + (customerPwd == JSONData.customer.password));
-                            }
-                            if (customerTel == JSONData.customer.customerTel && customerPwd == JSONData.customer.password) {
-
-                                location.href = "./html/storeList.html";
-                                return;
-                            }
-                        }
-                        alert("없는 계정입니다. ");
-                    },
-                    error: function (JSONData, status) {
-                        alert("잘못된 요청입니다.");
-                    }
-                });
-            });
-        });
-    </script>
+	<div style="margin: 65px 0px 0px 0px; text-align: center">
+		<button data-role="none" type="button" id="new"
+			class="btn btn-default btn-block">계정 만들기</button>
+	</div>
 
 </body>
 
