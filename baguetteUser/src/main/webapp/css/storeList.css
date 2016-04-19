@@ -5,8 +5,7 @@ html, body {
 
 
 .ui-grid-solo .ui-block-a {
-    padding: 0.1em 0px;
-    background-color: darkblue;
+    padding: 2px 0px;
     
     /*    padding-left: 0px;*/
     /*    padding-right: 0px;*/
@@ -39,19 +38,19 @@ html, body {
     color:gray;
 /*    font-size: 1.em;*/
     transition: 0.7s;
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .ui-grid-solo .ui-block-a figure figcaption .address {
 /*    color: white;*/
     
-    font-size: 1.2em;
+    font-size: 1.5rem;
     text-align: right;
 }
 
 .ui-grid-solo .ui-block-a figure figcaption .name {
 /*    color: white;*/
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-style: Bold;
     text-align: right;
 }
