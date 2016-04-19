@@ -34,9 +34,7 @@ public class StoreDaoImpl implements StoreDao{
 //	}
 	@Override
 	public Store getStore(int storeNo) throws Exception {
-		Store store = sqlSession.selectOne("StoreMapper.getStore", storeNo);
-		System.out.println("dao : " +store);
-		return store;
+		return sqlSession.selectOne("StoreMapper.getStore", storeNo);
 	}
 //	
 //	public void updateUser(User user) throws Exception {

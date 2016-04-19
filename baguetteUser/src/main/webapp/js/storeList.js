@@ -29,7 +29,7 @@ $(function () {
             var storeLink =
                 $(document.createElement('a')).attr({
                     href: "storeHomeTest.html",
-                    class : "ui-link"
+                    class: "ui-link"
                 });
 
             var storeBlockA = $(document.createElement('div')).addClass('ui-block-a').html(storeLink.html(figuere));
@@ -43,5 +43,64 @@ $(function () {
                 i = 0;
             }
         }
+    });
+
+    if ($(window).scrollTop() == 0 || ($(window).height() >= $(document).height())) {
+//        alert("123");
+    }
+
+
+
+
+    //    var storeAddress = "강남구";
+    $(document).one("pagecreate", function () {
+
+
+        $.ajax({
+            url: "/store/getJsonStoreList/" + "서울",
+            /*encodeURIComponent(storeAddress),*/
+            method: "GET",
+            dataType: "json",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            success: function (JSONData, status) {
+                var storeList = JSONData.storeMap.list;
+                var tempHtml;
+                $.each(storeList, function (i, store) {
+
+                    var address = $(document.createElement('div')).addClass('address');
+                    address.text(store.storeAddr);
+                    $(".ui-grid-solo").append(address);
+                    var name = $(document.createElement('div')).addClass('name');
+                    name.text(store.storeName);
+                    var figcaption = $(document.createElement('figcaption'));
+                    figcaption.html(address.add(name));
+
+                    var img =
+                        $(document.createElement('img')).attr({
+                            src: "http://java78bit404.iptime.org:8025" + store.storeImg,
+                            alt: "alt : " + store.storeName
+                        });
+
+                    var figuere = $(document.createElement('figure')).html(img.add(figcaption));
+
+                    var storeLink =
+                        $(document.createElement('a')).attr({
+                            href: "storeHomeTest.html",
+                            class: "ui-link"
+                        });
+
+                    var storeBlockA = $(document.createElement('div')).addClass('ui-block-a').html(storeLink.html(figuere));
+
+                    $('#list-store').append(storeBlockA);
+                });
+
+            },
+            error: function (JSONData, status) {
+                alert("잘못된 요청입니다.");
+            }
+        });
     });
 });

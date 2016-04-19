@@ -8,13 +8,13 @@
  	
  	
 	<resultMap id="storeSelectMap" type="store">
-		<result property="storeNo" 		column="sno" 		jdbcType="INTEGER"/>
+		<result property="storeNo" 		column="sno" 		jdbcType="NUMERIC"/>
 		<result property="storeName"	column="sname" 		jdbcType="VARCHAR" />
 		<result property="storeAddr" 	column="saddr" 		jdbcType="VARCHAR" />
 		<result property="storeTel" 	column="stel" 		jdbcType="VARCHAR" />
 		<result property="storeTime" 	column="stime" 		jdbcType="VARCHAR" />
 		<result property="storeImg" 	column="simg" 		jdbcType="VARCHAR" />
-		<result property="storeInfo" 	column="sinfo" 		jdbcType="VARCHAR" />
+		<result property="storeInfo" 	column="sinfo" 		jdbcType="CLOB" />
 	</resultMap>
 	
 	<!-- SQL : INSERT -->

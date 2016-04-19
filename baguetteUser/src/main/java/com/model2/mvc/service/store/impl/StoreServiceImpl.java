@@ -42,9 +42,12 @@ public class StoreServiceImpl implements StoreService{
 	}
 
 	@Override
-	public Map<String, Object> geStoreList(String address) throws Exception {
+	public Map<String, Object> getStoreList(String address) throws Exception {
 		List<Store> list = storeDao.getStoreList(address);
-		return (Map<String, Object>) new HashMap<String, Object>().put("list", list);
+		Map<String, Object> map = new HashMap<String, Object>();
+		//System.out.println(list);
+		map.put("list", list);
+		return map;
 	}
 
 //	public Map<String , Object > getUserList(Search search) throws Exception {

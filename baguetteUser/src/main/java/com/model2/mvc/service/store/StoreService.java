@@ -15,7 +15,7 @@ public interface StoreService {
 	public Store getStore(int storeNo) throws Exception;
 	
 	// 가게정보 리스트 
-	public Map<String , Object> geStoreList(String address) throws Exception;
+	public Map<String , Object> getStoreList(String address) throws Exception;
 //	
 //	// 회원정보수정
 //	public void updateUser(User user) throws Exception;
