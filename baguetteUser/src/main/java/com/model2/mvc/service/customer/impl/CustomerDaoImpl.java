@@ -26,7 +26,7 @@ public class CustomerDaoImpl implements CustomerDao{
 		System.out.println(this.getClass());
 	}
 
-	///Method
+
 	public void addCustomer(Customer customer) throws Exception {
 		sqlSession.insert("CustomerMapper.addCustomer", customer);
 	}
@@ -36,7 +36,7 @@ public class CustomerDaoImpl implements CustomerDao{
 		System.out.println(customer);
 		return customer;
 	}
-//	
+
 //	public void updateUser(User user) throws Exception {
 //		sqlSession.update("UserMapper.updateUser", user);
 //	}

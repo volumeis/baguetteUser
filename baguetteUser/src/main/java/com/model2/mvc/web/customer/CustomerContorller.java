@@ -1,6 +1,5 @@
 package com.model2.mvc.web.customer;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,13 +47,11 @@ public class CustomerContorller {
 	}
 
 	@RequestMapping(value = "addCustomer", method = RequestMethod.POST)
-	public void addCustomer(@RequestBody Customer customer, HttpServlet request) throws Exception {
+	public void addCustomer( @ModelAttribute("customer") Customer customer) throws Exception {
 
-		// String customerTel =request.getInitParameter("customerTel");
 		System.out.println("/customer/addCustomer : POST");
 
 		customerService.addCustomer(customer);
-
 	}
 
 	// ===========================================
@@ -83,7 +80,7 @@ public class CustomerContorller {
 
 	// ===========================================
 	// ===========================================
-	@RequestMapping(value = "checkDuplication", method = RequestMethod.POST)
+/*	@RequestMapping(value = "checkDuplication", method = RequestMethod.POST)
 	public void checkDuplication(@RequestParam("customerTel") String customerTel, Model model) throws Exception {
 
 		System.out.println("/customer/checkDuplication : POST");
@@ -93,6 +90,6 @@ public class CustomerContorller {
 		model.addAttribute("result", new Boolean(result));
 		model.addAttribute("customer", customerTel);
 
-	}
+	}*/
 
 }

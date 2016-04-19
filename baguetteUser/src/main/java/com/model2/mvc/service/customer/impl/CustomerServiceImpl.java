@@ -26,10 +26,6 @@ public class CustomerServiceImpl implements CustomerService{
 		System.out.println(this.getClass());
 	}
 
-//	///Method
-//	public void addUser(User user) throws Exception {
-//		userDao.addUser(user);
-//	}
 	@Override
 	public void addCustomer(Customer customer) throws Exception {
 		customerDao.addCustomer(customer);
@@ -38,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer getCustomer(String customerTel) throws Exception {
 		return customerDao.getCustomer(customerTel);
 	}
-//
+
 //	public Map<String , Object > getUserList(Search search) throws Exception {
 //		List<User> list= userDao.getUserList(search);
 //		int totalCount = userDao.getTotalCount(search);
