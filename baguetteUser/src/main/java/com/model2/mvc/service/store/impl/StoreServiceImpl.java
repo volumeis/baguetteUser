@@ -40,6 +40,10 @@ public class StoreServiceImpl implements StoreService{
 	public Store getStore(int storeNo) throws Exception {
 		return storeDao.getStore(storeNo);
 	}
+	@Override
+	public Store getStore(String storeName) throws Exception {
+		return storeDao.getStore(storeName);
+	}
 
 	@Override
 	public Map<String, Object> getStoreList(String address) throws Exception {
@@ -49,6 +53,8 @@ public class StoreServiceImpl implements StoreService{
 		map.put("list", list);
 		return map;
 	}
+
+
 
 //	public Map<String , Object > getUserList(Search search) throws Exception {
 //		List<User> list= userDao.getUserList(search);

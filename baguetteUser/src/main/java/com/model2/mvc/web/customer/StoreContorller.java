@@ -39,11 +39,19 @@ public class StoreContorller {
 	public void getJsonStore(	@PathVariable int storeNo,	Model model	) throws Exception{
 		System.out.println("/getJsonStore/{storeNo} : GET " + storeNo);
 		//Business Logic
-		Store store = storeService.getStore(storeNo);
-		
+		Store store = storeService.getStore(storeNo);	
 		// Model 과 View 연결
 		model.addAttribute("store",store);
 	}
+	@RequestMapping( value="getJsonStore/{storeName}", method=RequestMethod.GET)
+	public void getJsonStoreByName(	@PathVariable String storeName,	Model model	) throws Exception{
+		System.out.println("/getJsonStore/{storeName} : GET " + storeName);
+		//Business Logic
+		Store store = storeService.getStore(storeName);	
+		// Model 과 View 연결
+		model.addAttribute("store",store);
+	}
+	
 	//===========================================
 	@RequestMapping( value="getJsonStoreList/{address}", method=RequestMethod.GET)
 	public void getJsonStoreList( @PathVariable String address, Model model) throws Exception{

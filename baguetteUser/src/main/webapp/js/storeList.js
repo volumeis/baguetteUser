@@ -28,7 +28,7 @@ $(function () {
 
             var storeLink =
                 $(document.createElement('a')).attr({
-                    href: "storeHomeTest.html",
+                    href: "storeHome.html",
                     class: "ui-link"
                 });
 
@@ -88,7 +88,9 @@ $(function () {
 
                     var storeLink =
                         $(document.createElement('a')).attr({
-                            href: "storeHomeTest.html",
+//                            href: "storeHome.html",
+                        	href:"/html-src/storeHome.html",
+                        	rel:"external",
                             class: "ui-link"
                         });
 

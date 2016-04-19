@@ -13,6 +13,7 @@ public interface StoreDao {
 
 	// SELECT ONE
 	public Store getStore(int storeNo) throws Exception ;
+	public Store getStore(String storeName) throws Exception ;
 
 	// SELECT LIST
 	public List<Store> getStoreList(String address) throws Exception ;

@@ -36,6 +36,11 @@ public class StoreDaoImpl implements StoreDao{
 	public Store getStore(int storeNo) throws Exception {
 		return sqlSession.selectOne("StoreMapper.getStore", storeNo);
 	}
+	@Override
+	public Store getStore(String storeName) throws Exception {
+//		return sqlSession.selectOne("StoreMapper.getStore", storeName);
+		return null;
+	}
 //	
 //	public void updateUser(User user) throws Exception {
 //		sqlSession.update("UserMapper.updateUser", user);
@@ -53,6 +58,8 @@ public class StoreDaoImpl implements StoreDao{
 //	public int getTotalCount(Search search) throws Exception {
 //		return sqlSession.selectOne("UserMapper.getTotalCount", search);
 //	}
+
+
 
 
 
