@@ -8,8 +8,8 @@
 <title>User Login</title>
 
 <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
-
-
+<!-- 공통 기능 구현 자바스크립트 -->
+<script src="../js/common.js"></script>
 <script src="../lib/jquery/jquery.js"></script>
 <script src="../lib/bootstrap/js/bootstrap.js"></script>
 
@@ -72,10 +72,18 @@
 							//alert( JSONData.user != null );
 							
 							if (JSONData.customer != null) {
-								 
-
-		                                location.href = "./storeList.html";
-		                                return;
+								
+								
+								/** 로그인 유지 관련.
+								*
+								*	LOGIN_ID와 LOGIN_PW 는 common.js의 전역 변수. 로그인 후 값저장. 추후 암호 암호화구현필요
+								*	작성자: 유민호, 04.20.16 
+								*/
+								LOGIN_ID=JSONData.customer.customerTel;
+								LOGIN_PW=JSONData.customer.password;
+                                event.preventDefault(); 
+                                location.href = "./storeList.html";
+		                        return;
 		                            
 								//==> 방법 1 , 2 , 3 결과 학인
 							}else{
