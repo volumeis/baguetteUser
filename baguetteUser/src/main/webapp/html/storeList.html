@@ -1,168 +1,97 @@
-<!DOCTYPE html>
-<html>
+<div data-role="page" class="pages" id="page-storelist">
+    <div data-role="main" class="ui-content main-content">
+        <!-- carouselStart-->
+        <div class="ui-grid-solo">
+            <div class="ui-block-a">
+                <div class="slider-pro" id="my-slider">
+                    <div class="sp-slides">
 
-<head>
+                        <div class="sp-slide">
+                            <img class="sp-image" src="../image/recommendStore00.jpg" />
+                            <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="40%" data-position="topLeft" data-show-transition="down" data-hide-transition="up">파리바게트</p>
+                        </div>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+                        <div class="sp-slide">
+                            <img class="sp-image" src="../image/recommendStore01.jpg" />
+                            <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="20%" data-position="topRight" data-show-transition="down" data-hide-transition="up">성심당</p>
+                        </div>
+
+
+                        <div class="sp-slide">
+                            <img class="sp-image" src="../image/recommendStore02.jpg" />
+                            <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="90%" data-show-transition="down" data-hide-transition="up">뚜레쥬르</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- carouselEnd-->
+
+            <!-- storeListStart -->
+            <div id="list-store">
+
+                <!--
+                <div class="ui-block-a">
+                    <a href="/getJsonStore/뚜레쥬르 GT타워점">
+                        <figure>
+                            <img id="image01" src="../image/store01.jpg">
+                            <figcaption>
+                                <div class="address">강남구 강남대로</div>
+                                <div class="name"><strong>뚜레쥬르 GT타워점</strong></div>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </div>
+-->
+
+                <!--
+                <div class="ui-block-a">
+                    <a href="storeHomeTest.html">
+                        <figure>
+                            <img src="../image/store02.jpg">
+                            <figcaption>
+                                <div class="address">강남구 테헤란로</div>
+                                <div class="name"><strong>DEF 빵집</strong></div>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </div>
+
+                <div class="ui-block-a">
+                    <figure>
+                        <img src="../image/store03.jpg">
+                        <figcaption>
+                            <div class="address">강서구 강서로</div>
+                            <div class="name"><strong>GHI 빵집</strong></div>
+                        </figcaption>
+                    </figure>
+                </div>
+-->
+
+            </div>
+
+            <!-- storeListEnd -->
+        </div>
+    </div>
     <!-- css -->
-    <link rel="stylesheet" href="../lib/jquery-mobile-bower/css/jquery.mobile-1.4.5.css" />
-    <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.css"/>
-    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="../css/storeList.css"/>
-    <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.min.css"/>
-    <link rel="stylesheet" href="../css/header.css"/>
-
+    <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.css" />
+    <link rel="stylesheet" href="../css/storeList.css" />
+    <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.min.css" />
     <!-- js -->
-    <script src="../lib/jquery/jquery.js"></script>
-    <script src="../js/jQery.headroom.js"></script>
-    <script src="../js/headroom.js"></script>
-    <script src="../lib/slider-pro/js/jquery.sliderPro.js"></script>
-    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../lib/slider-pro/js/jquery.sliderPro.min.js"></script>
     <script src="../js/storeList.js"></script>
     <!--    <script src="../js/swipeNav.js"></script>-->
 
 
-    <!--  jquery-mobile 은 최하단에 놓음-->
-    
-    <script type="text/javascript">
-        $(document).one("pagecreate", function () {
-
-            $.get("./menuPanel.html", function (data) {
-                $.mobile.pageContainer.append(data);
-                $("[data-role=panel]").panel().enhanceWithin();
-            }, "html");
-            $.get("./cartPanel.html", function (data) {
-                $.mobile.pageContainer.append(data);
-                $("[data-role=panel]").panel().enhanceWithin();
-            }, "html");
-        });
-    </script>
-    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-
-
-</head>
-<!-- //////////////////////////////////////////////////////////////////////////   -->
-
-
-
-<body>
-    <div data-role="page" class="pages" id="page-store-list">
-
-        <!--header start  -->
-        <div data-role="header" id="header" class="header headroom" data-theme="b">
-            <!--            <input type="search" name="search-1" value="Serch">-->
-            <input>
-            <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
-                <span class="glyphicon glyphicon-menu-hamburger"></span>
-            </a>
-            <a id="right-panel" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
-                <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-            </a>
-
-        </div>
-
-        <div data-role="main" class="ui-content main-content">
-
-            <!-- carouselStart-->
-            <div class="ui-grid-solo">
-                <div class="ui-block-a">
-                    <div class="slider-pro" id="my-slider">
-                        <div class="sp-slides">
-
-                            <div class="sp-slide">
-                                <img class="sp-image" src="../image/recommendStore00.jpg" />
-                                <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="40%" data-position="topLeft" data-show-transition="down" data-hide-transition="up">파리바게트</p>
-                            </div>
-
-
-                            <div class="sp-slide">
-                                <img class="sp-image" src="../image/recommendStore01.jpg" />
-                                <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="20%" data-position="topRight" data-show-transition="down" data-hide-transition="up">성심당</p>
-                            </div>
-
-
-                            <div class="sp-slide">
-                                <img class="sp-image" src="../image/recommendStore02.jpg" />
-                                <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="90%" data-show-transition="down" data-hide-transition="up">뚜레쥬르</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- carouselEnd-->
-
-                <!-- storeListStart -->
-                <div id="list-store">
-
-<!--
-                    <div class="ui-block-a">
-                        <a href="storeHomeTest.html">
-                            <figure>
-                                <img id="image01" src="../image/store01.jpg">
-                                <figcaption>
-                                    <div class="address">강남구 강남대로</div>
-                                    <div class="name"><strong>ABC 빵집</strong></div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-
-                    <div class="ui-block-a">
-                        <a href="storeHomeTest.html">
-                            <figure>
-                                <img src="../image/store02.jpg">
-                                <figcaption>
-                                    <div class="address">강남구 테헤란로</div>
-                                    <div class="name"><strong>DEF 빵집</strong></div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-
-                    <div class="ui-block-a">
-                        <figure>
-                            <img src="../image/store03.jpg">
-                            <figcaption>
-                                <div class="address">강서구 강서로</div>
-                                <div class="name"><strong>GHI 빵집</strong></div>
-                            </figcaption>
-                        </figure>
-                    </div>
--->
-
-                </div>
-                <!-- storeListEnd -->
-            </div>
-        </div>
-        <!--        <div data-role="footer" data-fullscreen="true" data-position="fixed"></div>-->
-
-    </div>
-    <!-- jqm header, footer 브라우저 양 끝 단 위치 및 높이 조절-->
-    <script>
-        $(document).on('pageshow', '#index', function (e, data) {
-            $('#content').height(getRealContentHeight());
-        });
-
-        function getRealContentHeight() {
-            var header = $.mobile.activePage.find("div[data-role='header']:visible");
-            var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
-            var content = $.mobile.activePage.find("div[data-role='main']:visible:visible");
-            var viewport_height = $(window).height();
-
-            var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
-            if ((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
-                content_height -= (content.outerHeight() - content.height());
-            }
-            return content_height;
-        }
-    </script>
     <script type="text/javascript">
         $(document).ready(function ($) {
             $('#my-slider').sliderPro({
                 fade: true,
                 buttons: false,
-                height: 250,
+                //                width: 1000,
+                //                height: 600
                 forceSize: 'fullWidth'
+                    //                autoHeght : true
             });
 
             $("#header").headroom({
@@ -175,7 +104,12 @@
                 }
             });
         });
+        //slide-pro 슬라이드배치 버그를 수정하기 위한 코드
+        $(document).on("pagecreate",function(){
+          $(".sp-image").css("margin", "0px");
+        });
+        
     </script>
-</body>
+    
 
-</html>
+</div>

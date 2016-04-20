@@ -12,8 +12,8 @@ public interface StoreDao {
 //	public void addUser(User user) throws Exception ;
 
 	// SELECT ONE
-	public Store getStore(int storeNo) throws Exception ;
-	public Store getStore(String storeName) throws Exception ;
+	public Store getStoreByNo(int storeNo) throws Exception ;
+	public Store getStoreByName(String storeName) throws Exception ;
 
 	// SELECT LIST
 	public List<Store> getStoreList(String address) throws Exception ;

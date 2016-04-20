@@ -35,19 +35,19 @@ public class StoreContorller {
 	
 	//===========================================
 	//===========================================
-	@RequestMapping( value="getJsonStore/{storeNo}", method=RequestMethod.GET)
+	@RequestMapping( value="getJsonStoreByNo/{storeNo}", method=RequestMethod.GET)
 	public void getJsonStore(	@PathVariable int storeNo,	Model model	) throws Exception{
-		System.out.println("/getJsonStore/{storeNo} : GET " + storeNo);
+		System.out.println("/getJsonStoreByNo/{storeNo} : GET " + storeNo);
 		//Business Logic
-		Store store = storeService.getStore(storeNo);	
+		Store store = storeService.getStoreByNo(storeNo);	
 		// Model 과 View 연결
 		model.addAttribute("store",store);
 	}
-	@RequestMapping( value="getJsonStore/{storeName}", method=RequestMethod.GET)
+	@RequestMapping( value="getJsonStoreByName/{storeName}", method=RequestMethod.GET)
 	public void getJsonStoreByName(	@PathVariable String storeName,	Model model	) throws Exception{
-		System.out.println("/getJsonStore/{storeName} : GET " + storeName);
+		System.out.println("/getJsonStoreByName/{storeName} : GET " + storeName);
 		//Business Logic
-		Store store = storeService.getStore(storeName);	
+		Store store = storeService.getStoreByName(storeName);	
 		// Model 과 View 연결
 		model.addAttribute("store",store);
 	}
@@ -58,7 +58,7 @@ public class StoreContorller {
 		System.out.println("/getJsonStoreList/{storeNo} : GET " + address);
 		//System.out.println(URLDecoder.decode((URLDecoder.decode(address, "8859_1")), "UTF-8"));
 		//System.out.println( URLDecoder.decode(address, "UTF-8"));
-		address =  new String(address.getBytes("8859_1"), "utf-8");
+		System.out.println("asdasd" + address);
 		//Business Logic
 		Map<String, Object> storeMap = storeService.getStoreList(address);
 		//System.out.println(storeMap);

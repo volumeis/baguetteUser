@@ -37,20 +37,20 @@ public class StoreServiceImpl implements StoreService{
 //	}
 
 	@Override
-	public Store getStore(int storeNo) throws Exception {
-		return storeDao.getStore(storeNo);
+	public Store getStoreByNo(int storeNo) throws Exception {
+		return storeDao.getStoreByNo(storeNo);
 	}
 	@Override
-	public Store getStore(String storeName) throws Exception {
-		return storeDao.getStore(storeName);
+	public Store getStoreByName(String storeName) throws Exception {
+		return storeDao.getStoreByName(storeName);
 	}
 
 	@Override
 	public Map<String, Object> getStoreList(String address) throws Exception {
 		List<Store> list = storeDao.getStoreList(address);
 		Map<String, Object> map = new HashMap<String, Object>();
-		//System.out.println(list);
 		map.put("list", list);
+		map.put("size", list.size());
 		return map;
 	}
 

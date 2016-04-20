@@ -53,11 +53,11 @@ $(function () {
 
 
     //    var storeAddress = "강남구";
-    $(document).one("pagecreate", function () {
+    $(document).one("pagebeforecreate", function () {
 
 
         $.ajax({
-            url: "/store/getJsonStoreList/" + "서울",
+            url: COMMONWEBSERVER + "/store/getJsonStoreList/" + "서울",
             /*encodeURIComponent(storeAddress),*/
             method: "GET",
             dataType: "json",
@@ -88,9 +88,9 @@ $(function () {
 
                     var storeLink =
                         $(document.createElement('a')).attr({
-//                            href: "storeHome.html",
-                        	href:"/html-src/storeHome.html",
-                        	rel:"external",
+                            href: "storeHome.html?storeNo="+store.storeNo,
+//                        	href:"/html-src/storeHome.html?storeNo="+store.storeNo,
+//                        	rel:"external",
                             class: "ui-link"
                         });
 

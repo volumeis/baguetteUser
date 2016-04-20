@@ -26,11 +26,17 @@
 	</insert>
 	 
 	 <!-- SQL : SELECT ONE -->
-	 <select 	id="getStore"	parameterType="int"	resultMap="storeSelectMap">
+	 <select 	id="getStoreByNo"	parameterType="int"		resultMap="storeSelectMap">
 		SELECT
 		sno, sname, saddr, stel, stime, simg, sinfo
 		FROM store
 		WHERE sno = #{value}
+	 </select>
+	 <select 	id="getStoreByName"	parameterType="string"	resultMap="storeSelectMap">
+		SELECT
+		sno, sname, saddr, stel, stime, simg, sinfo
+		FROM store
+		WHERE sname = #{value}
 	 </select>
 	 
 	 <!-- SQL : UPDATE -->

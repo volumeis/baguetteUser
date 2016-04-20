@@ -33,13 +33,12 @@ public class StoreDaoImpl implements StoreDao{
 //		sqlSession.insert("UserMapper.addUser", user);
 //	}
 	@Override
-	public Store getStore(int storeNo) throws Exception {
-		return sqlSession.selectOne("StoreMapper.getStore", storeNo);
+	public Store getStoreByNo(int storeNo) throws Exception {
+		return sqlSession.selectOne("StoreMapper.getStoreByNo", storeNo);
 	}
 	@Override
-	public Store getStore(String storeName) throws Exception {
-//		return sqlSession.selectOne("StoreMapper.getStore", storeName);
-		return null;
+	public Store getStoreByName(String storeName) throws Exception {
+		return sqlSession.selectOne("StoreMapper.getStoreByName", storeName);
 	}
 //	
 //	public void updateUser(User user) throws Exception {
