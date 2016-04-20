@@ -1,8 +1,6 @@
 <div data-role="page" class="pages" id="store-home-01">
-    
+
     <link rel="stylesheet" href="../css/storeHome.css" />
-    <script src="../lib/jquery.rateit/jquery.rateit.js"></script>
-    
     <!--header start  -->
     <div data-role="header" id="header" class="header headroom" data-theme="b">
         <div style="width:50%;"></div>
@@ -47,7 +45,7 @@
         <div data-role="tabs">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#one" data-ajax="false" id="one">one</a></li>
+                    <li><a href="#one" data-ajax="false">one</a></li>
                     <li><a href="#two" data-ajax="false">two</a></li>
                     <li><a href="#asd" data-ajax="false">three</a></li>
                 </ul>
@@ -63,6 +61,8 @@
                             <a class="thumbnail"> <img src="../image/01menu02.png" class="img-rounded" style="height:100%"></a></div>
                         <div class="ui-block-a">딸기빵 6,000원</div>
                         <div class="ui-block-b">초코빵 4,000원</div>
+                         
+                        
                     </div>-->
                 <button id="testbutton">테스트</button>
                 <div id="testview"></div>
@@ -81,7 +81,7 @@
     <script type="text/javascript">
         $(function () {
 
-            $("#testbutton").click(function () {
+            $(document).ready(function () {
 
                 $.ajax({
                     url: "/bread/getJsonBreadList/" + 2002,
@@ -129,4 +129,7 @@
             });
         });
     </script>
+    
+    
+    <script src="../lib/jquery.rateit/jquery.rateit.js"></script>
 </div>
