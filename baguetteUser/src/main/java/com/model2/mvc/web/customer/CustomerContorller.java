@@ -45,7 +45,32 @@ public class CustomerContorller {
 			model.addAttribute("customer", null);
 		}
 	}
+	
+	@RequestMapping(value = "login", method = RequestMethod.POST)
+	public void jsonLogin2(@RequestBody Customer customer, HttpSession session, Model model) throws Exception {
 
+		System.out.println("/customer/login : POST");
+		// Business Logic
+		System.out.println("::" + customer);
+		Customer user = customerService.getCustomer(customer.getCustomerTel());
+		session.setAttribute("customer",user );
+		if (user != null && customer.getPassword().equals(user.getPassword())) {
+
+			model.addAttribute("customer", user);
+		} else {
+			model.addAttribute("customer", null);
+		}
+	}
+	@RequestMapping(value = "loginCheck", method = RequestMethod.POST)
+	public void jsonLoginCheck(HttpSession session, Model model) throws Exception {
+
+		System.out.println("/customer/loginCheck : POST");
+		Customer customer = (Customer)session.getAttribute("customer");
+		System.out.println("loginCheck" + customer);
+		model.addAttribute("customer",customer);
+	}
+	
+	
 	@RequestMapping(value = "addCustomer", method = RequestMethod.POST)
 	public void addCustomer( @ModelAttribute("customer") Customer customer) throws Exception {
 
