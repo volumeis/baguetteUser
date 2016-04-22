@@ -13,58 +13,53 @@
 	 <script src="../lib/bootstrap/js/bootstrap.js"></script>
 	 
 	 <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-	 <script type="text/javascript">   
-
-		 $(function(){
-			$("#addCustomer").on("click",function(){
-				
-				$.ajax(
-						   {
-							   url : "/customer/addCustomer",
-							   method : "POST",
-							   data :{
-								   		customerTel : $("#customerTel").val().trim(),
-								   		password : $("#password").val().trim()
-							   		 },
-							   dataType : "json",
-							
-							   success : function(JSONData, status) {
-								   
-								   location.href = "./login.html";
-								
-							   }	
-							}	
-						);
-		 		alert("회원가입완료");
-			});
-		}); 
-		
-	</script>
-	
 </head>
 
 <body>
-	<form>
+<div data-role="page" id="sign-page">
+    <div data-role="main" class="ui-content" id="sign-content">
+        <div>
+            <div class="center-block" style="width: 70%;">
+                <input type="text" class="form-control" id="addcustomerTel" name="customerTel" placeholder="휴대폰">
+            </div>
+            <div class="center-block" style="width: 70%; margin-top: 10px">
+                <input type="text" class="form-control" id="addpassword" name="password" placeholder="비밀번호">
+            </div>
+        </div>
+        <div class="center-block" style="width: 70%; margin-top: 20px">
+            <button href= "#login-page" data-role="none" type="button" id="addCustomer" class="btn btn-default btn-block">회원가입</button>
+            <!--  <a href="login.html" rel="external" data-role="none" type="button" class="btn btn-default btn-block">회원가입</a> -->
+            <!--                <button data-role="none" type="button" id="login" class="btn btn-default btn-block">로그인</button>-->
+        </div>
 
-		<div>
-			<div class="center-block" style="width: 70%;">
-				<input type="text" class="form-control" id="customerTel"
-					name="customerTel" placeholder="휴대폰">
-			</div>
-			<div class="center-block" style="width: 70%; margin-top: 10px">
-				<input type="text" class="form-control" id="password"
-					name="password" placeholder="비밀번호">
-			</div>
-		</div>
-		<div class="center-block" style="width: 70%; margin-top: 20px">
-			<button data-role="none" type="button" id="addCustomer"
-				class="btn btn-default btn-block">회원가입</button>
-			<!--  <a href="login.html" rel="external" data-role="none" type="button" class="btn btn-default btn-block">회원가입</a> -->
-			<!--                <button data-role="none" type="button" id="login" class="btn btn-default btn-block">로그인</button>-->
-		</div>
+        
+    </div>
+    <!-- test jquery -->
+        <script type="text/javascript">
+            $(function () {
+                $("#addCustomer").on("click", function () {
 
-	</form>
+                    $.ajax({
+                        url: "/customer/addCustomer",
+                        method: "POST",
+                        data: {
+                            customerTel: $("#addcustomerTel").val().trim(),
+                            password: $("#addpassword").val().trim()
+                        },
+                        dataType: "json",
 
+                        success: function (JSONData, status) {
+                            //location.href = "./login.html";
+                            $.mobile.changePage("#login-page");
+                            alert("회원가입완료");
+                        }
+                    });
+                    
+                });
+            });
+        </script>
+    
+</div>
 </body>
 
 </html>
