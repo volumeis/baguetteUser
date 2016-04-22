@@ -30,6 +30,7 @@
 
                         success: function (JSONData, status) {
                             //location.href = "./login.html";
+                            $.mobile.changePage("#login-page");
                             alert("회원가입완료");
                         }
                     });
