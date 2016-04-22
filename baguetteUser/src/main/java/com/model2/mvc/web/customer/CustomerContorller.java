@@ -46,7 +46,8 @@ public class CustomerContorller {
 		// Business Logic
 		System.out.println("::" + reqCustomer);
 		Customer customer = customerService.getCustomer(reqCustomer.getCustomerTel());
-
+	
+			session.setAttribute("customer", customer);
 		if (customer != null && reqCustomer.getPassword().equals(customer.getPassword())) {
 			session.setAttribute("customer",customer );
 			model.addAttribute("customer", customer);
@@ -92,7 +93,16 @@ public class CustomerContorller {
 		model.addAttribute("customer", customer);
 
 	}
-	
+
+	@RequestMapping( value="logout", method=RequestMethod.GET )
+	public void logout(HttpSession session ) throws Exception{
+		
+		System.out.println("/customer/logout : POST");
+		
+		session.invalidate();
+		
+		
+	}
 	@RequestMapping(value = "getJsonCustomer/{customerTel}", method = RequestMethod.GET)
 	public void getJsonCustomer(@PathVariable String customerTel, HttpSession ssesion, Model model) throws Exception {
 		System.out.println("/getJsonCustomer/getUser : GET" + customerTel);
