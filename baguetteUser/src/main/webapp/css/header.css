@@ -1,6 +1,7 @@
 html body{
     height: 100%;
 }
+
 .header{
     margin: 0 px;
     height: 48px;
@@ -8,6 +9,10 @@ html body{
     position: fixed;
     z-index: 1000;
     background-color:black;
+}
+
+#menuPanel, .main-content{
+    margin-top: 50px;
 }
 
 .main-content{
