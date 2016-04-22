@@ -2,10 +2,10 @@
     <div data-role="main" class="ui-content" id="sign-content">
         <div>
             <div class="center-block" style="width: 70%;">
-                <input type="text" class="form-control" id="customerTel" name="customerTel" placeholder="휴대폰">
+                <input type="text" class="form-control" id="addcustomerTel" name="customerTel" placeholder="휴대폰">
             </div>
             <div class="center-block" style="width: 70%; margin-top: 10px">
-                <input type="text" class="form-control" id="password" name="password" placeholder="비밀번호">
+                <input type="text" class="form-control" id="addpassword" name="password" placeholder="비밀번호">
             </div>
         </div>
         <div class="center-block" style="width: 70%; margin-top: 20px">
@@ -23,8 +23,8 @@
                         url: "/customer/addCustomer",
                         method: "POST",
                         data: {
-                            customerTel: $("#customerTel").val().trim(),
-                            password: $("#password").val().trim()
+                            customerTel: $("#addcustomerTel").val().trim(),
+                            password: $("#addpassword").val().trim()
                         },
                         dataType: "json",
 
