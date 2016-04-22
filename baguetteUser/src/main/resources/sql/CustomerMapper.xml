@@ -8,7 +8,7 @@
  	
  	
 	<resultMap id="customerSelectMap" type="customer">
-		<result property="customerNo" 	column="cno" 		jdbcType="INTEGER"/>
+		<!-- <result property="customerNo" 	column="cno" 		jdbcType="INTEGER"/> -->
 		<result property="customerTel"	column="ctel" 		jdbcType="VARCHAR" />
 		<result property="password" 	column="cpwd" 		jdbcType="VARCHAR" />
 		<!-- <result property="role" 				column="role" 					jdbcType="VARCHAR" />
@@ -21,10 +21,20 @@
 	
 	<!-- SQL : INSERT -->
 	<insert 	id="addCustomer"		parameterType="customer" >
-	 	INSERT
-		INTO customer(cno, ctel, cpwd) 
-		VALUES	 (seq_customer_no.nextval, #{customerTel}, #{password})
+	 	INSERT 
+	 	INTO customer(ctel, cpwd)
+	 	VALUES	 (#{customerTel}, #{password})
 	 </insert>
+
+	<!-- <insert id="insertId"> 
+		insert into MEMBER (MBR_ID, NAME) values 
+		( #mbrId#, #name# ) 
+		<selectKey keyProperty="memberSeq" resultClass="int"> 
+		SELECT LAST_INSERT_ID() 
+		</selectKey> 
+		</insert> 
+		Integer result = sqlMap.insert("insertId", member); 
+		[출처] iBatis에서 insert 시 자동증가값 처리하기- MySQL버전|작성자 아찌 -->
 	 <!-- SQL : SELECT ONE -->
 	 <select 	id="getCustomer"	parameterType="string"	resultMap="customerSelectMap">
 		SELECT
