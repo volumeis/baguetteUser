@@ -32,8 +32,13 @@
 
                         success: function (JSONData, status) {
                             //location.href = "./login.html";
-                            $.mobile.changePage("#login-page");
-                            alert("회원가입완료");
+                            if(JSONData != null ) {
+                            	$.mobile.changePage($("#login-page"));
+                            	alert("회원가입완료");
+                           
+                            }else{
+                            	alert("회원가입이 완료되지 않았습니다.");
+                            }
                         }
                     });
                     
