@@ -20,7 +20,7 @@
 
                         <div class="sp-slide">
                             <img class="sp-image" src="../image/recommendStore02.jpg" />
-                            <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="90%" data-show-transition="down" data-hide-transition="up">뚜레쥬르</p>
+                            <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="50%" data-show-transition="down" data-hide-transition="up">뚜레쥬르</p>
                         </div>
                     </div>
                 </div>
@@ -28,49 +28,11 @@
             <!-- carouselEnd-->
 
             <!-- storeListStart -->
-            <div id="list-store">
-
-                <!--
-                <div class="ui-block-a">
-                    <a href="/getJsonStore/뚜레쥬르 GT타워점">
-                        <figure>
-                            <img id="image01" src="../image/store01.jpg">
-                            <figcaption>
-                                <div class="address">강남구 강남대로</div>
-                                <div class="name"><strong>뚜레쥬르 GT타워점</strong></div>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
--->
-
-                <!--
-                <div class="ui-block-a">
-                    <a href="storeHomeTest.html">
-                        <figure>
-                            <img src="../image/store02.jpg">
-                            <figcaption>
-                                <div class="address">강남구 테헤란로</div>
-                                <div class="name"><strong>DEF 빵집</strong></div>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-
-                <div class="ui-block-a">
-                    <figure>
-                        <img src="../image/store03.jpg">
-                        <figcaption>
-                            <div class="address">강서구 강서로</div>
-                            <div class="name"><strong>GHI 빵집</strong></div>
-                        </figcaption>
-                    </figure>
-                </div>
--->
-
-            </div>
-
+            <div id="list-store"></div>
             <!-- storeListEnd -->
+
+            <!-- loader -->
+            <div id="fakeloader"></div>
         </div>
     </div>
     <!-- css -->
@@ -84,32 +46,60 @@
 
 
     <script type="text/javascript">
-        $(document).ready(function ($) {
+        $(document).on('pageinit', function () {
+            //            console.log('pageinit');
+
+            //        	setTimeout(function () {
+            //                $.mobile.loading('show', {
+            //                    text: "use $.mobile.loading(\"show\")",
+            //                    textVisible: true,
+            //                    theme: "e"
+            //                });
+            //            }, 0);
+
+            //            $(".fl").css({
+            //                "margin" : "0px",
+            //                "position" : "fixed",
+            //                "top" : "0px",
+            //                "left" : "0px",
+            //                "width" : "100px"
+            //            });
+
+        });
+        $(document).on('pagebeforehide', function () {
+            //         $(document).ready(function ($) {
             $('#my-slider').sliderPro({
                 fade: true,
                 buttons: false,
-                //                width: 1000,
-                //                height: 600
                 forceSize: 'fullWidth'
-                    //                autoHeght : true
             });
+        });
+        $(document).on('pagebeforeshow', function () {
+            console.log('pagebeforeshow')
+             $('#my-slider').sliderPro({
+                fade: true,
+                buttons: false,
+                forceSize: 'fullWidth'
+            });
+        });
+        $("#page-storelist").on("pagecreate", function () {
+            console.log('pagecreate');
 
-            $("#header").headroom({
-                "offset": 205,
-                "tolerance": 5,
-                "classes": {
-                    initial: "headroom",
-                    pinned: "headroom--pinned",
-                    unpinned: "headroom--unpinned",
-                }
-            });
         });
-        //slide-pro 슬라이드배치 버그를 수정하기 위한 코드
-        $(document).on("pagecreate",function(){
-          $(".sp-image").css("margin", "0px");
+        $("#page-storelist").on("pagebeforecreate", function (event) {
+            console.log('pagechange');
+            //                $.mobile.loading( "hide" );
+
+            //            $('#ui-loader').remove();
+            //            $.mobile.loading('show');  
+
         });
-        
+        $('#page-storelist').on('pageshow', function () {
+            console.log('pageshow');
+            //slide-pro 슬라이드배치를 위한 코드
+            $(".sp-image").css("margin", "0px");
+        });
     </script>
-    
+
 
 </div>

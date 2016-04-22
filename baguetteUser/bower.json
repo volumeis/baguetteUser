@@ -21,7 +21,8 @@
     "blueimp-file-upload": "jquery-file-upload#^9.11.2",
     "jquery.rateit": "latest",
     "jquery-mobile-bower": "1.4.5",
-    "slider-pro": "1.2.2"
+    "slider-pro": "1.2.2",
+    "fakeloader": "latest"
   },
   "install": {
     "path": "src/main/webapp/lib",
@@ -31,8 +32,8 @@
       "blueimp-file-upload": "bower_components/blueimp-file-upload/**",
       "jquery-mobile-bower": "bower_components/jquery-mobile-bower/**",
       "jquery.rateit": "bower_components/jquery.rateit/scripts/**",
-      "slider-pro": "bower_components/slider-pro/dist/**"
-        
+      "slider-pro": "bower_components/slider-pro/dist/**",
+      "fakeloader" : "bower_components/fakeloader/*"
     
     }
   }
