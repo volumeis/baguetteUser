@@ -2,44 +2,13 @@ html body{
     height: 100%;
 }
 
-.header{
-    margin: 0 px;
-    height: 48px;
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
-    background-color:black;
-}
-
-#menuPanel, .main-content{
-    margin-top: 50px;
-}
-
-.main-content{
-    margin: 0 2px;
-    padding: 0;
-    margin-top: 50px;
-}
-
-.header input{
-/*    top : 10;*/
-    margin-left: 25%;
-    width: 50%;
-}
  
-.glyphicon {
+.header .glyphicon {
     color:white;
     font-size: 28px;
 }
-
 .header .ui-btn{
-    border: 0px red solid !important;
-    margin: 0;
-/*    top: ;*/
-/*    font-size: px;*/
-/*    height: %;*/
-/*    padding:;*/
-/*    border: */
+    padding : .3em .5em;
     background-color: transparent !important;
 }
 
@@ -52,4 +21,35 @@ html body{
 }
 .headroom--unpinned {
     transform: translateY(-100%);
+}
+
+.header{
+    margin: 0 px;
+    height: 48px;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    background-color:black;
+}
+.header #right-map{
+    right: 4em
+}
+
+.header input{
+/*    top : 10;*/
+    margin-left: 25%;
+    width: 50%;
+}
+
+
+
+#menuPanel, .main-content{
+    margin-top: 50px;
+}
+
+
+.main-content{
+    margin: 0 2px;
+    padding: 0;
+    margin-top: 50px;
 }

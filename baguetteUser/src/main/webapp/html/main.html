@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/fakeloader/fakeLoader.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.css" />
+
     <!-- js -->
     <script src="../js/common.js"></script>
     <script src="../lib/jquery/jquery.min.js"></script>
@@ -17,32 +19,33 @@
     <script src="../lib/fakeloader/fakeLoader.js"></script>
     <script src="../js/jQery.headroom.js"></script>
     <script src="../js/headroom.js"></script>
+    <script src="../lib/slider-pro/js/jquery.sliderPro.js"></script>
 
     <!--  jquery-mobile 은 최하단에 놓음-->
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
 
 </head>
-<!-- /////////////////////////////////////////////   -->
-
-
 
 <body>
+
     <div data-role="header" id="header" class="header headroom" data-theme="b">
         <!--        <input type="search" name="search-1" value="Serch">-->
         <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
             <span class="glyphicon glyphicon-menu-hamburger"></span>
         </a>
+        <a id="right-map" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
+            <span class="glyphicon glyphicon-map-marker"></span>
+        </a>
         <a id="right-panel" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
-            <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
         </a>
     </div>
-    <!-- jqm header, footer 브라우저 양 끝 단 위치 및 높이 조절-->
     <div data-role="page" id="main-page"></div>
-    <div id="fakeloader"></div>
+    <!--    <div id="fakeloader"></div>-->
 
     <script>
         $(document).on('pageshow', function (e, data) {
-            console.log('pageshow : main.html');
+            //            console.log('pageshow : main.html');
             $('#content').height(getRealContentHeight());
         });
 
@@ -68,13 +71,8 @@
                 unpinned: "headroom--unpinned"
             }
         });
-
-        //   방문한 페이지 다시 로드하지않음
-        $(function () {
-            $.mobile.page.prototype.options.domCache = true;
-
-        });
     </script>
+
     <script>
         $("#fakeloader").fakeLoader({
             zIndex: "9999",
@@ -85,6 +83,14 @@
         });
     </script>
     <script type="text/javascript">
+        $(document).one("pagebeforecreate", function () {
+            //            $( ":mobile-pagecontainer" ).pagecontainer( "load", "storeList.html",{role : "page"} );
+            //            $("body").load("storeList.html [data-role=page]");
+            
+            $.mobile.changePage("storeList.html", {
+                changeHash: false
+            });
+        });
         $(document).one("pagecreate", function () {
             $.get("./menuPanel.html", function (data) {
                 $.mobile.pageContainer.append(data);
@@ -94,29 +100,33 @@
                 $.mobile.pageContainer.append(data);
                 $("[data-role=panel]").panel().enhanceWithin();
             }, "html");
-            $("[data-role='header']").toolbar();
-            //            $.mobile.changePage("#page-storelist");
-
-            $.mobile.changePage("storeList.html",{
-                changeHash : false
-            });
+        });
+        $("#main-page").on("pagecreate", function () {
+            console.log('pagecreate  main-page.html');
 
         });
+        $("#main-page").on("pagebeforecreate", function (event) {
+            console.log('pagebeforecreate  main-page.html');
 
-        //        $(document).on("pagecontainerbeforeload", function (event, data) {
-        //            console.log("pagebeforeload : main.html");
-        //            event.preventDefault();
-        //            var respnose = event.manuallyLoadPage;
-        //            if(response.status = "success"){
-        //                console.log("123");
-        //                data.deferred.resolve(data.url, data.option, response.page);
-        //            }else{
-        //                console.log("456");
-        //            }
-        //            //$("[data-role='navbar']").navbar();
-        //
-        //        });
-        $.mobile.changePage("#page-storelist");
+        });
+        $('#main-page').on('pagebeforeshow', function () {
+            console.log('pagebeforeshow main-page.html');
+
+        });
+        $(document).one('pageshow', function () {
+            console.log('pageshow main-page.html');
+
+        });
+        $('#main-page').on('pageshow', function () {
+            console.log('pageshow main-page.html');
+
+        });
+        /** $(document)는 발생문서 이하 모든 이벤트에 관여
+         *  $('#id')는 발생하는 지점에서 만 관여
+         *
+         *
+         *
+         */
     </script>
 </body>
 

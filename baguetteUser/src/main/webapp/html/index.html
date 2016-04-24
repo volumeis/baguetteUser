@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
     <title>index.html</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,25 +16,33 @@
     <script src="../lib/jquery/jquery.min.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="../lib/fakeloader/fakeLoader.min.js"></script>
-    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.min.js"></script>
-    
-    
-    <!-- 추후 세션 체크후 바로 리스트로 보낼 예정 - minho -->
-    <script type="text/javascript">
-        $(document).on("pagecreate", function () {
-            $("#content").load("login.html");
+
+    <script>
+        /** Redirect on Start-UP
+         *  상태에 따른 페이지 전환 구현부분
+         *
+         *  유민호
+         *  04.24.16
+         */
+        var condition = true;
+        $(document).on("mobileinit", function (e, data) {
+            $.mobile.autoInitializePage = false;
+            if (condition) {
+                $(function () {
+                    $("body").load("login.html [data-role=page]", function (data) {
+                        $.mobile.initializePage();
+                    });
+                });
+            }
         });
-        
     </script>
-    
-    
+    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.min.js"></script>
 </head>
 
 <body>
-    <div data-role="page" id="login-page">
-        <div data-role="main" class="ui-content" id="content"></div>
-    </div>
+
     <!-- jqm header, footer 브라우저 양 끝 단 위치 및 높이 조절-->
+    <!--
     <script>
         $(document).on('pageshow', '#index', function (e, data) {
             $('#content').height(getRealContentHeight());
@@ -52,6 +61,7 @@
             return content_height;
         }
     </script>
+-->
 </body>
 
 </html>

@@ -1,105 +1,173 @@
-<div data-role="page" class="pages" id="page-storelist">
-    <div data-role="main" class="ui-content main-content">
-        <!-- carouselStart-->
-        <div class="ui-grid-solo">
-            <div class="ui-block-a">
-                <div class="slider-pro" id="my-slider">
-                    <div class="sp-slides">
+<!DOCTYPE html>
+<html>
 
-                        <div class="sp-slide">
-                            <img class="sp-image" src="../image/recommendStore00.jpg" />
-                            <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="40%" data-position="topLeft" data-show-transition="down" data-hide-transition="up">파리바게트</p>
-                        </div>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- css -->
+
+    <link rel="stylesheet" href="../lib/jquery-mobile-bower/css/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../lib/fakeloader/fakeLoader.css">
+
+    <!-- js -->
+    <script src="../js/common.js"></script>
+    <script src="../lib/jquery/jquery.js"></script>
+    <script src="../js/jQery.headroom.js"></script>
+    <script src="../js/headroom.js"></script>
+    <script src="../lib/fakeloader/fakeLoader.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <!--    <script src="../js/swipeNav.js"></script>-->
+    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
+
+    <!--응? -->
+</head>
+<!-- //////////////////////////////////////////////////////////////////////////   -->
 
 
-                        <div class="sp-slide">
-                            <img class="sp-image" src="../image/recommendStore01.jpg" />
-                            <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="20%" data-position="topRight" data-show-transition="down" data-hide-transition="up">성심당</p>
-                        </div>
+
+<body>
+    <div data-role="page" class="pages" id="storelist-page" data-dom-cache=true>
+        <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.css" />
+        <link rel="stylesheet" href="../css/storeList.css" />
+
+        <div data-role="main" class="ui-content main-content">
+
+            <!-- carouselStart-->
+            <div class="ui-grid-solo">
+                <div class="ui-block-a">
+                    <div class="slider-pro" id="my-slider">
+                        <div class="sp-slides">
+
+                            <div class="sp-slide">
+                                <img class="sp-image" src="../image/recommendStore00.jpg" />
+                                <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="40%" data-position="topLeft" data-show-transition="down" data-hide-transition="up">파리바게트</p>
+                            </div>
 
 
-                        <div class="sp-slide">
-                            <img class="sp-image" src="../image/recommendStore02.jpg" />
-                            <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="50%" data-show-transition="down" data-hide-transition="up">뚜레쥬르</p>
+                            <div class="sp-slide">
+                                <img class="sp-image" src="../image/recommendStore01.jpg" />
+                                <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="20%" data-position="topRight" data-show-transition="down" data-hide-transition="up">성심당</p>
+                            </div>
+
+
+                            <div class="sp-slide">
+                                <img class="sp-image" src="../image/recommendStore02.jpg" />
+                                <p class="sp-layer sp-white sp-padding" data-width="200" data-horizontal="center" data-vertical="90%" data-show-transition="down" data-hide-transition="up">뚜레쥬르</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- carouselEnd-->
+
+                <!-- storeListStart -->
+                <div id="list-store">
+
+
+                    <div class="ui-block-a">
+                        <a id="store2002" >
+                            <figure>
+                                <img id="image01" src="../image/store01.jpg">
+                                <figcaption>
+                                    <div class="address">강남구 강남대로</div>
+                                    <div class="name"><strong>ABC 빵집</strong></div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    <script>
+                        
+                        $('#list-store a').click(function(){
+                            console.log($(this).attr('id'));
+//                            $.mobile.change("storeHome.html?storeNo="+$(this).attr('id'));
+                            $( ":mobile-pagecontainer" ).pagecontainer( "change", "storeHome.html?storeNo="+$(this).attr('id') );
+                        });
+                    </script>
+
+                    <div class="ui-block-a">
+                        <a href="storeHomeTest.html">
+                            <figure>
+                                <img src="../image/store02.jpg">
+                                <figcaption>
+                                    <div class="address">강남구 테헤란로</div>
+                                    <div class="name"><strong>DEF 빵집</strong></div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    <!--
+
+                    <div class="ui-block-a">
+                        <figure>
+                            <img src="../image/store03.jpg">
+                            <figcaption>
+                                <div class="address">강서구 강서로</div>
+                                <div class="name"><strong>GHI 빵집</strong></div>
+                            </figcaption>
+                        </figure>
+                    </div>
+-->
+
+
+                </div>
+                <!-- storeListEnd -->
             </div>
-            <!-- carouselEnd-->
-
-            <!-- storeListStart -->
-            <div id="list-store"></div>
-            <!-- storeListEnd -->
-
-            <!-- loader -->
-            <div id="fakeloader"></div>
         </div>
-    </div>
-    <!-- css -->
-    <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.css" />
-    <link rel="stylesheet" href="../css/storeList.css" />
-    <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.min.css" />
-    <!-- js -->
-    <script src="../lib/slider-pro/js/jquery.sliderPro.min.js"></script>
-    <script src="../js/storeList.js"></script>
-    <!--    <script src="../js/swipeNav.js"></script>-->
 
-
-    <script type="text/javascript">
-        $(document).on('pageinit', function () {
-            //            console.log('pageinit');
-
-            //        	setTimeout(function () {
-            //                $.mobile.loading('show', {
-            //                    text: "use $.mobile.loading(\"show\")",
-            //                    textVisible: true,
-            //                    theme: "e"
-            //                });
-            //            }, 0);
-
-            //            $(".fl").css({
-            //                "margin" : "0px",
-            //                "position" : "fixed",
-            //                "top" : "0px",
-            //                "left" : "0px",
-            //                "width" : "100px"
-            //            });
-
-        });
-        $(document).on('pagebeforehide', function () {
-            //         $(document).ready(function ($) {
-            $('#my-slider').sliderPro({
-                fade: true,
-                buttons: false,
-                forceSize: 'fullWidth'
+        <script src="../js/storeList.js"></script>
+        <script src="../lib/slider-pro/js/jquery.sliderPro.js"></script>
+        
+        <script type="text/javascript">
+            //        $(document).on('pagebeforehide', function () {
+            jQuery(document).ready(function ($) {
+                console.log('ready');
+                $('#my-slider').sliderPro({
+                    fade: true,
+                    buttons: false,
+                    //                width: 1000,
+                    //                height: 600
+                    forceSize: 'fullWidth'
+                        //                autoHeght : true
+                });
+//                $(".sp-image").css("margin", "0px");
             });
-        });
-        $(document).on('pagebeforeshow', function () {
-            console.log('pagebeforeshow')
-             $('#my-slider').sliderPro({
-                fade: true,
-                buttons: false,
-                forceSize: 'fullWidth'
+
+            $(document).on('pageinit', function () {
+                console.log("pageinit  document.html");
+                //            setTimeout(function () {
+                //                $.mobile.loading('show', {
+                //                    text: "use $.mobile.loading(\"show\")",
+                //                    textVisible: true,
+                //                    theme: "e"
+                //                });
+                //            }, 0);
             });
-        });
-        $("#page-storelist").on("pagecreate", function () {
-            console.log('pagecreate');
+            $("#storelist-page").on("pagecreate", function () {
+                console.log('pagecreate  storerList.html');
 
-        });
-        $("#page-storelist").on("pagebeforecreate", function (event) {
-            console.log('pagechange');
-            //                $.mobile.loading( "hide" );
+            });
+            $("#storelist-page").on("pagebeforecreate", function (event) {
+                console.log('pagebeforecreate  storerList.html');
+                
+//                $(".sp-image").css("margin", "0px");
 
-            //            $('#ui-loader').remove();
-            //            $.mobile.loading('show');  
+            });
+            $('#storelist-page').on('pagebeforeshow', function () {
+                console.log('pagebeforeshow storelist-page.html');
+//                $(".sp-image").css("margin", "0px");
+            });
+            $(document).one('pageshow', function () {
+                console.log('pageshow document.html');
 
-        });
-        $('#page-storelist').on('pageshow', function () {
-            console.log('pageshow');
-            //slide-pro 슬라이드배치를 위한 코드
-            $(".sp-image").css("margin", "0px");
-        });
-    </script>
+            });
+            $('#storelist-page').on('pageshow', function () {
+                console.log('pageshow storerList.html');
+                /* */
+                $(".sp-image").css("margin", "0px");
+            });
+        </script>
+</body>
 
-
-</div>
+</html>
