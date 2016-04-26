@@ -11,7 +11,10 @@
 		<result property="cartQty"				column="cqty" 			jdbcType="INTEGER" />
 		<result property="cartDate"				column="cdate" 			jdbcType="DATE" />
 		<result property="customerNo"			column="cno"	 		jdbcType="INTEGER" />
-		<result property="breadDesc.breadNo" 		column="bno" 			jdbcType="INTEGER" />
+		<result property="breadNo"	 			column="bno" 			jdbcType="INTEGER" />
+		<result property="breadDesc.name"		column="bname" 			jdbcType="VARCHAR" />
+		<result property="breadDesc.price" 		column="bprice" 		jdbcType="INTEGER" />
+		<result property="breadDesc.img"	 	column="bimg" 			jdbcType="VARCHAR" />
 	</resultMap>
 	
 	<!-- <resultMap id="breadSelectMap" type="bread">
@@ -34,9 +37,9 @@
 	 <!-- SQL : SELECT LIST--> 
 	 <select 	id="getCartList"	parameterType="string"	resultMap="cartSelectMap">
 		select 
-		b.BNAME, b.BPRICE, b.BIMG
+		b.bname, b.bprice, b.bimg, c.cartno
 		from bread b,cart c
-		where b.BNO=c.BNO AND c.CNO=#{value};
+		where b.bno=c.bno AND c.CNO=#{value};
 	 </select>
 	 
 	<!-- SQL : SELECT LIST 

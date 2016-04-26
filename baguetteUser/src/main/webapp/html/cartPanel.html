@@ -1,92 +1,55 @@
 <div data-role="panel" id="cartPanel" data-display="overlay" data-position="right" data-theme="a">
-    <div class="ui-grid-a ui-bar-a" id="cartcon">
-        <div class="ui-block-a">
-            <div class="ui-bar ui-bar-c" style="height:150px; width:160px">
-                <img src="../image/dl.jpeg" class="img-rounded" width="100%" height="100%">
-            </div>
-        </div>
-
-        <div class="ui-block-b">
-            <div class="ui-bar ui-bar-c" style="height:50px; text-align:right">
-                <font style="font-size:1.5em; font-weight: bold">딸기빵</font>
-            </div>
-        </div>
-        <div class="ui-block-b">
-            <div class="ui-bar ui-bar-c" style="height:50px">
-                <!-- 기본 빵 가격에 대한 히든 속성-->
-                <div id="price" style="display:none">4000</div>
-                <div id="money" style="float:right; font-size:1.5em"></div>
-            </div>
-        </div>
-        <div class="ui-block-b">
-            <div class="ui-bar ui-bar-c" style="height:50px">
-                <div id="delect-cart" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="float:right"></div>
-                <select name="select-qty" id="select-qty" data-mini="true" style="float:right">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <!-- /grid-a -->
-
-    <div class="ui-grid-a ui-bar-a" id="cartcon1">
-        <div class="ui-block-a">
-            <div class="ui-bar ui-bar-c" style="height:150px; width:160px">
-                <img src="../image/dl.jpeg" class="img-rounded" width="100%" height="100%">
-            </div>
-        </div>
-
-        <div class="ui-block-b">
-            <div class="ui-bar ui-bar-c" style="height:50px; text-align:right">
-                <font style="font-size:1.5em; font-weight: bold">딸기빵</font>
-            </div>
-        </div>
-        <div class="ui-block-b">
-            <div class="ui-bar ui-bar-c" style="height:50px">
-                <!-- 기본 빵 가격에 대한 히든 속성-->
-                <div id="price1" style="display:none">4000</div>
-                <div id="money1" style="float:right; font-size:1.5em"></div>
-            </div>
-        </div>
-        <div class="ui-block-b">
-            <div class="ui-bar ui-bar-c" style="height:50px">
-                <div id="delect-cart" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="float:right"></div>
-                <select name="select-qty1" id="select-qty1" data-mini="true" style="float:right">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <!-- /grid-a -->
-
+    
+<div id ="cdiv"></div>
+			
     <hr>
 
     <!-- 최종결제Start -->
-    <div>
-        <div>
-            상품금액
-        </div>
-        <div style="text-align:right">
-            <div id="totalmoney"></div>
-        </div>
-
-    </div>
+   
     <!-- 최종결제End -->
 
-    <div id="pay" style="text-align:center">
-        <button class="ui-btn">결제하기</button>
-    </div>
-
-    <div style="text-align:center">
-        <button id="add-cart" class="ui-btn">추가(Test)</button>
-    </div>
+    <script type="text/javascript">
+        $(function () {
+        	$(document).ready(function () {
+        	
+        	$.ajax({
+        		// 회원 번호를 통해 호출
+        		url: "/cart/getJsonCart/"+1001,
+        		method: "GET",
+        		dataType: "json",
+        		headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                success: function(JSONData, status) {
+                	
+                	$.each(JSONData.cartmap.cartlist, function(i,item){
+                		
+                		var cindex = i;
+                		var cdiv = $(document.createElement('div')).addClass('ui-grid-a');
+                		var cimgdiv = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'cdiv'+cindex);
+                		var ctexttop = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'ctop'+cindex);
+                		var ctextmid = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'cmid'+cindex);
+                		var ctextbot = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'cbot'+cindex);
+                		
+                		var cimg =
+							$(document.createElement('img')).attr({
+			                    src: "../image/"+JSONData.cartmap.cartlist[i].breadDesc.img+".png",
+			                    class: "img-rounded",
+			                    style: "height:100%; width:100%"
+			                });
+                		
+                		$('#cdiv').append(cdiv.html(cimgdiv.html(cimg)).append(ctexttop).append(ctextmid).append(ctextbot));
+                		$('#ctop'+cindex).append(JSONData.cartmap.cartlist[i].breadDesc.name);
+                		$('#cmid'+cindex).append(JSONData.cartmap.cartlist[i].breadDesc.price);
+                		$('#cbot'+cindex).append("dfdfd");
+                	})
+                }
+        		})
+        	})
+        	});
+        	
+        	</script>
+        	
     <script src="../js/cart.js"></script>
 </div>

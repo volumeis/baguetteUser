@@ -8,14 +8,11 @@ public class Cart {
 	
 	///Field
 	
-	private int breadNo;// 빵 기본키
+	private int cartNo;
+	private int breadNo;		// 빵 기본키
 	private int buyQty;			// 빵 구매 수량
 	private int customerNo;	// 빵 구매 고객정보
-	private Date pickDate; // 장바구니 담은날
-	/*private String name;	// 빵 이름
-	private int price;		// 빵 가격
-	private String img;	// 빵 이미지주소
-*/	
+	private Date pickDate; 		// 장바구니 담은날
 	private Bread breadDesc;
 	
 	public Cart() {
@@ -28,30 +25,6 @@ public class Cart {
 	public void setBreadNo(int breadNo) {
 		this.breadNo = breadNo;
 	}
-
-//	public String getName() {
-//		return name;
-//	}
-//
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-//
-//	public int getPrice() {
-//		return price;
-//	}
-//
-//	public void setPrice(int price) {
-//		this.price = price;
-//	}
-//
-//	public String getImg() {
-//		return img;
-//	}
-//
-//	public void setImg(String img) {
-//		this.img = img;
-//	}
 
 	public int getBuyQty() {
 		return buyQty;
@@ -84,9 +57,27 @@ public class Cart {
 	public void setBreaddesc(Bread breaddesc) {
 		this.breadDesc = breaddesc;
 	}
-	
 
+	public int getCartNo() {
+		return cartNo;
+	}
 
-	
+	public void setCartNo(int cartNo) {
+		this.cartNo = cartNo;
+	}
+
+	public Bread getBreadDesc() {
+		return breadDesc;
+	}
+
+	public void setBreadDesc(Bread breadDesc) {
+		this.breadDesc = breadDesc;
+	}
+
+	@Override
+	public String toString() {
+		return "Cart [cartNo=" + cartNo + ", breadNo=" + breadNo + ", buyQty=" + buyQty + ", customerNo=" + customerNo
+				+ ", pickDate=" + pickDate + ", breadDesc=" + breadDesc + "]";
+	}
 	
 }

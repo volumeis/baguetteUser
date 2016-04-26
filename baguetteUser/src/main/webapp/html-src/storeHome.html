@@ -109,7 +109,6 @@
             $(document).ready(function () {
                 
             	$.ajax({
-            		/* url: "/cart/getJsonCart/"+1001, */
             		url: "/bread/getJsonBreadList/"+2001,
                     method: "GET",
                     dataType: "json",
@@ -134,7 +133,6 @@
 				                    src: "../image/bread_2001_"+JSONData.breadmap.breadlist[i].breadNo+"_01.png",
 				                    class: "img-rounded",
 				                    style: "height:100%; width:100%"
-				                    
 				                });
 							
 							if(i%2 == 0){
