@@ -8,7 +8,7 @@
  	
  	
 	<resultMap id="customerSelectMap" type="customer">
-		<!-- <result property="customerNo" 	column="cno" 		jdbcType="INTEGER"/> -->
+		<result property="customerNo" 	column="cno" 		jdbcType="INTEGER"/>
 		<result property="customerTel"	column="ctel" 		jdbcType="VARCHAR" />
 		<result property="password" 	column="cpwd" 		jdbcType="VARCHAR" />
 		<!-- <result property="role" 				column="role" 					jdbcType="VARCHAR" />
