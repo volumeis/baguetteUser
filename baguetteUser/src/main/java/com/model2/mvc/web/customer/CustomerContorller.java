@@ -45,13 +45,18 @@ public class CustomerContorller {
 		// Business Logic
 		System.out.println("::" + reqCustomer);
 		Customer customer = customerService.getCustomer(reqCustomer.getCustomerTel());
-	
+		System.out.println("login 333ss");
 		if (customer != null && reqCustomer.getPassword().equals(customer.getPassword())) {
-			session.setAttribute("customer",customer );
+			System.out.println("login 111s");
 			model.addAttribute("customer", customer);
 		} else {
+			System.out.println("login 2222ess");
+			session.setAttribute("customer",customer );
+			
 			model.addAttribute("customer", null);
 		}
+		System.out.println("login 2444ess");
+		session.setAttribute("customer",customer );
 	}
 	
 	/** Login 구현
