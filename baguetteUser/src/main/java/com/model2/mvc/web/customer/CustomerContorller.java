@@ -19,8 +19,7 @@ import com.model2.mvc.service.domain.Customer;
 //==> Customer관리 Controller
 @Controller
 @RequestMapping("/customer/*")
-public class CustomerContorller {
-
+public class CustomerContorller { 
 	/// Field
 	@Autowired
 	@Qualifier("customerServiceImpl")
@@ -47,7 +46,6 @@ public class CustomerContorller {
 		System.out.println("::" + reqCustomer);
 		Customer customer = customerService.getCustomer(reqCustomer.getCustomerTel());
 	
-			session.setAttribute("customer", customer);
 		if (customer != null && reqCustomer.getPassword().equals(customer.getPassword())) {
 			session.setAttribute("customer",customer );
 			model.addAttribute("customer", customer);
@@ -72,19 +70,13 @@ public class CustomerContorller {
 		model.addAttribute("customer",customer);
 	}
 	
-	/** 계정만들기 구현
-	 * 구현내용 : model.addAttribute();추가
-	 * 작성자 : 송은영
-	 * 작성일 : 04.25.16
-	 */
+	
 	@RequestMapping(value = "addCustomer", method = RequestMethod.POST)
-	public void addCustomer( @ModelAttribute("customer") Customer customer, Model model) throws Exception {
+	public void addCustomer( @ModelAttribute("customer") Customer customer) throws Exception {
 
 		System.out.println("/customer/addCustomer : POST");
 
 		customerService.addCustomer(customer);
-
-		model.addAttribute("customer", customer);
 	}
 
 	// ===========================================
