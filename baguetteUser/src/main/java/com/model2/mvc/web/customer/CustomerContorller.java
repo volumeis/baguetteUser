@@ -72,11 +72,13 @@ public class CustomerContorller {
 	
 	
 	@RequestMapping(value = "addCustomer", method = RequestMethod.POST)
-	public void addCustomer( @ModelAttribute("customer") Customer customer) throws Exception {
+	public void addCustomer( @ModelAttribute("customer") Customer customer, Model model) throws Exception {
 
 		System.out.println("/customer/addCustomer : POST");
 
 		customerService.addCustomer(customer);
+		
+		model.addAttribute("customer", customer);
 	}
 
 	// ===========================================
