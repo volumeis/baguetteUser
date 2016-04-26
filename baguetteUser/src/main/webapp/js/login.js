@@ -1,11 +1,12 @@
 $(function () {
-
+//  loader launching 04.26.16       
+    $("#fakeloader").fakeLoader();
+    
     //==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
     $("#customerTel").focus();
     //==>"Login"  Event 연결
     $("#login").on("click", function () {
 
-        console.log("1zz");
         var id = $("input:text").val().trim();
         var pw = $("input:password").val().trim();
 

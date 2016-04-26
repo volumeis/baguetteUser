@@ -4,12 +4,17 @@
 
 //민호 pc tomcat 서버
 var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
+//var COMMONWEBSERVER = "";
 
 //민호 pc database 서버
-var COMMONDBSERVER = "http://java78bit404.iptime.org:5025";
+var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
+//var COMMONDBSERVER = "";
+
+//depreciate
+//var COMMONDBSERVER = "http://java78bit404.iptime.org:5025";
 
 //민호 pc node.js 서버
-var COMMONNODESERVER = "http://java78bit404.iptime.org:3025";
+//var COMMONNODESERVER = "http://java78bit404.iptime.org:3025";
 
 var LOGIN_ID;
 var LOGIN_PW;
@@ -36,10 +41,10 @@ function getQuerystring(paramName) {
     }
 }
 
-function loginCheck() {
-    $(document).one("pagebeforecreate", function () {
+function loginCheck(customerNum) {
+    $(document).one("pagebeforeshow", function () {
         $.ajax({
-            url: "/customer/loginCheck",
+            url: COMMONWEBSERVER + "/customer/loginCheck",
             method: "POST",
             dataType: "json",
             headers: {
@@ -47,19 +52,19 @@ function loginCheck() {
                 "Content-Type": "application/json"
             },
             success: function (JSONData, status) {
-                
                 //개발
                 //if(JSONData.customer == null){
                 //	location.replace("./login.html");
                 //}
-            	
-                LOGIN_ID = JSONData.customer.customerTel;
-                LOGIN_PW = JSONData.customer.password;
+                
+//                LOGIN_ID = JSONData.customer.customerTel;
+//                LOGIN_PW = JSONData.customer.password;
+                
+//                customerNum.TEXT(""+LOGIN_ID);
             },
             error: function (JSONData, status) {
             	console.log(LOGIN_ID);
             	console.log(LOGIN_PW);
-//            	alert(JSONData)
             }
         });
     });
