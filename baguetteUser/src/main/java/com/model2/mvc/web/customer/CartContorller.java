@@ -1,5 +1,7 @@
 package com.model2.mvc.web.customer;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -30,15 +32,19 @@ public class CartContorller {
 	
 	//===========================================
 	
-	@RequestMapping( value="addJsonCart/{breadNo}", method=RequestMethod.GET)
+	@RequestMapping( value="addJsonCart/customerNo={customerNo}&breadNo={breadNo} ", method=RequestMethod.GET)
 	public void addJsonCart( @ModelAttribute("cart") Cart cart,
 											@PathVariable int breadNo,
+											@PathVariable int customerNo,
 												Model model) throws Exception{
 		System.out.println("/addJsonCart/addCart : GET");
 		cart.setBreadNo(breadNo);
+		cart.setCustomerNo(customerNo);
 		// 세션을 통해서 customerNo Cart VO에 저장해야 한다.
 		cartService.addCart(cart);
 	}
+	
+	
 	//===========================================
 	@RequestMapping( value="getJsonCart/{customerNo}", method=RequestMethod.GET )
 	public void getJsonCart(	@PathVariable int customerNo, 
@@ -46,9 +52,9 @@ public class CartContorller {
 		
 		System.out.println("/getJsonCart/getCart : GET");
 		//Business Logic
-		Cart cart = cartService.getCart(customerNo);
+		Map<String,Object> map = cartService.getCartList(customerNo);
 		// Model 과 View 연결
-		model.addAttribute("cart", cart);
+		model.addAttribute("cartmap", map);
 	}
 	//===========================================
 	//===========================================

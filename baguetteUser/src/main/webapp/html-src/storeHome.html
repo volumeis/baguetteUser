@@ -77,27 +77,26 @@
                     </ul>
                 </div>
                 <div data-role="ui-content" id="one">
-                	<div id="cartdiv"></div>
-                     <!-- 
-                    <div class="ui-grid-a">
+               		<div id="cartdiv"></div>
+                       
+                <!--     <div class="ui-grid-a">
                         <div class="ui-block-a">
-                            <a class="thumbnail"> <img src="../image/01menu01.png" class="img-rounded" style="height:100%">
+                            <a class="thumbnail"> <img src="../image/01menu01.png" class="img-rounded" style="width:100%; height:100%">
                             </a></div>
                         <div class="ui-block-b">
-                            <a class="thumbnail"> <img src="../image/01menu02.png" class="img-rounded" style="height:100%"></a></div>
+                            <a class="thumbnail"> <img src="../image/01menu02.png" class="img-rounded" style="width:100%; height:100%"></a></div>
                         <div class="ui-block-a">딸기빵 6,000원</div>
                         <div class="ui-block-b">초코빵 4,000원</div>
-                         
+                     -->     
                         
-                    </div>-->
+                    </div>
                     <button id="testbutton">테스트</button>
                     <div id="testview"></div>
                 </div>
                 <div data-role="ui-content" id="two">456 </div>
             </div>
-        </div>
-        
-        <script>
+            
+            <script>
 //            방문한 페이지 다시 로드하지않음
             $(function(){
                 $.mobile.page.prototype.options.domCache = true;
@@ -110,8 +109,8 @@
             $(document).ready(function () {
                 
             	$.ajax({
-            		url: "/bread/getJsonBreadList/"+2002,
-                    //url: "/bread/getJsonBread/"+3002,
+            		/* url: "/cart/getJsonCart/"+1001, */
+            		url: "/bread/getJsonBreadList/"+2001,
                     method: "GET",
                     dataType: "json",
                     headers: {
@@ -125,30 +124,45 @@
 								+"가  격 : "+JSONData.breadmap.breadlist[i].price+"<br/>";
 							var breadindex = i;
 							var cartdiv = $(document.createElement('div')).addClass('ui-grid-a');
-							var cartimgdivL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'imgL'+breadindex);
-							var cartimgdivR = $(document.createElement('div')).addClass('ui-block-b');
+							var cartimgdivL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'img'+breadindex);
+							var cartimgdivR = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'img'+breadindex);
+							var carttextL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'text'+breadindex);
+							var carttextR = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'text'+breadindex);
 							
 							var cartimg =
 								$(document.createElement('img')).attr({
-				                    src: "../image/01menu02.png",
+				                    src: "../image/bread_2001_"+JSONData.breadmap.breadlist[i].breadNo+"_01.png",
 				                    class: "img-rounded",
-				                    style: "height:100%"
+				                    style: "height:100%; width:100%"
+				                    
 				                });
-							
-							var carttextL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'textL'+breadindex);
-							var carttextR = $(document.createElement('div')).addClass('ui-block-b');
 							
 							if(i%2 == 0){
 								$('#cartdiv').append(cartdiv.html(cartimgdivL.html(cartimg).add(carttextL.append(displayValue))));
-								
+								$(this).click(function(){
+									alert("테스트");
+								});
 							}else if(i%2 == 1){
 								breadindex = i-1;
-								$('#imgL'+breadindex).after(cartimgdivR.html(cartimg));
-								$('#textL'+breadindex).after(carttextR.append(displayValue));
+								$('#img'+breadindex).after(cartimgdivR.html(cartimg));
+								$('#text'+breadindex).after(carttextR.append(displayValue));
 								breadindex = i;
 							}
 						
-						
+							$('#img'+breadindex).click(function(){
+								console.log(JSONData.breadmap.breadlist[i].breadNo);
+								$.ajax({
+									url : "/cart/addJsonCart/customerNo="+1001+"&breadNo="+JSONData.breadmap.breadlist[i].breadNo,
+									method : "GET",
+									dataType: "json",
+				                    headers: {
+				                        "Accept": "application/json",
+				                        "Content-Type": "application/json"
+				                    }
+								});
+								
+							});
+							
                     });
                 }
                     	
@@ -156,8 +170,10 @@
         });
             });
     </script>
+    <script src="../lib/jquery.rateit/jquery.rateit.js"></script>
     </div>
-
+        
+        
 </body>
 
 </html>

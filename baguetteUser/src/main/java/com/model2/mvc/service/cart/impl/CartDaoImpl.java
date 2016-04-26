@@ -1,5 +1,7 @@
 package com.model2.mvc.service.cart.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,11 +33,9 @@ public class CartDaoImpl implements CartDao{
 		sqlSession.insert("CartMapper.addCart", cart);
 	}
 
-	public Cart getCart(int customerNo) throws Exception {
-		Cart cart = sqlSession.selectOne("CartMapper.getCart", customerNo);
-		System.out.println(cart);
-		return cart;
-	}
+	public List<Cart> getCartList(int customerNo) throws Exception {
+		return sqlSession.selectList("CartMapper.getCartList", customerNo);
+		}
 
 //	public List<Bread> getBreadList(int storeNo) throws Exception {
 //	return sqlSession.selectList("BreadMapper.getBreadList", storeNo);

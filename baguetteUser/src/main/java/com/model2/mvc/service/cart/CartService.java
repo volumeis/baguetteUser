@@ -1,5 +1,7 @@
 package com.model2.mvc.service.cart;
 
+import java.util.Map;
+
 import com.model2.mvc.service.domain.Cart;
 
 
@@ -10,7 +12,7 @@ public interface CartService {
 	public void addCart(Cart cart) throws Exception;
 	
 	// 빵정보확인
-	public Cart getCart(int customerNo) throws Exception ;
+	public Map<String, Object> getCartList(int customerNo) throws Exception ;
 	
 //	// 회원정보리스트 
 	//public Map<String , Object> getBreadList(int storeNo) throws Exception;

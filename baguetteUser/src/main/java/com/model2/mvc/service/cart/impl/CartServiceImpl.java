@@ -1,5 +1,9 @@
 package com.model2.mvc.service.cart.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -31,8 +35,13 @@ public class CartServiceImpl implements CartService{
 		cartDao.addCart(cart);
 	}
 
-	public Cart getCart(int customerNo) throws Exception {
-		return cartDao.getCart(customerNo);
+	public Map<String, Object> getCartList(int customerNo) throws Exception {
+		List<Cart> list = cartDao.getCartList(customerNo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cartlist", list);
+		
+		return map;
 	}
 //
 /*	public Map<String , Object > getBreadList(int storeNo) throws Exception {

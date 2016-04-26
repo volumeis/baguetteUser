@@ -6,32 +6,40 @@
 
 <mapper namespace="CartMapper">
  	
- 	
 	<resultMap id="cartSelectMap" type="cart">
-		<result property="cartNo"		column="cartno" 		jdbcType="INTEGER"/>
-		<result property="cartQty"		column="cqty" 			jdbcType="INTEGER" />
-		<result property="cartDate"		column="cdate" 			jdbcType="DATE" />
-		<result property="customerNo"	column="cno"	 		jdbcType="INTEGER" />
-		<result property="breadNo" 		column="bno" 			jdbcType="INTEGER" />
-		<collection property="breadList" javaType="java.util.ArrayList" resultMap="breadSelectMap"></collection>
+		<result property="cartNo"				column="cartno" 		jdbcType="INTEGER"/>
+		<result property="cartQty"				column="cqty" 			jdbcType="INTEGER" />
+		<result property="cartDate"				column="cdate" 			jdbcType="DATE" />
+		<result property="customerNo"			column="cno"	 		jdbcType="INTEGER" />
+		<result property="breadDesc.breadNo" 		column="bno" 			jdbcType="INTEGER" />
 	</resultMap>
 	
-	<!-- SQL : INSERT -->
-	<insert 	id="addCart"	parameterType="cart" >
-	 	INSERT
-		INTO cart( cartno, cqty, cdate, cno, bno) 
-		VALUES	 ( seq_cartno.NEXTVAL,1 ,SYSDATE,#{customerNo} ,#{breadNo} )
-	 </insert>
+	<!-- <resultMap id="breadSelectMap" type="bread">
+		<result property="breadDesc.breadNo"	column="bno" 			jdbcType="INTEGER"/>
+		<result property="breadDesc.name"		column="bname" 			jdbcType="VARCHAR" />
+		<result property="breadDesc.price" 		column="bprice" 		jdbcType="INTEGER" />
+		<result property="breadDesc.desc"	 	column="bdesc"	 		jdbcType="CLOB" />
+		<result property="breadDesc.img"	 	column="bimg" 			jdbcType="VARCHAR" />
+		<result property="breadDesc.qty" 		column="bqty" 			jdbcType="INTEGER" />
+		<result property="breadDesc.storeNo" 	column="sno" 			jdbcType="INTEGER" />
+	</resultMap> -->
 	
-	 <!-- SQL : SELECT ONE -->
-	 <select 	id="getBread"	parameterType="string"	resultMap="breadSelectMap">
-		SELECT
-		bname, bprice, bimg 		
-		FROM bread
-		WHERE bno = #{value}
+	<!-- SQL : INSERT -->
+	<insert 	id="addCart"	parameterType="cart">
+	 	INSERT
+		INTO cart( cqty, cdate, cno, bno) 
+		VALUES	 ( 1 ,CURRENT_DATE(),#{customerNo} ,#{breadNo} )
+	</insert>
+	
+	 <!-- SQL : SELECT LIST--> 
+	 <select 	id="getCartList"	parameterType="string"	resultMap="cartSelectMap">
+		select 
+		b.BNAME, b.BPRICE, b.BIMG
+		from bread b,cart c
+		where b.BNO=c.BNO AND c.CNO=#{value};
 	 </select>
 	 
-	<!-- SQL : SELECT LIST -->
+	<!-- SQL : SELECT LIST 
 	<select  id="getBreadList"  parameterType="string"	resultMap="breadSelectMap">
 	  	SELECT
 	  	bname, bprice, bno
@@ -39,7 +47,7 @@
 	  	WHERE sno = #{value}
 	  	ORDER BY bno
 	</select>
-	
+	-->
 	
 	 <!-- SQL : UPDATE -->
 	<!--  <update	id="updateUser"	parameterType="user" >

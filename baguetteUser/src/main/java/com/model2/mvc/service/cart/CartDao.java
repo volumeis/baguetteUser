@@ -1,5 +1,7 @@
 package com.model2.mvc.service.cart;
 
+import java.util.List;
+
 import com.model2.mvc.service.domain.Cart;
 
 
@@ -10,7 +12,7 @@ public interface CartDao {
 	public void addCart(Cart cart) throws Exception ;
 
 	// SELECT ONE
-	public Cart getCart(int customerNo) throws Exception ;
+	public List<Cart> getCartList(int customerNo) throws Exception ;
 
 //	// SELECT LIST
 //	public List<Bread> getBreadList(int storeNo) throws Exception ;
