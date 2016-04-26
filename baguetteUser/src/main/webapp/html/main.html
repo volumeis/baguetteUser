@@ -39,8 +39,8 @@
             <span class="glyphicon glyphicon-shopping-cart"></span>
         </a>
     </div>
+
     <div data-role="page" id="main-page"></div>
-    <!--    <div id="fakeloader"></div>-->
 
     <script>
         $(document).on('pageshow', function (e, data) {
@@ -72,27 +72,16 @@
         });
     </script>
 
-    <script>
-        $("#fakeloader").fakeLoader({
-            zIndex: "9999",
-            timeToHide: 1700,
-            bgColor: "FFFFFF",
-            imagePath: "../image/loader_03.gif"
-
-        });
-    </script>
     <script type="text/javascript">
-     loginCheck($("#customerID")); 
         $(document).one("pagebeforecreate", function () {
             //            $( ":mobile-pagecontainer" ).pagecontainer( "load", "storeList.html",{role : "page"} );
             //            $("body").load("storeList.html [data-role=page]");
-
+            $.mobile.loadPage("customerInfo.html");
             $.mobile.changePage("storeList.html", {
                 changeHash: false
             });
-           
         });
-
+        
         $(document).one("pagecreate", function () {
             $.get("./menuPanel.html", function (data) {
                 $.mobile.pageContainer.append(data);
@@ -115,10 +104,9 @@
         //            console.log('pagebeforeshow main-page.html');
         //
         //        });
-                $(document).one('pageshow', function () {
-                    console.log('pageshow main-page.html');
-                    
-                });
+        //                $(document).one('pageshow', function () {
+        //                    console.log('pageshow main-page.html');
+        //                });
         //        $('#main-page').on('pageshow', function () {
         //            console.log('pageshow main-page.html');
         //

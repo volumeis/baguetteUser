@@ -1,11 +1,8 @@
 $(function () {
     $(document).one("pageinit", function () {
         console.log('pageinit : storeList.js');
-
         $.ajax({
-            //            url: "/store/getJsonStoreList/" + "서울",//COMMONWEBSERVER + 
             url: COMMONWEBSERVER + "/store/getJsonStoreList/" + "서울", //
-            /*encodeURIComponent(storeAddress),*/
             method: "GET",
             dataType: "json",
             headers: {
@@ -27,7 +24,7 @@ $(function () {
 
                     var img =
                         $(document.createElement('img')).attr({
-                            src: COMMONWEBSERVER + "/image/storeImg/" +store.storeImg + ".jpg",
+                            src: COMMONWEBSERVER + "/image/storeImg/" + store.storeImg + ".jpg",
                             alt: "alt : " + store.storeName
                         });
 
@@ -35,9 +32,9 @@ $(function () {
 
                     var storeLink =
                         $(document.createElement('a')).attr({
-                            href: "storeHome.html?storeNo=" + store.storeNo,
-                            //                        	href:"/html-src/storeHome.html?storeNo="+store.storeNo,
-                            //                        	rel:"external",
+                            //                            href: "./storeHome.html?storeNo=" + store.storeNo,
+                            href: "../html-src/storeHome.html?storeNo=" + store.storeNo,
+                            rel: "external",
                             class: "ui-link"
                         });
 
@@ -52,6 +49,50 @@ $(function () {
                 //                alert("잘못된 요청입니다.");
             }
         });
+    });
+    //        $(document).on('pagebeforehide', function () {
+    jQuery(document).ready(function ($) {
+        console.log('ready');
+        $('#my-slider').sliderPro({
+            fade: true,
+            buttons: false,
+            forceSize: 'fullWidth'
+        });
+        //                $(".sp-image").css("margin", "0px");
+    });
+
+    $(document).on('pageinit', function () {
+        console.log("pageinit  document.html");
+        //            setTimeout(function () {
+        //                $.mobile.loading('show', {
+        //                    text: "use $.mobile.loading(\"show\")",
+        //                    textVisible: true,
+        //                    theme: "e"
+        //                });
+        //            }, 0);
+    });
+    $("#storelist-page").on("pagecreate", function () {
+        console.log('pagecreate  storerList.html');
+
+    });
+    $("#storelist-page").on("pagebeforecreate", function (event) {
+        console.log('pagebeforecreate  storerList.html');
+
+        //                $(".sp-image").css("margin", "0px");
+
+    });
+    $('#storelist-page').on('pagebeforeshow', function () {
+        console.log('pagebeforeshow storelist-page.html');
+        //                $(".sp-image").css("margin", "0px");
+    });
+    $(document).one('pageshow', function () {
+        console.log('pageshow document.html');
+
+    });
+    $('#storelist-page').on('pageshow', function () {
+        console.log('pageshow storerList.html');
+        /* */
+        $(".sp-image").css("margin", "0px");
     });
 
     //
