@@ -5,6 +5,7 @@ public class Customer {
 	
 	///Field
 	// private String customerNo; //db에서만 쓰이는 기본키
+	private int customerNo;
 	private String customerTel; //전화번호
 	private String password;	//비밀번호
 	
@@ -24,9 +25,18 @@ public class Customer {
 		this.password = password;
 	}
 
+	public int getCustomerNo() {
+		return customerNo;
+	}
+
+	public void setCustomerNo(int customerNo) {
+		this.customerNo = customerNo;
+	}
 
 	@Override
 	public String toString() {
-		return "Customer [customerTel=" + customerTel + ", password=" + password + "]";
+		return "Customer [customerNo=" + customerNo + ", customerTel=" + customerTel + ", password=" + password + "]";
 	}
+	
+	
 }
