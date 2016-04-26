@@ -18,20 +18,20 @@
 	</resultMap>
 	
 	<!-- SQL : INSERT -->
-	<!-- <insert 	id="addUser"		parameterType="user" >
+	<insert 	id="addBorder"		parameterType="border" >
 	 	INSERT
-		INTO users( user_id , user_name , password , role , ssn, cell_phone, addr, email , reg_date) 
+		INTO border( user_id , user_name , password , role , ssn, cell_phone, addr, email , reg_date) 
 		VALUES	 (	#{userId} , #{userName} , #{password} , 'user' , #{ssn:VARCHAR} , 
 							#{phone:VARCHAR} , #{addr:VARCHAR} , #{email:VARCHAR} , SYSDATE )
 	 </insert>
-	  -->
+	 
 	 <!-- SQL : SELECT ONE -->
-<!-- 	 <select 	id="getBread"	parameterType="string"	resultMap="breadSelectMap">
-		SELECT
+	 <select 	id="getBorder"	parameterType="string"	resultMap="borderSelectMap">
+	<!-- 	SELECT
 		bname, bprice, bimg 		
 		FROM bread
-		WHERE bno = #{value}
-	 </select> -->
+		WHERE bno = #{value} -->
+	 </select>
 	 
 	<!-- SQL : SELECT LIST -->
 	<!-- <select  id="getBreadList"  parameterType="string"	resultMap="breadSelectMap">
