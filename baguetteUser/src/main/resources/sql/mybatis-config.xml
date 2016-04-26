@@ -18,7 +18,7 @@
 		<typeAlias alias="customer" type="com.model2.mvc.service.domain.Customer" />
 		<typeAlias alias="bread" type="com.model2.mvc.service.domain.Bread" />
 		<typeAlias alias="cart" type="com.model2.mvc.service.domain.Cart" />
-		<typeAlias alias="cart" type="com.model2.mvc.service.domain.Border" />
+		<typeAlias alias="border" type="com.model2.mvc.service.domain.Border" />
 	</typeAliases>
 	
 	 <!-- SQL Definition :: file include -->
