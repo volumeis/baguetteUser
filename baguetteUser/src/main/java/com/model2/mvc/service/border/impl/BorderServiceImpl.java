@@ -30,22 +30,22 @@ public class BorderServiceImpl implements BorderService{
 	}
 
 //	///Method
-//	public void addUser(User user) throws Exception {
-//		userDao.addUser(user);
-//	}
-
-/*	public Bread getBread(int breadNo) throws Exception {
-		return breadDao.getBread(breadNo);
+	public void addBorder(Border border) throws Exception {
+		borderDao.addBorder(border);
 	}
-//
-	public Map<String , Object > getBreadList(int storeNo) throws Exception {
-		List<Bread> list= breadDao.getBreadList(storeNo);
+
+	public Border getBorder(int ono) throws Exception {
+		return borderDao.getBorder(ono);
+	}
+
+	public Map<String , Object > getBorderList(int customerNo) throws Exception {
+		List<Border> list= borderDao.getBorderList(customerNo);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("breadlist", list );
+		map.put("borderlist", list );
 		
 		return map;
-	}*/
+	}
 //
 //	public void updateUser(User user) throws Exception {
 //		userDao.updateUser(user);

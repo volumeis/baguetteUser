@@ -9,13 +9,13 @@ import com.model2.mvc.service.domain.Border;
 public interface BorderDao {
 	
 //	// INSERT
-//	public void addUser(User user) throws Exception ;
+	public void addBorder(Border border) throws Exception ;
 
 	// SELECT ONE
-	/*public Bread getBread(int breadNo) throws Exception ;*/
+	public Border getBorder(int ono) throws Exception ;
 
-//	// SELECT LIST
-	/*public List<Bread> getBreadList(int storeNo) throws Exception ;*/
+	// SELECT LIST
+	public List<Border> getBorderList(int customerNo) throws Exception ;
 //
 //	// UPDATE
 //	public void updateUser(User user) throws Exception ;

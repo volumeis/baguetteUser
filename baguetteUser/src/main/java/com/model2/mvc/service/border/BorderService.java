@@ -9,13 +9,13 @@ import com.model2.mvc.service.domain.Border;
 public interface BorderService {
 	
 //	// 회원가입
-//	public void addUser(User user) throws Exception;
+	public void addBorder(Border border) throws Exception;
 	
 	// 빵정보확인
-	/*public Bread getBread(int breadNo) throws Exception ;*/
+	public Border getBorder(int ono) throws Exception ;
 	
 //	// 회원정보리스트 
-	/*public Map<String , Object> getBreadList(int storeNo) throws Exception;*/
+	public Map<String , Object> getBorderList(int customerNo) throws Exception;
 //	
 //	// 회원정보수정
 //	public void updateUser(User user) throws Exception;

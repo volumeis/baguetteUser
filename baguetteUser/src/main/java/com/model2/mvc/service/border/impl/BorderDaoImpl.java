@@ -28,19 +28,19 @@ public class BorderDaoImpl implements BorderDao{
 	}
 
 	///Method
-//	public void addUser(User user) throws Exception {
-//		sqlSession.insert("UserMapper.addUser", user);
-//	}
-//////////수정중
-	/*public Bread getBread(int breadNo) throws Exception {
-		Bread bread = sqlSession.selectOne("BreadMapper.getBread", breadNo);
-		System.out.println(bread);
-		return bread;
+	public void addBorder(Border border) throws Exception {
+		sqlSession.insert("BoderMapper.addBorder", border);
+		}
+
+    public Border getBorder(int ono) throws Exception {
+		Border border = sqlSession.selectOne("BorderMapper.getBorder", ono);
+		System.out.println(border);
+		return border;
 	}
 
-	public List<Bread> getBreadList(int storeNo) throws Exception {
-	return sqlSession.selectList("BreadMapper.getBreadList", storeNo);
-	}	*/
+	public List<Border> getBorderList(int customerNo) throws Exception {
+	return sqlSession.selectList("BorderMapper.getBorderList", customerNo);
+	}	
 	
 //	public void updateUser(User user) throws Exception {
 //		sqlSession.update("UserMapper.updateUser", user);
