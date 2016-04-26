@@ -11,6 +11,7 @@ public interface CartService {
 //	// 회원가입
 	public void addCart(Cart cart) throws Exception;
 	
+	public Cart getCart(Cart cart) throws Exception;
 	// 빵정보확인
 	public Map<String, Object> getCartList(int customerNo) throws Exception ;
 	

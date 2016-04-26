@@ -35,6 +35,10 @@ public class CartServiceImpl implements CartService{
 		cartDao.addCart(cart);
 	}
 
+	public Cart getCart(Cart cart) throws Exception{
+		return cartDao.getCart(cart);
+	}
+	
 	public Map<String, Object> getCartList(int customerNo) throws Exception {
 		List<Cart> list = cartDao.getCartList(customerNo);
 		

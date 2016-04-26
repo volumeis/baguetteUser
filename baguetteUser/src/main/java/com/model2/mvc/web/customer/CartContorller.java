@@ -37,11 +37,16 @@ public class CartContorller {
 											@PathVariable int breadNo,
 											@PathVariable int customerNo,
 												Model model) throws Exception{
-		System.out.println("/addJsonCart/addCart : GET");
+		System.out.println("/addJsonCart/customerNo={customerNo}&breadNo={breadNo} : GET");
+		
 		cart.setBreadNo(breadNo);
 		cart.setCustomerNo(customerNo);
+		if(cartService.getCart(cart) == null){
 		// 세션을 통해서 customerNo Cart VO에 저장해야 한다.
 		cartService.addCart(cart);
+		} else{
+			
+		}
 	}
 	
 	

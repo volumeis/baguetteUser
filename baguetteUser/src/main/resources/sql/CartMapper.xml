@@ -34,6 +34,14 @@
 		VALUES	 ( 1 ,CURRENT_DATE(),#{customerNo} ,#{breadNo} )
 	</insert>
 	
+	<!-- SQL : SELECT ONE--> 
+	 <select 	id="getCart"	parameterType="string"	resultMap="cartSelectMap">
+		select 
+		*
+		from cart
+		where CNO=#{customerNo} AND BNO=#{breadNo};
+	 </select>
+	 
 	 <!-- SQL : SELECT LIST--> 
 	 <select 	id="getCartList"	parameterType="string"	resultMap="cartSelectMap">
 		select 

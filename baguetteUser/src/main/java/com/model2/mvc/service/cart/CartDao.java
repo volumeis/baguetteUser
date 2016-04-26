@@ -12,11 +12,11 @@ public interface CartDao {
 	public void addCart(Cart cart) throws Exception ;
 
 	// SELECT ONE
+
+	public Cart getCart(Cart cart) throws Exception;
+	// SELECT LIST
 	public List<Cart> getCartList(int customerNo) throws Exception ;
 
-//	// SELECT LIST
-//	public List<Bread> getBreadList(int storeNo) throws Exception ;
-//
 //	// UPDATE
 //	public void updateUser(User user) throws Exception ;
 //	

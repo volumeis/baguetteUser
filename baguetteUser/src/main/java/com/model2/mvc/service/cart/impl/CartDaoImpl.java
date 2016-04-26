@@ -32,7 +32,10 @@ public class CartDaoImpl implements CartDao{
 	public void addCart(Cart cart) throws Exception {
 		sqlSession.insert("CartMapper.addCart", cart);
 	}
-
+	
+	public Cart getCart(Cart cart) throws Exception{
+		return sqlSession.selectOne("CartMapper.getCart", cart);
+	}
 	public List<Cart> getCartList(int customerNo) throws Exception {
 		return sqlSession.selectList("CartMapper.getCartList", customerNo);
 		}
