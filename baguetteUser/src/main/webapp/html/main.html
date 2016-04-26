@@ -23,7 +23,6 @@
 
     <!--  jquery-mobile 은 최하단에 놓음-->
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-
 </head>
 
 <body>
@@ -83,14 +82,17 @@
         });
     </script>
     <script type="text/javascript">
+     loginCheck($("#customerID")); 
         $(document).one("pagebeforecreate", function () {
             //            $( ":mobile-pagecontainer" ).pagecontainer( "load", "storeList.html",{role : "page"} );
             //            $("body").load("storeList.html [data-role=page]");
-            
+
             $.mobile.changePage("storeList.html", {
                 changeHash: false
             });
+           
         });
+
         $(document).one("pagecreate", function () {
             $.get("./menuPanel.html", function (data) {
                 $.mobile.pageContainer.append(data);
@@ -101,26 +103,26 @@
                 $("[data-role=panel]").panel().enhanceWithin();
             }, "html");
         });
-        $("#main-page").on("pagecreate", function () {
-            console.log('pagecreate  main-page.html');
-
-        });
-        $("#main-page").on("pagebeforecreate", function (event) {
-            console.log('pagebeforecreate  main-page.html');
-
-        });
-        $('#main-page').on('pagebeforeshow', function () {
-            console.log('pagebeforeshow main-page.html');
-
-        });
-        $(document).one('pageshow', function () {
-            console.log('pageshow main-page.html');
-
-        });
-        $('#main-page').on('pageshow', function () {
-            console.log('pageshow main-page.html');
-
-        });
+        //        $("#main-page").on("pagecreate", function () {
+        //            console.log('pagecreate  main-page.html');
+        //
+        //        });
+        //        $("#main-page").on("pagebeforecreate", function (event) {
+        //            console.log('pagebeforecreate  main-page.html');
+        //
+        //        });
+        //        $('#main-page').on('pagebeforeshow', function () {
+        //            console.log('pagebeforeshow main-page.html');
+        //
+        //        });
+                $(document).one('pageshow', function () {
+                    console.log('pageshow main-page.html');
+                    
+                });
+        //        $('#main-page').on('pageshow', function () {
+        //            console.log('pageshow main-page.html');
+        //
+        //        });
         /** $(document)는 발생문서 이하 모든 이벤트에 관여
          *  $('#id')는 발생하는 지점에서 만 관여
          *

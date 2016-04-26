@@ -14,14 +14,14 @@
     <!-- js -->
     <script src="../js/common.js"></script>
     <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../js/login.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="../lib/fakeloader/fakeLoader.min.js"></script>
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-
 </head>
 
 <body>
-    <div data-role="page" id="login-page">
+    <div data-role="page" id="login-page" data-dom-cache=true>
         <div data-role="main" class="ui-content">
             <div style="margin-top: 60px">
                 <div>
@@ -42,71 +42,8 @@
 
             <div style="margin: 65px 0px 0px 0px; text-align: center">
                 <a href="./addCustomer.html" data-role="none" data-transition="slide" id="new">계정 만들기</a>
-            </div>
-
-            <!-- test jquery -->
-            <script type="text/javascript">
-                $(function () {
-
-                    //==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-                    $("#customerTel").focus();
-
-                    //==>"Login"  Event 연결
-                    $("#login").on("click", function () {
-
-                        var id = $("input:text").val().trim();
-                        var pw = $("input:password").val().trim();
-
-                        if (id == null || id.length < 1) {
-                            alert('ID 를 입력하지 않으셨습니다.');
-                            $("input:text").focus();
-                            return;
-                        }
-
-                        if (pw == null || pw.length < 1) {
-                            alert('패스워드를 입력하지 않으셨습니다.');
-                            $("input:password").focus();
-                            return;
-                        }
-
-
-                        $.ajax({
-                            url: "/customer/jsonLogin",
-                            method: "POST",
-                            dataType: "json",
-                            headers: {
-                                "Accept": "application/json",
-                                "Content-Type": "application/json"
-                            },
-                            data: JSON.stringify({
-                                customerTel: id,
-                                password: pw
-                            }),
-                            success: function (JSONData, status) {
-
-                                if (JSONData.customer != null) {
-
-                                    location.href = "./main.html";
-                                    return;
-
-                                } else {
-                                    alert("아이디 , 패스워드를 확인하시고 다시 로그인...");
-                                }
-                            }
-                        });
-                        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                    });
-                });
-            </script>
-            <script>
-                $(function () {
-                    $.mobile.page.prototype.options.domCache = true;
-                });
-            </script>
+            </div>            
         </div>
     </div>
-
 </body>
-
 </html>

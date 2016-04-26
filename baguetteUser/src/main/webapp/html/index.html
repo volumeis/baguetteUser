@@ -30,12 +30,16 @@
             if (condition) {
                 $(function () {
                     $("body").load("login.html [data-role=page]", function (data) {
+                        
                         $.mobile.initializePage();
                     });
+                    
                 });
             }
         });
     </script>
+    
+    <script src="../js/login.js"></script>
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.min.js"></script>
 </head>
 
