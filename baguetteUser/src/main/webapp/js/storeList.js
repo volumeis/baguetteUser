@@ -27,7 +27,7 @@ $(function () {
 
                     var img =
                         $(document.createElement('img')).attr({
-                            src: "http://java78bit404.iptime.org:8025" + store.storeImg,
+                            src: COMMONWEBSERVER + "/image/storeImg/" +store.storeImg + ".jpg",
                             alt: "alt : " + store.storeName
                         });
 
