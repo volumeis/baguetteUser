@@ -24,34 +24,43 @@
          *  유민호
          *  04.24.16
          */
-        var condition = true;
-        $(document).on("mobileinit", function (e, data) {
+//        $(document).on("pagebeforeload", function () {    
+        $(document).on("mobileinit", function () {
             $.mobile.autoInitializePage = false;
-            if (condition) {
+            
+            if (true) {
                 $(function () {
-                    $("body").load("login.html [data-role=page]", function (data) {
-                        
+                    /* replace current page div with another page loaded externally */
+                    $("#login-page").load("login.html [data-role=main]", function (data) {
                         $.mobile.initializePage();
                     });
-                    
+                    $.getScript("../js/login.js");
                 });
             }
         });
+        
+        $(document).on("ready", function () {
+           $("#fakeloader").fakeLoader(); 
+        });
+        
     </script>
-    
-    <script src="../js/login.js"></script>
+
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.min.js"></script>
+
 </head>
 
 <body>
+    <!--     loaderInit 04.26.16       -->
+    <div id="fakeloader"></div>
+    <div data-role="page" class="pages" id="login-page" data-dom-cache=true></div>
+    <!--    <div data-role="page" id="login-page"></div>-->
+
+    <!--    <div data-role="page" id="join-page"></div>-->
 
     <!-- jqm header, footer 브라우저 양 끝 단 위치 및 높이 조절-->
     <!--
+    
     <script>
-        $(document).on('pageshow', '#index', function (e, data) {
-            $('#content').height(getRealContentHeight());
-        });
-
         function getRealContentHeight() {
             var header = $.mobile.activePage.find("div[data-role='header']:visible");
             var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
@@ -66,6 +75,7 @@
         }
     </script>
 -->
+
 </body>
 
 </html>

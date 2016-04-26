@@ -4,7 +4,7 @@
 
 
 <head>
-    <title>index.html</title>
+    <title>menuPanel.html</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- css -->
@@ -20,23 +20,25 @@
 
 
 <body>
-    <div data-role="page">
-        <div data-role="main" class="ui-content" id="content">
-            <!-- 빌드시 삭제하는 부분 -->
+    <div data-role="page" id=menu-panel1>
+<!--        <div data-role="panel" id="menuPanel" data-display="reveal" data-position="left" data-theme="a">-->
+            <div data-role="main" class="ui-content" id="">
+                <!-- 빌드시 삭제하는 부분 -->
 
 
-            <!--<div data-role="panel" id="menuPanel" data-display="reveal" data-position="left"  data-theme="a">-->
-            <div data-role="header">
-                <h1>Panel</h1>
+
+                <div data-role="header">
+                    <h1>Panel</h1>
+                </div>
+                <ul data-role="listview" data-inset="true">
+                    <li><a>Listview</a></li>
+                    <li><a href="#locale">locale</a></li>
+                    <li><a href="#store-list">상점리스트</a></li>
+                </ul>
             </div>
-            <ul data-role="listview" data-inset="true">
-                <li><a>Listview</a></li>
-                <li><a href="#locale">locale</a></li>
-                <li><a href="#store-list">상점리스트</a></li>
-            </ul>
-        </div>
 
-        <!-- 빌드시 삭제하는 부분 -->
+            <!--         빌드시 삭제하는 부분 -->
+        </div>
     </div>
 </body>
 

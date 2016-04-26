@@ -19,7 +19,6 @@ var COMMONDBSERVER = "";
 var LOGIN_ID;
 var LOGIN_PW;
 
-
 /**
  *       쿼리스트링 추출
  *
@@ -40,34 +39,30 @@ function getQuerystring(paramName) {
         }
     }
 }
+function loginCheck() {
+    $.ajax({
+        url: COMMONWEBSERVER + "/customer/loginCheck",
+        method: "POST",
+        dataType: "json",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        success: function (JSONData, status) {
+            //개발
+            //if(JSONData.customer == null){
+            //	location.replace("./login.html");
+            //}
 
+            LOGIN_ID = JSONData.customer.customerTel;
+            LOGIN_PW = JSONData.customer.password;
 
-
-function loginCheck(customerNum) {
-    $(document).one("pagebeforeshow", function () {
-        $.ajax({
-            url: COMMONWEBSERVER + "/customer/loginCheck",
-            method: "POST",
-            dataType: "json",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            success: function (JSONData, status) {
-                //개발
-                //if(JSONData.customer == null){
-                //	location.replace("./login.html");
-                //}
-                
-//                LOGIN_ID = JSONData.customer.customerTel;
-//                LOGIN_PW = JSONData.customer.password;
-                
-//                customerNum.TEXT(""+LOGIN_ID);
-            },
-            error: function (JSONData, status) {
-            	console.log(LOGIN_ID);
-            	console.log(LOGIN_PW);
-            }
-        });
+            //                customerNum.TEXT(""+LOGIN_ID);
+        },
+        error: function (JSONData, status) {
+            console.log(LOGIN_ID);
+            console.log(LOGIN_PW);
+        }
     });
 }
+

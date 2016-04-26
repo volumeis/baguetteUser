@@ -14,14 +14,13 @@
     <!-- js -->
     <script src="../js/common.js"></script>
     <script src="../lib/jquery/jquery.min.js"></script>
-    <script src="../js/login.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="../lib/fakeloader/fakeLoader.js"></script>
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
 </head>
 
 <body>
-    <div data-role="page" id="login-page" data-dom-cache=true>
+    <div data-role="page" class="pages" id="login-page" data-dom-cache=true>
         <div data-role="main" class="ui-content">
             <div style="margin-top: 60px">
                 <div>
@@ -43,9 +42,9 @@
             <div style="margin: 65px 0px 0px 0px; text-align: center">
                 <a href="./addCustomer.html" data-role="none" data-transition="slide" id="new">계정 만들기</a>
             </div>
-            <!--     loaderInit 04.26.16       -->
-            <div id="fakeloader"> </div>
+            <script src="../js/login.js"></script>
         </div>
     </div>
 </body>
+
 </html>

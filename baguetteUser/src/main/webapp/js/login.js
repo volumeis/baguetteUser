@@ -1,6 +1,6 @@
 $(function () {
 //  loader launching 04.26.16       
-    $("#fakeloader").fakeLoader();
+//    $.mobile.loading('hide');
     
     //==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
     $("#customerTel").focus();

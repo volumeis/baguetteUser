@@ -45,18 +45,13 @@ public class CustomerContorller {
 		// Business Logic
 		System.out.println("::" + reqCustomer);
 		Customer customer = customerService.getCustomer(reqCustomer.getCustomerTel());
-		System.out.println("login 333ss");
+		
 		if (customer != null && reqCustomer.getPassword().equals(customer.getPassword())) {
-			System.out.println("login 111s");
-			model.addAttribute("customer", customer);
-		} else {
-			System.out.println("login 2222ess");
 			session.setAttribute("customer",customer );
-			
+			model.addAttribute("customer", customer);
+		} else {	
 			model.addAttribute("customer", null);
-		}
-		System.out.println("login 2444ess");
-		session.setAttribute("customer",customer );
+		}	
 	}
 	
 	/** Login 구현
@@ -71,7 +66,7 @@ public class CustomerContorller {
 	public void jsonLoginCheck(HttpSession session, Model model) throws Exception {
 		System.out.println("/customer/loginCheck : POST");
 		Customer customer = (Customer)session.getAttribute("customer");
-		System.out.println("loginCheck" + customer);
+		System.out.println("loginCheck : " + customer);
 		model.addAttribute("customer",customer);
 	}
 	
@@ -104,7 +99,7 @@ public class CustomerContorller {
 		
 		System.out.println("/customer/logout : POST");
 		
-		session.invalidate();
+//		안되안되 session.invalidate();
 		
 		
 	}
@@ -118,19 +113,4 @@ public class CustomerContorller {
 		// Model 과 View 연결
 		model.addAttribute("customer", customer);
 	}
-
-	// ===========================================
-	// ===========================================
-/*	@RequestMapping(value = "checkDuplication", method = RequestMethod.POST)
-	public void checkDuplication(@RequestParam("customerTel") String customerTel, Model model) throws Exception {
-
-		System.out.println("/customer/checkDuplication : POST");
-		// Business Logic
-		boolean result = customerService.checkDuplication(customerTel);
-		// Model 과 View 연결
-		model.addAttribute("result", new Boolean(result));
-		model.addAttribute("customer", customerTel);
-
-	}*/
-
 }

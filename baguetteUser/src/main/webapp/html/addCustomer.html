@@ -45,7 +45,7 @@
                 $("#addCustomer").on("click", function () {
 
                     $.ajax({
-                        url: "/customer/addCustomer",
+                        url: COMMONWEBSERVER + "/customer/addCustomer",
                         method: "POST",
                         data: {
                             customerTel: $("#addcustomerTel").val().trim(),
@@ -54,12 +54,20 @@
                         dataType: "json",
                         success: function (JSONData, status) {
                             //location.href = "./login.html";
-                            if(JSONData != null ) {
-                            	$.mobile.changePage($("#login-page"));
-                            	alert("회원가입완료");
-                           
-                            }else{
-                            	alert("회원가입이 완료되지 않았습니다.");
+                            if (JSONData != null) {
+                                //                            	$.mobile.changePage($("#login-page"));
+                                alert("회원가입완료");
+                                $(":mobile-pagecontainer").pagecontainer("change", $("#login-page"), {
+                                    transition: 'slide',
+                                    reverse: true
+                                });
+
+                            } else {
+                                alert("회원가입이 완료되지 않았습니다.");
+                                $(":mobile-pagecontainer").pagecontainer("change", $("#login-page"), {
+                                    transition: 'slide',
+                                    reverse: true
+                                });
                             }
                         },
                         error: function (JSONData, status) {

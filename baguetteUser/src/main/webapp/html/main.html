@@ -46,6 +46,7 @@
         $(document).on('pageshow', function (e, data) {
             //            console.log('pageshow : main.html');
             $('#content').height(getRealContentHeight());
+            $(document).trigger('loadCustomerInfo');
         });
 
         function getRealContentHeight() {
@@ -91,6 +92,7 @@
                 $.mobile.pageContainer.append(data);
                 $("[data-role=panel]").panel().enhanceWithin();
             }, "html");
+            
         });
         //        $("#main-page").on("pagecreate", function () {
         //            console.log('pagecreate  main-page.html');
@@ -117,6 +119,16 @@
          *
          *
          */
+         /**
+         * 세션체크 이벤
+         * 
+         * 민호
+         * 04.26.16
+         */
+         $(document).on('loadCustomerInfo',function(){
+        	 loginCheck();
+        	 $("#customerID").text(LOGIN_ID)
+			});
     </script>
 </body>
 
