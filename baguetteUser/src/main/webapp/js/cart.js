@@ -24,13 +24,13 @@ $(function () {
         })
         .change();
     
-    $("select").change(function () {
+   /* $("select").change(function () {
             var sum = 0;
 
             sum += parseInt($("#money").text()) + parseInt($("#money1").text());
             $("#totalmoney").text(sum);
         })
-        .change();
+        .change();*/
 
     $('#delect-cart').click(function () {
         $('#cartcon').remove();

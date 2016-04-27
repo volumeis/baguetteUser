@@ -62,6 +62,11 @@ public class CartContorller {
 		model.addAttribute("cartmap", map);
 	}
 	//===========================================
+	
+	@RequestMapping( value="delJsonCart/{cartNo}", method=RequestMethod.GET)
+	public void delJsonCart( @PathVariable int cartNo) throws Exception{
+		cartService.delCart(cartNo);
+	}
 	//===========================================
 		
 	

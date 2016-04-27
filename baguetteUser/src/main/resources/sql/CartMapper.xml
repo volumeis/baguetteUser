@@ -50,15 +50,12 @@
 		where b.bno=c.bno AND c.CNO=#{value};
 	 </select>
 	 
-	<!-- SQL : SELECT LIST 
-	<select  id="getBreadList"  parameterType="string"	resultMap="breadSelectMap">
-	  	SELECT
-	  	bname, bprice, bno
-	  	FROM bread
-	  	WHERE sno = #{value}
-	  	ORDER BY bno
-	</select>
-	-->
+	<!-- SQL : DELETE --> 
+	<delete  id="delCart"  parameterType="cart">
+	  	DELETE
+	  	FROM cart
+	  	WHERE CARTNO=#{value};
+	</delete>
 	
 	 <!-- SQL : UPDATE -->
 	<!--  <update	id="updateUser"	parameterType="user" >

@@ -47,7 +47,11 @@ public class CartServiceImpl implements CartService{
 		
 		return map;
 	}
-//
+
+	public void delCart(int cartNo) throws Exception {
+		cartDao.delCart(cartNo);
+	}
+	
 /*	public Map<String , Object > getBreadList(int storeNo) throws Exception {
 		List<Bread> list= breadDao.getBreadList(storeNo);
 		
@@ -70,4 +74,8 @@ public class CartServiceImpl implements CartService{
 //		}
 //		return result;
 //	}
+
+
+
+	
 }
