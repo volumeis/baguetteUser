@@ -16,6 +16,7 @@ var COMMONDBSERVER = "";
 //민호 pc node.js 서버
 //var COMMONNODESERVER = "http://java78bit404.iptime.org:3025";
 
+var LOGIN_NO;
 var LOGIN_ID;
 var LOGIN_PW;
 
@@ -65,4 +66,3 @@ function loginCheck() {
         }
     });
 }
-

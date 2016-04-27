@@ -66,14 +66,33 @@ public class CustomerContorller {
 	public void jsonLoginCheck(HttpSession session, Model model) throws Exception {
 		System.out.println("/customer/loginCheck : POST");
 		Customer customer = (Customer)session.getAttribute("customer");
-		System.out.println("loginCheck : " + customer);
-		model.addAttribute("customer",customer);
+		/**
+		 * 페이지에 바로 접근시 디폴트 유저 cNo 1001,010-1234-1234,1234 로 세션정보 저장
+		 * 민호
+		 * 04.26.16
+		 */
+		if(session.getAttribute("customer") == null){
+			Customer customer2 = new Customer();
+			System.out.println("3");
+			customer2.setCustomerNo(1001);
+			System.out.println("2");
+			customer2.setCustomerTel("010-1234-1234");
+			System.out.println("1");
+			customer2.setPassword("1234");
+			session.setAttribute("customer", customer2 );
+			System.out.println("loginCheck : " + customer2);
+			model.addAttribute("customer",customer2);
+			System.out.println("저장된 세션 : " + customer2);
+		} else{
+			System.out.println("loginCheck : " + customer);
+			model.addAttribute("customer",customer);
+		}
 	}
 	
 	
 	@RequestMapping(value = "addCustomer", method = RequestMethod.POST)
 	public void addCustomer( @ModelAttribute("customer") Customer customer, Model model) throws Exception {
-
+  
 		System.out.println("/customer/addCustomer : POST");
 
 		customerService.addCustomer(customer);

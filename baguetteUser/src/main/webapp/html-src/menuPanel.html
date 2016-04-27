@@ -1,6 +1,6 @@
 <!-- 빌드시 삭제하는 부분 -->
 <!DOCTYPE html>
-<html>
+<html style="height : 100%,width:100%">
 
 
 <head>
@@ -19,26 +19,29 @@
 </head>
 
 
-<body>
-    <div data-role="page" id=menu-panel1>
-<!--        <div data-role="panel" id="menuPanel" data-display="reveal" data-position="left" data-theme="a">-->
-            <div data-role="main" class="ui-content" id="">
-                <!-- 빌드시 삭제하는 부분 -->
-
-
-
-                <div data-role="header">
-                    <h1>Panel</h1>
+<body style="height : 100%,width:100%">
+    <div data-role="page" id=menu-panel style="height : 100%">
+        <link rel="stylesheet" href="../css/menuPanel.css">
+        <div data-role="main" class="ui-content" id="menuPanel" style="height : 500px;width:100%">
+            <!-- 빌드시 삭제하는 부분 -->
+            <!--            <div data-role="panel" id="menuPanel" data-position-fixed="true" data-display="reveal" data-position="left" data-theme="a">-->
+            
+            <div data-role="header">
+                <h1 id="customerID">Baguette</h1>
+                <div>
+                    <span>9770</span> 님 빵 향기가 가득한 하루입니다 ~ <span class="glyphicon glyphicon-user"></span>
                 </div>
-                <ul data-role="listview" data-inset="true">
-                    <li><a>Listview</a></li>
-                    <li><a href="#locale">locale</a></li>
-                    <li><a href="#store-list">상점리스트</a></li>
-                </ul>
             </div>
-
-            <!--         빌드시 삭제하는 부분 -->
+            <ul data-role="listview" data-inset="true">
+                <!--                    <li><a>Listview</a></li>-->
+                <!--                    <li><a href="#locale">locale</a></li>-->
+                <li><a href="#storelist-page">상점리스트</a></li>
+                <li><a href="#customerinfo-page">구매내역</a></li>
+            </ul>
+            <div class="menupanel-logout">로그아웃 <span class="glyphicon glyphicon-log-out"></span>
+            </div>
         </div>
+        <!--         빌드시 삭제하는 부분 -->
     </div>
 </body>
 

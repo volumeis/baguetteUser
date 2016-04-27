@@ -58,7 +58,6 @@ public class StoreContorller {
 		System.out.println("/getJsonStoreList/{storeNo} : GET " + address);
 		//System.out.println(URLDecoder.decode((URLDecoder.decode(address, "8859_1")), "UTF-8"));
 		//System.out.println( URLDecoder.decode(address, "UTF-8"));
-		System.out.println("asdasd" + address);
 		//Business Logic
 		Map<String, Object> storeMap = storeService.getStoreList(address);
 		//System.out.println(storeMap);
