@@ -1,5 +1,8 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 html, body {
   height: 100%;
+  font-family: 'Noto Sans KR';
 }
 .store-content{
     margin: 0px 13px;

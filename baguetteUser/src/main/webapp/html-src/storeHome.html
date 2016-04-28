@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/storeHome.css" />
-
+	
     <!-- js -->
     <script src="../lib/jquery/jquery.js"></script>
     <script src="../js/jQery.headroom.js"></script>
@@ -19,7 +19,6 @@
     <!--  jquery-mobie 은 최하단에 놓음-->
     <script src="../lib/jquery.rateit/jquery.rateit.js"></script>
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-
 
 </head>
 
@@ -119,20 +118,33 @@
                     success: function (JSONData, status) {
 
                     	$.each(JSONData.breadmap.breadlist, function(i,item){
-                    		var displayValue ="이  름 : "+JSONData.breadmap.breadlist[i].name+"<br/>"
-								+"가  격 : "+JSONData.breadmap.breadlist[i].price+"<br/>";
+                    		var displayValue = JSONData.breadmap.breadlist[i].name+'&nbsp;&nbsp;&nbsp;<B>'
+								+JSONData.breadmap.breadlist[i].price+'원</B>';
 							var breadindex = i;
 							var cartdiv = $(document.createElement('div')).addClass('ui-grid-a');
-							var cartimgdivL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'img'+breadindex);
-							var cartimgdivR = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'img'+breadindex);
-							var carttextL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'text'+breadindex);
-							var carttextR = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'text'+breadindex);
+							var cartimgdivL = $(document.createElement('div')).addClass('ui-block-a').attr({
+													id:'img'+breadindex,
+													style: "padding: 10px 5px 10px 5px"
+													});
+							var cartimgdivR = $(document.createElement('div')).addClass('ui-block-b').attr({
+													id:'img'+breadindex,
+													style: "padding: 10px 5px 10px 5px"
+													});
+							var carttextL = $(document.createElement('div')).addClass('ui-block-a').attr({
+													id:'text'+breadindex,
+													style: "padding-left:10px"
+													});
+							var carttextR = $(document.createElement('div')).addClass('ui-block-b').attr({
+													id:'text'+breadindex,
+													style: "padding-left:10px"
+													});
 							
 							var cartimg =
 								$(document.createElement('img')).attr({
 				                    src: "../image/breadImg/"+JSONData.breadmap.breadlist[i].storeNo+"/bread_"+JSONData.breadmap.breadlist[i].breadNo+"_01.png",
 				                    class: "img-rounded",
-				                    style: "height:100%; width:100%"
+				                    style: "height:100%; width:100%;border: 1px solid lightgray"
+				                    
 				                });
 							
 							if(i%2 == 0){
