@@ -66,3 +66,31 @@ function loginCheck() {
         }
     });
 }
+
+
+/*json 날짜 변환하이
+작성자: 송은영, 서형섭 
+*/
+
+function GetDateString(jsonDate) {
+    var year, month, day, hour, minute, second , returnValue  , date ,replaceStr
+
+    replaceStr = jsonDate.replace(/\D/g, "");
+    date = new Date(parseInt(replaceStr));
+
+    year = date.getFullYear();
+    month = Pad(date.getMonth()+1);
+    day = Pad(date.getDate());
+    hour = Pad(date.getHours());
+    minute = Pad(date.getMinutes());
+  
+
+//     returnValue = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+    returnValue = year + "-" + month + "-" + day;
+    return returnValue;
+}
+
+function Pad(num) {
+    num = "0" + num;
+    return num.slice(-2);
+}
