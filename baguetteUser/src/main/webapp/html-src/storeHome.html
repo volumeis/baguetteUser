@@ -130,16 +130,14 @@
 							
 							var cartimg =
 								$(document.createElement('img')).attr({
-				                    src: "../image/bread_2001_"+JSONData.breadmap.breadlist[i].breadNo+"_01.png",
+				                    src: "../image/breadImg/"+JSONData.breadmap.breadlist[i].storeNo+"/bread_"+JSONData.breadmap.breadlist[i].breadNo+"_01.png",
 				                    class: "img-rounded",
 				                    style: "height:100%; width:100%"
 				                });
 							
 							if(i%2 == 0){
 								$('#cartdiv').append(cartdiv.html(cartimgdivL.html(cartimg).add(carttextL.append(displayValue))));
-								$(this).click(function(){
-									alert("테스트");
-								});
+								
 							}else if(i%2 == 1){
 								breadindex = i-1;
 								$('#img'+breadindex).after(cartimgdivR.html(cartimg));

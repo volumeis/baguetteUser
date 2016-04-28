@@ -36,7 +36,7 @@
 	<!-- SQL : SELECT LIST -->
 	<select  id="getBreadList"  parameterType="string"	resultMap="breadSelectMap">
 	  	SELECT
-	  	bname, bprice, bno
+	  	bname, bprice, bno, sno
 	  	FROM bread
 	  	WHERE sno = #{value}
 	  	ORDER BY bno
