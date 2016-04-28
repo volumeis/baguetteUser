@@ -19,20 +19,15 @@
     <script src="../js/headroom.js"></script>
     <script src="../lib/fakeloader/fakeLoader.min.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
-    <!--    <script src="../js/swipeNav.js"></script>-->
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-
 </head>
 <!-- //////////////////////////////////////////////////////////////////////////   -->
 
-
-
 <body>
     <div data-role="page" class="pages" id="storelist-page" data-dom-cache=true>
-        <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.css" />
-        <link rel="stylesheet" href="../css/storeList.css" />
-
-        <div data-role="main" class="ui-content main-content">
+        <div data-role="main" class="ui-content main-content ">
+            <!--         <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.css" > -->
+            <link rel="stylesheet" href="../css/storeList.css">
 
             <!-- carouselStart-->
             <div class="ui-grid-solo">
@@ -62,59 +57,16 @@
                 <!-- carouselEnd-->
 
                 <!-- storeListStart -->
-                <div id="list-store">
-<!-- 
-                    <div class="ui-block-a">
-                        <a id="store2002" >
-                            <figure>
-                                <img id="image01" src="../image/store01.jpg">
-                                <figcaption>
-                                    <div class="address">강남구 강남대로</div>
-                                    <div class="name"><strong>ABC 빵집</strong></div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <script>
-                        $('#list-store a').click(function(){
-                            console.log($(this).attr('id'));
-//                            $.mobile.change("storeHome.html?storeNo="+$(this).attr('id'));
-                            $( ":mobile-pagecontainer" ).pagecontainer( "change", "storeHome.html?storeNo="+$(this).attr('id') );
-                        });
-                    </script>
-
-                    <div class="ui-block-a">
-                        <a href="storeHomeTest.html">
-                            <figure>
-                                <img src="../image/store02.jpg">
-                                <figcaption>
-                                    <div class="address">강남구 테헤란로</div>
-                                    <div class="name"><strong>DEF 빵집</strong></div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div> -->
-                    <!--
-
-                    <div class="ui-block-a">
-                        <figure>
-                            <img src="../image/store03.jpg">
-                            <figcaption>
-                                <div class="address">강서구 강서로</div>
-                                <div class="name"><strong>GHI 빵집</strong></div>
-                            </figcaption>
-                        </figure>
-                    </div>
--->
-                </div>
+                <div id="list-store"></div>
                 <!-- storeListEnd -->
             </div>
-        </div>
 
-        <script src="../js/storeList.js"></script>
-        <script src="../lib/slider-pro/js/jquery.sliderPro.js"></script>
-        
-        
+            <script src="../js/storeList.js"></script>
+            <script src="../lib/slider-pro/js/jquery.sliderPro.js"></script>
+
+        </div>
+    </div>
+
 </body>
 
 </html>
