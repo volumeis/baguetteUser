@@ -13,8 +13,11 @@
     <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.css" />
 
     <!-- js -->
-    <script src="../js/common.js"></script>
     <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../js/common/common.js"></script>
+    <script src="../js/common/event.js"></script>
+    <script src="../js/common/page.js"></script>
+    
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="../lib/fakeloader/fakeLoader.js"></script>
     <script src="../js/jQery.headroom.js"></script>
@@ -40,28 +43,9 @@
         </a>
     </div>
 
-    <div data-role="page" id="main-page"></div>
+    <div data-role="page" id="main-page" class="pages"></div>
 
     <script>
-        $(document).on('pageshow', function (e, data) {
-            //            console.log('pageshow : main.html');
-            $('#content').height(getRealContentHeight());
-            $(document).trigger('loadCustomerInfo');
-        });
-
-        function getRealContentHeight() {
-            var header = $.mobile.activePage.find("div[data-role='header']:visible");
-            var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
-            var content = $.mobile.activePage.find("div[data-role='main']:visible:visible");
-            var viewport_height = $(window).height();
-
-            var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
-            if ((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
-                content_height -= (content.outerHeight() - content.height());
-            }
-            return content_height;
-        }
-
         $("#header").headroom({
             "offset": 205,
             "tolerance": 5,
@@ -73,65 +57,6 @@
         });
     </script>
 
-    <script type="text/javascript">
-        $(document).one("pagebeforecreate", function () {
-            //            $( ":mobile-pagecontainer" ).pagecontainer( "load", "storeList.html",{role : "page"} );
-            //            $("body").load("storeList.html [data-role=page]");
-            //             $.mobile.loadPage("customerInfo.html");
-            $.mobile.changePage("storeList.html", {
-                //                 changeHash: false
-            });
-        });
-
-        $(document).one("pagecreate", function () {
-            $.get("./menuPanel.html", function (data) {
-                $.mobile.pageContainer.append(data);
-                $("[data-role=panel]").panel().enhanceWithin();
-            }, "html");
-            $.get("./cartPanel.html", function (data) {
-                $.mobile.pageContainer.append(data);
-                $("[data-role=panel]").panel().enhanceWithin();
-            }, "html");
-
-        });
-
-        /** $(document)는 발생문서 이하 모든 이벤트에 관여
-         *  $('#id')는 발생하는 지점에서 만 관여
-         */
-        /**
-         * 세션체크 이벤
-         * 
-         * 민호
-         * 04.26.16
-         */
-        $(document).on('loadCustomerInfo', function () {
-            loginCheck();
-            $("#customerID").text(LOGIN_ID)
-            $('#main-page').remove()
-        });
-        //        $('#storelist-page').on('pageload', function () {
-        function callStoreHome() {
-
-            $('.ui-block-a a').on('click', function () {
-                var storeId = $(this).attr("id");
-                $.mobile.changePage("storeHome.html", {
-                    dataUrl: "storeHome.html?parameter=" + storeId,
-                    data: {
-                        'parameter': storeId
-                    },
-                    transition: "slideup"
-                });
-            });
-        }
-        //        });
-         $(document).on('pagebeforehide', function (event, data) {
-            alert('123');
-        });
-        $(document).on('pagebeforeshow', "#storehome-page", function (event, data) {
-            QUERYSTRING = $(this).data("url").split("?")[1];;
-            QUERYSTRING = QUERYSTRING.replace("parameter=", "");
-        });
-    </script>
 </body>
 
 </html>

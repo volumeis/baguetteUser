@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/storeHome.css" />
 
     <!-- js -->
+    <script src="../js/pages.js"></script>
     <script src="../js/common.js"></script>
     <script src="../lib/jquery/jquery.js"></script>
     <script src="../js/jQery.headroom.js"></script>
@@ -24,7 +25,7 @@
 
 <body>
 
-    <div data-role="page" class="pages" id="storehome-page">
+    <div data-role="page" class="pages storehome-page">
         <div data-role="main" class="ui-content main-content">
             <div class="row store-info">
                 <div class="col-xs-4" id="rate-div">
@@ -65,7 +66,7 @@
 -->
         </div>
         <script>
-            $(document).on('pageshow', "#storehome-page", function (event, data) {
+            $(document).on('pageshow', ".pages", function (event, data) {
                 loadStoreHome(QUERYSTRING);
             });
         </script>
