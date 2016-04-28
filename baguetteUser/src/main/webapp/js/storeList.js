@@ -103,17 +103,4 @@ $(function () {
         $(".sp-image").css("margin", "0px");
     });
 
-    //    $('#storelist-page').on('pageshow', function () {
-    //        console.log('zzz');
-    //        $('.ui-block-a img').on('click', function () {
-    //            console.log('찍힘1');
-    //            $(document).trigger('loadStoreHome');
-    //            //                loadStoreHome();
-    //        });
-    //        $(document).on('loadStoreHome', function () {
-    //            $.mobile.changePage("storeHome.html?storeNo=2001", {
-    //                transition: "slideup"
-    //            });
-    //        });
-    //    });
 });
