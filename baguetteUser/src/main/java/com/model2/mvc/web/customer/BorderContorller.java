@@ -60,16 +60,18 @@ public class BorderContorller {
 
 	}
 
-	@RequestMapping(value = "listBorder/{customerNo}")
-	public void listBorder(@RequestParam("customerNo") int customerNo, Model model) throws Exception {
+	@RequestMapping(value = "listBorder/{customerNo}", method = RequestMethod.GET)
+	public void listBorder(@PathVariable int customerNo, Model model) throws Exception {
 
 		System.out.println("/border/listBorder : GET / POST");
 
 		// Business logic 수행
 		Map<String, Object> map = borderService.getBorderList(customerNo);
-
-		// Model 과 View 연결
-		model.addAttribute("list", map.get("list"));
+        System.out.println("가는중?"+map.get("list"));
+		
+        
+        // Model 과 View 연결
+		model.addAttribute("map", map);
 
 	}
 

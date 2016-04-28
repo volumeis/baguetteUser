@@ -10,7 +10,7 @@ public class Border {
 	private int ono; // 빵주문 일련번호
 	private String otran; // 주문상태
 	private Date odate; // 주문일
-	private int bno; // 빵코드
+    private String name;
 	private int customerNo; // 고객번호
 	private String or_chk; // 리뷰여부
 	private String customerTel;
@@ -41,11 +41,11 @@ public class Border {
 	public void setOdate(Date odate) {
 		this.odate = odate;
 	}
-	public int getBno() {
-		return bno;
+	public String getName() {
+		return name;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public int getCustomerNo() {
 		return customerNo;
@@ -85,11 +85,11 @@ public class Border {
 	}
 	@Override
 	public String toString() {
-		return "Border [oqty=" + oqty + ", ono=" + ono + ", otran=" + otran + ", odate=" + odate + ", bno=" + bno
+		return "Border [oqty=" + oqty + ", ono=" + ono + ", otran=" + otran + ", odate=" + odate + ", name=" + name
 				+ ", customerNo=" + customerNo + ", or_chk=" + or_chk + ", customerTel=" + customerTel + ", breadNo="
 				+ breadNo + ", price=" + price + ", img=" + img + "]";
 	}
-
+	
 	
 
 }

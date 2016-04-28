@@ -11,51 +11,18 @@
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../lib/fakeloader/fakeLoader.css">
 
-    <!-- js -->
+
     <script src="../js/common.js"></script>
     <script src="../lib/jquery/jquery.js"></script>
 	<script src="../lib/bootstrap/js/bootstrap.js"></script>
     <!--    <script src="../js/swipeNav.js"></script>-->
-    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-
-<script type="text/javascript">
-    $(function () {
-    	
-	    $("#logout").on("click", function () {
-			
-    	$.ajax({
-            
-            url: "/border/listBorder/"+1002,
-            /*encodeURIComponent(storeAddress),*/
-            method: "GET",
-            dataType: "json",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            success: function (JSONData, status) {
-            	
-            
-            	alert("데이터가져옴");
-        
-               }
-        })
-    })
-});
-         
-    </script>
-    
-    
-    
-    
-    
+    <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>    
+    <script src="../lib/jquery/moment.js"></script>
     <title>Insert title here</title>
 </head>
 <body>
-
-	
 	<div data-role="page" class="pages" id="customerInfo-page" data-dom-cache=true>
-		   <div data-role="header" id="header" class="header headroom" data-theme="b">
+	  <div data-role="header" id="header" class="header headroom" data-theme="b">
             <!--            <input type="search" name="search-1" value="Serch">-->
             <input>
             <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
@@ -64,55 +31,79 @@
             <a id="right-panel" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
                 <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
             </a>
-
-        </div>	
+     </div>	
             
-        <br></br><br></br>
+        <br><br/><br><br/>
         <div class="purchase" style="text-align: center"><font style="font-size: 2.0em; font-weight: bold ">구매내역</font></div>
-			<br></br>
-		<div class="ui-grid-a ui-bar-a" id="cartcon">
+			<br><br/>
+		<div class="ui-grid-a ui-bar-a" id="customerInfo">
+		 <div data-role="main" class="ui-content main-content">
+	       <div data-role="ui-content">     
+			<div id ="cdiv"></div>
+		   </div>
 			
-			<div class="ui-block-c">
-				<div class="ui-bar ui-bar-c" style="height: 130px; width: 130px">
-					<img src="../image/dl.jpeg" class="img-rounded" width="100%" height="100%">
-				</div>
-			</div>
-
-			<div class="ui-block-b">
-				<div class="ui-bar ui-bar-c" style="height: 30px; width:200px; text-align: left">
-					<font style="font-size: 1.0em; font-weight: bold"><li>JSONData.list.map.bname()</li></font>
-				</div>
-			</div>
-
-			<div class="ui-block-b">
-				<div class="ui-bar ui-bar-c" style="height: 30px; width:200px; text-align: left">
-					<font style="font-size: 1.0em; font-weight: bold"><li>구매갯수:&nbsp;10개</li></font>
-				</div>
-			</div>
-
-			<div class="ui-block-b">
-				<div class="ui-bar ui-bar-c" style="height: 30px; width:200px; text-align: left">
-					<font style="font-size: 1.0em; font-weight: bold"><li>구매날짜:&nbsp;20160417</li></font>
-				</div>
-			</div>
-		   	<div class="ui-block-b">
-				<div class="ui-bar ui-bar-c" style="height: 30px; width:200px; text-align: left">
-					<font style="font-size: 1.0em; font-weight: bold"><li>구매상태:&nbsp;배송중</li></font>
-				</div>
-			</div>
-          
+            <hr>
+         </div>
+      
+        <script type="text/javascript">
+    
+        
+        
+        $(function () {
+        	$(document).ready(function () {
+        	
+        	$.ajax({
+        		// 회원 번호를 통해 호출
+        		url: "/border/listBorder/"+1001,
+        		method: "GET",
+        		dataType: "json",
+        		headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                success: function(JSONData, status) {
+                	
+                	$.each(JSONData.map.list, function(i,item){
+                		
+                		var cindex = i;
+                		var cdiv = $(document.createElement('div')).addClass('ui-grid-a');
+                		var cimgdiv = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'cdiv'+cindex);
+                		var ctexttop = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'ctop'+cindex);
+                		var ctextmid = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'cmid'+cindex);
+                		var ctextbot = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'cbot'+cindex);
+                		var ctextbot2 = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'cbot2'+cindex);
+                		var ctextbot3 = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'cbot3'+cindex);
+                		 
+                		
+                		var test = GetDateString("/Date("+JSONData.map.list[i].odate+")/");
+                        
+                         
+                		var cimg =
+							$(document.createElement('img')).attr({
+			                    src: "../image/"+JSONData.map.list[i].img+".png",
+			                    class: "img-rounded",
+			                    style: "height:100%; width:100%"
+			                });
+                		
+                	
+                		
+                		$('#cdiv').append(cdiv.html(cimgdiv.html(cimg)).append(ctexttop).append(ctextmid).append(ctextbot).append(ctextbot2).append(ctextbot3));
+                		$('#ctop'+cindex).append("빵이름: ").append(JSONData.map.list[i].name);
+                 		$('#cmid'+cindex).append("개수: ").append(JSONData.map.list[i].oqty).append("개");
+                		$('#cbot'+cindex).append("주문상태: ").append(JSONData.map.list[i].otran);
+                		$('#cbot2'+cindex).append("구매일: ").append(test);
+                		$('#cbot3'+cindex).append("총 구매가격: ").append(JSONData.map.list[i].price*JSONData.map.list[i].oqty).append("원");
+                	})
+                }
+        		})
+        	})
+        	});
+        	
+        	</script>
+       
+        <hr>
+      </div>
     </div>
-     <div class="ui-btn" id="logout" style="text-align:center">
-                <button class="ui-btn">로그아웃</button>
-            </div>
-
-
-	</div>
-	<!-- /grid-a -->
-    <hr>
-   
-    <script src="../js/cart.js"></script>
-</div>
-
 </body>
+
 </html>

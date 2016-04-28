@@ -42,7 +42,7 @@ public class BorderServiceImpl implements BorderService{
 		List<Border> list= borderDao.getBorderList(customerNo);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("borderlist", list );
+		map.put("list", list );
 		
 		return map;
 	}

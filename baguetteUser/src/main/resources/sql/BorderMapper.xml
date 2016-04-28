@@ -41,10 +41,11 @@
 	
 	<select  id="getBorderList"  parameterType="int"	resultMap="borderSelectMap">
 	SELECT
-		oqty, bname, bprice, bimg, otran, odate
+		oqty, bname, bprice, bimg, otran, odate, ono
 		FROM border bo, customer c, bread b
 		where #{value}=bo.cno and bo.BNO=b.bno
-		group by bname
+		group by ono
+		order by 6, bname
 	 </select>
 	 
 	 
