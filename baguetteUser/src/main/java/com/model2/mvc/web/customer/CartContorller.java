@@ -49,7 +49,6 @@ public class CartContorller {
 		}
 	}
 	
-	
 	//===========================================
 	@RequestMapping( value="getJsonCart/{customerNo}", method=RequestMethod.GET )
 	public void getJsonCart(	@PathVariable int customerNo, 
@@ -71,5 +70,14 @@ public class CartContorller {
 	}
 	//===========================================
 		
-	
+	@RequestMapping( value="updateJsonCart/buyQty={buyQty}&cartNo={cartNo}", method=RequestMethod.GET)
+	public void updateJsonCart( 	@ModelAttribute("cart") Cart cart,
+													@PathVariable int buyQty,
+													@PathVariable int cartNo) throws Exception{
+		System.out.println("/updateJsonCart/buyQty={buyQty}&cartNo={cartNo} : GET");
+		cart.setCartNo(cartNo);
+		cart.setBuyQty(buyQty);
+		
+		cartService.updateCart(cart);
+	}
 }
