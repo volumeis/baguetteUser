@@ -51,9 +51,37 @@
 			</div>
 			
             <hr>
-        <div id="totaltext" style="text-align:right">총 금액</div>
-		<div id="totalprice" style="text-align:right"></div>
-
+	        <div id="totaltext" style="text-align:right">총 금액</div>
+			<div id="totalprice" style="text-align:right"></div>
+	
+			<!-- 구매자정보 -->
+				<br>
+				<div id="customer">결제방법 선택</div>
+	
+				<!--<div style=" height:50px; margin:5px; border:2px solid black"> </div> -->
+				<!-- <div style="width:100px; height:100px;padding:20px; border:2px solid red;margin:20px;"> -->
+				<div class="input-group-addon">
+					카드종류
+					<div class="payment">
+						<select class="form-control" style="text-align: right">
+							<option>신한</option>
+							<option>국민</option>
+							<option>우리</option>
+							<option>현대</option>
+							<option>삼성</option>
+						</select>
+					</div>
+				</div>
+				<input type="checkbox" id="divECI_ISDVSAVE1" class="checkbox-style" /><label for="divECI_ISDVSAVE1">
+				<font size="2.5">지금 선택하신 결제수단을 다음에도 사용</font></label> 
+				<br> 
+				<input type="checkbox" id="divECI_ISDVSAVE2" class="checkbox-style" /><label for="divECI_ISDVSAVE2">
+				<font size="2.5">개인정보 제3자 제공 동의 및 주의사항</font></label> 
+				<input type="checkbox" id="divECI_ISDVSAVE3" class="checkbox-style" /><label for="divECI_ISDVSAVE3">
+				<font size="2.5">결제대행 서비스 표준이용약관</font></label>
+	
+				<button id="breadPayment">결제하기</button>
+				
         </div>
         <!-- script -->
         <script type="text/javascript">
@@ -217,6 +245,27 @@
                 	}
                 })
        		})
+       		
+       	 $("#breadPayment").on("click", function () {
+         	
+    		 alert("결제가 진행됩니다.");
+    	
+    		
+    	        	
+    	        	$.ajax({
+    	        		// 회원 번호를 통해 호출
+    	        		url: "/border/addBorder/"+1001,
+    	        		method: "GET",
+    	        		dataType: "json",
+    	        		headers: {
+    	                    "Accept": "application/json",
+    	                    "Content-Type": "application/json"
+    	                }
+    	               
+    	          
+    	           
+    	     });
+    	    });
        	});
         	
         	

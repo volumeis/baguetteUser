@@ -1,12 +1,38 @@
 <div data-role="panel" id="cartPanel" data-display="overlay" data-position="right" data-theme="a">
     
 <div id ="maincdiv"></div>
+			</div>
 			
-    <hr>
-
-        <div id="totaltext" style="text-align:right">총 금액</div>
-		<div id="totalprice" style="text-align:right"></div>
-
+            <hr>
+	        <div id="totaltext" style="text-align:right">총 금액</div>
+			<div id="totalprice" style="text-align:right"></div>
+	
+			<!-- 구매자정보 -->
+				<br>
+				<div id="customer">결제방법 선택</div>
+	
+				<div class="input-group-addon">
+					카드종류
+					<div class="payment">
+						<select class="form-control" style="text-align: right">
+							<option>신한</option>
+							<option>국민</option>
+							<option>우리</option>
+							<option>현대</option>
+							<option>삼성</option>
+						</select>
+					</div>
+				</div>
+				<input type="checkbox" id="divECI_ISDVSAVE1" class="checkbox-style" /><label for="divECI_ISDVSAVE1">
+				<font size="2.5">지금 선택하신 결제수단을 다음에도 사용</font></label> 
+				<br> 
+				<input type="checkbox" id="divECI_ISDVSAVE2" class="checkbox-style" /><label for="divECI_ISDVSAVE2">
+				<font size="2.5">개인정보 제3자 제공 동의 및 주의사항</font></label> 
+				<input type="checkbox" id="divECI_ISDVSAVE3" class="checkbox-style" /><label for="divECI_ISDVSAVE3">
+				<font size="2.5">결제대행 서비스 표준이용약관</font></label>
+	
+				<button id="breadPayment">결제하기</button>
+				
         </div>
         <!-- script -->
         <script type="text/javascript">
@@ -27,7 +53,7 @@
                 	$.each(JSONData.cartmap.cartlist, function(i,item){
                 		
                 		var cindex = i;
-                		var cdiv = $(document.createElement('div')).addClass('ui-grid-a').attr('id', 'cdiv'+cindex);;
+                		var cdiv = $(document.createElement('div')).addClass('ui-grid-a').attr('id', 'cdiv'+cindex);
                 		var cimgdiv = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'cimgdiv'+cindex);
                 		var ctexttop = $(document.createElement('div')).addClass('ui-block-b')
                 							.attr({	id: 'ctop'+cindex,
@@ -45,9 +71,8 @@
                 		
                 		var cimg =
 							$(document.createElement('img')).attr({
-			                   /*  src: "../image/breadImg/2001/"+JSONData.cartmap.cartlist[i].breadDesc.img+".png", */
-			                    src: "../image/breadImg/"+JSONData.cartmap.cartlist[i].breadDesc.img, 
-			                 	class: "img-rounded",
+			                    src: "../image/breadImg/"+JSONData.cartmap.cartlist[i].breadDesc.storeNo+"/"+JSONData.cartmap.cartlist[i].breadDesc.img,
+			                    class: "img-rounded",
 			                    style: "height:100%; width:100%"
 			                });
                 		
@@ -64,6 +89,22 @@
                 				style: "float:right"
                 			});
                 		
+                		// Cart 스토어 정보 var 선언부
+                		// 04.29 경철
+                		
+                		var storeDiv = $(document.createElement('div')).addClass('ui-grid-a').attr('id', 'sdiv'+cindex);
+                		var storeDivImg = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'sdiv'+cindex);
+                		var storeDivName = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'sname'+cindex);
+                		
+                		var simg =
+							$(document.createElement('img')).attr({
+			                    src: "../image/storeImg/store_"+JSONData.cartmap.cartlist[i].breadDesc.storeNo+".jpg",
+			                    class: "img-rounded",
+			                    style: "height:100%; width:100%"
+			                });
+                		
+
+                		
                 		for (var j=0; j<5; j++){
                 			var option = document.createElement('option');
                 			option.text = j+1;
@@ -75,9 +116,30 @@
                 			
                 			cselect.append(option);
                 		}
+                		
+                		// 스토어 정보 빵보다 우선시 되게 넣기 위해서
+                		if(i == 0){
+							$('#maincdiv').append(storeDiv.html(storeDivImg.html(simg)).append(storeDivName));
+							$('#sname'+cindex).append(JSONData.cartmap.cartlist[i].storeName);
+						}
+                		 
                 		$('#maincdiv').append(cdiv.html(cimgdiv.html(cimg)).append(ctexttop).append(ctextmid).append(ctextbot));
                 		$('#ctop'+cindex).append(JSONData.cartmap.cartlist[i].breadDesc.name);
                 		$('#cbot'+cindex).append(cdel).append(cselect);
+
+                		if(i != (Object.keys(JSONData.cartmap.cartlist).length)-1){
+							if(JSONData.cartmap.cartlist[i].breadDesc.storeNo != JSONData.cartmap.cartlist[i+1].breadDesc.storeNo){
+								
+		                		var simg1 =
+									$(document.createElement('img')).attr({
+					                    src: "../image/storeImg/store_"+JSONData.cartmap.cartlist[i+1].breadDesc.storeNo+".jpg",
+					                    class: "img-rounded",
+					                    style: "height:100%; width:100%"
+					                });
+								$('#maincdiv').append(storeDiv.html(storeDivImg.html(simg1)).append(storeDivName));
+								$('#sname'+cindex).append(JSONData.cartmap.cartlist[i+1].storeName);
+							}
+                		}
                 		
                 		$("#cselect"+cindex).change(function () {
                 			var str = 0;
@@ -85,9 +147,21 @@
                 				str += +($(this).val() * JSONData.cartmap.cartlist[i].breadDesc.price);
                 			});
                 			$('#cmid'+cindex).text(str);
+                			
+                			$.ajax({
+                				url : "/cart/updateJsonCart/buyQty="+$(this).val()+"&cartNo="+JSONData.cartmap.cartlist[i].cartNo,
+                				method : "GET",
+                				dataType : "json",
+                				headers: {
+			                        "Accept": "application/json",
+			                        "Content-Type": "application/json"
+			                    }
+                				
+                			});
+                			
                 		})
                 		.change();
-                		
+               		
                 		
                 		$("#cselect"+cindex).change(function() {
                 			var sum = 0;
@@ -122,6 +196,27 @@
                 	}
                 })
        		})
+       		
+       	 $("#breadPayment").on("click", function () {
+         	
+    		 alert("결제가 진행됩니다.");
+    	
+    		
+    	        	
+    	        	$.ajax({
+    	        		// 회원 번호를 통해 호출
+    	        		url: "/border/addBorder/"+1001,
+    	        		method: "GET",
+    	        		dataType: "json",
+    	        		headers: {
+    	                    "Accept": "application/json",
+    	                    "Content-Type": "application/json"
+    	                }
+    	               
+    	          
+    	           
+    	     });
+    	    });
        	});
         	
         	
