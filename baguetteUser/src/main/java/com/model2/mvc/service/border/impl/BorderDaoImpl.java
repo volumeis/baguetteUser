@@ -29,7 +29,7 @@ public class BorderDaoImpl implements BorderDao{
 
 	///Method
 	public void addBorder(Border border) throws Exception {
-		sqlSession.insert("BoderMapper.addBorder", border);
+		sqlSession.insert("BorderMapper.addBorder", border);
 		}
 
     public Border getBorder(int ono) throws Exception {

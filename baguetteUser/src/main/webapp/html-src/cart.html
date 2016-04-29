@@ -196,41 +196,34 @@
        		})
        	});
          
-        $(function () {
-        	 $("#breadPayment").on("click", function () {
-        		/*  var bname = $("#ctop").val();
-        	     var price = $("#cmid").val();
-        	     var qty = $("#cbot").val(); */
-        	     
-        	     //var Values = [];html json data 넘기기http://zero-gravity.tistory.com/241
-        	     
-        	     //$("div[id=]")
-        		 alert("결제가 진행됩니다.");
-        	     //alert(JSONData.cartmap.cartlist[0].breadDesc.price);
-        		 $.ajax({
-        	            url: COMMONWEBSERVER + "/border/addBorder",
-//        	            url: "/customer/jsonLogin",
-        	            method: "POST",
-        	            dataType: "json",
-        	            headers: {
-        	                "Accept": "application/json",
-        	                "Content-Type": "application/json"
-        	            },
-        	            data: JSON.stringify({
-        	                //customerTel: bname,
-        	               // password: price
-        	            }),
-        	            success: function (JSONData, status) {
-        	            	 //alert(JSONData.cartmap.cartlist[0].breadDesc.price);
-        	            }
-        	     });
-        	    });
-        	}); 
+       
         	</script>
         <script src="../js/cart.js"></script>
-        
+        <script type="text/javascript">
+        $(function () {
+        	 $("#breadPayment").on("click", function () {
+        	
+        		 alert("결제가 진행됩니다.");
+        	
+        		
+        	        	
+        	        	$.ajax({
+        	        		// 회원 번호를 통해 호출
+        	        		url: "/border/addBorder/"+1001,
+        	        		method: "GET",
+        	        		dataType: "json",
+        	        		headers: {
+        	                    "Accept": "application/json",
+        	                    "Content-Type": "application/json"
+        	                }
+        	               
+        	          
+        	           
+        	     });
+        	    });
+        	});  
 <!-- 빌드시 삭제하는 부분 -->
-    </div>
+</script>  </div>
 </body>
 
 </html>

@@ -15,18 +15,17 @@
 		<result property="breadNo"	column="bno" 			jdbcType="INTEGER"/>
 		<result property="customerNo" 		column="cno" 			jdbcType="INTEGER" />
 		<result property="or_chk" 	column="or_chk" 			jdbcType="VARCHAR" />
-	    <result property="customerTel"	column="ctel" 		jdbcType="VARCHAR" />
-	   <result property="name"		column="bname" 			jdbcType="VARCHAR" />
-	   <result property="price" 	column="bprice" 		jdbcType="INTEGER" />
-	    <result property="img"	 	column="bimg" 			jdbcType="VARCHAR" />
+	    
 	</resultMap>
 	
 
 	 <insert 	id="addBorder"		parameterType="border" >
 	 	INSERT
-		INTO borders( oqty , ono , otran , odate , or_chk, ctel, bname, bprice , bimg) 
-		VALUES	 (	#{oqty} , #{ono} , #{otran} , #{odate} , #{breadNo} , 
-							#{customerNo} , #{or_chk} , #{customerTel} , #{name], #{price}, #{img} )
+		INTO border( oqty , otran , odate , bno, cno, or_chk) 
+		VALUES	 (	#{oqty} ,  #{otran} , #{odate} , #{breadNo} , 
+							#{customerNo} , #{or_chk}  )
+		<!--  VALUES	 (	1 ,  "str1" , "2016-04-29" , 3006 , 
+							1001 , "str2"  )	 -->			
 	 </insert>
 
 
@@ -41,7 +40,7 @@
 	
 	<select  id="getBorderList"  parameterType="int"	resultMap="borderSelectMap">
 	SELECT
-		oqty, bname, bprice, bimg, otran, odate, ono
+		oqty, b.bname, b.bprice, b.bimg, otran, odate, ono
 		FROM border bo, customer c, bread b
 		where #{value}=bo.cno and bo.BNO=b.bno
 		group by ono

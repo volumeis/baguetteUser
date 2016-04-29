@@ -8,7 +8,7 @@
  	
 	<resultMap id="cartSelectMap" type="cart">
 		<result property="cartNo"				column="cartno" 		jdbcType="INTEGER"/>
-		<result property="cartQty"				column="cqty" 			jdbcType="INTEGER" />
+		<result property="buyQty"				column="cqty" 			jdbcType="INTEGER" />
 		<result property="cartDate"				column="cdate" 			jdbcType="DATE" />
 		<result property="customerNo"			column="cno"	 		jdbcType="INTEGER" />
 		<result property="breadNo"	 			column="bno" 			jdbcType="INTEGER" />
@@ -45,7 +45,7 @@
 	 <!-- SQL : SELECT LIST--> 
 	 <select 	id="getCartList"	parameterType="string"	resultMap="cartSelectMap">
 		select 
-		b.bname, b.bprice, b.bimg, c.cartno
+		b.bname, b.bprice, b.bimg, c.cartno, c.bno, c.cqty
 		from bread b,cart c
 		where b.bno=c.bno AND c.CNO=#{value};
 	 </select>

@@ -56,10 +56,12 @@ public class CartContorller {
 									 			Model model) throws Exception{
 		
 		System.out.println("/getJsonCart/getCart : GET");
-		//Business Logic
+
+
 		Map<String,Object> map = cartService.getCartList(customerNo);
-		// Model 과 View 연결
+
 		model.addAttribute("cartmap", map);
+
 	}
 	//===========================================
 	
