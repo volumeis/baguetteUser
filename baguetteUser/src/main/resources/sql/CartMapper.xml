@@ -59,6 +59,12 @@
 	  	FROM cart
 	  	WHERE CARTNO=#{value};
 	</delete>
+	<!-- 빵 구매시 카트 디비 삭제 -->
+	<delete  id="deleteCart" parameterType="int" >
+	    DELETE
+	    FROM cart
+	    WHERE cno=#{value};
+	</delete>
 	
 	 <!-- SQL : UPDATE -->
 	<update	id="updateCart"	parameterType="string" >

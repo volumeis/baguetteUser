@@ -17,6 +17,10 @@ public interface CartService {
 	
 	// 카트삭제
 	public void delCart(int cartNo) throws Exception;
+   
+	public void deleteCart(int customerNo) throws Exception;
+	
+	//	// 회원정보리스트 
 
 	// 카트 수정
 	public void updateCart(Cart cart) throws Exception ;

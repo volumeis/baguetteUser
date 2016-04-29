@@ -19,6 +19,7 @@ public interface CartDao {
 
 	public void delCart(int cartNo) throws Exception;
 	
+	public void deleteCart(int customerNO ) throws Exception ;
 //	// UPDATE
 	public void updateCart(Cart cart) throws Exception ;
 //	

@@ -90,7 +90,7 @@ public class BorderContorller {
 				border[i].setOqty(list.get(i).getBuyQty());
 				//border[i].setCustomerNo(customerNo);
 				//border[i].setOno(i+1);
-				border[i].setCustomerNo(1001);
+				border[i].setCustomerNo(customerNo);
 				border[i].setOdate(odate);
 				border[i].setOtran("주문완료");
 				border[i].setOr_chk("no");
@@ -106,7 +106,9 @@ public class BorderContorller {
 				borderService.addBorder(border[j]);
 			model.addAttribute("border["+j+"]", border[j]);
 		}
-
+   
+			cartService.deleteCart(customerNo);
+	
 	}
 
 	// ===========================================

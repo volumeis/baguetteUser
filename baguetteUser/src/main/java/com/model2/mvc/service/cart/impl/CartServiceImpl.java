@@ -56,7 +56,12 @@ public class CartServiceImpl implements CartService{
 		cartDao.updateCart(cart);
 	}
 	
-/*	public Map<String , Object > getBreadList(int storeNo) throws Exception {
+public void deleteCart(int customerNo)throws Exception {
+	cartDao.deleteCart(customerNo);
+}
+	
+	
+	/*	public Map<String , Object > getBreadList(int storeNo) throws Exception {
 		List<Bread> list= breadDao.getBreadList(storeNo);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
