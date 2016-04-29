@@ -15,6 +15,8 @@
 		<result property="breadDesc.name"		column="bname" 			jdbcType="VARCHAR" />
 		<result property="breadDesc.price" 		column="bprice" 		jdbcType="INTEGER" />
 		<result property="breadDesc.img"	 	column="bimg" 			jdbcType="VARCHAR" />
+		<result property="breadDesc.storeNo" 	column="sno" 			jdbcType="VARCHAR" />
+		<result property="storeName" 	column="sname" 			jdbcType="VARCHAR" />
 	</resultMap>
 	
 	<!-- <resultMap id="breadSelectMap" type="bread">
@@ -45,9 +47,10 @@
 	 <!-- SQL : SELECT LIST--> 
 	 <select 	id="getCartList"	parameterType="string"	resultMap="cartSelectMap">
 		select 
-		b.bname, b.bprice, b.bimg, c.cartno, c.bno, c.cqty
-		from bread b,cart c
-		where b.bno=c.bno AND c.CNO=#{value};
+		b.bname, b.bprice, b.bimg, b.sno, c.cartno, c.bno, c.cqty, s.SNAME
+		from bread b,cart c, store s
+		where b.bno=c.bno and b.SNO=s.SNO and c.cno=#{value}
+		order by b.sno;
 	 </select>
 	 
 	<!-- SQL : DELETE --> 
@@ -58,17 +61,14 @@
 	</delete>
 	
 	 <!-- SQL : UPDATE -->
-	<!--  <update	id="updateUser"	parameterType="user" >
-	   	UPDATE users
+	<update	id="updateCart"	parameterType="string" >
+	   	UPDATE cart
 	   	<set>
-	   		user_name 	= #{userName} ,
-			cell_phone	= #{phone},
-			addr 				= #{addr} ,
-			email				=	#{email}
-	   	</set>
-	   	WHERE user_id = #{userId}
+	   		cqty	= #{buyQty} ,
+		</set>
+	   	WHERE cartno = #{cartNo}
 	 </update>
-		 
+		 <!-- 
 	SQL : SELECT LIST
 	<select  id="getUserList"  parameterType="search"	resultMap="userSelectMap">
 	  	SELECT *
