@@ -51,6 +51,10 @@ public class CartServiceImpl implements CartService{
 	public void delCart(int cartNo) throws Exception {
 		cartDao.delCart(cartNo);
 	}
+
+	public void updateCart(Cart cart) throws Exception {
+		cartDao.updateCart(cart);
+	}
 	
 /*	public Map<String , Object > getBreadList(int storeNo) throws Exception {
 		List<Bread> list= breadDao.getBreadList(storeNo);

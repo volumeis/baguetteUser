@@ -45,6 +45,11 @@ public class CartDaoImpl implements CartDao{
 		sqlSession.delete("CartMapper.delCart", cartNo);
 	}
 
+	public void updateCart(Cart cart) throws Exception {
+		sqlSession.update("CartMapper.updateCart",cart);
+		
+	}
+
 //	public List<Bread> getBreadList(int storeNo) throws Exception {
 //	return sqlSession.selectList("BreadMapper.getBreadList", storeNo);
 //	}	
