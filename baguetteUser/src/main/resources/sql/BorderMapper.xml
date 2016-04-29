@@ -15,7 +15,9 @@
 		<result property="breadNo"	column="bno" 			jdbcType="INTEGER"/>
 		<result property="customerNo" 		column="cno" 			jdbcType="INTEGER" />
 		<result property="or_chk" 	column="or_chk" 			jdbcType="VARCHAR" />
-	    
+	    <result property="img"	 	column="bimg" 			jdbcType="VARCHAR" />
+	    <result property="name"		column="bname" 			jdbcType="VARCHAR" />
+		<result property="price" 	column="bprice" 		jdbcType="INTEGER" />
 	</resultMap>
 	
 
@@ -40,7 +42,7 @@
 	
 	<select  id="getBorderList"  parameterType="int"	resultMap="borderSelectMap">
 	SELECT
-		oqty, b.bname, b.bprice, b.bimg, otran, odate, ono
+		oqty, bname, bprice, bimg, otran, odate, ono
 		FROM border bo, customer c, bread b
 		where #{value}=bo.cno and bo.BNO=b.bno
 		group by ono
