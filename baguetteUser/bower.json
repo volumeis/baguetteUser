@@ -1,40 +1,43 @@
 {
-  "name": "baguetteUser",
-  "homepage": "https://github.com/volumeis/baguetteUser",
-  "authors": [
+    "name": "baguetteUser",
+    "homepage": "https://github.com/volumeis/baguetteUser",
+    "authors": [
     "Minho <minho.yoo.dev@gmail.com>"
   ],
-  "description": "",
-  "main": "",
-  "moduleType": [],
-  "license": "MIT",
-  "ignore": [
+    "description": "",
+    "main": "",
+    "moduleType": [],
+    "license": "MIT",
+    "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
   ],
-  "dependencies": {
-    "bootstrap": "~3.3.6",
-    "jquery": "1.11.3",
-    "blueimp-file-upload": "jquery-file-upload#^9.11.2",
-    "jquery.rateit": "latest",
-    "jquery-mobile-bower": "1.4.5",
-    "slider-pro": "1.2.2",
-    "fakeloader": "latest"
-  },
-  "install": {
-    "path": "src/main/webapp/lib",
-    "sources": {
-      "bootstrap": "bower_components/bootstrap/dist/**",
-      "jquery": "bower_components/jquery/dist/**",
-      "blueimp-file-upload": "bower_components/blueimp-file-upload/**",
-      "jquery-mobile-bower": "bower_components/jquery-mobile-bower/**",
-      "jquery.rateit": "bower_components/jquery.rateit/scripts/**",
-      "slider-pro": "bower_components/slider-pro/dist/**",
-      "fakeloader" : "bower_components/fakeloader/*"
-    
+    "dependencies": {
+        "bootstrap": "~3.3.6",
+        "jquery": "1.11.3",
+        "blueimp-file-upload": "jquery-file-upload#^9.11.2",
+        "jquery.rateit": "latest",
+        "jquery-mobile-bower": "1.4.5",
+        "slider-pro": "1.2.2",
+        "fakeloader": "latest",
+        "handlebars": "^4.0.5",
+        "dynatable": "^0.3.1"
+    },
+    "install": {
+        "path": "src/main/webapp/lib",
+        "sources": {
+            "bootstrap": "bower_components/bootstrap/dist/**",
+            "jquery": "bower_components/jquery/dist/**",
+            "blueimp-file-upload": "bower_components/blueimp-file-upload/**",
+            "jquery-mobile-bower": "bower_components/jquery-mobile-bower/**",
+            "jquery.rateit": "bower_components/jquery.rateit/scripts/**",
+            "slider-pro": "bower_components/slider-pro/dist/**",
+            "fakeloader": "bower_components/fakeloader/*",
+            "handlebars": "bower_components/handlebars/**",
+            "dynatable": "bower_components/dynatable/**"
+        }
     }
-  }
 }

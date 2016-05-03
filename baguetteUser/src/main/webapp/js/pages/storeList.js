@@ -2,7 +2,7 @@ $(function () {
     $(document).one("pageinit", function () {
         console.log('pageinit : storeList.js');
         $.ajax({
-            url: COMMONWEBSERVER + "/store/getJsonStoreList/" + "서울", //
+            url: COMMONWEBSERVER + "/store/getJsonStoreList/" + "서울 서초구", //
             method: "GET",
             dataType: "json",
             headers: {
@@ -52,40 +52,4 @@ $(function () {
             }
         });
     });
-    
-
-    $(document).on('pageinit', function () {
-        //        console.log("pageinit  document.html");
-        //            setTimeout(function () {
-        //                $.mobile.loading('show', {
-        //                    text: "use $.mobile.loading(\"show\")",
-        //                    textVisible: true,
-        //                    theme: "e"
-        //                });
-        //            }, 0);
-    });
-    $("#storelist-page").on("pagecreate", function () {
-        console.log('pagecreate  storerList.html');
-
-    });
-    $("#storelist-page").on("pagebeforecreate", function (event) {
-        console.log('pagebeforecreate  storerList.html');
-
-        //                $(".sp-image").css("margin", "0px");
-
-    });
-    $('#storelist-page').on('pagebeforeshow', function () {
-        console.log('pagebeforeshow storelist-page.html');
-        //                $(".sp-image").css("margin", "0px");
-    });
-    $(document).one('pageshow', function () {
-        //        console.log('pageshow document.html');
-
-    });
-    $('#storelist-page').on('pageshow', function () {
-        console.log('pageshow storerList.html');
-        /* */
-        $(".sp-image").css("margin", "0px");
-    });
-
 });

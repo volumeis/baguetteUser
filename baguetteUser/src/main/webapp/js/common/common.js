@@ -70,8 +70,8 @@ $(document).on('loadCustomerInfo', function () {
     $('#main-page').remove()
 });
 $(document).on('pageshow', function (e, data) {
-    //            console.log('pageshow : main.html');
-    $('#content').height(getRealContentHeight());
+    console.log('컨트롤에 계정정보 확인 함');
+//    $('#content').height(getRealContentHeight());
     $(document).trigger('loadCustomerInfo');
 });
 
@@ -111,15 +111,15 @@ function Pad(num) {
  * 04.01.16
  */
 
-function getRealContentHeight() {
-    var header = $.mobile.activePage.find("div[data-role='header']:visible");
-    var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
-    var content = $.mobile.activePage.find("div[data-role='main']:visible:visible");
-    var viewport_height = $(window).height();
-
-    var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
-    if ((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
-        content_height -= (content.outerHeight() - content.height());
-    }
-    return content_height;
-}
+//function getRealContentHeight() {
+//    var header = $.mobile.activePage.find("div[data-role='header']:visible");
+//    var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
+//    var content = $.mobile.activePage.find("div[data-role='main']:visible:visible");
+//    var viewport_height = $(window).height();
+//
+//    var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
+//    if ((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
+//        content_height -= (content.outerHeight() - content.height());
+//    }
+//    return content_height;
+//}

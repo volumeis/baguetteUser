@@ -1,6 +1,9 @@
-$("#ratestar").bind('rated', function (event, value) {
-    $('#ratevalue').text(value);
-});
+/*
+* storeHome 페이지 엘리먼트 주입
+*
+* 경철
+* 05.02.16
+*/
 function loadStoreHome(storeNo) {
     $.ajax({
         url: COMMONWEBSERVER + "/bread/getJsonBreadList/" + storeNo,
@@ -12,7 +15,7 @@ function loadStoreHome(storeNo) {
         },
         success: function (JSONData, status) {
             var breadList = JSONData.breadmap.breadlist;
-            
+
             $.each(breadList, function (i, bread) {
                 var displayValue =
                     "이  름 : " + bread.name + "<br/>" + "가  격 : " + bread.price + "<br/>";
@@ -42,7 +45,7 @@ function loadStoreHome(storeNo) {
                 $('#img' + breadindex).click(function () {
                     console.log(bread.breadNo);
                     $.ajax({
-                        url: COMMONWEBSERVER+ "/cart/addJsonCart/customerNo=" + LOGIN_NO + "&breadNo=" + bread.breadNo,
+                        url: COMMONWEBSERVER + "/cart/addJsonCart/customerNo=" + LOGIN_NO + "&breadNo=" + bread.breadNo,
                         method: "GET",
                         dataType: "json",
                         headers: {
@@ -60,4 +63,21 @@ function loadStoreHome(storeNo) {
             $('#cartdiv').append('<div>메롱</div>')
         }
     });
+
 }
+
+/*storehome의 경우 기존 page-cashed 방법에서 none-cash방법으로 변경. 
+* 때문에 one pageshow 이벤트는 처음 페이지가 열릴 때 한번 호출됨
+*
+* 민호
+* 05.02.16
+*/
+$(document).one('pageshow', "#storehome-page", function (event, data) {
+    console.log('pageshow #sotrehome-page')
+    loadStoreHome(QUERYSTRING);
+    
+    $("#ratestar").bind('rated', function (event, value) {
+        $('#ratevalue').text(value);
+    });
+
+});
