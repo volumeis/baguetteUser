@@ -5,49 +5,48 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="BorderMapper">
- 	
- 	
+
 	<resultMap id="borderSelectMap" type="border">
-		<result property="oqty"	column="oqty" 			jdbcType="INTEGER"/>
-		<result property="ono"		column="ono" 			jdbcType="INTEGER" />
-		<result property="otran" 	column="otran" 		jdbcType="VARCHAR" />
-		<result property="odate" 	column="odate"	 		jdbcType="DATE" />
-		<result property="breadNo"	column="bno" 			jdbcType="INTEGER"/>
-		<result property="customerNo" 		column="cno" 			jdbcType="INTEGER" />
-		<result property="or_chk" 	column="or_chk" 			jdbcType="VARCHAR" />
-	    <result property="img"	 	column="bimg" 			jdbcType="VARCHAR" />
-	    <result property="name"		column="bname" 			jdbcType="VARCHAR" />
-		<result property="price" 	column="bprice" 		jdbcType="INTEGER" />
+		<result property="oqty" column="oqty" jdbcType="INTEGER" />
+		<result property="ono" column="ono" jdbcType="INTEGER" />
+		<result property="otran" column="otran" jdbcType="VARCHAR" />
+		<result property="odate" column="odate" jdbcType="DATE" />
+		<result property="breadNo" column="bno" jdbcType="INTEGER" />
+		<result property="customerNo" column="cno" jdbcType="INTEGER" />
+		<result property="or_chk" column="or_chk" jdbcType="VARCHAR" />
+		<result property="img" column="bimg" jdbcType="VARCHAR" />
+		<result property="name" column="bname" jdbcType="VARCHAR" />
+		<result property="price" column="bprice" jdbcType="INTEGER" />
+		<result property="storeNo" column="sno" jdbcType="INTEGER" /> <!--  storeNo 추가 민호 05.02.16-->
 	</resultMap>
-	
-
-	 <insert 	id="addBorder"		parameterType="border" >
-	 	INSERT
-		INTO border( oqty , otran , odate , bno, cno, or_chk) 
-		VALUES	 (	#{oqty} ,  #{otran} , #{odate} , #{breadNo} , 
-							#{customerNo} , #{or_chk}  )
-		<!--  VALUES	 (	1 ,  "str1" , "2016-04-29" , 3006 , 
-							1001 , "str2"  )	 -->			
-	 </insert>
 
 
-	 <select 	id="getBorder"	parameterType="int"	resultMap="borderSelectMap">
+	<insert id="addBorder" parameterType="border">
+		INSERT
+		INTO border( oqty , otran , odate , bno, cno, or_chk)
+		VALUES ( #{oqty} , #{otran} , #{odate} , #{breadNo} ,
+		#{customerNo} , #{or_chk} )
+		<!-- VALUES ( 1 , "str1" , "2016-04-29" , 3006 , 1001 , "str2" ) -->
+	</insert>
+
+
+	<select id="getBorder" parameterType="int" resultMap="borderSelectMap">
 		SELECT
-		oqty, ono, otran, odate, bno, cno, or_chk 		
+		oqty, ono, otran, odate, bno, cno, or_chk
 		FROM border
 		WHERE ono = #{value}
-	 </select>
-	 
+	</select>
 
-	
-	<select  id="getBorderList"  parameterType="int"	resultMap="borderSelectMap">
-	SELECT
-		oqty, bname, bprice, bimg, otran, odate, ono
-		FROM border bo, customer c, bread b
+
+
+	<select id="getBorderList" parameterType="int" resultMap="borderSelectMap">
+		SELECT
+		oqty, bname, bprice, bimg, otran, odate, ono, sno
+		FROM border bo, customer
+		c, bread b
 		where #{value}=bo.cno and bo.BNO=b.bno
 		group by ono
-		order by 6, bname
-	 </select>
-	 
-	 
+		order by
+		6, bname
+	</select>
 </mapper>

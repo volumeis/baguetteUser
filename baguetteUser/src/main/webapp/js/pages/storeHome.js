@@ -5,6 +5,7 @@
 * 05.02.16
 */
 function loadStoreHome(storeNo) {
+    
     $.ajax({
         url: COMMONWEBSERVER + "/bread/getJsonBreadList/" + storeNo,
         method: "GET",
