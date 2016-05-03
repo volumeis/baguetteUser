@@ -3,12 +3,12 @@
  */
 
 //민호 pc tomcat 서버
-//var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
-var COMMONWEBSERVER = "";
+var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
+//var COMMONWEBSERVER = "";
 
 //민호 pc database 서버
-//var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
-var COMMONDBSERVER = "";
+var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
+//var COMMONDBSERVER = "";
 
 //depreciate
 //var COMMONDBSERVER = "http://java78bit404.iptime.org:5025";
@@ -67,7 +67,7 @@ $(document).on('loadCustomerInfo', function () {
     });
 
     $("#customerID").text(LOGIN_ID)
-    $('#main-page').remove()
+//    $('#main-page').remove()
 });
 $(document).on('pageshow', function (e, data) {
     console.log('컨트롤에 계정정보 확인 함');

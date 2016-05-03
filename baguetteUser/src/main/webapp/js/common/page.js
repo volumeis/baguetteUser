@@ -15,7 +15,10 @@ $(document).one("pagecreate", function () {
         $("[data-role=panel]").panel().enhanceWithin();
     }, "html");
 
-
+    $("#storelist-page").load("storelist.html [data-role=main]", function () {
+        console.log('storelist.js init');
+        $.getScript("../js/pages/storeList.js");
+    });
     $("#cart-page").load("cart.html [data-role=main]", function () {
         console.log('cart.js init');
         $.getScript("../js/pages/cart.js");
@@ -28,11 +31,15 @@ $(document).one("pagecreate", function () {
         console.log('customerInfo.js init');
         $.getScript("../js/pages/customerInfo.js");
     });
-
-    $.mobile.changePage("storeList.html", function () {
-        console.log('storeList.js init');
-        //        $.getScript("../js/pages/storeList.js");   html안에서 로딩
-    });
-
-
 });
+
+$(document).one("pageshow", function () {
+    $.mobile.changePage('#storelist-page');
+});
+
+//$(document).one("pageshow", function () {
+//    $.mobile.changePage("storeList.html", function () {
+//        console.log('storeList.js init');
+        //        $.getScript("../js/pages/storeList.js");   html안에서 로딩
+//    });
+//});
