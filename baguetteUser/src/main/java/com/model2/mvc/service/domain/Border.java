@@ -16,7 +16,7 @@ public class Border {
     private String name;
     private int price;
     private String img;
-    private int sno; // 가게번호
+    private int storeNo; // 가게번호
     
 	public int getOqty() {
 		return oqty;
@@ -78,18 +78,18 @@ public class Border {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	public int getSno() {
-		return sno;
+	public int getStoreNo() {
+		return storeNo;
 	}
-	public void setSno(int sno) {
-		this.sno = sno;
+	public void setStoreNo(int storeNo) {
+		this.storeNo = storeNo;
 	}
 	
 	@Override
 	public String toString() {
 		return "Border [oqty=" + oqty + ", ono=" + ono + ", otran=" + otran + ", odate=" + odate + ", customerNo="
 				+ customerNo + ", or_chk=" + or_chk + ", breadNo=" + breadNo + ", name=" + name + ", price=" + price
-				+ ", img=" + img + ", sno=" + sno + "]";
+				+ ", img=" + img + ", storeNo=" + storeNo + "]";
 	}
 	
 }
