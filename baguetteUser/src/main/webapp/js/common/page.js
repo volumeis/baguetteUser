@@ -15,7 +15,7 @@ $(document).one("pagecreate", function () {
         $("[data-role=panel]").panel().enhanceWithin();
     }, "html");
 
-    $("#storelist-page").load("storelist.html [data-role=main]", function () {
+    $("#storelist-page").load("storeList.html [data-role=main]", function () {
         console.log('storelist.js init');
         $.getScript("../js/pages/storeList.js");
     });
