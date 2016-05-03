@@ -26,9 +26,8 @@ function loadStoreHome(storeNo) {
                 var cartimgdivR = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'img' + breadindex);
                 var carttextL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'text' + breadindex);
                 var carttextR = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'text' + breadindex);
-                //
-                var cartimg =
-                    $(document.createElement('img')).attr({
+                
+                var cartimg = $(document.createElement('img')).attr({
                         src: "../image/breadImg/" + storeNo + "/" + bread.img,
                         class: "img-rounded",
                         style: "height:100%; width:100%"
@@ -54,17 +53,13 @@ function loadStoreHome(storeNo) {
                             "Content-Type": "application/json"
                         }
                     });
-
                 });
-
             });
-
         },
         error: function () {
             $('#cartdiv').append('<div>메롱</div>')
         }
     });
-
 }
 
 /*storehome의 경우 기존 page-cashed 방법에서 none-cash방법으로 변경. 

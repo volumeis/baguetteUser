@@ -25,7 +25,7 @@ $(document).on('pageshow','#customerinfo-page', function () {
 
                 var cimg =
                     $(document.createElement('img')).attr({
-                        src: COMMONWEBSERVER + "/image/breadImg/" + JSONData.mpa.list[i].sno +"/" + JSONData.map.list[i].img,
+                        src: COMMONWEBSERVER + "/image/breadImg/" + JSONData.map.list[i].storeNo +"/" + JSONData.map.list[i].img,
                         class: "img-rounded",
                         style: "height:100%; width:100%"
                     });
