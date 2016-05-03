@@ -11,7 +11,7 @@ function callStoreHome() {
     });
 }
 
-$(document).on('pagebeforeshow', ".storehome-page", function (event, data) {
+$(document).on('pagebeforeshow', "#storehome-page", function (event, data) {
     QUERYSTRING = $(this).data("url").split("?")[1];;
     QUERYSTRING = QUERYSTRING.replace("parameter=", "");
 });
