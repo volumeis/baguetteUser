@@ -10,21 +10,24 @@
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/fakeloader/fakeLoader.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../lib/slider-pro/css/slider-pro.css" />
 
     <!-- js -->
     <script src="../lib/jquery/jquery.min.js"></script>
     <script src="../js/common/common.js"></script>
     <script src="../js/common/event.js"></script>
     <script src="../js/common/page.js"></script>
-    
-    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/common/closer.js"></script>
+
     <script src="../lib/fakeloader/fakeLoader.js"></script>
     <script src="../js/jQery.headroom.js"></script>
     <script src="../js/headroom.js"></script>
-    <script src="../lib/slider-pro/js/jquery.sliderPro.js"></script>
-    <Script src="../js/storeHome.js"></Script>
-    <!--  jquery-mobile 은 최하단에 놓음-->
+    <script src="../lib/handlebars/handlebars.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1ad516d90febbb3a47e150372da2dfec&libraries=services,clusterer"></script>
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1ad516d90febbb3a47e150372da2dfec"></script>
+    
+
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
 </head>
 
@@ -35,15 +38,18 @@
         <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
             <span class="glyphicon glyphicon-menu-hamburger"></span>
         </a>
-        <a id="right-map" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
+        <a id="right-map" href="#map-page" data-transition="slidedown" data-display="push" class="ui-btn-right">
             <span class="glyphicon glyphicon-map-marker"></span>
         </a>
-        <a id="right-panel" href="#cartPanel" data-transition="slide" data-display="push" class="ui-btn-right">
+        <a id="right-panel" href="#cart-page" data-transition="slide" data-display="push" class="ui-btn-right">
             <span class="glyphicon glyphicon-shopping-cart"></span>
         </a>
     </div>
 
-    <div data-role="page" id="main-page" class="pages"></div>
+    <div data-role="page" id="main-page" class="pages"></div><!-- 삭제되는 div -->
+    <div data-role="page" id="cart-page" class="pages"></div>
+    <div data-role="page" id="map-page" class="pages"></div>
+    <div data-role="page" id="customerinfo-page" class="pages"></div>
 
     <script>
         $("#header").headroom({
@@ -55,6 +61,23 @@
                 unpinned: "headroom--unpinned"
             }
         });
+    </script>
+    
+    <script id="store-list-template" type="text/x-handlebars-template">
+        <table>
+            <thead>
+                <th>가게명</th>
+                <th>주소</th>
+            </thead>
+            <tbody>
+                {{#list}}
+                <tr>
+                    <td>{{storeName}}</td>
+                    <td>{{storeAddr}}</td>
+                </tr>
+                {{/list}}
+            </tbody>
+        </table>
     </script>
 
 </body>
