@@ -72,17 +72,12 @@ public class CustomerContorller {
 		 * 04.26.16
 		 */
 		if(session.getAttribute("customer") == null){
-			Customer customer2 = new Customer();
-			System.out.println("3");
-			customer2.setCustomerNo(1001);
-			System.out.println("2");
-			customer2.setCustomerTel("010-1234-1234");
-			System.out.println("1");
-			customer2.setPassword("1234");
-			session.setAttribute("customer", customer2 );
-			System.out.println("loginCheck : " + customer2);
-			model.addAttribute("customer",customer2);
-			System.out.println("저장된 세션 : " + customer2);
+			Customer testCustomer = customerService.getCustomer("testCtel");
+			
+			session.setAttribute("customer", testCustomer );
+			System.out.println("loginCheck : " + testCustomer);
+			model.addAttribute("customer",testCustomer);
+			System.out.println("저장된 세션 : " + testCustomer);
 		} else{
 			System.out.println("loginCheck : " + customer);
 			model.addAttribute("customer",customer);
