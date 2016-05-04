@@ -19,18 +19,32 @@ function loadStoreHome(storeNo) {
 
             $.each(breadList, function (i, bread) {
                 var displayValue =
-                    "이  름 : " + bread.name + "<br/>" + "가  격 : " + bread.price + "<br/>";
+                    '<font size="4">'+bread.name + "</font><br/><b>"+ bread.price + "원</b><br/>";
                 var breadindex = i;
                 var cartdiv = $(document.createElement('div')).addClass('ui-grid-a');
-                var cartimgdivL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'img' + breadindex);
-                var cartimgdivR = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'img' + breadindex);
-                var carttextL = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'text' + breadindex);
-                var carttextR = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'text' + breadindex);
+                var cartimgdivL = $(document.createElement('div')).addClass('ui-block-a').attr({
+					id:'img'+breadindex,
+					style: "padding: 10px 5px 10px 5px"
+					});
+				var cartimgdivR = $(document.createElement('div')).addClass('ui-block-b').attr({
+									id:'img'+breadindex,
+									style: "padding: 10px 5px 10px 5px"
+									});
+				var carttextL = $(document.createElement('div')).addClass('ui-block-a').attr({
+									id:'text'+breadindex,
+									style: "padding-right:15px;text-align:right"
+									});
+				var carttextR = $(document.createElement('div')).addClass('ui-block-b').attr({
+									id:'text'+breadindex,
+									style: "padding-right:15px;text-align:right"
+									});
                 
                 var cartimg = $(document.createElement('img')).attr({
                         src: "../image/breadImg/" + storeNo + "/" + bread.img,
                         class: "img-rounded",
-                        style: "height:100%; width:100%"
+                        style: "height:100%; width:100%; border: 1px solid lightgray",
+
+                       
                     });
                 //
                 if (i % 2 == 0) {

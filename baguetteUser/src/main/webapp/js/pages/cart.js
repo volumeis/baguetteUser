@@ -1,4 +1,4 @@
-    $(document).on('pageshow', '#cart-page', function () {
+    $(document).one('pageshow', '#cart-page', function () {
         console.log("cart.js 호출")
         $.ajax({
             // 회원 번호를 통해 호출
@@ -60,7 +60,9 @@
                     var storeDiv = $(document.createElement('div')).addClass('ui-grid-a').attr('id', 'sdiv' + cindex);
                     var storeDivImg = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'sdiv' + cindex);
                     var storeDivName = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'sname' + cindex);
-
+                    
+                    var storeDivSolo = $(document.createElement('div')).addClass('ui-grid-solo').attr('id', 'sdivsolo' + cindex);
+                    
                     var simg =
                         $(document.createElement('img')).attr({
                             src: "../image/storeImg/store_" + JSONData.cartmap.cartlist[i].breadDesc.storeNo + ".jpg",

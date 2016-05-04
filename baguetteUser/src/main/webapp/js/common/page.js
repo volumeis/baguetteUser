@@ -19,10 +19,10 @@ $(document).one("pagecreate", function () {
         console.log('storelist.js init');
         $.getScript("../js/pages/storeList.js");
     });
-    $("#cart-page").load("cart.html [data-role=main]", function () {
+    /*$("#cart-page").load("cart.html [data-role=main]", function () {
         console.log('cart.js init');
         $.getScript("../js/pages/cart.js");
-    });
+    });*/
     $("#map-page").load("map.html [data-role=main]", function () {
         console.log('map.js init');
         $.getScript("../js/pages/map.js");
