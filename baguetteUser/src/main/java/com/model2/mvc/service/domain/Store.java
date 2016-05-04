@@ -11,6 +11,8 @@ public class Store {
 	private String storeTime;	//운영시간
 	private String storeImg;	//사진
 	private String storeInfo;	//가게정보
+	private double storeLat;	//위도
+	private double storeLng;	//경도
 	
 	public Store() {
 	}
@@ -71,9 +73,28 @@ public class Store {
 		this.storeInfo = storeInfo;
 	}
 
+	public double getStoreLat() {
+		return storeLat;
+	}
+
+	public void setStoreLat(double storeLat) {
+		this.storeLat = storeLat;
+	}
+
+	public double getStoreLng() {
+		return storeLng;
+	}
+
+	public void setStoreLng(double storeLng) {
+		this.storeLng = storeLng;
+	}
+
 	@Override
 	public String toString() {
 		return "Store [storeNo=" + storeNo + ", storeName=" + storeName + ", storeAddr=" + storeAddr + ", storeTel="
-				+ storeTel + ", storeTime=" + storeTime + ", storeImg=" + storeImg + ", storeInfo=" + storeInfo + "]";
+				+ storeTel + ", storeTime=" + storeTime + ", storeImg=" + storeImg + ", storeInfo=" + storeInfo
+				+ ", storeLat=" + storeLat + ", storeLng=" + storeLng + "]";
 	}
+
+
 }
