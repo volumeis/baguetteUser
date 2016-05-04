@@ -1,0 +1,17 @@
+/* @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html, body {
+  height: 100%;
+  font-family: 'Noto Sans KR';
+}
+ */
+.storecap{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0px 15px 15px 0px;
+    color: #fff;
+    text-align: right;
+    font-size:200%;
+    text-shadow: -3px 0 #000, 0 3px #000, 3px 0 #000, 0 -3px #000;
+}

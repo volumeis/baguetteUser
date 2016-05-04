@@ -15,36 +15,49 @@
                 $.each(JSONData.cartmap.cartlist, function (i, item) {
 
                     var cindex = i;
-                    var cdiv = $(document.createElement('div')).addClass('ui-grid-a').attr('id', 'cdiv' + cindex);
-                    var cimgdiv = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'cimgdiv' + cindex);
+                    var cdiv = $(document.createElement('div')).addClass('ui-grid-b').attr({
+                    	id: 'cdiv' + cindex,
+                    	style: 'margin: 5px; border: 1px solid lightgray; text-align:center'
+                    		
+                    });
+                    var cimgdiv = $(document.createElement('div')).addClass('ui-block-a').attr({
+                    	id: 'cimgdiv' + cindex,
+                    	style: 'width:25%'
+                    });
                     var ctexttop = $(document.createElement('div')).addClass('ui-block-b')
                         .attr({
                             id: 'ctop' + cindex,
-                            style: 'height:50px; text-align: right'
+                            style: 'width:45%;height:30px; text-align: right; padding :5px;font-size:115%'
                         });
-                    var ctextmid = $(document.createElement('div')).addClass('ui-block-b tprice')
+                    var ctextmid = $(document.createElement('div')).addClass('ui-block-c tprice')
                         .attr({
                             id: 'cmid' + cindex,
-                            style: 'height:50px; text-align: right'
-
+                            style: 'width:30%;height:30px; text-align: right;padding :5px 15px 0px 0px'
+                           
                         });
-                    var ctextbot = $(document.createElement('div')).addClass('ui-block-b')
+                    var ctextbot = $(document.createElement('div')).addClass('ui-block-c')
                         .attr({
                             id: 'cbot' + cindex,
-                            style: 'height:50px'
+                            style: 'width:30%;height:30px'
                         });
 
+                    var cempty = $(document.createElement('div')).addClass('ui-block-b')
+                    .attr({
+                        id: 'empty' + cindex,
+                        style: 'width:45%;height:30px'
+                    });
+                    
                     var cimg =
                         $(document.createElement('img')).attr({
                             src: "../image/breadImg/" + JSONData.cartmap.cartlist[i].breadDesc.storeNo + "/" + JSONData.cartmap.cartlist[i].breadDesc.img,
                             class: "img-rounded",
-                            style: "height:100%; width:100%"
+                            style: "height:60px; width:60px"
                         });
 
                     var cdel = $(document.createElement('div'))
                         .addClass('ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all').attr({
                             id: "cdel" + cindex,
-                            style: "float:right"
+                            style: "float:right; margin:0px 10px 5px 10px"
                         });
 
                     var cselect =
@@ -57,17 +70,22 @@
                     // Cart 스토어 정보 var 선언부
                     // 04.29 경철
 
-                    var storeDiv = $(document.createElement('div')).addClass('ui-grid-a').attr('id', 'sdiv' + cindex);
+                    /*var storeDiv = $(document.createElement('div')).addClass('ui-grid-a').attr('id', 'sdiv' + cindex);*/
                     var storeDivImg = $(document.createElement('div')).addClass('ui-block-a').attr('id', 'sdiv' + cindex);
-                    var storeDivName = $(document.createElement('div')).addClass('ui-block-b').attr('id', 'sname' + cindex);
+                    var storeDivName = $(document.createElement('div')).addClass('ui-block-a storecap').attr({
+                    	id: 'sname' + cindex
+                    	
+                    });
                     
-                    var storeDivSolo = $(document.createElement('div')).addClass('ui-grid-solo').attr('id', 'sdivsolo' + cindex);
-                    
+                    var storeDivSolo = $(document.createElement('div')).addClass('ui-grid-solo').attr({
+                    	id: 'sdivsolo' + cindex,
+                    	style: 'position:relative;padding: 5px;'
+                    });
                     var simg =
                         $(document.createElement('img')).attr({
                             src: "../image/storeImg/store_" + JSONData.cartmap.cartlist[i].breadDesc.storeNo + ".jpg",
-                            class: "img-rounded",
-                            style: "height:100%; width:100%"
+                            /*class: "img-rounded",*/
+                            style: "height:100%; width:100%; border: 1px solid lightgray"
                         });
 
 
@@ -86,11 +104,11 @@
 
                     // 스토어 정보 빵보다 우선시 되게 넣기 위해서
                     if (i == 0) {
-                        $('#maincdiv').append(storeDiv.html(storeDivImg.html(simg)).append(storeDivName));
+                        $('#maincdiv').append(storeDivSolo.html(storeDivImg.html(simg)).append(storeDivName));
                         $('#sname' + cindex).append(JSONData.cartmap.cartlist[i].storeName);
                     }
 
-                    $('#maincdiv').append(cdiv.html(cimgdiv.html(cimg)).append(ctexttop).append(ctextmid).append(ctextbot));
+                    $('#maincdiv').append(cdiv.html(cimgdiv.html(cimg)).append(ctexttop).append(ctextmid).append(cempty).append(ctextbot));
                     $('#ctop' + cindex).append(JSONData.cartmap.cartlist[i].breadDesc.name);
                     $('#cbot' + cindex).append(cdel).append(cselect);
 
@@ -103,7 +121,7 @@
                                     class: "img-rounded",
                                     style: "height:100%; width:100%"
                                 });
-                            $('#maincdiv').append(storeDiv.html(storeDivImg.html(simg1)).append(storeDivName));
+                            $('#maincdiv').append(storeDivSolo.html(storeDivImg.html(simg1)).append(storeDivName));
                             $('#sname' + cindex).append(JSONData.cartmap.cartlist[i + 1].storeName);
                         }
                     }
@@ -114,7 +132,7 @@
                                 str += +($(this).val() * JSONData.cartmap.cartlist[i].breadDesc.price);
                             });
                             $('#cmid' + cindex).text(str);
-
+                            /*$('#cmid' + cindex).append($(document.createElement('div')).text("원"));*/
                             $.ajax({
                                 url: "/cart/updateJsonCart/buyQty=" + $(this).val() + "&cartNo=" + JSONData.cartmap.cartlist[i].cartNo,
                                 method: "GET",
@@ -133,6 +151,8 @@
                             $(".tprice").each(function () {
                                 sum += +($(this).text());
                                 $("#totalprice").text(sum);
+                                $("#totalprice").append("원");
+                                
                             });
                         })
                         .change();
@@ -150,11 +170,7 @@
                         });
 
                         $('#cdiv' + cindex).remove();
-                        var sum = 0;
-                        $(".tprice").each(function () {
-                            sum += +($(this).text());
-                            $("#totalprice").text(sum);
-                        });
+                        
                     });
 
                 })
