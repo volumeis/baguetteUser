@@ -1,4 +1,4 @@
-    $(document).one('pageshow', '#cart-page', function () {
+    $(document).one('pagecreate', '#cart-page', function () {
         console.log("cart.js 호출")
         $.ajax({
             // 회원 번호를 통해 호출
@@ -17,7 +17,7 @@
                     var cindex = i;
                     var cdiv = $(document.createElement('div')).addClass('ui-grid-b').attr({
                     	id: 'cdiv' + cindex,
-                    	style: 'margin: 5px; border: 1px solid lightgray; text-align:center'
+                    	style: 'margin: 5px 0px; border: 1px solid lightgray; text-align:center'
                     		
                     });
                     var cimgdiv = $(document.createElement('div')).addClass('ui-block-a').attr({
@@ -79,7 +79,7 @@
                     
                     var storeDivSolo = $(document.createElement('div')).addClass('ui-grid-solo').attr({
                     	id: 'sdivsolo' + cindex,
-                    	style: 'position:relative;padding: 5px;'
+                    	style: 'position:relative;'
                     });
                     var simg =
                         $(document.createElement('img')).attr({
@@ -169,6 +169,7 @@
                         });
 
                         $('#cdiv' + cindex).remove();
+                        
                         
                     });
 

@@ -5,12 +5,12 @@ $(function () {
     //==>"Login"  Event 연결
     $("#login").on("click", function () {
 
-        var id = $("input:text").val().trim();
+        var id = $("#customerTel").val().trim();
         var pw = $("input:password").val().trim();
 
         if (id == null || id.length < 1) {
             alert('ID 를 입력하지 않으셨습니다.');
-            $("input:text").focus();
+            $("input:tel").focus();
             return;
         }
 

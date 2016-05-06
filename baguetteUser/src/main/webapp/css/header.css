@@ -28,10 +28,11 @@
     background : rgba(0, 0, 0, 0.8);
 }
 .header #baguette-font{
+	text-shadow: none !important;
 	text-align: center;
 	color:white;
 	font-size:1.5em;
-	font-weight: 400;
+	font-weight: 600;
 	font-style: italic;
 	padding:8px;
 }
@@ -55,23 +56,45 @@
 }
 #menuPanel{
 	background : rgba(0, 0, 0, 0.8);
+	text-shadow: none !important;
 }
 
 #menuPanel, .main-content{
-    margin-top: 50px;
+    margin-top: 55px;
+}
+#menuPanel #customerID{
+	height: 40px;
+	border: 1px solid white;
+	font-size: 1.3em;
+	font-weight:400;
+	text-align:center;
+	background:white;
+	padding:6px;
+}
+
+
+#menuPanel .glyphicon{
+	color:white;
+	font-size:17px;	
+	
 }
 
 #menuPanel #storelist,#customerinfo{
 	height: 50px;
 	border: 2px solid white;
 	border-top: none;
-	font-size: 1.5em;
-	text-align: right;
-	padding: 6px;
+	font-size: 1.3em;
+	font-weight:600;
+	color:white;
+	/* text-align: right; */
+	padding: 10px;
 }
 
+#menuPanel #customertext,#storelisttext{
+	padding-left: 7px;
+}
 .main-content{
-    margin: 0 2px;
+    margin: 5px;
     padding: 0;
     margin-top: 50px;
 }

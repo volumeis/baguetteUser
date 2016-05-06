@@ -1,5 +1,5 @@
 .ui-block-a {
-    padding: 5px 5px 0px 5px;
+    padding-top:4px;
     width: 100%;
     /*    padding-left: 0px;*/
     /*    padding-right: 0px;*/
@@ -30,20 +30,43 @@
     color: #fff;
     text-align: right;
     font-size:100%;
-    text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
+    text-shadow: 1px 1px 0 #000,
+			    -1px 1px 0 #000,
+			    1px -1px 0 #000,
+			    -1px -1px 0 #000,
+			    0px 1px 0 #000,
+			    0px -1px 0 #000,
+			    -1px 0px 0 #000,
+			    1px 0px 0 #000,
+			    2px 2px 0 #000,
+			    -2px 2px 0 #000,
+			    2px -2px 0 #000,
+			    -2px -2px 0 #000,
+			    0px 2px 0 #000,
+			    0px -2px 0 #000,
+			    -2px 0px 0 #000,
+			    2px 0px 0 #000,
+			    1px 2px 0 #000,
+			    -1px 2px 0 #000,
+			    1px -2px 0 #000,
+			    -1px -2px 0 #000,
+			    2px 1px 0 #000,
+			    -2px 1px 0 #000,
+			    2px -1px 0 #000,
+			    -2px -1px 0 #000;
 }
 
 .ui-block-a .figre .fig .address {
 /*    color: white;*/
     
-    font-size: 1.5rem;
+    font-size: 1.5em;
     text-align: right;
     margin-bottom : -5px;
 }
 
 .ui-block-a .figre .fig .name {
 /*    color: white;*/
-    font-size: 2rem;
+    font-size: 2em;
     text-align: right;
 }
 

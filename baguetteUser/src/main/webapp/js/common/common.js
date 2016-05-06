@@ -7,8 +7,8 @@ var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
 //var COMMONWEBSERVER = "";
 
 //민호 pc database 서버
-var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
-//var COMMONDBSERVER = "";
+//var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
+var COMMONDBSERVER = "";
 
 //depreciate
 //var COMMONDBSERVER = "http://java78bit404.iptime.org:5025";
