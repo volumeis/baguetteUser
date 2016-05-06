@@ -18,7 +18,7 @@ $(function () {
                 $(".ui-grid-solo").append(address);
                 var name = $(document.createElement('div')).addClass('name');
                 name.text(store.storeName);
-                var figcaption = $(document.createElement('figcaption'));
+                var figcaption = $(document.createElement('div')).addClass('fig');
                 figcaption.html(address.add(name));
 
                 var img =
@@ -27,7 +27,7 @@ $(function () {
                         alt: "alt : " + store.storeName
                     });
 
-                var figuere = $(document.createElement('figure')).html(img.add(figcaption));
+                var figuere = $(document.createElement('div')).html(img.add(figcaption)).addClass('figre');
 
                 var storeLink =
                     $(document.createElement('a')).attr({

@@ -10,8 +10,22 @@ function callStoreHome() {
         });
     });
 }
+	
+$(document).on('click', '#customerinfo', function(){
+	$.mobile.changePage("#customerinfo-page");
+	 
+});
+
+$(document).on('click', '#storelist', function(){
+	$.mobile.changePage("##storelist-page");
+	 
+});
 
 $(document).on('pagebeforeshow', "#storehome-page", function (event, data) {
     QUERYSTRING = $(this).data("url").split("?")[1];;
     QUERYSTRING = QUERYSTRING.replace("parameter=", "");
 });
+
+
+
+

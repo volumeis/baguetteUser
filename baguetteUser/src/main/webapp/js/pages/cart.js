@@ -84,7 +84,6 @@
                     var simg =
                         $(document.createElement('img')).attr({
                             src: "../image/storeImg/store_" + JSONData.cartmap.cartlist[i].breadDesc.storeNo + ".jpg",
-                            /*class: "img-rounded",*/
                             style: "height:100%; width:100%; border: 1px solid lightgray"
                         });
 
