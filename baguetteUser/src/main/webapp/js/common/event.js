@@ -9,15 +9,25 @@ function callStoreHome() {
             transition: "slideup"
         });
     });
+    $('#map-page').on('click', '.desc a', function () {
+        var storeId = $(this).attr("id");
+        $.mobile.changePage("storeHome.html", {
+            dataUrl: "storeHome.html?parameter=" + storeId,
+            data: {
+                'parameter': storeId
+            },
+            transition: "slideup"
+        });
+    });
 }
-
-$(document).on('click', '#storelist', function(){
-	$.mobile.changePage("#storelist-page");
+	
+$(document).on('click', '#customerinfo', function(){
+	$.mobile.changePage("#customerinfo-page");
 	 
 });
 
-$(document).on('click', '#customerinfo', function(){
-	$.mobile.changePage("#customerinfo-page");
+$(document).on('click', '#storelist', function(){
+	$.mobile.changePage("##storelist-page");
 	 
 });
 
