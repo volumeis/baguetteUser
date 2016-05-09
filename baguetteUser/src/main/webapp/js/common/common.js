@@ -14,7 +14,7 @@ var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
 //var COMMONDBSERVER = "http://java78bit404.iptime.org:5025";
 
 //민호 pc node.js 서버
-var COMMONNODESERVER = "http://java78bit404.iptime.org:3025";
+var COMMONNODESERVER = "http://java78bit404.iptime.org:30025";
 //var COMMONNODESERVER = "http://localhost:3000";
 
 var LOGIN_NO;
