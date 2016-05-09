@@ -69,6 +69,14 @@
         });
     </script>
     
+    <script type="text/javascript">
+    $(document).on("pageshow","#menuPanel", function(){
+	    var panelHeight = $('#menuPanel').height()-269;
+	    $('#logout').attr({
+	    	style : "margin-top:"+panelHeight+'px'
+	    });
+    })
+    </script>
     <script id="store-list-template" type="text/x-handlebars-template">
         <table>
             <thead>

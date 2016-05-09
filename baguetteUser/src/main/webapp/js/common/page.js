@@ -14,7 +14,8 @@ $(document).one("pagecreate", function () {
         $.mobile.pageContainer.append(data);
         $("[data-role=panel]").panel().enhanceWithin();
     }, "html");
-
+    
+    
     $("#storelist-page").load("storeList.html [data-role=main]", function () {
         console.log('storelist.js init');
         $.getScript("../js/pages/storeList.js");
@@ -32,6 +33,14 @@ $(document).one("pagecreate", function () {
         $.getScript("../js/pages/customerInfo.js");
     });*/
     
+    
+});
+
+$(document).one("click","#left-panel", function(){
+    var panelHeight = $('#menuPanel').height()-269;
+    $('#logout').attr({
+    	style : "margin-top:"+panelHeight+'px'
+    });
 });
 
 $(document).one("pageshow", function () {
