@@ -112,7 +112,8 @@ function joinCustomer() {
 $(document).one('pageshow', '#join-page', function() {
 
 	// 휴대폰번호확인 정규식
-	var regPhone = /^(?:(010-\d{4})|(01[1|6|7|8|9]\d{3,4}))(\d{4})$/;
+	var regPhone = /^(?:(010\d{8})|(01[1|6|7|8|9]\d{7,8}))/;
+	//var nregPhone = /\d{11}/;
 	// 코드타이머
 	var timerId;
 	// code 입력부분 팝오
@@ -133,8 +134,8 @@ $(document).one('pageshow', '#join-page', function() {
 	// 핸드폰 번호 입력란
 	$('#telIpt').on('input', function() {
 		console.log($('#telIpt').val().length);
-		if ($('#telIpt').val().length > 5) {
-			// if(regPhone.test($('#telIpt').val()) ){
+//		if ($('#telIpt').val().length > 5) {
+		if(regPhone.test($('#telIpt').val()) ){
 			$('#callCodeBtn').prop("disabled", false);
 		} else {
 			$('#callCodeBtn').prop("disabled", true);
