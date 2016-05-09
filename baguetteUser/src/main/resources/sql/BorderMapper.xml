@@ -40,7 +40,7 @@
 
 
 	<select id="getBorderList" parameterType="int" resultMap="borderSelectMap">
-		SELECT
+	<!-- 	SELECT
 		oqty, bname, bprice, bimg, otran, odate, ono, sno
 		FROM border bo, customer
 		c, bread b
@@ -48,5 +48,10 @@
 		group by ono
 		order by
 		6, bname
+		 -->
+		select o.OQTY, o.odate, b.bname, sum(o.OQTY*b.BPRICE) as price
+		from border o, bread b
+		where o.CNO = #{value} and o.ODATE = "2016-05-06" and o.bno = b.BNO
+		group by b.bno;
 	</select>
 </mapper>
