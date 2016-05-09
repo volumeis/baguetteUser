@@ -13,10 +13,11 @@ function codeTimer() {
 			sec++;
 		} else {
 			clearInterval(timerId);
-			$('#telIpt').val("010-");
+			$('#telIpt').val("010");
 			$('.collapse').collapse('hide');
 			$('#codeError').modal();
 			$('#codeTimer').text(timeLimit);
+			$('#checkCodeBtn').removeClass('btn-success');
 		}
 	}, 1000);
 	return timerId;
@@ -60,6 +61,9 @@ function checkCode(_timerId) {
 			console.log(JSONData);
 			if (JSONData == 'ok') {
 				$('#passwordIpt').prop("disabled", false);
+				$('#checkCodeBtn').prop("disabled", true);
+				$('#passwordIpt').focus();
+				$('#joinBtn').addClass('btn-success');
 				clearInterval(_timerId);
 			} else {
 				$("#codeIpt").popover('toggle');
@@ -108,7 +112,7 @@ function joinCustomer() {
 $(document).one('pageshow', '#join-page', function() {
 
 	// 휴대폰번호확인 정규식
-	var regPhone = /^(?:(010-\d{4})|(01[1|6|7|8|9]-\d{3,4}))-(\d{4})$/;
+	var regPhone = /^(?:(010-\d{4})|(01[1|6|7|8|9]\d{3,4}))(\d{4})$/;
 	// 코드타이머
 	var timerId;
 	// code 입력부분 팝오
@@ -132,7 +136,6 @@ $(document).one('pageshow', '#join-page', function() {
 		if ($('#telIpt').val().length > 5) {
 			// if(regPhone.test($('#telIpt').val()) ){
 			$('#callCodeBtn').prop("disabled", false);
-			$('#callCodeBtn').addClass('btn-success');
 		} else {
 			$('#callCodeBtn').prop("disabled", true);
 		}
@@ -171,6 +174,7 @@ $(document).one('pageshow', '#join-page', function() {
 	// 코드요청버튼
 	$("#callCodeBtn").on("click", function() {
 		$('.collapse').collapse('show');
+		$('#checkCodeBtn').addClass('btn-success');
 		$('#callCodeBtn').prop("disabled", true);
 		timerId = codeTimer();
 

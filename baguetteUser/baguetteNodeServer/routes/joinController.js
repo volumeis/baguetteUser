@@ -12,13 +12,15 @@ router.get('/sendSms', function (req, res, next) {
 //    console.log('session rannum2 : ' + c.RECEIVERS);
     
     var c = require('./conf');
-    c.RECEIVERS.push(reqNum);
+//    var receiver = new c.RECEIVERS;
+//    receiver.push(reqNum)
     var https = require("https");
     var credential = 'Basic ' + new Buffer(c.APPID + ':' + c.APIKEY).toString('base64');
     //RECEIVERS
     var data = {
         "sender": c.SENDER,
-        "receivers": c.RECEIVERS,
+//        "receivers": c.RECEIVERS,
+        "receivers" : [reqNum],
         "content": c.CONTENT_HEAD + reqCode + c.CONTENT_TAIL
     }
     var body = JSON.stringify(data);
