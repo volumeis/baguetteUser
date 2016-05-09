@@ -19,10 +19,21 @@ function callStoreHome() {
             transition: "slideup"
         });
     });
+    
+   /* $('#cart-page').on('click', '.desc a', function () {
+        var storeId = $(this).attr("id");
+        $.mobile.changePage("storeHome.html", {
+            dataUrl: "storeHome.html?parameter=" + storeId,
+            data: {
+                'parameter': storeId
+            },
+            transition: "slideup"
+        });
+    });*/
 }
 	
 $(document).on('click', '#customerinfo', function(){
-	$.mobile.changePage("#customerinfo-page");
+	$.mobile.changePage("customerInfo.html");
 	 
 });
 

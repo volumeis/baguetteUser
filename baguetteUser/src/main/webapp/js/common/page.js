@@ -19,7 +19,7 @@ $(document).one("pagecreate", function () {
         console.log('storelist.js init');
         $.getScript("../js/pages/storeList.js");
     });
-    /*$("#cart-page").load("cart.html [data-role=main]", function () {
+   /* $("#cart-page").load("cart.html [data-role=main]", function () {
         console.log('cart.js init');
         $.getScript("../js/pages/cart.js");
     });*/
@@ -27,14 +27,19 @@ $(document).one("pagecreate", function () {
         console.log('map.js init');
         $.getScript("../js/pages/map.js");
     });
-    $("#customerinfo-page").load("customerInfo.html [data-role=main]", function () {
+    /*$("#customerinfo-page").load("customerInfo.html [data-role=main]", function () {
         console.log('customerInfo.js init');
         $.getScript("../js/pages/customerInfo.js");
-    });
+    });*/
+    
 });
 
 $(document).one("pageshow", function () {
     $.mobile.changePage('#storelist-page');
+});
+
+$(document).one("pageshow", function () {
+    $.mobile.changePage('#customerinfo-page');
 });
 
 //$(document).one("pageshow", function () {

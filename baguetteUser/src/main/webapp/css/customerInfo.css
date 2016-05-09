@@ -1,14 +1,14 @@
 #customerInfo{
 	padding-top:0px;
 }
-#cdiv .ui-grid-a{
-	margin: 5px; 0px;
+#cidiv .ui-grid-a{
+	margin: 5px 0px;
 	border-radius: 10px;
 	border: 1px solid gray;
 	height: 130px;
 }
  
-#cdiv .ui-block-a{
+#cidiv .ui-block-a{
 	width: 35%;
 	margin:10px;
 	height: 110px;
@@ -20,7 +20,7 @@
 	width:170px;
 }
 
-.ctotal{
+.citotal{
 	padding: 12px 0px;
 	font-size:14px;
 }
