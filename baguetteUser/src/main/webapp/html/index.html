@@ -25,22 +25,37 @@
          *  04.24.16
          */
         //        $(document).on("pagebeforeload", function () {    
-        $(document).on("mobileinit", function () {
-            $.mobile.autoInitializePage = false;
-            if (true) {
-                $(function () {
-                    $("#login-page").load("login.html [data-role=main]", function (data) {
-//                        console.log(data);
-                        $.mobile.initializePage();
+        $(document).on(
+            "mobileinit",
+            function () {
+                $.mobile.autoInitializePage = false;
+                if (true) {
+                    $(function () {
+                        $("#login-page").load("login.html [data-role=main]",
+                            function (data) {
+                                //                        console.log(data);
+                                $.mobile.initializePage();
+                            });
+                        $.getScript("../js/pages/login.js");
                     });
-                    $.getScript("../js/pages/login.js");
-                });
-            }
-        });
+                }
+            });
 
-        $(document).on("ready", function () {
-            $("#fakeloader").fakeLoader({
-            		imagePath:"../image/bbubbu.gif"
+        $(document).one("pagebeforecreate", function () {
+             $("#fakeloader").fakeLoader({
+                zIndex: "9999",
+                bgColor: "#FFFFFF",
+                imagePath: "../image/bbubbu370.gif"
+            }); 
+            $(".fl").css({
+             	"top"    : $(window).height()/2 - $(".fl").outerHeight()/2,
+            	"width" : $(window).width(),
+            	"height" : "auto"
+            });
+        });
+        $(document).one("pagecreate",function(){
+        	$(".fl").css({
+             	"top"    : $(window).height()/2 - $(".fl").outerHeight()/1.7
             });
         });
     </script>
@@ -50,9 +65,8 @@
 </head>
 
 <body>
-
     <!--     loaderInit 04.26.16       -->
-    <div id="fakeloader"></div>
+    <div data-role="none"  id="fakeloader"></div>
     <div data-role="page" class="pages" id="login-page" data-dom-cache=true></div>
 
 </body>

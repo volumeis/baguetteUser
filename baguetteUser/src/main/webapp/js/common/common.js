@@ -21,6 +21,7 @@ var LOGIN_NO;
 var LOGIN_ID;
 var LOGIN_PW;
 var QUERYSTRING;
+
 /**
  *       쿼리스트링 추출
  *
