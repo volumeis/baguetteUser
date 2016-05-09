@@ -140,8 +140,8 @@ public class BorderContorller {
 	    border.setCustomerNo(customerNo);  
         border.setOdate(odate);
 	
-		Map<String, Object> map = borderService.getBorderList(border);
-        //System.out.println("가는중?"+map.get("list"));
+		Map<String, Object> map = borderService.getBorderList(customerNo);
+        System.out.println("가는중?"+map.get("list"));
 		
         
         // Model 과 View 연결

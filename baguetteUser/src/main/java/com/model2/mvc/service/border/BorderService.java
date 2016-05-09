@@ -15,7 +15,7 @@ public interface BorderService {
 	public Border getBorder(int ono) throws Exception ;
 	
 //	// 회원정보리스트 
-	public Map<String , Object> getBorderList(Border border) throws Exception;
+	public Map<String , Object> getBorderList(int customerNo) throws Exception;
 //	
 //	// 회원정보수정
 //	public void updateUser(User user) throws Exception;
