@@ -24,19 +24,19 @@ function loadStoreHome(storeNo) {
                 var cartdiv = $(document.createElement('div')).addClass('ui-grid-a');
                 var cartimgdivL = $(document.createElement('div')).addClass('ui-block-a').attr({
 					id:'img'+breadindex,
-					style: "padding: 10px 5px 10px 5px"
+					style: "padding: 5px 2.5px 5px 0px"
 					});
 				var cartimgdivR = $(document.createElement('div')).addClass('ui-block-b').attr({
 									id:'img'+breadindex,
-									style: "padding: 10px 5px 10px 5px"
+									style: "padding: 5px 0px 5px 2.5px"
 									});
 				var carttextL = $(document.createElement('div')).addClass('ui-block-a').attr({
 									id:'text'+breadindex,
-									style: "padding-right:15px;text-align:right"
+									style: "padding-right:15px;padding-top:0px;text-align:right"
 									});
 				var carttextR = $(document.createElement('div')).addClass('ui-block-b').attr({
 									id:'text'+breadindex,
-									style: "padding-right:15px;text-align:right"
+									style: "padding-right:15px;padding-top:0px;text-align:right"
 									});
                 
                 var cartimg = $(document.createElement('img')).attr({
