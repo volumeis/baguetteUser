@@ -71,9 +71,11 @@ $(document).on('loadCustomerInfo', function () {
 //    $('#main-page').remove()
 });
 $(document).on('pageshow', function (e, data) {
-    console.log('컨트롤에 계정정보 확인 함');
-//    $('#content').height(getRealContentHeight());
-    $(document).trigger('loadCustomerInfo');
+	if(($.mobile.activePage[0].id != 'join-page') &&
+			($.mobile.activePage[0].id != 'login-page')){
+		console.log('로그인된 계정 : ' + LOGIN_ID);
+		$(document).trigger('loadCustomerInfo');
+	}
 });
 
 
