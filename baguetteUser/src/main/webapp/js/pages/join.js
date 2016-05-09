@@ -61,8 +61,11 @@ function checkCode(_timerId) {
 			console.log(JSONData);
 			if (JSONData == 'ok') {
 				$('#passwordIpt').prop("disabled", false);
+				$('#telIpt').prop("disabled", true);
+				$('#codeIpt').prop("disabled", true);
 				$('#checkCodeBtn').prop("disabled", true);
-				$('#passwordIpt').focus();
+				
+				//$('#passwordIpt').focus();
 				$('#joinBtn').addClass('btn-success');
 				clearInterval(_timerId);
 			} else {
@@ -134,7 +137,7 @@ $(document).one('pageshow', '#join-page', function() {
 	// 핸드폰 번호 입력란
 	$('#telIpt').on('input', function() {
 		console.log($('#telIpt').val().length);
-//		if ($('#telIpt').val().length > 5) {
+		//if ($('#telIpt').val().length > 5) {
 		if(regPhone.test($('#telIpt').val()) ){
 			$('#callCodeBtn').prop("disabled", false);
 		} else {
