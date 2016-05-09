@@ -1,0 +1,8 @@
+{
+    "APPID": "baguette",
+    "APIKEY": "a849a3c6133f11e6904e0cc47a1fcfae",
+    "CONTENT_HEAD": " [BAGUETTE] 바게뜨 회원가입 인증번호 [",
+    "CONTENT_TAIL": " ] 를 입력해 주세요.",
+    "SENDER": "01051479770",
+    "RECEIVERS": []
+}
