@@ -1,14 +1,30 @@
 #customerInfo{
 	padding-top:0px;
 }
-.ui-grid-a{
-	padding-top:5px;
+#cdiv .ui-grid-a{
+	margin: 5px; 0px;
+	border-radius: 10px;
+	border: 1px solid gray;
+	height: 130px;
 }
-/* 
-.ui-block-a{
+ 
+#cdiv .ui-block-a{
 	width: 35%;
-} */
+	margin:10px;
+	height: 110px;
+	padding-top: 0px;
+}
 
 .ui-block-b{
-	padding-left: 30px;
+	padding-left: 20px;
+	width:170px;
 }
+
+.ctotal{
+	padding: 12px 0px;
+	font-size:14px;
+}
+/* 
+#cdiv img{
+	border: 1px solid gray;
+} */
