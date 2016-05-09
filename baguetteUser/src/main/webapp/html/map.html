@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>지도</title>
     <!-- css -->
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css" />
@@ -12,39 +13,21 @@
     <script src="../lib/jquery/jquery.min.js"></script>
     <script src="../js/common/common.js"></script>
     <script src="../js/common/closer.js"></script>
+
+    <script src="../lib/handlebars/handlebars.min.js"></script>
     <!--    <script src="../lib/bootstrap/js/bootstrap.js"></script>-->
     <!--  jquery-mobile 은 최하단에 놓음-->
-    <!--    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1ad516d90febbb3a47e150372da2dfec&libraries=services,clusterer"></script>-->
-    <!--    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1ad516d90febbb3a47e150372da2dfec"></script>-->
-    <script src="../lib/handlebars/handlebars.min.js"></script>
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=600264d1d1714d9835001e0deda0b346&libraries=services,clusterer"></script>
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=600264d1d1714d9835001e0deda0b346"></script>
+
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-
-
-</head>
-
-<body>
-    <div data-role="page" id="map-page" class="pages">
-        <div data-role="main" class="ui-content main-content">
-            <input type="search" id="search" value="" placeholder="Placeholder text...">
-            <button onclick="getStores()">지역기반찾기</button>
-            <div id="map" style="width:100%;height:350px;"></div>
-            <p>
-                <button onclick="getInfo()">지도 정보 보기</button>
-                <br>
-            </p>
-            <!--            <p id="infoDiv"></p>-->
-            <div id="store-table"> </div>
-<!--            <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1ad516d90febbb3a47e150372da2dfec&libraries=services,clusterer"></script>-->
-<!--            <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1ad516d90febbb3a47e150372da2dfec"></script>-->
-            <script src="../js/mapStore.js"></script>
-        </div>
-    </div>
-    
     <script id="store-list-template" type="text/x-handlebars-template">
-        <table>
+        <table class="store-searched-table">
             <thead>
-                <th>가게명</th>
-                <th>주소</th>
+                <tr>
+                    <th>가게명</th>
+                    <th>주소</th>
+                </tr>
             </thead>
             <tbody>
                 {{#list}}
@@ -56,9 +39,71 @@
             </tbody>
         </table>
     </script>
+    <style>
+        .store-searched-table table {
+            width: 100%;
+            margin: 15px 0
+        }
+        
+        .store-searched-table th {
+            background-color: #828282;
+            background: -o-linear-gradient(90deg, #828282, #b7b7b7);
+            background: -moz-linear-gradient( center top, #828282 5%, #b7b7b7 100%);
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #828282), color-stop(1, #b7b7b7));
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#828282', endColorstr='#b7b7b7');
+            color: #FFFFFF
+        }
+        
+        .store-searched-table,
+        .store-searched-table th,
+        .store-searched-table td {
+            font-size: 0.95em;
+            text-align: center;
+            padding: 4px;
+            border-bottom: 1px solid #efefef;
+            border-collapse: collapse
+        }
+        
+        .store-searched-table tr:nth-child(odd) {
+            background-color: #d5d5d5;
+            background: -o-linear-gradient(90deg, #d5d5d5, #f6f6f6);
+            background: -moz-linear-gradient( center top, #d5d5d5 5%, #f6f6f6 100%);
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d5d5d5), color-stop(1, #f6f6f6));
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#d5d5d5', endColorstr='#f6f6f6');
+        }
+        
+        .store-searched-table tr:nth-child(even) {
+            background-color: #fdfdfd;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div data-role="page" id="map-page" class="pages">
+        <div data-role="main" class="ui-content main-content">
+            <link rel="stylesheet" href="../css/map.css">
+            <input type="search" id="search" value="" placeholder="Placeholder text...">
+            <button onclick="getStores()">지역기반찾기</button>
+            <div id="map" style="width:100%;height:350px;"></div>
+            <p>
+                <button onclick="getInfo()">지도 정보 보기</button>
+                <br>
+            </p>
+            <!--            <p id="infoDiv"></p>-->
+            <div id="ad"></div>
+            <div id="lat"></div>
+            <div id="lng"></div>
+            <div id="store-table"> </div>
+            <!--            <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1ad516d90febbb3a47e150372da2dfec&libraries=services,clusterer"></script>-->
+            <!--            <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1ad516d90febbb3a47e150372da2dfec"></script>-->
+            <script src="../js/pages/map.js"></script>
+        </div>
+    </div>
+
+
 
     <script>
-       
     </script>
 </body>
 
