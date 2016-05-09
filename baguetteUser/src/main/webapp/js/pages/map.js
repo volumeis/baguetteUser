@@ -1,6 +1,8 @@
+//test closer
+var _markerMaker = markerMaker();
+
 /* 지도생성 시작 */
 //검색을 위한 검색어 저장 클로저
-console.log('asdasd');
 var stores = storesCloser();
 //핸들바 템플릿 가져오기
 var source = $("#store-list-template").html();
@@ -31,17 +33,23 @@ $(document).one("pageshow", "#map-page", function () {
     }).setMap(map);
 });
 /* 지도생성 끝 */
- $(document).one('pageshow', '#map-page', function () {
-            $('#search').on('change', function () {
-                stores.set($('#search').val());
-                console.log($('#search').val())
-            })
-        });
-
-//지도에 표시될 마커 객체를 가진 배열
-var markers = [];
+$(document).one('pageshow', '#map-page', function () {
+    $('#search').on('change', function () {
+        stores.set($('#search').val());
+        console.log($('#search').val())
+    })
+});
 
 
+var selectedMarker = null;
+//마커의 이미지,크기,옵션
+var markerImage = new daum.maps.MarkerImage(
+    '../image/breadMarker.png',
+    new daum.maps.Size(50, 50), {
+        offset: new daum.maps.Point(25, 50),
+        alt: '마커이미지'
+    }
+);
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,7 +61,12 @@ function getStores() {
     $('#store-table').append(html);
     console.log(data);
     //마커 표시
-    showMarkers();
+
+
+    _markerMaker.set(stores);
+    //    _markerMaker.addrToCoordStores();
+    _markerMaker.addMarker();
+    _markerMaker.setMap();
 }
 
 
@@ -88,58 +101,143 @@ function getInfo() {
     */
     var infoDiv = document.getElementById('infoDiv');
     infoDiv.innerHTML = message;
-//    showMarkers();
+    //    showMarkers();
 }
 
+function markerMaker() {
+    //내부변수 size
+    var size;
+    //내부변수 stores
+    var stores;
+    //position 배열
+    var positions = [];
+    //지도에 표시될 마커 객체를 가진 배열
+    var markers = [];
 
-
-// 마커를 생성하고 지도위에 표시하는 함수입니다
-function addMarker(position) {
-    // 마커를 생성합니다
-    var marker = new daum.maps.Marker({
-        position: position
-    });
-    // 마커가 지도 위에 표시되도록 설정합니다
-    marker.setMap(map);
-    // 생성된 마커를 배열에 추가합니다
-    markers.push(marker);
+    return {
+        set: function (_stores) {
+            size = _stores.get().size;
+            stores = _stores.get().list;
+        },
+        addMarker: function () {
+            // 마커를 생성합니다
+            for (var i = 0; i < size; i++) {
+                var store = stores[i];
+                var marker = new daum.maps.Marker({
+                    position: new daum.maps.LatLng(store.storeLat, store.storeLng),
+                    map: map,
+                    image: markerImage
+                });
+                // 마커에 click 이벤트를 등록합니다
+                daum.maps.event.addListener(marker, 'click', makeClickListener(map, marker, store));
+                //markers.push(marker);
+            }
+        },
+        setMap: function () {
+            console.log('나실행되따')
+            console.log(markers)
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+    }
 }
+//클릭이벤트 클로저
+function makeClickListener(map, marker, store) {
+    return function () {
+        var content =
+            '<div class="wrap">' +
+            '    <div class="info">' +
+            '        <div class="title">' +
+            '            ' + store.storeName +
+            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+            '        </div>' +
+            '        <div class="body">' +
+            '            <div class="img">' +
+            '                <img src="' + COMMONWEBSERVER + "/image/storeImg/" + store.storeImg + '.jpg" >' +
+            '           </div>' +
+            '            <div class="desc">' +
+            '                <div class="ellipsis">' + store.storeAddr + 
+            '                <div><a id='+store.storeNo+'>상점으로</a></div>' +
+            '            </div>' +
+            '        </div>' +
+            '    </div>' +
+            '</div>';
+        var overlay = new daum.maps.CustomOverlay({
+            content: content,
+            map: map,
+            position: marker.getPosition()
+        });
+    };
+}
+//닫기버튼 클로저
+function makeCloseListener(map, marker, overlay) {
+    return function () {
 
-// 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
-//function setMarkers(map) {
-//    for (var i = 0; i < markers.length; i++) {
-//        markers[i].setMap(map);
+    };
+}
+//
+//
+////마커들 로드
+//function showMarkers() {
+//    for (var i = 0; i < stores.get().size; i++) {
+//        console.log(stores.get().list[i].storeAddr);
+//
+//        var store = stores.get().list[i];
+//
+//        geocoder.addr2coord({
+//            addr: store.storeAddr,
+//            callback: coordCallback
+//        });
+//
+//
+//        function coordCallback(status, result) {
+//            if (status === daum.maps.services.Status.OK) {
+//                var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+//                var marker = new daum.maps.Marker({
+//                    map: map,
+//                    position: coords,
+//                    image: markerImage
+//                });
+//
+//                // 마커에 click 이벤트를 등록합니다
+//                daum.maps.event.addListener(marker, 'click', function () {
+//                    if (!selectedMarker || selectedMarker !== marker) {}
+//                    console.log('addListener ' + i);
+//                    var overlay = new daum.maps.CustomOverlay({
+//                        content: makeCustomOverlay(stores.get().list[i]),
+//                        map: map,
+//                        position: marker.getPosition()
+//                    });
+//                });
+//            }
+//
+//        }
+//
+//        function closeOverlay() {
+//            overlay.setMap(null);
+//        }
 //    }
 //}
-
-// "마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
-//function showMarkers() {
-//    setMarkers(map)
+//
+//function makeCustomOverlay(store) {
+//    var contentOverlay =
+//        '<div class="wrap">' +
+//        '    <div class="info">' +
+//        '        <div class="title">' +
+//        '            ' + store.storeName +
+//        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+//        '        </div>' +
+//        '        <div class="body">' +
+//        '            <div class="img">' +
+//        '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+//        '           </div>' +
+//        '            <div class="desc">' +
+//        '                <div class="ellipsis">' + store.storeAddr +
+//        '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+//        '            </div>' +
+//        '        </div>' +
+//        '    </div>' +
+//        '</div>';
+//    return contentOverlay;
 //}
-
-//마커들 로드
-function showMarkers() {
-    for (var i = 0; i < 50; i++) {
-        console.log(stores.get().list[i].storeAddr);
-        geocoder.addr2coord({
-            addr: stores.get().list[i].storeAddr,
-            callback: coordCallback
-        });
-    }
-}
-
-function coordCallback(status, result) {
-    if (status === daum.maps.services.Status.OK) {
-        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new daum.maps.Marker({
-            map: map,
-            position: coords
-        });
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new daum.maps.InfoWindow({
-            content: '<div style="padding:5px;">우리회사</div>'
-        });
-        //         infowindow.open(map, marker);
-    }
-}
