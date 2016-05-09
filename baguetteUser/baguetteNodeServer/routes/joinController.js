@@ -24,7 +24,7 @@ router.get('/sendSms', function (req, res, next) {
     var body = JSON.stringify(data);
 
     var options = {
-//        host: 'api.bluehouselab.com',
+        host: 'api.bluehouselab.com',
         port: 443,
         path: '/smscenter/v1.0/sendsms',
         headers: {
