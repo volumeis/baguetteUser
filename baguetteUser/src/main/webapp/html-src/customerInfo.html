@@ -12,11 +12,14 @@
     <link rel="stylesheet" href="../lib/fakeloader/fakeLoader.css">
 
 
-    <script src="../js/common.js"></script>
+    <script src="../js/common/common.js"></script>
     <script src="../lib/jquery/jquery.js"></script>
 	<script src="../lib/bootstrap/js/bootstrap.js"></script>
     <!--    <script src="../js/swipeNav.js"></script>-->
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>    
+   <!--  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+	<!-- <script src="http://code.jquery.com/jquery.min.js"></script> -->
+	<!-- <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
     <title>Insert title here</title>
 </head>
 <body>
@@ -31,13 +34,16 @@
                 <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
             </a>
      </div>	
-            
-        <br><br/><br><br/>
+        <br><br/>
+        
         <div class="purchase" style="text-align: center"><font style="font-size: 2.0em; font-weight: bold ">구매내역</font></div>
 			<br><br/>
+			  
 		<div class="ui-grid-a ui-bar-a" id="customerInfo">
 		 <div data-role="main" class="ui-content main-content">
-	       <div data-role="ui-content">     
+	       <div data-role="ui-content">
+	       <input type="text" id="datepicker1"> 
+	           
 			<div id ="cdiv"></div>
 		   </div>
 			
@@ -53,7 +59,7 @@
         	
         	$.ajax({
         		// 회원 번호를 통해 호출
-        		url: "/border/listBorder/"+1002,
+        		url: "/border/listBorder/"+1007,
         		method: "GET",
         		dataType: "json",
         		headers: {
@@ -77,13 +83,12 @@
                 		var test = GetDateString("/Date("+JSONData.map.list[i].odate+")/");
                         
                          
-                		var cimg =
-							$(document.createElement('img')).attr({
-			                    src: "../image/breadImg/"+JSONData.map.list[i].img,
-			                    class: "img-rounded",
-			                    style: "height:100%; width:100%"
-			                });
-                		
+                	      var cimg =
+                              $(document.createElement('img')).attr({
+                                  src: COMMONWEBSERVER + "/image/breadImg/" + JSONData.map.list[i].storeNo +"/" + JSONData.map.list[i].img,
+                                  class: "img-rounded",
+                                  style: "height:100%"
+                              });
                 	
                 		
                 		$('#cdiv').append(cdiv.html(cimgdiv.html(cimg)).append(ctexttop).append(ctextmid).append(ctextbot).append(ctextbot2).append(ctextbot3));
@@ -96,8 +101,13 @@
                 }
         		})
         	})
+
         	});
-        	
+    	$(function() {
+  		  $( "#datepicker1" ).datepicker({
+  		    dateFormat: 'yy-mm-dd'
+  		  });
+  		});   
         	</script>
        
         <hr>

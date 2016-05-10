@@ -43,7 +43,7 @@ $(document).one('pageshow','#customerinfo-page', function () {
     })
 });
 
-
+//
 $(function() {
 	  $( '#purchaseDatepicker' ).datepicker({
 		  dateFormat: 'yy-mm-dd',

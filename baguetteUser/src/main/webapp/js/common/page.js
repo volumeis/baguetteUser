@@ -47,13 +47,6 @@ $(document).one("pageshow", function () {
     $.mobile.changePage('#storelist-page');
 });
 
-$(document).one("pageshow", function () {
-    $.mobile.changePage('#customerinfo-page');
-});
-
 //$(document).one("pageshow", function () {
-//    $.mobile.changePage("storeList.html", function () {
-//        console.log('storeList.js init');
-        //        $.getScript("../js/pages/storeList.js");   html안에서 로딩
-//    });
+//    $.mobile.changePage('#customerInfo.html');
 //});
