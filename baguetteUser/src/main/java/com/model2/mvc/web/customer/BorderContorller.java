@@ -129,13 +129,13 @@ public class BorderContorller {
  
 		System.out.println("/border/listBorder : GET");
 		
-		if(date == null){
+		/*if(date == null){
 		DateFormat nowDate = new SimpleDateFormat("yyyy-MM-dd");
 		Date dateNow = new Date();
 		System.out.println("현재 날짜: "+nowDate.format(dateNow));
 		
 		
-		}else{
+		}else{*/
 		// 캘린더에 찍히는 날짜
 		System.out.println("구매 날짜: "+ date);
 		
@@ -151,7 +151,7 @@ public class BorderContorller {
 		
         // Model 과 View 연결
 		model.addAttribute("map", map);
-		}
+		//}
 
 	}
 
