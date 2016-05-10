@@ -69,22 +69,22 @@ $(document).on('loadCustomerInfo', function () {
     });
 
     $("#customerID").text(LOGIN_ID)
-//    $('#main-page').remove()
+        //    $('#main-page').remove()
 });
 $(document).on('pageshow', function (e, data) {
-	if(($.mobile.activePage[0].id != 'join-page') &&
-			($.mobile.activePage[0].id != 'login-page')){
-		console.log('로그인된 계정 : ' + LOGIN_ID);
-		$(document).trigger('loadCustomerInfo');
-	}
+    if (($.mobile.activePage[0].id != 'join-page') &&
+        ($.mobile.activePage[0].id != 'login-page')) {
+        console.log('로그인된 계정 : ' + LOGIN_ID);
+        $(document).trigger('loadCustomerInfo');
+    }
 });
 
 
 
 /**
-*   json 날짜 변환하이
-*   작성자: 송은영, 서형섭 
-*/
+ *   json 날짜 변환하이
+ *   작성자: 송은영, 서형섭 
+ */
 function GetDateString(jsonDate) {
     var year, month, day, hour, minute, second, returnValue, date, replaceStr
 
@@ -112,18 +112,15 @@ function Pad(num) {
  * 페이지 높이 조정
  *
  * 민호
- * 04.01.16
+ * 05.09.16
  */
 
-//function getRealContentHeight() {
-//    var header = $.mobile.activePage.find("div[data-role='header']:visible");
-//    var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
-//    var content = $.mobile.activePage.find("div[data-role='main']:visible:visible");
-//    var viewport_height = $(window).height();
-//
-//    var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
-//    if ((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
-//        content_height -= (content.outerHeight() - content.height());
-//    }
-//    return content_height;
-//}
+function getRealContentHeight() {
+    var header_height = $("div[data-role='header']:visible").outerHeight();
+    var footer_height = $("div[data-role='footer']:visible").outerHeight();
+    var content = $("div[data-role='main']:visible");
+    var content_height = $(window).height() - header_height - footer_height;
+
+    content_height -= (content.outerHeight() - content.height());
+    $("div[data-role='main']").css("height", content_height);
+}
