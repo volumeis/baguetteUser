@@ -127,7 +127,7 @@ public class BorderContorller {
 	@RequestMapping(value = "listBorder/{customerNo}", method = RequestMethod.GET)
 	public void listBorder(@PathVariable int customerNo, Model model) throws Exception {
  
-		System.out.println("/border/listBorder : GET / POST");
+		System.out.println("/border/listBorder : GET");
       
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
 		Date currentTime = new Date();
