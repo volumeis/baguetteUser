@@ -129,29 +129,21 @@ public class BorderContorller {
  
 		System.out.println("/border/listBorder : GET");
 		
-		/*if(date == null){
-		DateFormat nowDate = new SimpleDateFormat("yyyy-MM-dd");
-		Date dateNow = new Date();
-		System.out.println("현재 날짜: "+nowDate.format(dateNow));
-		
-		
-		}else{*/
 		// 캘린더에 찍히는 날짜
-		System.out.println("구매 날짜: "+ date);
+		System.out.println("date: "+ date);
 		
         DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date odate = sdFormat.parse(date);
-        
-        Border border = new Border();
+
+		Border border = new Border();
 	    border.setCustomerNo(customerNo);  
         border.setOdate(odate);
-		
+	
 		Map<String, Object> map = borderService.getBorderList(border);
         System.out.println("가는중?"+map.get("list"));
 		
         // Model 과 View 연결
 		model.addAttribute("map", map);
-		//}
 
 	}
 
