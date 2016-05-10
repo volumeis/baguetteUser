@@ -1,11 +1,15 @@
-.ui-block-a {
-    padding-top:5px;
+#storelist-page .ui-block-a {
+    padding:5px 5px 0px 5px;
+    background: rgba(255,255,255,0.95);
     width: 100%;
     /*    padding-left: 0px;*/
     /*    padding-right: 0px;*/
     /*    border: 1px solid cornflowerblue;*/
     /*    height: ;*/
     /*    border: 2px solid #ddd;*/
+}
+#storelist-page .main-content .bgColor{
+    padding: 0px;
 }
  
 .ui-block-a .figre {

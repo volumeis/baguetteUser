@@ -1,30 +1,29 @@
-#customerInfo{
-	padding-top:0px;
-}
-#cidiv .ui-grid-a{
-	margin: 5px 0px;
-	border-radius: 10px;
-	border: 1px solid gray;
-	height: 130px;
-}
- 
-#cidiv .ui-block-a{
-	width: 35%;
-	margin:10px;
-	height: 110px;
-	padding-top: 0px;
+#customerinfo-page h1 {
+    margin: 0px;
+    padding: 5px;
+    text-align: center;
 }
 
-.ui-block-b{
-	padding-left: 20px;
-	width:170px;
+#cidiv .ui-grid-a {
+    margin: 5px 5px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    height: 130px;
 }
 
-.citotal{
-	padding: 12px 0px;
-	font-size:14px;
+#cidiv .ui-block-a {
+    width: 35%;
+    margin: 10px;
+    height: 110px;
+    padding-top: 0px;
 }
-/* 
-#cdiv img{
-	border: 1px solid gray;
-} */
+
+.ui-block-b {
+    padding-left: 20px;
+    width: 170px;
+}
+
+.citotal {
+    padding: 12px 0px;
+    font-size: 14px;
+}
