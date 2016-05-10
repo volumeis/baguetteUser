@@ -38,10 +38,10 @@
 	</select>
 
 
-	<select id="getBorderList" parameterType="int" resultMap="borderSelectMap">
+	<select id="getBorderList" parameterType="border" resultMap="borderSelectMap">
 	select sum(o.OQTY) as oqty, o.odate, b.bname, bprice, otran, bimg, sno
 		from border o, bread b
-		where o.CNO =#{value} and o.ODATE = CURRENT_DATE() and o.bno = b.BNO
+		where o.CNO =#{customerNo} and o.ODATE = #{odate} and o.bno = b.BNO
 		group by b.bno;
 	</select>
 	
