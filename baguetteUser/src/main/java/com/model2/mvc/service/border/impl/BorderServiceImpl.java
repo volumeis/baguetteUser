@@ -38,8 +38,8 @@ public class BorderServiceImpl implements BorderService{
 		return borderDao.getBorder(ono);
 	}
 
-	public Map<String , Object > getBorderList(int customerNo) throws Exception {
-		List<Border> list= borderDao.getBorderList(customerNo);
+	public Map<String , Object > getBorderList(Border border) throws Exception {
+		List<Border> list= borderDao.getBorderList(border);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list );

@@ -38,8 +38,8 @@ public class BorderDaoImpl implements BorderDao{
 		return border;
 	}
 
-	public List<Border> getBorderList(int customerNo) throws Exception {
-	return sqlSession.selectList("BorderMapper.getBorderList", customerNo);
+	public List<Border> getBorderList(Border border) throws Exception {
+	return sqlSession.selectList("BorderMapper.getBorderList", border);
 	}	
 	
 //	public void updateUser(User user) throws Exception {

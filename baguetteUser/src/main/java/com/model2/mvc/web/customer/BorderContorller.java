@@ -125,27 +125,33 @@ public class BorderContorller {
 	}
 
 	@RequestMapping(value = "listBorder/{customerNo}", method = RequestMethod.GET)
-	public void listBorder(@PathVariable int customerNo, Model model) throws Exception {
+	public void listBorder(@PathVariable int customerNo, @RequestParam("requestDate") String date, Model model) throws Exception {
  
 		System.out.println("/border/listBorder : GET");
-      
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
-		Date currentTime = new Date();
-		String dTime = formatter.format(currentTime);
 		
-		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date odate = sdFormat.parse(dTime);
-	    
-		Border border = new Border();
+		if(date == null){
+		DateFormat nowDate = new SimpleDateFormat("yyyy-MM-dd");
+		Date dateNow = new Date();
+		System.out.println("현재 날짜: "+nowDate.format(dateNow));
+		
+		
+		}else{
+		// 캘린더에 찍히는 날짜
+		System.out.println("구매 날짜: "+ date);
+		
+        DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date odate = sdFormat.parse(date);
+        
+        Border border = new Border();
 	    border.setCustomerNo(customerNo);  
         border.setOdate(odate);
-	
-		Map<String, Object> map = borderService.getBorderList(customerNo);
+		
+		Map<String, Object> map = borderService.getBorderList(border);
         System.out.println("가는중?"+map.get("list"));
 		
-        
         // Model 과 View 연결
 		model.addAttribute("map", map);
+		}
 
 	}
 
