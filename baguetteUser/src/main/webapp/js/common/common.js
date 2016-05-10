@@ -3,8 +3,8 @@
  */
 
 //민호 pc tomcat 서버
-var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
-//var COMMONWEBSERVER = "";
+//var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
+var COMMONWEBSERVER = "";
 
 //민호 pc database 서버
 var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
@@ -71,12 +71,14 @@ $(document).on('loadCustomerInfo', function () {
     $("#customerID").text(LOGIN_ID)
         //    $('#main-page').remove()
 });
+
 $(document).on('pageshow', function (e, data) {
-    if (($.mobile.activePage[0].id != 'join-page') &&
-        ($.mobile.activePage[0].id != 'login-page')) {
-        console.log('로그인된 계정 : ' + LOGIN_ID);
-        $(document).trigger('loadCustomerInfo');
-    }
+	if(($.mobile.activePage[0].id != 'join-page') &&
+		($.mobile.activePage[0].id != 'login-page')){
+		console.log('로그인된 계정 : ' + LOGIN_ID);
+		$(document).trigger('loadCustomerInfo');
+		countCart();
+	}
 });
 
 
@@ -108,6 +110,23 @@ function Pad(num) {
     return num.slice(-2);
 }
 
+
+function countCart(){
+	$.ajax({
+	    url: COMMONWEBSERVER + "/cart/getJsonCartCount/"+ LOGIN_NO,
+	    method: "GET",
+	    dataType: "json",
+	    headers: {
+	        "Accept": "application/json",
+	        "Content-Type": "application/json"
+	    },
+	    success: function (JSONData, status) {
+	        var cartcount = JSONData.cartcount.cartCount;
+	        $(".badge").text(cartcount);
+	    }
+	    
+	});
+}
 /**
  * 페이지 높이 조정
  *

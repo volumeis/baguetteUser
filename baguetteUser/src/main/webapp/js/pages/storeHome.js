@@ -65,6 +65,10 @@ function loadStoreHome(storeNo) {
                             "Content-Type": "application/json"
                         }
                     });
+                    
+                 // common.js 안에 있음
+                    countCart();
+                    
                 });
             });
         },

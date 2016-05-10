@@ -48,6 +48,10 @@ public class CartServiceImpl implements CartService{
 		return map;
 	}
 
+	public Cart getCartCount(int customerNo) throws Exception {
+		return cartDao.getCartCount(customerNo);
+	}
+	
 	public void delCart(int cartNo) throws Exception {
 		cartDao.delCart(cartNo);
 	}
@@ -59,6 +63,8 @@ public class CartServiceImpl implements CartService{
 public void deleteCart(int customerNo)throws Exception {
 	cartDao.deleteCart(customerNo);
 }
+
+
 	
 	
 	/*	public Map<String , Object > getBreadList(int storeNo) throws Exception {

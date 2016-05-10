@@ -16,7 +16,9 @@ public interface CartDao {
 	public Cart getCart(Cart cart) throws Exception;
 	// SELECT LIST
 	public List<Cart> getCartList(int customerNo) throws Exception ;
-
+	
+	public Cart getCartCount(int customerNo) throws Exception;
+	
 	public void delCart(int cartNo) throws Exception;
 	
 	public void deleteCart(int customerNO ) throws Exception ;

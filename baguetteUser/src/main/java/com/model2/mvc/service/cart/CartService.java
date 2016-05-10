@@ -15,6 +15,7 @@ public interface CartService {
 	// 빵정보확인
 	public Map<String, Object> getCartList(int customerNo) throws Exception ;
 	
+	public Cart getCartCount(int customerNo) throws Exception;
 	// 카트삭제
 	public void delCart(int cartNo) throws Exception;
    

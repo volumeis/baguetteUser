@@ -13,7 +13,7 @@
             success: function (JSONData, status) {
 
                 $.each(JSONData.cartmap.cartlist, function (i, item) {
-
+                	
                     var cindex = i;
                     var cdiv = $(document.createElement('div')).addClass('ui-grid-b').attr({
                     	id: 'cdiv' + cindex,
@@ -141,6 +141,9 @@
                                     "Content-Type": "application/json"
                                 }
                             });
+
+                            // common.js 안에 있음
+                            countCart();
                         })
                         .change();
 
@@ -170,6 +173,8 @@
 
                         $('#cdiv' + cindex).remove();
                         
+                        // common.js 안에 있음
+                        countCart();
                         
                     });
 

@@ -16,7 +16,8 @@
 		<result property="breadDesc.price" 		column="bprice" 		jdbcType="INTEGER" />
 		<result property="breadDesc.img"	 	column="bimg" 			jdbcType="VARCHAR" />
 		<result property="breadDesc.storeNo" 	column="sno" 			jdbcType="VARCHAR" />
-		<result property="storeName" 	column="sname" 			jdbcType="VARCHAR" />
+		<result property="storeName" 			column="sname" 			jdbcType="VARCHAR" />
+		<result property="cartCount"			column="cartcount" 			jdbcType="INTEGER" />
 	</resultMap>
 	
 	<!-- <resultMap id="breadSelectMap" type="bread">
@@ -53,6 +54,12 @@
 		order by b.sno;
 	 </select>
 	 
+	 <select id="getCartCount" parameterType="int" resultMap="cartSelectMap">
+		select sum(CQTY) as cartcount
+		from cart
+		where CDATE = current_date() and cno=#{value};
+	 </select>
+
 	<!-- SQL : DELETE --> 
 	<delete  id="delCart"  parameterType="cart">
 	  	DELETE

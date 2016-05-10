@@ -15,6 +15,7 @@ public class Cart {
 	private Date pickDate; 		// 장바구니 담은날
 	private Bread breadDesc; // 빵 정보
 	private String storeName; // 스토어 이름정보
+	private int cartCount; 
 	
 	public Cart() {
 	}
@@ -83,10 +84,21 @@ public class Cart {
 		this.storeName = storeName;
 	}
 
+	public int getCartCount() {
+		return cartCount;
+	}
+
+	public void setCartCount(int cartCount) {
+		this.cartCount = cartCount;
+	}
+
 	@Override
 	public String toString() {
 		return "Cart [cartNo=" + cartNo + ", breadNo=" + breadNo + ", buyQty=" + buyQty + ", customerNo=" + customerNo
-				+ ", pickDate=" + pickDate + ", breadDesc=" + breadDesc + ", storeName=" + storeName + "]";
+				+ ", pickDate=" + pickDate + ", breadDesc=" + breadDesc + ", storeName=" + storeName + ", cartCount="
+				+ cartCount + "]";
 	}
+
+	
 	
 }

@@ -56,17 +56,26 @@ public class CartContorller {
 		
 		System.out.println("/getJsonCart/getCart : GET");
 
-
 		Map<String,Object> map = cartService.getCartList(customerNo);
-
+		
 		model.addAttribute("cartmap", map);
-
 	}
 	//===========================================
+
+	@RequestMapping( value="getJsonCartCount/{customerNo}", method=RequestMethod.GET )
+	public void getJsonCartCount(	@PathVariable int customerNo,		
+												Model model) throws Exception{
+		
+		Cart cart = cartService.getCartCount(customerNo);
+		
+		model.addAttribute("cartcount", cart);
+	}
 	
+	//===========================================
 	@RequestMapping( value="delJsonCart/{cartNo}", method=RequestMethod.GET)
 	public void delJsonCart( @PathVariable int cartNo) throws Exception{
 		cartService.delCart(cartNo);
+		
 	}
 	//===========================================
 		
@@ -79,5 +88,6 @@ public class CartContorller {
 		cart.setBuyQty(buyQty);
 		
 		cartService.updateCart(cart);
+		
 	}
 }

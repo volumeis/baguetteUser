@@ -40,6 +40,10 @@ public class CartDaoImpl implements CartDao{
 		return sqlSession.selectList("CartMapper.getCartList", customerNo);
 		}
 
+
+	public Cart getCartCount(int customerNo) throws Exception {
+		return sqlSession.selectOne("CartMapper.getCartCount",customerNo);
+	}
 	
 	public void delCart(int cartNo) throws Exception {
 		sqlSession.delete("CartMapper.delCart", cartNo);
@@ -55,6 +59,8 @@ public class CartDaoImpl implements CartDao{
 public void deleteCart(int customerNo)throws Exception{
 	sqlSession.delete("CartMapper.deleteCart", customerNo);    
 }
+
+
 	
 	
 	//	public List<Bread> getBreadList(int storeNo) throws Exception {
