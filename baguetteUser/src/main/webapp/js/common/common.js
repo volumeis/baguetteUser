@@ -21,6 +21,10 @@ var LOGIN_NO;
 var LOGIN_ID;
 var LOGIN_PW;
 var QUERYSTRING;
+var MYLOCATION = myLocation();
+(function(){
+    MYLOCATION.set();
+})();
 
 /**
  *       쿼리스트링 추출
@@ -136,13 +140,16 @@ function countCart(){
 	    
 	});
 }
+
+
+
+
 /**
  * 페이지 높이 조정
  *
  * 민호
  * 05.09.16
  */
-
 function getRealContentHeight() {
     var header_height = $("div[data-role='header']:visible").outerHeight();
     var footer_height = $("div[data-role='footer']:visible").outerHeight();
@@ -151,4 +158,68 @@ function getRealContentHeight() {
 
     content_height -= (content.outerHeight() - content.height());
     $("div[data-role='main']").css("height", content_height);
+}
+
+/**
+ * 내 위치 클로저
+ *
+ * 민호
+ * 05.11.16
+ */
+//내 위치 람다
+function myLocation() {
+    //내 위치 저장
+    var locPosition;
+    return {
+        set: function () {
+            if (navigator.geolocation) {
+                // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+                (function () {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+
+                        var lat = position.coords.latitude, // 위도
+                            lon = position.coords.longitude; // 경도
+
+                        locPosition = new daum.maps.LatLng(lat, lon);
+
+                        console.log(locPosition);
+
+                    });
+                })();
+
+            } else {
+                // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+                console.log('geolocation 사용안함');
+
+                locPosition = new daum.maps.LatLng(37.497916606749946, 127.02753373032039),
+                    message = 'geolocation을 사용할수 없어요..'
+            }
+        },
+        //내 위치 출력
+        get: function () {
+            return locPosition;
+        },
+        //내 위치 마킹
+        marking: function (map) {
+            var marker = new daum.maps.Marker({
+                map: map,
+                position: locPosition
+            });
+
+            var iwContent = '<div style="padding:5px;">현재 나의 위치</div>', // 인포윈도우에 표시할 내용
+                iwRemoveable = true;
+
+            // 인포윈도우를 생성합니다
+            var infowindow = new daum.maps.InfoWindow({
+                content: iwContent,
+                removable: iwRemoveable
+            });
+
+            // 인포윈도우를 마커위에 표시합니다 
+            infowindow.open(map, marker);
+
+            // 지도 중심좌표를 접속위치로 변경합니다
+            map.setCenter(locPosition);
+        }
+    }
 }
