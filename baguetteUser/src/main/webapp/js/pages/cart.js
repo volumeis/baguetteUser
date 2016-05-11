@@ -183,9 +183,16 @@
         })
 
         $("#breadPayment").on("click", function () {
-
-            alert("결제가 진행됩니다.");
-
+        	
+        	////////////////////////////////////////////
+        	var totalprice = $(".tprice").val();
+        	
+        	if(totalprice == null) {
+        		alert("카드에 담긴 상품이 없습니다.");
+        	}else {
+        		alert("결제가 진행됩니다.");
+        	////////////////////////////////////////////
+        		
             $.ajax({
                 // 회원 번호를 통해 호출
                 url: COMMONWEBSERVER + "/border/addBorder/" + LOGIN_NO,
@@ -199,7 +206,7 @@
                     //나중에 결제
                     location.href = "./lastpurchaseend.html";
                 }
-
             });
-        });
-    });
+          }
+       });
+   });
