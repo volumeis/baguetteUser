@@ -22,9 +22,7 @@ var LOGIN_ID;
 var LOGIN_PW;
 var QUERYSTRING;
 var MYLOCATION = myLocation();
-(function(){
-    MYLOCATION.set();
-})();
+
 
 /**
  *       쿼리스트링 추출
@@ -77,14 +75,13 @@ $(document).on('loadCustomerInfo', function () {
 });
 
 $(document).on('pageshow', function (e, data) {
-	if(($.mobile.activePage[0].id != 'join-page') &&
-		($.mobile.activePage[0].id != 'login-page')){
-		console.log('로그인된 계정 : ' + LOGIN_ID);
-		$(document).trigger('loadCustomerInfo');
-		countCart();
-	}
+    if (($.mobile.activePage[0].id != 'join-page') &&
+        ($.mobile.activePage[0].id != 'login-page')) {
+        console.log('로그인된 계정 : ' + LOGIN_ID);
+        $(document).trigger('loadCustomerInfo');
+        countCart();
+    }
 });
-
 
 
 /**
@@ -120,25 +117,25 @@ function Pad(num) {
  * 경철
  * 05.11.16
  * */
-function countCart(){
-	$.ajax({
-	    url: COMMONWEBSERVER + "/cart/getJsonCartCount/"+ LOGIN_NO,
-	    method: "GET",
-	    dataType: "json",
-	    headers: {
-	        "Accept": "application/json",
-	        "Content-Type": "application/json"
-	    },
-	    success: function (JSONData, status) {
-	    	
-	    	if(JSONData.cartcount!= null){
-	    		$(".badge").text(JSONData.cartcount.cartCount);
-	    	}else{
-	    		$(".badge").text("");
-	    	}
-	    }
-	    
-	});
+function countCart() {
+    $.ajax({
+        url: COMMONWEBSERVER + "/cart/getJsonCartCount/" + LOGIN_NO,
+        method: "GET",
+        dataType: "json",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        success: function (JSONData, status) {
+
+            if (JSONData.cartcount != null) {
+                $(".badge").text(JSONData.cartcount.cartCount);
+            } else {
+                $(".badge").text("");
+            }
+        }
+
+    });
 }
 
 
