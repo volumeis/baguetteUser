@@ -1,8 +1,8 @@
 $("#fakeloader").fakeLoader({
-    timeToHide: 12000, //Time in milliseconds for fakeLoader disappear
+    timeToHide: 1200, //Time in milliseconds for fakeLoader disappear
     zIndex: "9999", //Default zIndex
     spinner: "spinner7", //Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
-    bgColor: "#d8e8ed"
+    bgColor: "transparent"
 });
 $(function () {
     //$(document).one("pageshow", function () {
