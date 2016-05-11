@@ -182,16 +182,9 @@
             }
         })
 
-        $("#breadPayment").on("click", function () {
-        	
-        	////////////////////////////////////////////
+        $("#breadPayment").on("click", function () {  
+
         	var totalprice = $(".tprice").val();
-        	
-        	if(totalprice == null) {
-        		alert("카드에 담긴 상품이 없습니다.");
-        	}else {
-        		alert("결제가 진행됩니다.");
-        	////////////////////////////////////////////
         		
             $.ajax({
                 // 회원 번호를 통해 호출
@@ -203,10 +196,17 @@
                     "Content-Type": "application/json"
                 },
                 success: function (JSONData, status) {
+                	
+                if(totalprice == null) {
+        			alert("카드에 담긴 상품이 없습니다.");
+        
+        		}else {
+        		
+        			alert("결제가 진행됩니다.");
                     //나중에 결제
                     location.href = "./lastpurchaseend.html";
                 }
-            });
-          }
+               }
+           });
        });
    });
