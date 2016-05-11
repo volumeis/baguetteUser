@@ -21,19 +21,59 @@
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
 
-</head>
+
+	   <script type="text/javascript">
+    
+        
+        
+        $(function () {
+        	$(document).ready(function () {
+        	
+        	$.ajax({
+        		// 회원 번호를 통해 호출
+        		url: "/border/listFinalBorder/"+1004,
+        		method: "GET",
+        		dataType: "json",
+        		headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                success: function(JSONData, status) {
+                	
+                  	var allprice=0;
+                	var all="";
+                	for(var i=0; i<JSONData.map.cartlist.length; i++){ 
+               		 all += JSONData.map.cartlist[i].breadDesc.name+"빵 "+JSONData.map.cartlist[i].buyQty+"개 구입 "+JSONData.map.cartlist[i].breadDesc.price+"원"+"<br>";
+               		 
+               	}; 
+                
+                
+                   $('#ono').html(all);
+                	for(var i=0; i<JSONData.map.cartlist.length; i++){ 
+                		 allprice += JSONData.map.cartlist[i].buyQty*JSONData.map.cartlist[i].breadDesc.price;
+                	}; 
+                		 
+                	 $('#price').text("총 구매가격: "+allprice+"원");  
+                		 
+                }
+        	})
+          })
+       });
+                	
+  </script>
+	</head>
 <!--cssSetting -->
 <!-- <link href="../css/storeList.css" rel="stylesheet">
  -->
 <body>
 	<br>
 	<br>
-	
+	  
 	<!-- 고객이름 -->
 	<div id= customerName 	style= "text-align: center">
-		<Font size="5">OOO님의</Font>
+		<Font size="5">LOGIN_ID의</Font>
 	</div>
-	
+	<p></p>
 	<br>
 
 	<!-- 구매완료 메시지 -->
@@ -48,19 +88,19 @@
 	<div class="container" 	style="text-align: right">
 		<div>
 			<div style="border: 2px solid; 	text-align: center">
-				<font size="3" color="red">주문번호</font>
+				<font size="3" color="red">주문내역</font>
 			</div>
 		</div>
 		<div>
 			<div style="border: 2px solid; 	text-align: center">
-				<font size="3">XXX-111-222-ABC</font>
+				<font size="3" id=ono></font>
 			</div>
 		</div>
 	</div>
 
 	<!-- 상품금액 -->
 	<div style= "text-align: center">
-		<Font size="4">상품금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8000원</Font>
+		<Font size="4" id=price></Font>
 	</div>
 
 	<br>
@@ -70,5 +110,5 @@
 		<button id="testbutton">확&nbsp;&nbsp;인</button>
 	</div>
 
-</head>
+</body>
 </html>

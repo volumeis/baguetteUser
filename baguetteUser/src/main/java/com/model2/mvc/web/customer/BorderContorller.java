@@ -107,7 +107,7 @@ public class BorderContorller {
 			model.addAttribute("border["+j+"]", border[j]);
 		}
    
-			cartService.deleteCart(customerNo);
+			
 	
 	}
 
@@ -146,5 +146,30 @@ public class BorderContorller {
 		model.addAttribute("map", map);
 
 	}
-
+    
+	@RequestMapping(value = "listFinalBorder/{customerNo}", method = RequestMethod.GET)
+	public void listFinalBorder(@PathVariable int customerNo, Model model) throws Exception {
+ 
+		System.out.println("/border/listFinalBorder : GET / POST");
+      
+       /* SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+		Date currentTime = new Date();
+		String dTime = formatter.format(currentTime);
+		
+        DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date odate = sdFormat.parse(dTime);
+        System.out.println("시간"+odate);
+		Border border = new Border();
+	    border.setCustomerNo(customerNo);  
+        border.setOdate(odate);
+	*/
+		Map<String, Object> map = cartService.getCartList(customerNo);
+        System.out.println("가는중 FinalBorder?"+map.get("cartlist"));
+		
+        // Model 과 View 연결
+		model.addAttribute("map", map);
+		cartService.deleteCart(customerNo);
+	}
+	
+	
 }
