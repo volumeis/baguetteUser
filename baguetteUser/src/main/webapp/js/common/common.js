@@ -110,7 +110,12 @@ function Pad(num) {
     return num.slice(-2);
 }
 
-
+/* 
+ * 카트 배치 카운트
+ * 
+ * 경철
+ * 05.11.16
+ * */
 function countCart(){
 	$.ajax({
 	    url: COMMONWEBSERVER + "/cart/getJsonCartCount/"+ LOGIN_NO,
@@ -121,8 +126,12 @@ function countCart(){
 	        "Content-Type": "application/json"
 	    },
 	    success: function (JSONData, status) {
-	        var cartcount = JSONData.cartcount.cartCount;
-	        $(".badge").text(cartcount);
+	    	
+	    	if(JSONData.cartcount!= null){
+	    		$(".badge").text(JSONData.cartcount.cartCount);
+	    	}else{
+	    		$(".badge").text("");
+	    	}
 	    }
 	    
 	});

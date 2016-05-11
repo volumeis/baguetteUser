@@ -63,13 +63,18 @@ function loadStoreHome(storeNo) {
                         headers: {
                             "Accept": "application/json",
                             "Content-Type": "application/json"
+                        },
+                        complete: function(){
+                        	
+                        	// common.js 안에 있음
+                            countCart();
                         }
                     });
                     
-                 // common.js 안에 있음
-                    countCart();
-                    
+                 
                 });
+                
+                
             });
         },
         error: function () {

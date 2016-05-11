@@ -139,11 +139,14 @@
                                 headers: {
                                     "Accept": "application/json",
                                     "Content-Type": "application/json"
+                                },
+                                complete: function(){
+                                	// common.js 안에 있음
+                                    countCart();
                                 }
                             });
 
-                            // common.js 안에 있음
-                            countCart();
+                            
                         })
                         .change();
 
@@ -167,14 +170,23 @@
                             headers: {
                                 "Accept": "application/json",
                                 "Content-Type": "application/json"
-                            }
-
+                            },
+                        	
+	                        complete: function(){
+	                        	$('#cdiv' + cindex).remove();
+	                            
+	                            // common.js 안에 있음
+	                            countCart();
+	                            
+	                            var sum = 0;
+	                            $(".tprice").each(function () {
+	                                sum += +($(this).text());
+	                                $("#totalprice").text(sum);
+	                                $("#totalprice").append("원");
+	                                
+	                            });
+	                        }
                         });
-
-                        $('#cdiv' + cindex).remove();
-                        
-                        // common.js 안에 있음
-                        countCart();
                         
                     });
 
