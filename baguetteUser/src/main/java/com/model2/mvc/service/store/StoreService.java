@@ -1,5 +1,6 @@
 package com.model2.mvc.service.store;
 
+import java.util.List;
 import java.util.Map;
 
 import com.model2.mvc.service.domain.Store;
@@ -17,6 +18,7 @@ public interface StoreService {
 	
 	// 가게정보 리스트 
 	public Map<String , Object> getStoreList(String address) throws Exception;
+	public Map<String , Object> getStoreListShort(String address) throws Exception ;
 //	
 //	// 회원정보수정
 //	public void updateUser(User user) throws Exception;

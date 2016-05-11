@@ -53,6 +53,11 @@ public class StoreDaoImpl implements StoreDao{
 	public List<Store> getStoreList(String address) throws Exception {
 		return sqlSession.selectList("StoreMapper.getStoreList", address);
 	}
+	
+	@Override
+	public List<Store> getStoreListShort(String address) throws Exception {
+		return sqlSession.selectList("StoreMapper.getStoreListShort", address);
+	}
 //	// 게시판 Page 처리를 위한 전체 Row(totalCount)  return
 //	public int getTotalCount(Search search) throws Exception {
 //		return sqlSession.selectOne("UserMapper.getTotalCount", search);

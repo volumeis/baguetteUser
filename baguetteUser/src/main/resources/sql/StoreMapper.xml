@@ -58,9 +58,15 @@
 		SELECT sno , sname, saddr, stel, simg, sinfo, slat, slng
 		FROM store
 		<where>
-		<!-- <if test="searchCondition == 1 and searchKeyword !='' "> -->
 		saddr Like '%${value}%'
-		<!-- </if> -->
+		</where>
+		ORDER BY sno  
+	 </select>
+	 <select  id="getStoreListShort"  parameterType="string"	resultMap="storeSelectMap">
+		SELECT sno , sname, SUBSTRING_INDEX(saddr,' ',2) saddr, simg
+		FROM store
+		<where>
+		saddr Like '%${value}%'
 		</where>
 		ORDER BY sno  
 	 </select>

@@ -17,6 +17,7 @@ public interface StoreDao {
 
 	// SELECT LIST
 	public List<Store> getStoreList(String address) throws Exception ;
+	public List<Store> getStoreListShort(String address) throws Exception ;
 //
 //	// UPDATE
 //	public void updateUser(User user) throws Exception ;

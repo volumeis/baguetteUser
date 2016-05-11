@@ -7,7 +7,7 @@ $("#fakeloader").fakeLoader({
 $(function () {
     //$(document).one("pageshow", function () {
     $.ajax({
-        url: COMMONWEBSERVER + "/store/getJsonStoreList/" + "서울 서초구", //
+        url: COMMONWEBSERVER + "/store/getStoreListShort/" + "서울 서초구", //
         method: "GET",
         dataType: "json",
         headers: {

@@ -56,13 +56,17 @@ public class StoreContorller {
 	@RequestMapping( value="getJsonStoreList/{address}", method=RequestMethod.GET)
 	public void getJsonStoreList( @PathVariable String address, Model model) throws Exception{
 		System.out.println("/getJsonStoreList/{storeNo} : GET " + address);
-		//System.out.println(URLDecoder.decode((URLDecoder.decode(address, "8859_1")), "UTF-8"));
-		//System.out.println( URLDecoder.decode(address, "UTF-8"));
 		//Business Logic
 		Map<String, Object> storeMap = storeService.getStoreList(address);
-		//System.out.println(storeMap);
 		model.addAttribute("storeMap", storeMap);
 	}
 	//===========================================
-	
+	@RequestMapping( value="getStoreListShort/{address}", method=RequestMethod.GET)
+	public void getStoreListShort( @PathVariable String address, Model model) throws Exception{
+		System.out.println("/getStoreListShort/{storeNo} : GET " + address);
+		//Business Logic
+		Map<String, Object> storeMap = storeService.getStoreListShort(address);
+		model.addAttribute("storeMap", storeMap);
+	}
+	//===========================================
 }

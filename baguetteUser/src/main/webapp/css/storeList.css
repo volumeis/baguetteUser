@@ -2,11 +2,6 @@
     padding:5px 5px 0px 5px;
     background: rgba(255,255,255,0.95);
     width: 100%;
-    /*    padding-left: 0px;*/
-    /*    padding-right: 0px;*/
-    /*    border: 1px solid cornflowerblue;*/
-    /*    height: ;*/
-    /*    border: 2px solid #ddd;*/
 }
 #storelist-page .main-content .bgColor{
     padding: 0px;
@@ -15,9 +10,6 @@
 .ui-block-a .figre {
     position: relative;
     padding: 0px;
-    /* max-height: 370px; */
-   	
-    /*    height: 100px;*/
 }
 
 .ui-block-a .figre img {
@@ -72,5 +64,6 @@
 }
 
 .spinner7 > div{
-    background-color : red !important;
+/*    변경예정*/
+/*    background-color : red !important;*/
 }

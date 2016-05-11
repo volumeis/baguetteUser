@@ -53,6 +53,15 @@ public class StoreServiceImpl implements StoreService{
 		map.put("size", list.size());
 		return map;
 	}
+	
+	@Override
+	public Map<String, Object> getStoreListShort(String address) throws Exception {
+		List<Store> list = storeDao.getStoreListShort(address);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("size", list.size());
+		return map;
+	}
 
 
 
