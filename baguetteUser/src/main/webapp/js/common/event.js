@@ -38,7 +38,7 @@ $(document).on('click', '#customerinfo', function(){
 });
 
 $(document).on('click', '#storelist', function(){
-	$.mobile.changePage("#storelist-page");
+	$.mobile.changePage($("#storelist-page"));
 	 
 });
 
