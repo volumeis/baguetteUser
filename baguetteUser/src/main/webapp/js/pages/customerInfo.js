@@ -43,11 +43,13 @@ $(document).one('pageshow','#customerinfo-page', function () {
     })
 });
 
-//
+
 $(function() {
+	$('#purchaseDatepicker').val($.datepicker.formatDate('yy-mm-dd', new Date()));
 	  $( '#purchaseDatepicker' ).datepicker({
 		  dateFormat: 'yy-mm-dd',
-		  maxDate: '0'
+		  maxDate: '0',
+		  changeYear: true
 	  });
 });
 
