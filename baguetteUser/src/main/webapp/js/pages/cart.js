@@ -210,16 +210,26 @@
                 },
                 success: function (JSONData, status) {
                 	
-                if(totalprice == null) {
-        			alert("카드에 담긴 상품이 없습니다.");
-        
-        		}else {
-                	alert("결제가 진행됩니다.");
+                    if(totalprice == null) {
+                    	bootbox.alert("카드에 담긴 상품이 없습니다.");
+            
+            		}else {
 
-                    //나중에 결제
-        			$.mobile.changePage("confirm.html");
-                }
-               }
-           });
-       });
-   });
+            			bootbox.confirm("결제하시겠습니까?", function(result) {
+            				if(result==true) {
+            				 //location.href = "./lastpurchaseend.html";
+            				    $.mobile.changePage("confirm.html");
+            					
+            				} else {
+            				 //location.href = "./cart.html";
+            					$.mobile.changePage("cart.html");
+            				}
+            				
+            			  });//bootbox.confirm
+                    	 }//if
+                      }//success
+                	});//ajax
+            	});//click
+        	});//finall
+    
+    //$.mobile.changePage("confirm.html");
