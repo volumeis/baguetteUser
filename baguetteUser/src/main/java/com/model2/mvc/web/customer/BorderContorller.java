@@ -68,21 +68,7 @@ public class BorderContorller {
 		
 		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date odate = sdFormat.parse(dTime);
-		
-		Cart vo1 = list.get(1);
-		System.out.println("vo1입니다"+vo1);
-		System.out.println("브래드넘버"+list.get(1).getBreadNo());
 	
-		System.out.println("리스트싸이즈"+list.size());
-
-		//border[0].setBreadNo(list.get(1).getBreadNo());
-		
-
-		
-		System.out.println(map.size());
-		
-	    //System.out.println("b오더!!"+border[0]);
-		
 		for (int i = 0; i < list.size(); i++) {
 			    border[i] = new Border();
 			
@@ -152,17 +138,6 @@ public class BorderContorller {
  
 		System.out.println("/border/listFinalBorder : GET / POST");
       
-       /* SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
-		Date currentTime = new Date();
-		String dTime = formatter.format(currentTime);
-		
-        DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date odate = sdFormat.parse(dTime);
-        System.out.println("시간"+odate);
-		Border border = new Border();
-	    border.setCustomerNo(customerNo);  
-        border.setOdate(odate);
-	*/
 		Map<String, Object> map = cartService.getCartList(customerNo);
         System.out.println("가는중 FinalBorder?"+map.get("cartlist"));
 		
