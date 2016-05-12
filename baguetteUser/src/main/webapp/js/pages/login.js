@@ -7,7 +7,7 @@ $(function () {
 
         var id = $("#customerTel").val().trim();
         var pw = $("input:password").val().trim();
-
+        
         if (id == null || id.length < 1) {
             alert('ID 를 입력하지 않으셨습니다.');
             $("input:tel").focus();

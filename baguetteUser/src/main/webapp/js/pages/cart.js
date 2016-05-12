@@ -180,10 +180,16 @@
 	                            var sum = 0;
 	                            $(".tprice").each(function () {
 	                                sum += +($(this).text());
-	                                $("#totalprice").text(sum);
-	                                $("#totalprice").append("원");
+	                                $("#totalprice").text(sum+"원");
 	                                
 	                            });
+	                            if($(".tprice").text() == ""){
+	                            	$("#totalprice").text("0원");
+	                            }
+	                            
+	                            if($(".ui-grid-b").text() ==""){
+	                            	$(".ui-grid-solo").remove();
+	                            }
 	                            
 	                            
 	                        }

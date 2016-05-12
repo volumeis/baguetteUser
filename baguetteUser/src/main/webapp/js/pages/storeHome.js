@@ -64,7 +64,8 @@ function loadStoreHome(storeNo) {
                 	},500);
                 	
                 	drawToast("하이");*/
-                	$.toast("카트에 담았습니다.",{'align':'top'});
+                	$.toast("카트에 담았습니다.",{'duration': 700,'align':'top'});
+                	
                 ///////////////////////////////////////////////	
                 	console.log(bread.breadNo);
                     $.ajax({
