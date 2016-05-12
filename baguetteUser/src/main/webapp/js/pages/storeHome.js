@@ -56,15 +56,15 @@ function loadStoreHome(storeNo) {
 
                 $('#img' + breadindex).click(function () {
                    
-                	//빵 선택시 빵 선택된 이미에 명암을 주어 선택된 빵을 알려주며 Toast 기능을 구현 
+                	/*//빵 선택시 빵 선택된 이미에 명암을 주어 선택된 빵을 알려주며 Toast 기능을 구현 
                  	$(this).css("opacity", "0.15");
                 	var a = $(this); 
                 	setTimeout(function(){
                 		a.css("opacity", "1");
                 	},500);
                 	
-                	drawToast("하이");
-                	
+                	drawToast("하이");*/
+                	$.toast("카트에 담았습니다.",{'align':'top'});
                 ///////////////////////////////////////////////	
                 	console.log(bread.breadNo);
                     $.ajax({
@@ -110,7 +110,7 @@ $(document).one('pageshow', "#storehome-page", function (event, data) {
 
 });
 
-
+/*
 // Toast 기능 구현을 위한 것
 var intervalCounter = 0;
 
@@ -135,4 +135,4 @@ alert.style.opacity = .9;
  
 intervalCounter = setInterval("hideToast()", 1000);
 }
-
+*/

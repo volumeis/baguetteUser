@@ -217,7 +217,7 @@
                 	alert("결제가 진행됩니다.");
 
                     //나중에 결제
-                    location.href = "./lastpurchaseend.html";
+        			$.mobile.changePage("confirm.html");
                 }
                }
            });
