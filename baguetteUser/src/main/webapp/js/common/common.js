@@ -169,22 +169,20 @@ function myLocation() {
         set: function () {
             if (navigator.geolocation) {
                 // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-                console.log("대기중 : " + locPosition);
+                console.log("대기중  : " + locPosition);
                 $.mobile.loading('show', {
                     //                    disable : true
                 });
 
-                (function () {
-                    navigator.geolocation.getCurrentPosition(function (position) {
+                navigator.geolocation.getCurrentPosition(function (position) {
 
-                        var lat = position.coords.latitude, // 위도
-                            lon = position.coords.longitude; // 경도
+                    var lat = position.coords.latitude, // 위도
+                        lon = position.coords.longitude; // 경도
 
-                        locPosition = new daum.maps.LatLng(lat, lon);
-                        console.log("가져온location : " + locPosition);
-                        $.mobile.loading('hide', {});
-                    });
-                })();
+                    locPosition = new daum.maps.LatLng(lat, lon);
+                    console.log("가져온location : " + locPosition);
+                    $.mobile.loading('hide', {});
+                });
 
             } else {
                 // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다

@@ -1,5 +1,5 @@
 $("#fakeloader").fakeLoader({
-    timeToHide: 1000, //Time in milliseconds for fakeLoader disappear
+    timeToHide: 4000, //Time in milliseconds for fakeLoader disappear
     zIndex: "9999", //Default zIndex
     spinner: "spinner1" //Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
         //    bgColor: "transparent"
