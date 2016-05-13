@@ -170,26 +170,14 @@ function myLocation() {
             if (navigator.geolocation) {
                 // GeoLocation을 이용해서 접속 위치를 얻어옵니다
                 console.log("대기중  : " + locPosition);
-                $.mobile.loading('show', {
-                    //                    disable : true
-                });
-
-                navigator.geolocation.getCurrentPosition(function (position) {
-
-                    var lat = position.coords.latitude, // 위도
-                        lon = position.coords.longitude; // 경도
-
-                    locPosition = new daum.maps.LatLng(lat, lon);
-                    console.log("가져온location : " + locPosition);
-                    $.mobile.loading('hide', {});
-                });
-
+                $.mobile.loading('show');
+                navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+                
             } else {
                 // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
                 console.log('geolocation 사용안함');
 
-                locPosition = new daum.maps.LatLng(37.497916606749946, 127.02753373032039),
-                    message = 'geolocation을 사용할수 없어요..'
+                locPosition = new daum.maps.LatLng(37.497916606749946, 127.02753373032039);
             }
         },
         //내 위치 출력
@@ -218,6 +206,19 @@ function myLocation() {
             // 지도 중심좌표를 접속위치로 변경합니다
             map.setCenter(locPosition);
         }
+    }
+
+    function successCallback(position) {
+        var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+
+        locPosition = new daum.maps.LatLng(lat, lon);
+        console.log("가져온location : " + locPosition);
+        $.mobile.loading('hide');
+    }
+
+    function errorCallback(error) {
+        alert(error.message);
     }
 }
 $('#myLocBtn').on('click', function () {
