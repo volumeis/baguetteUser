@@ -120,9 +120,10 @@
 }
 
 #menuPanel #customertext,
-#storelisttext {
+#storelisttext,#logouttext {
     padding-left: 7px;
 }
+
 
 /*배경색 지정부분*/
 .main-content {
