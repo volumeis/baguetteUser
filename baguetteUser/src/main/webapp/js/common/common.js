@@ -8,8 +8,7 @@ var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
 
 //민호 pc database 서버
 var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
-//var COMMONDBSERVER = "";
-
+//var COMM1000pxSERVER = "";
 //depreciate
 //var COMMONDBSERVER = "http://java78bit404.iptime.org:5025";
 
@@ -23,7 +22,7 @@ var LOGIN_PW;
 var QUERYSTRING;
 var MYLOCATION = myLocation();
 
-
+//$(document).off('.data-api');
 /**
  *       쿼리스트링 추출
  *
@@ -71,7 +70,6 @@ $(document).on('loadCustomerInfo', function () {
     });
 
     $("#customerID").text(LOGIN_ID)
-        //    $('#main-page').remove()
 });
 
 $(document).on('pageshow', function (e, data) {
@@ -79,7 +77,7 @@ $(document).on('pageshow', function (e, data) {
         ($.mobile.activePage[0].id != 'login-page')) {
         console.log('로그인된 계정 : ' + LOGIN_ID);
         $(document).trigger('loadCustomerInfo');
-        countCart();
+        //        countCart();
     }
 });
 
@@ -171,6 +169,11 @@ function myLocation() {
         set: function () {
             if (navigator.geolocation) {
                 // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+                console.log("대기중 : " + locPosition);
+                $.mobile.loading('show', {
+                    //                    disable : true
+                });
+
                 (function () {
                     navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -178,9 +181,8 @@ function myLocation() {
                             lon = position.coords.longitude; // 경도
 
                         locPosition = new daum.maps.LatLng(lat, lon);
-
-                        console.log(locPosition);
-
+                        console.log("가져온location : " + locPosition);
+                        $.mobile.loading('hide', {});
                     });
                 })();
 
@@ -220,3 +222,7 @@ function myLocation() {
         }
     }
 }
+$('#myLocBtn').on('click', function () {
+    console.log('123');
+    MYLOCATION.set();
+});

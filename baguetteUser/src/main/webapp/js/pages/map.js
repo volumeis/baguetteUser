@@ -19,19 +19,29 @@ var geocoder = new daum.maps.services.Geocoder();
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new daum.maps.LatLng(myPosition.getLat(), myPosition.getLng()), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        level: 4 // 지도의 확대 레벨
     };
 var map;
+
+$('#getMyLocation').on('click', function () {
+    console.log();
+    MYLOCATION.set();
+//    MYLOCATION.marking(map);
+});
+
 $(document).one("pageshow", "#map-page", function () {
     map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
     map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+    map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPLEFT);
     //내 위치 확인하기
     $('#search').on('change', function () {
         stores.set($('#search').val());
         console.log($('#search').val())
     });
-    MYLOCATION.marking(map);
-     setEvent(map);
+    if (MYLOCATION.get() != null)
+        MYLOCATION.marking(map);
+
+    //     setEvent(map);
 });
 /* 지도생성 끝 */
 
@@ -61,19 +71,25 @@ $('#testBtn').on('click', function () {
     MYLOCATION.marking(map);
 })
 
+//스토어 리스트 출력
 function getStores() {
     var data = stores.get();
     var html = template(data);
     //생성된 HTML을 DOM에 주입
-    $('#store-table').html("");
+    $('#store-table').empty();
     $('#store-table').append(html);
     console.log(data);
-    //마커 표시
-
+    //    마커 표시
     _markerMaker.set(stores);
-    //    _markerMaker.addrToCoordStores();
     _markerMaker.addMarker();
-    //    _markerMaker.setMap();
+
+
+}
+
+function markerController(type) {
+    if (type === 'myLocation') {
+
+    }
 }
 
 function markerMaker() {
@@ -205,6 +221,6 @@ $("#map-page").on("click", '.close', function () {
 function setEvent(map) {
     daum.maps.event.addListener(map, 'click', function (mouseEvent) {
         closeOverlay();
-    selectedMarker = null;
+        selectedMarker = null;
     });
 }

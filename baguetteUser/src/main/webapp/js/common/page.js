@@ -40,6 +40,7 @@ $(document).one("pagecreate", function () {
 
 $(document).one("pageshow", function () {
     $.mobile.changePage('#storelist-page');
+    
 });
 
 //$(document).one("pageshow", function () {

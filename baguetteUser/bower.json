@@ -23,7 +23,8 @@
         "fakeloader": "latest",
         "handlebars": "^4.0.5",
         "dynatable": "^0.3.1",
-        "jquery-ui": "^1.11.4"
+        "jquery-ui": "^1.11.4",
+        "animate-transition" : "latest"
     },
     "install": {
         "path": "src/main/webapp/lib",
@@ -35,7 +36,8 @@
             "fakeloader": "bower_components/fakeloader/*",
             "handlebars": "bower_components/handlebars/**",
             "dynatable": "bower_components/dynatable/**",
-            "jquery-ui": "bower_components/jquery-ui/**"
+            "jquery-ui": "bower_components/jquery-ui/**",
+            "animate-transition" : "bower_components/animate-transition/**"
         }
     }
 }

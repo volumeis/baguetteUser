@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
     <meta charset="utf-8">
@@ -12,12 +11,13 @@
     <link rel="stylesheet" href="../lib/fakeloader/fakeLoader.css">
     <link rel="stylesheet" href="../lib/jquery-ui/themes/pepper-grinder/jquery-ui.min.css">
     <link rel="stylesheet" href="../css/common.css">
-    
-    <link rel="stylesheet" type="text/css" href="../css/plugIn/jquery.m.toast.css" />
     <!-- 폰트 패밀리 적용 -경철 -->
     <link rel="stylesheet" href="../css/header.css">
 
     <!-- js -->
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=600264d1d1714d9835001e0deda0b346&libraries=services,clusterer"></script>
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=600264d1d1714d9835001e0deda0b346"></script>
+
     <script src="../lib/jquery/jquery.min.js"></script>
     <script src="../js/common/common.js"></script>
     <script src="../js/common/event.js"></script>
@@ -26,17 +26,14 @@
     <script src="../js/common/swipe.js"></script>
     <!--    좌->우 메뉴, 우->좌 카트 민호 -->
 
-
     <script src="../lib/fakeloader/fakeLoader.js"></script>
     <script src="../js/jQery.headroom.js"></script>
     <script src="../js/headroom.js"></script>
     <script src="../lib/handlebars/handlebars.min.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/plugIn/jquery.m.toast.js"></script>
-	
-    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=cbfbdb2372a8e873e875c838efca8260&libraries=services,clusterer"></script>
-    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=cbfbdb2372a8e873e875c838efca8260"></script>
-       <!--
+
+ <!--
 cbfbdb2372a8e873e875c838efca8260
 600264d1d1714d9835001e0deda0b346
 -->
@@ -48,7 +45,6 @@ cbfbdb2372a8e873e875c838efca8260
 <body>
 
     <div data-role="header" id="header" class="header headroom" data-theme="b">
-        <!--        <input type="search" name="search-1" value="Serch">-->
         <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
             <span class="glyphicon glyphicon-menu-hamburger"></span>
         </a>
@@ -70,6 +66,21 @@ cbfbdb2372a8e873e875c838efca8260
     <div data-role="page" id="map-page" class="pages"></div>
     <!-- <div data-role="page" id="customerinfo-page" class="pages"></div> -->
 
+    <!-- 내 위치 설정 -->
+    <div class="modal fade" id="codeError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-role="none">
+        <div class="modal-dialog modal-sm" data-role="none">
+            <div class="modal-content" data-role="none">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"> 지도위치설정</h4>
+                </div>
+                <button id="myLocBtn" type="button" class="btn btn-default" data-role="none">내 현재 위치 기준</button>
+                <div class="modal-footer" data-role="none">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" data-role="none">현재 위치 사용안함</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="fakeloader"></div>
     <script>
         $("#header").headroom({
@@ -81,20 +92,19 @@ cbfbdb2372a8e873e875c838efca8260
                 unpinned: "headroom--unpinned"
             }
         });
-        MYLOCATION.set();
     </script>
-
-
-
+    
     <script id="store-list-template" type="text/x-handlebars-template">
-        <table>
+         <table data-role="none" id="store-table"  class="table">
             <thead>
+                <th>#</th>
                 <th>가게명</th>
                 <th>주소</th>
             </thead>
             <tbody>
                 {{#list}}
                 <tr>
+                    <td><img src="../image/storeImg/{{storeNo}}.jpg"> 사진예정</td>
                     <td>{{storeName}}</td>
                     <td>{{storeAddr}}</td>
                 </tr>
@@ -103,6 +113,7 @@ cbfbdb2372a8e873e875c838efca8260
         </table>
     </script>
 
-</body>
+    <div class="ui-loader-background"> </div>
 
+</body>
 </html>

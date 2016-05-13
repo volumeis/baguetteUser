@@ -23,13 +23,9 @@
     <!--
 cbfbdb2372a8e873e875c838efca8260
 600264d1d1714d9835001e0deda0b346
-
-
-
-
 -->
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
-    
+
     <script src="../js/pages/mapFunc.js"></script>
     <script id="store-list-template" type="text/x-handlebars-template">
         <table class="store-searched-table">
@@ -49,43 +45,7 @@ cbfbdb2372a8e873e875c838efca8260
             </tbody>
         </table>
     </script>
-    <style>
-        .store-searched-table table {
-            width: 100%;
-            margin: 15px 0
-        }
-        
-        .store-searched-table th {
-            background-color: #828282;
-            background: -o-linear-gradient(90deg, #828282, #b7b7b7);
-            background: -moz-linear-gradient( center top, #828282 5%, #b7b7b7 100%);
-            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #828282), color-stop(1, #b7b7b7));
-            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#828282', endColorstr='#b7b7b7');
-            color: #FFFFFF
-        }
-        
-        .store-searched-table,
-        .store-searched-table th,
-        .store-searched-table td {
-            font-size: 0.95em;
-            text-align: center;
-            padding: 4px;
-            border-bottom: 1px solid #efefef;
-            border-collapse: collapse
-        }
-        
-        .store-searched-table tr:nth-child(odd) {
-            background-color: #d5d5d5;
-            background: -o-linear-gradient(90deg, #d5d5d5, #f6f6f6);
-            background: -moz-linear-gradient( center top, #d5d5d5 5%, #f6f6f6 100%);
-            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d5d5d5), color-stop(1, #f6f6f6));
-            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#d5d5d5', endColorstr='#f6f6f6');
-        }
-        
-        .store-searched-table tr:nth-child(even) {
-            background-color: #fdfdfd;
-        }
-    </style>
+
 
 </head>
 
@@ -94,7 +54,17 @@ cbfbdb2372a8e873e875c838efca8260
         <div data-role="main" class="ui-content main-content">
             <link rel="stylesheet" href="../css/map.css">
             <div class="bgColor">
-                <input type="search" id="search" value="효령로" placeholder="Placeholder text...">
+                <!--                <input type="search" id="search" value="효령로" placeholder="Placeholder text...">-->
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon" id="getMyLocation">내 위치</div>
+                        <input data-role="none" class="form-control" id="searchIpt" placeholder="검색할 도로명 주소" value="호령로">
+                        <span class="input-group-btn">
+							<button data-role="none" id="searchBtn" class="btn btn-success"	type="button" >검색</button>
+						</span>
+                    </div>
+                </div>
+
                 <button onclick="getStores()">지역기반찾기</button>
                 <div id="map" style="width:100%;height:350px;"></div>
                 <p>
@@ -102,11 +72,8 @@ cbfbdb2372a8e873e875c838efca8260
                     <br>
                 </p>
                 <!--            <p id="infoDiv"></p>-->
-                <div id="ad"></div>
-                <div id="lat"></div>
-                <div id="lng"></div>
-                <div id="store-table"> </div>
-               
+                <div id="store-table"></div>
+
             </div>
             <script src="../js/pages/mapFunc.js"></script>
             <script src="../js/pages/map.js"></script>
