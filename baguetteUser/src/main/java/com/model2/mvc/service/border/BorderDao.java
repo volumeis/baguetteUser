@@ -17,6 +17,7 @@ public interface BorderDao {
 	// SELECT LIST
 	public List<Border> getBorderList(Border border) throws Exception ;
 //
+	public List<Border> getBorderDayList(int customerNo) throws Exception ;
 //	// UPDATE
 //	public void updateUser(User user) throws Exception ;
 //	

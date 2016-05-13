@@ -46,6 +46,15 @@ public class BorderServiceImpl implements BorderService{
 		
 		return map;
 	}
+	
+	public Map<String , Object> getBorderDayList(int customerNo) throws Exception {
+		List<Border> list= borderDao.getBorderDayList(customerNo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list );
+		
+		return map;
+	}
 //
 //	public void updateUser(User user) throws Exception {
 //		userDao.updateUser(user);

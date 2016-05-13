@@ -1,5 +1,6 @@
 package com.model2.mvc.service.border;
 
+import java.util.List;
 import java.util.Map;
 
 import com.model2.mvc.service.domain.Border;
@@ -17,6 +18,7 @@ public interface BorderService {
 //	// 회원정보리스트 
 	public Map<String , Object> getBorderList(Border border) throws Exception;
 //	
+	public Map<String , Object> getBorderDayList(int customerNo) throws Exception ;
 //	// 회원정보수정
 //	public void updateUser(User user) throws Exception;
 //	

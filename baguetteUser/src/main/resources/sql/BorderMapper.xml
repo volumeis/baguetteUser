@@ -45,4 +45,10 @@
 		group by b.bno;
 	</select>
 	
+	<select id="getBorderDayList" parameterType="border" resultMap="borderSelectMap">
+	select odate
+	from border
+	where CNO =#{customerNo}
+	group by odate
+	</select>
 </mapper>

@@ -126,13 +126,24 @@ public class BorderContorller {
         border.setOdate(odate);
 	
 		Map<String, Object> map = borderService.getBorderList(border);
-        System.out.println("가는중?"+map.get("list"));
-		
+        
         // Model 과 View 연결
 		model.addAttribute("map", map);
-
 	}
-    
+
+	@RequestMapping(value = "listBorderDay/{customerNo}", method = RequestMethod.GET)
+	public void listBorderDay(@PathVariable int customerNo, Model model) throws Exception {
+ 
+		System.out.println("/border/listBorder : GET");
+		
+		// 캘린더에 찍히는 날짜
+		
+		Map<String, Object> map = borderService.getBorderDayList(customerNo);
+        
+        // Model 과 View 연결
+		model.addAttribute("map", map);
+	}
+	
 	@RequestMapping(value = "listFinalBorder/{customerNo}", method = RequestMethod.GET)
 	public void listFinalBorder(@PathVariable int customerNo, Model model) throws Exception {
  

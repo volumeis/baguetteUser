@@ -42,6 +42,9 @@ public class BorderDaoImpl implements BorderDao{
 	return sqlSession.selectList("BorderMapper.getBorderList", border);
 	}	
 	
+	public List<Border> getBorderDayList(int customerNo) throws Exception {
+		return sqlSession.selectList("BorderMapper.getBorderDayList", customerNo);
+	}	
 //	public void updateUser(User user) throws Exception {
 //		sqlSession.update("UserMapper.updateUser", user);
 //	}
