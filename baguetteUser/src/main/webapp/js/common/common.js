@@ -163,16 +163,16 @@ function getRealContentHeight() {
  */
 //내 위치 람다
 function myLocation() {
-    //내 위치 저장
+    //내 위치
     var locPosition;
     return {
+        //내 위치 저장
         set: function () {
             if (navigator.geolocation) {
                 // GeoLocation을 이용해서 접속 위치를 얻어옵니다
                 console.log("대기중  : " + locPosition);
                 $.mobile.loading('show');
                 navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-                
             } else {
                 // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
                 console.log('geolocation 사용안함');
@@ -185,7 +185,10 @@ function myLocation() {
             return locPosition;
         },
         //내 위치 마킹
-        marking: function (map) {
+        marking: function (map, callback) {
+            
+            console.log('marking-my-position');
+            
             var marker = new daum.maps.Marker({
                 map: map,
                 position: locPosition
@@ -215,13 +218,14 @@ function myLocation() {
         locPosition = new daum.maps.LatLng(lat, lon);
         console.log("가져온location : " + locPosition);
         $.mobile.loading('hide');
+        if($.mobile.activePage[0].id == 'map-page'){
+            MYLOCATION.marking(map);
+        }
+        
+       
     }
 
     function errorCallback(error) {
         alert(error.message);
     }
 }
-$('#myLocBtn').on('click', function () {
-    console.log('123');
-    MYLOCATION.set();
-});

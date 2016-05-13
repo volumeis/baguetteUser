@@ -32,11 +32,10 @@ $('#getMyLocation').on('click', function () {
 $(document).one("pageshow", "#map-page", function () {
     map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
     map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
-    map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPLEFT);
     //내 위치 확인하기
-    $('#search').on('change', function () {
-        stores.set($('#search').val());
-        console.log($('#search').val())
+    $('#storeSearchIpt').on('change', function () {
+        console.log($('#storeSearchIpt').val());
+        stores.set($('#storeSearchIpt').val());
     });
     if (MYLOCATION.get() != null)
         MYLOCATION.marking(map);
@@ -50,7 +49,7 @@ var selectedMarker = null;
 var selectedMarkerBuffer = null;
 //마커의 이미지,크기,옵션
 var markerImage = new daum.maps.MarkerImage(
-    '../image/breadMarker.png',
+    '../image/brandImg/logoMarker.gif',
     new daum.maps.Size(50, 50), {
         offset: new daum.maps.Point(25, 50),
         alt: '마커이미지'
@@ -67,8 +66,8 @@ var markerSet = new Object();
 ////////////////////////////////////////////////////////////////////////////////////
 
 //내 위치 확인
-$('#testBtn').on('click', function () {
-    MYLOCATION.marking(map);
+$('#myLocationBtn').on('click', function () {
+    MYLOCATION.set()
 })
 
 //스토어 리스트 출력

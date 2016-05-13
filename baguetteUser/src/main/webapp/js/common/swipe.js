@@ -8,32 +8,56 @@
  * 05.10.16
  */
 var PANELSTATE = false;
-$(function () {
-    
-    //좌 -> 우 스와이프
-    $(document).on("swiperight", function (e) {
-        if ($.mobile.activePage.jqmData("panel") !== "open") {
-            console.log('swiperight on ! ')
-            $("#menuPanel").panel("open");
-        }
-    });
-    //우 -> 좌 스와이프
-    $(document).on("swipeleft", function (e) {
-        if ($.mobile.activePage[0].id != 'cart-page' && !PANELSTATE) {
-            console.log('swipeleft on ! ')
-             $.mobile.changePage("cart.html",{
-                 direction : "reverse",
-                 transition : "slide"
-             });
-        }
-    });
+$(document).on("pageshow", function () {
+    var activePage = $.mobile.activePage[0].id;
+    if (activePage === 'storelist-page' ||
+        activePage === 'cart-page' ||
+        activePage === 'storehome-page' ||
+        activePage === 'customerinfo-page') {
+
+        //좌 -> 우 스와이프
+        $('#' + activePage).on("swiperight", function (e) {
+            if ($.mobile.activePage.jqmData("panel") !== "open") {
+                console.log('swiperight on ! ')
+                $("#menuPanel").panel("open");
+            }
+        });
+
+        //우 -> 좌 스와이프
+        $('#' + activePage).on("swipeleft", function (e) {
+            if ($.mobile.activePage[0].id != 'cart-page' && !PANELSTATE) {
+                console.log('swipeleft on ! ')
+                $.mobile.changePage("cart.html", {
+                    direction: "reverse",
+                    transition: "slide"
+                });
+            }
+        });
+    } else if ( activePage === 'map-page') {
+        console.log('나 맵이야');
+        $('.swipe-area').on("swiperight", function () {
+            if ($.mobile.activePage.jqmData("panel") !== "open") {
+                console.log('swiperight on ! ')
+                $("#menuPanel").panel("open");
+            }
+        });
+        $('.swipe-area').on("swipeleft", function () {
+            console.log('swipeleft on ! ');
+            $.mobile.changePage("cart.html", {
+                direction: "reverse",
+                transition: "slide"
+            });
+        });
+    }
 });
 
-$(document).on("panelbeforeopen","#menuPanel", function () {
+
+
+$(document).on("panelbeforeopen", "#menuPanel", function () {
     console.log("panelbeforeopen");
     PANELSTATE = true;
 });
-$(document).on("panelclose","#menuPanel", function () {
+$(document).on("panelclose", "#menuPanel", function () {
     console.log("panelclose");
     PANELSTATE = false;
 });
