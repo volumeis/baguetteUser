@@ -1,11 +1,13 @@
 $("#fakeloader").fakeLoader({
-    timeToHide: 4000, //Time in milliseconds for fakeLoader disappear
+    timeToHide: 1000, //Time in milliseconds for fakeLoader disappear
     zIndex: "9999", //Default zIndex
     spinner: "spinner1" //Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
-//    bgColor: "transparent"
+        //    bgColor: "transparent"
 });
+
 $(function () {
     //$(document).one("pageshow", function () {
+
     $.ajax({
         url: COMMONWEBSERVER + "/store/getStoreListShort/" + "서울 서초구", //
         method: "GET",
@@ -51,10 +53,16 @@ $(function () {
         complete: function () {
             console.log('complete : storeList ajax');
             callStoreHome();
+
+            $('#codeError').modal();
+
         },
         error: function (JSONData, status) {
             //                alert("잘못된 요청입니다.");
         }
     });
 });
-//});
+
+$('#myLocBtn').on('click',function(){
+   MYLOCATION.set();
+});
