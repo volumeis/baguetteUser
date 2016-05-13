@@ -62,7 +62,6 @@
                         </select>
                     </div>
                   </div>
-
                 <div id="checkboxstyle">
                     <input data-role="none" type="checkbox" id="checkbox1" /> 지금 선택하신 결제수단을 다음에도 사용
                 </div>
@@ -74,12 +73,31 @@
                 <div id="checkboxstyle1">
                     <input data-role="none" type="checkbox" id="checkbox3" /> 결제대행 서비스 표준이용약관
                 </div>
-
-                <button id="breadPayment">결제하기</button>
-                
+            		<!-- <button type="button" id="breadPayment">결제하기</button> -->
+				<a href="#" id="submit" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">결제하기</a>
+				<div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 400px;">
+					<div data-role="header" data-theme="a">  
+						<h1>결제하기</h1>
+					</div>
+					<div role="main" class="ui-content">
+						<h3 class="ui-title">결제하시겠습니까?</h3>
+							<a id="cart" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">취소</a>         
+							<a id= breadPayment class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">확인</a>     
+					</div>
+				</div>
+				
+				<div data-role="popup" id="noPopup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 400px;">
+			 		<div data-role="header" data-theme="a">  
+						<h1>Alert</h1>
+					</div>
+					<div role="main" class="ui-content">
+						<h3 class="ui-title">카트가 비었습니다.</h3>
+							<a id="cart" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">확인</a>         
+					</div>
+				</div>
             </div>
         </div>
-        <!-- script -->
+		<!-- script -->
         <script src="../js/pages/cart.js"></script>
     </div>
 </body>
