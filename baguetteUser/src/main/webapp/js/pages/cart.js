@@ -1,4 +1,4 @@
-    $(document).one('pagecreate', '#cart-page', function () {
+$(document).one('pagecreate', '#cart-page', function () {
         console.log("cart.js 호출")
         $.ajax({
             // 회원 번호를 통해 호출
@@ -201,41 +201,39 @@
             }
         })
 
-        $("#breadPayment").on("click", function () {  
-
-        	var totalprice = $(".tprice").val();
-        	
-            $.ajax({
-                // 회원 번호를 통해 호출
-                url: COMMONWEBSERVER + "/border/addBorder/" + LOGIN_NO,
-                method: "GET",
-                dataType: "json",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                success: function (JSONData, status) {
+  
+   
+        	    //결제하기
+        	   $('#submit').on('click',function() {
+        	    	console.log(' 나클릭됨');
+        	    	console.log(' 확인 def' + $('#maincdiv div').length);
+        	    	
+        	    	if($('#maincdiv div').length != 0) {
+        	    		console.log(' 확인 yes' + $('#maincdiv div').length);
+                
+                		$("a[href='#']").attr("href","#popupDialog");
+                		
+                		$("#breadPayment").on("click", function () {
+                			$.ajax({
+                          // 회원 번호를 통해 호출
+                				url: COMMONWEBSERVER + "/border/addBorder/" + LOGIN_NO,
+                				method: "GET",
+                				dataType: "json",
+                				headers: {
+                					"Accept": "application/json",
+                					"Content-Type": "application/json"
+                					},
+                					success: function (JSONData, status) {
+                						$.mobile.changePage("confirm.html");
+                				    }
+                				});
+                	 		});
                 	
-                    if(totalprice == null) {
-                    	bootbox.alert("카드에 담긴 상품이 없습니다.");
-            
-            		}else {
-
-            			bootbox.confirm("결제하시겠습니까?", function(result) {
-            				if(result==true) {
-            				 //location.href = "./lastpurchaseend.html";
-            				    $.mobile.changePage("confirm.html");
-            					
-            				} else {
-            				 //location.href = "./cart.html";
-            					$.mobile.changePage("cart.html");
-            				}
-            				
-            			  });//bootbox.confirm
-                    	 }//if
-                      }//success
-                	});//ajax
-            	});//click
-        	});//finall
-    
-    //$.mobile.changePage("confirm.html");
+        	    	} else {
+                	   //담긴 상품이 없을 때
+                	   console.log(' 확인 no' + $('#maincdiv div').length)
+                       $("a[href='#']").attr("href","#noPopup");
+                	}
+          }) 	    
+      });
+  
