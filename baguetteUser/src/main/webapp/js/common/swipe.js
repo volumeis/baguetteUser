@@ -34,7 +34,6 @@ $(document).on("pageshow", function () {
             }
         });
     } else if ( activePage === 'map-page') {
-        console.log('나 맵이야');
         $('.swipe-area').on("swiperight", function () {
             if ($.mobile.activePage.jqmData("panel") !== "open") {
                 console.log('swiperight on ! ')
