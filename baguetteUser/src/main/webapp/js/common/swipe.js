@@ -33,7 +33,7 @@ $(document).on("pageshow", function () {
                 });
             }
         });
-    } else if ( activePage === 'map-page') {
+    } else if (activePage === 'map-page') {
         $('.swipe-area').on("swiperight", function () {
             if ($.mobile.activePage.jqmData("panel") !== "open") {
                 console.log('swiperight on ! ')
@@ -46,6 +46,10 @@ $(document).on("pageshow", function () {
                 direction: "reverse",
                 transition: "slide"
             });
+        });
+    } else if (activePage === 'join-page') {
+        $('#' + activePage).on("swiperight", function (e) {
+            window.history.back();
         });
     }
 });
