@@ -77,7 +77,7 @@
 	<update	id="updateCart"	parameterType="string" >
 	   	UPDATE cart
 	   	<set>
-	   		cqty	= #{buyQty} ,
+	   		cqty	= #{buyQty}
 		</set>
 	   	WHERE cartno = #{cartNo}
 	 </update>

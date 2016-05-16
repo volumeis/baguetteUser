@@ -49,7 +49,7 @@ $(document).one('pagecreate', '#cart-page', function () {
                     
                     var cimg =
                         $(document.createElement('img')).attr({
-                            src: "../image/breadImg/" + JSONData.cartmap.cartlist[i].breadDesc.storeNo + "/" + JSONData.cartmap.cartlist[i].breadDesc.img,
+                            src: COMMONWEBSERVER+"/image/breadImg/" + JSONData.cartmap.cartlist[i].breadDesc.storeNo + "/" + JSONData.cartmap.cartlist[i].breadDesc.img,
                             class: "img-rounded",
                             style: "height:60px; width:60px"
                         });
@@ -83,15 +83,19 @@ $(document).one('pagecreate', '#cart-page', function () {
                     });
                     var simg =
                         $(document.createElement('img')).attr({
-                            src: "../image/storeImg/store_" + JSONData.cartmap.cartlist[i].breadDesc.storeNo + ".jpg",
+                            src: COMMONWEBSERVER+"/image/storeImg/store_" + JSONData.cartmap.cartlist[i].breadDesc.storeNo + ".jpg",
                             style: "height:100%; width:100%; border: 1px solid lightgray"
                         });
 
                     console.log(JSONData.cartmap.cartlist[i]);
 
+                    
+                    
                     for (var j = 0; j < 5; j++) {
-                        var option = document.createElement('option');
-                        option.text = j + 1;
+                    	
+                    	var option = document.createElement('option');    
+                        
+                    	option.text = j + 1;
                         option.value = j + 1;
 
                         if (option.text == 1) {
@@ -99,8 +103,10 @@ $(document).one('pagecreate', '#cart-page', function () {
                         }
 
                         cselect.append(option);
+                        
                     }
-
+                    
+                    
                     // 스토어 정보 빵보다 우선시 되게 넣기 위해서
                     if (i == 0) {
                         $('#maincdiv').append(storeDivSolo.html(storeDivImg.html(simg)).append(storeDivName));
@@ -123,7 +129,9 @@ $(document).one('pagecreate', '#cart-page', function () {
                             $('#sname' + cindex).append(JSONData.cartmap.cartlist[i + 1].storeName);
                         }
                     }
-
+                    
+                    $("#cselect" + cindex).val(JSONData.cartmap.cartlist[i].buyQty);
+                    
                     $("#cselect" + cindex).change(function () {
                             var str = 0;
                             $("#cselect" + cindex).each(function () {
@@ -195,7 +203,9 @@ $(document).one('pagecreate', '#cart-page', function () {
                         });
                         
                     });
-
+                    
+                    
+                    
                 })
             }
         })
