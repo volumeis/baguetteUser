@@ -225,10 +225,12 @@ $(document).one('pagecreate', '#cart-page', function () {
                 					success: function (JSONData, status) {
                 						$.mobile.changePage("confirm.html");
                 				    }
+          
                 				});
                 	 		});
+        	    	}
                 	
-        	    	} else {
+        	    	 if($('#maincdiv div').length == 0) {
                 	   //담긴 상품이 없을 때
                 	   console.log(' 확인 no' + $('#maincdiv div').length)
                        $("a[href='#']").attr("href","#noPopup");
