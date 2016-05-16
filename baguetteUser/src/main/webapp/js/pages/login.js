@@ -1,22 +1,26 @@
 $(function () {
 //    $.mobile.loading('hide');
     //==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-    $("#customerTel").focus();
+    //$("#customerTel").focus();
     //==>"Login"  Event 연결
     $("#login").on("click", function () {
-
+    	console.log("로그인 과정");
         var id = $("#customerTel").val().trim();
         var pw = $("input:password").val().trim();
         
         if (id == null || id.length < 1) {
-            alert('ID 를 입력하지 않으셨습니다.');
-            $("input:tel").focus();
+           // bootbox.alert("ID 를 입력하지 않으셨습니다.");
+        	//$("input:tel").focus();
+        	console.log($("#customerTel").val().trim());
+        	$("a[href='#']").attr("href","#popupDialog");
             return;
         }
 
         if (pw == null || pw.length < 1) {
-            alert('패스워드를 입력하지 않으셨습니다.');
-            $("input:password").focus();
+        	//bootbox.alert('패스워드를 입력하지 않으셨습니다.');
+        	//$("input:password").focus();
+        	console.log($("input:password").val().trim());
+        	$("a[href='#']").attr("href","#noPopup");
             return;
         }
 
@@ -42,7 +46,8 @@ $(function () {
                     return;
 
                 } else {
-                    alert("아이디 , 패스워드를 확인하시고 다시 로그인...");
+                    //bootbox.alert("아이디 , 패스워드를 확인하시고 다시 로그인...");
+                	$("a[href='#']").attr("href","#retry");
                 }
             }
         });
