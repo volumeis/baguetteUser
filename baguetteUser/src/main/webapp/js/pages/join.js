@@ -90,7 +90,7 @@ function joinCustomer() {
 		dataType : "json",
 		success : function(JSONData, status) {
 			if (JSONData != null) {
-				alert("회원가입완료");
+				bootbox.alert("회원가입완료");
 				$(":mobile-pagecontainer").pagecontainer("change",
 						$("#login-page"), {
 							transition : 'slide',
@@ -98,7 +98,7 @@ function joinCustomer() {
 						});
 
 			} else {
-				alert("회원가입이 완료되지 않았습니다.");
+				bootbox.alert("회원가입이 완료되지 않았습니다.");
 				$(":mobile-pagecontainer").pagecontainer("change",
 						$("#login-page"), {
 							transition : 'slide',
