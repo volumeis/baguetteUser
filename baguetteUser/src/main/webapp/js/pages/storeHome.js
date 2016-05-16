@@ -40,7 +40,7 @@ function loadStoreHome(storeNo) {
                 });
 
                 var cartimg = $(document.createElement('img')).attr({
-                    src: "../image/breadImg/" + storeNo + "/" + bread.img,
+                    src: COMMONWEBSERVER + "/image/breadImg/" + storeNo + "/" + bread.img,
                     class: "img-rounded",
                     style: "height:100%; width:100%; border: 1px solid lightgray"
                 });
