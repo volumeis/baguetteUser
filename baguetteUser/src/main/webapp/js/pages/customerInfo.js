@@ -1,4 +1,4 @@
-$(document).one(
+/*$(document).one(
 		'pageshow',
 		'#customerinfo-page',
 		function() {
@@ -72,10 +72,10 @@ $(document).one(
 					})
 				}
 			})
-		});
+		});*/
 
 $(function() {
-
+	
 	var enableDay = new Array();
 
 	$.ajax({
@@ -90,7 +90,8 @@ $(function() {
 		success : function(JSONData, status) {
 			$.each(JSONData.map.list, function(i, item) {
 				enableDay.push(GetDateString("/Date("+ JSONData.map.list[i].odate + ")/"));
-
+			})
+				
 				$('#purchaseDatepicker').val($.datepicker.formatDate('yy-mm-dd', new Date()));
 				$('#purchaseDatepicker').datepicker({
 					dateFormat : 'yy-mm-dd',
@@ -99,10 +100,9 @@ $(function() {
 					beforeShowDay : selectableDays
 
 				});
-
-			})
 			
 			function selectableDays(date) {
+				
 				dummy = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2)
 						+ "-" + ("0" + date.getDate()).slice(-2);
 			

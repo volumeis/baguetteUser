@@ -28,6 +28,10 @@
     font-size: 14px;
 }
 
-#ui-datepicker-div{
-	width:96%
+.ui-corner-all{
+	width:100%
+}
+
+#purchaseDatepicker{
+	margin-top :10px;
 }
