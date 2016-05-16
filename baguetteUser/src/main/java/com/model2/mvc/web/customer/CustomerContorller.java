@@ -143,12 +143,13 @@ public class CustomerContorller {
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
-	public void logout(HttpSession session) throws Exception {
-
-		System.out.println("/customer/logout : POST");
-
-		// 안되안되 session.invalidate();
-
+	public void logout( HttpSession session) throws Exception {
+         
+		System.out.println("/customer/logout : get");
+		
+		session.removeAttribute("customer");
+	   
+	    System.out.println("세션체크"+ (Customer)session.getAttribute("customer"));
 	}
 
 	@RequestMapping(value = "getJsonCustomer/{customerTel}", method = RequestMethod.GET)

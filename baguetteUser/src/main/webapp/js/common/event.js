@@ -53,6 +53,22 @@ $(document).on('click', '#storelist', function () {
 
 });
 
+$(document).on('click', '#logout', function () {
+	 $.ajax({
+	        url: COMMONWEBSERVER + "/customer/logout",
+	        method: "GET",
+	        dataType: "json",
+	        headers: {
+	            "Accept": "application/json",
+	            "Content-Type": "application/json"
+	        },
+	        success: function (JSONData, status) {
+	         alert("로그아웃 되었다");
+	         location.href = "./index.html";
+
+	        }
+	   })
+});
 
 $(document).on('pagebeforeshow', "#storehome-page", function (event, data) {
     QUERYSTRING = $(this).data("url").split("?")[1];;
