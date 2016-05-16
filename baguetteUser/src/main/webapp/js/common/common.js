@@ -77,7 +77,10 @@ $(document).on('pageshow', function (e, data) {
         ($.mobile.activePage[0].id != 'login-page')) {
         console.log('로그인된 계정 : ' + LOGIN_ID);
         $(document).trigger('loadCustomerInfo');
-        //        countCart();
+        
+        // 카트 뱃지 전역으로 사용하기 위해서
+        // - 경철
+        countCart();
     }
 });
 
