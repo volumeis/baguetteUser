@@ -116,7 +116,7 @@ $(document).one('pagecreate', '#cart-page', function () {
 
                             var simg1 =
                                 $(document.createElement('img')).attr({
-                                    src: "../image/storeImg/store_" + JSONData.cartmap.cartlist[i + 1].breadDesc.storeNo + ".jpg",
+                                    src: COMMONWEBSERVER + "/image/storeImg/store_" + JSONData.cartmap.cartlist[i + 1].breadDesc.storeNo + ".jpg",
                                     style: "height:100%; width:100%"
                                 });
                             $('#maincdiv').append(storeDivSolo.html(storeDivImg.html(simg1)).append(storeDivName));
@@ -130,9 +130,8 @@ $(document).one('pagecreate', '#cart-page', function () {
                                 str += +($(this).val() * JSONData.cartmap.cartlist[i].breadDesc.price);
                             });
                             $('#cmid' + cindex).text(str);
-                            /*$('#cmid' + cindex).append($(document.createElement('div')).text("원"));*/
                             $.ajax({
-                                url: "/cart/updateJsonCart/buyQty=" + $(this).val() + "&cartNo=" + JSONData.cartmap.cartlist[i].cartNo,
+                                url: COMMONWEBSERVER + "/cart/updateJsonCart/buyQty=" + $(this).val() + "&cartNo=" + JSONData.cartmap.cartlist[i].cartNo,
                                 method: "GET",
                                 dataType: "json",
                                 headers: {
@@ -163,7 +162,7 @@ $(document).one('pagecreate', '#cart-page', function () {
 
                     $('#cdel' + cindex).click(function () {
                         $.ajax({
-                            url: "/cart/delJsonCart/" + JSONData.cartmap.cartlist[i].cartNo,
+                            url: COMMONWEBSERVER + "/cart/delJsonCart/" + JSONData.cartmap.cartlist[i].cartNo,
                             method: "GET",
                             dataType: "json",
                             headers: {

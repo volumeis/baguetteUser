@@ -97,17 +97,12 @@ function loadStoreHome(storeNo) {
  * 05.02.16
  */
 $(document).one('pageshow', "#storehome-page", function (event, data) {
-    console.log('pageshow #sotrehome-page')
-    $("#homeloader").fakeLoader({
-        timeToHide: 2000,
-        zIndex: "9999",
-        bgColor: "#FFFFFF",
-        imagePath: "../image/brandImg/loader01.gif"
-    });
+    console.log('pageshow #storehome-page')
     loadStoreHome(QUERYSTRING);
 });
 
-$(function(){
+
+$(function () {
     console.log('pagebeforeshow')
-    
+
 })

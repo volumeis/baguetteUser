@@ -15,7 +15,7 @@ function callStoreHome() {
             data: {
                 'parameter': storeId
             },
-            transition: "slideup"
+            transition: "fade"
         });
     });
     $('#map-page').on('click', '.desc a', function () {

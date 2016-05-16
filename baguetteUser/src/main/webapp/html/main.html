@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/fakeloader/fakeLoader.css">
     <link rel="stylesheet" href="../lib/jquery-ui/themes/pepper-grinder/jquery-ui.min.css">
-    <link rel="stylesheet" href="../css/plugIn/jquery.m.toast.css">
+    <link rel="stylesheet" href="../js/plugIn/jquery.m.toast.css">
     <link rel="stylesheet" href="../css/common.css">
     <!-- 폰트 패밀리 적용 -경철 -->
     <link rel="stylesheet" href="../css/header.css">
@@ -24,12 +24,13 @@
     <script src="../js/common/event.js"></script>
     <script src="../js/common/page.js"></script>
     <script src="../js/common/closer.js"></script>
-    <script src="../js/common/swipe.js"></script>
-    <!--    좌->우 메뉴, 우->좌 카트 민호 -->
+    <script src="../js/common/swipe.js"></script> <!--    좌->우 메뉴, 우->좌 카트 민호 -->
+    <script src="../js/common/loader.js"></script> <!-- 페이지간 로더 -->
+    
 
     <script src="../lib/fakeloader/fakeLoader.js"></script>
-    <script src="../js/jQery.headroom.js"></script>
-    <script src="../js/headroom.js"></script>
+    <script src="../js/plugIn/jQery.headroom.js"></script>
+    <script src="../js/plugIn/headroom.js"></script>
     <script src="../lib/handlebars/handlebars.min.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/plugIn/jquery.m.toast.js"></script>
@@ -81,6 +82,7 @@ cbfbdb2372a8e873e875c838efca8260
         </div>
     </div>
     <div id="homeloader"></div>
+    <div id="confirmloader"></div>
     <div id="fakeloader"></div>
     <script>
         $("#header").headroom({
