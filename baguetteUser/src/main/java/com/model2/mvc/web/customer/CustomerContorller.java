@@ -65,6 +65,7 @@ public class CustomerContorller {
 		} else {
 			model.addAttribute("customer", null);
 		}
+		System.out.println("login [customer] :  : " + customer);
 	}
 
 	/**
@@ -87,11 +88,10 @@ public class CustomerContorller {
 			Customer testCustomer = customerService.getCustomer("testCtel");
 
 			session.setAttribute("customer", testCustomer);
-			System.out.println("loginCheck : " + testCustomer);
 			model.addAttribute("customer", testCustomer);
-			System.out.println("저장된 세션 : " + testCustomer);
+			System.out.println("loginCheck [customer] :  : " + testCustomer);
 		} else {
-			System.out.println("loginCheck : " + customer);
+			System.out.println("loginCheck [customer] :  : " + customer);
 			model.addAttribute("customer", customer);
 		}
 	}
@@ -109,7 +109,7 @@ public class CustomerContorller {
 		
 		System.out.println("" + joinPhone + " : " + joinCode);
 		HttpClient httpClient = new DefaultHttpClient();
-		String url = "http://localhost:3000/joinController/sendSms?phone=" + joinPhone + "&rannum=" + joinCode;
+		String url = "http://http://java78bit404.iptime.org:30025/joinController/sendSms?phone=" + joinPhone + "&rannum=" + joinCode;
 		HttpGet httpGet = new HttpGet(url);
 		httpGet.setHeader("Accept", "application/json");
 		httpGet.setHeader("Content-Type", "application/json");
@@ -127,6 +127,7 @@ public class CustomerContorller {
 	public void addCustomer(@ModelAttribute("customer") Customer customer, Model model) throws Exception {
 		System.out.println("/customer/addCustomer : POST");
 		customerService.addCustomer(customer);
+		System.out.println("addCustomer : " + customer);
 		model.addAttribute("customer", customer);
 	}
 
@@ -134,10 +135,11 @@ public class CustomerContorller {
 	@RequestMapping(value = "getCustomer", method = RequestMethod.GET)
 	public void getCustomer(@RequestParam("customerTel") String customerTel, Model model) throws Exception {
 
-		System.out.println("/user/getUser : GET");
+		System.out.println("/customer/getCustomer : GET");
 		// Business Logic
 		Customer customer = customerService.getCustomer(customerTel);
 		// Model 과 View 연결
+		System.out.println("getCustomer : " + customer);
 		model.addAttribute("customer", customer);
 
 	}
@@ -149,7 +151,7 @@ public class CustomerContorller {
 		
 		session.removeAttribute("customer");
 	   
-	    System.out.println("세션체크"+ (Customer)session.getAttribute("customer"));
+	    System.out.println("logout [customer] : "+ (Customer)session.getAttribute("customer"));
 	}
 
 	@RequestMapping(value = "getJsonCustomer/{customerTel}", method = RequestMethod.GET)

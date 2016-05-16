@@ -12,7 +12,7 @@ $(document).on('pagebeforeshow', '#storehome-page', function () {
         zIndex: "9999",
 //        bgColor: "#FFFFFF",
         bgColor: "transperant",
-        imagePath: COMMONWEBSERVER + "/image/brandImg/loader01.gif"
+        imagePath: COMMONWEBSERVER + "/image/brandImg/appStart.gif"
     });
     $(".fl").css({
         "top": $(window).height() / 2 - 170 / 2,

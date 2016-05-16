@@ -31,16 +31,6 @@ function callStoreHome() {
         });
     });
 
-    //   $('#cart-page').on('click', '.desc a', function () {
-    //        var storeId = $(this).attr("id");
-    //        $.mobile.changePage("storeHome.html", {
-    //            dataUrl: "storeHome.html?parameter=" + storeId,
-    //            data: {
-    //                'parameter': storeId
-    //            },
-    //            transition: "slideup"
-    //        });
-    //    });
 }
 
 $(document).on('click', '#customerinfo', function () {
@@ -54,20 +44,7 @@ $(document).on('click', '#storelist', function () {
 });
 
 $(document).on('click', '#logout', function () {
-	 $.ajax({
-	        url: COMMONWEBSERVER + "/customer/logout",
-	        method: "GET",
-	        dataType: "json",
-	        headers: {
-	            "Accept": "application/json",
-	            "Content-Type": "application/json"
-	        },
-	        success: function (JSONData, status) {
-	         alert("로그아웃 되었다");
-	         location.href = "./index.html";
-
-	        }
-	   })
+	logout();
 });
 
 $(document).on('pagebeforeshow', "#storehome-page", function (event, data) {

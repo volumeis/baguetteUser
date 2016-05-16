@@ -3,8 +3,8 @@
  */
 
 //민호 pc tomcat 서버
-//var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
-var COMMONWEBSERVER = "";
+var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
+//var COMMONWEBSERVER = "";
 
 //민호 pc database 서버
 var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
@@ -140,8 +140,6 @@ function countCart() {
 }
 
 
-
-
 /**
  * 페이지 높이 조정
  *
@@ -189,9 +187,9 @@ function myLocation() {
         },
         //내 위치 마킹
         marking: function (map, callback) {
-            
+
             console.log('marking-my-position');
-            
+
             var marker = new daum.maps.Marker({
                 map: map,
                 position: locPosition
@@ -221,14 +219,35 @@ function myLocation() {
         locPosition = new daum.maps.LatLng(lat, lon);
         console.log("가져온location : " + locPosition);
         $.mobile.loading('hide');
-        if($.mobile.activePage[0].id == 'map-page'){
+        if ($.mobile.activePage[0].id == 'map-page') {
             MYLOCATION.marking(map);
         }
-        
-       
     }
 
     function errorCallback(error) {
         alert(error.message);
     }
+}
+
+
+function logout() {
+    $.ajax({
+        url: COMMONWEBSERVER + "/customer/logout",
+        method: "GET",
+        dataType: "json",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        success: function (JSONData, status) {
+            
+            if ( $("#login-page").size() > 0) {
+
+            } else {
+                alert("로그아웃 되었다");
+                location.href = "index.html";
+            }
+            console.log("logout customer");
+        }
+    });
 }
