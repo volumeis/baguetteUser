@@ -11,9 +11,11 @@ $(function () {
         if (id == null || id.length < 1) {
            // bootbox.alert("ID 를 입력하지 않으셨습니다.");
         	//$("input:tel").focus();
-        	console.log($("#customerTel").val().trim());
         	$("a[href='#']").attr("href","#popupDialog");
-            return;
+        	$("#customer_Tel").on("click", function () {
+        		console.log("^d^");
+        	});
+        	return;
         }
 
         if (pw == null || pw.length < 1) {
