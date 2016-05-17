@@ -79,21 +79,42 @@
                                 "Content-Type": "application/json"
                             },
                             success: function (JSONData, status) {
-                                var allprice = 0;
-                                var all = "";
-                                for (var i = 0; i < JSONData.map.cartlist.length; i++) {
-                                    all += JSONData.map.cartlist[i].breadDesc.name + "빵 " + JSONData.map.cartlist[i].buyQty + "개 구입 " + JSONData.map.cartlist[i].breadDesc.price + "원" + "<br>";
 
-                                };
-
-                                $('#ono').html(all);
-                                for (var i = 0; i < JSONData.map.cartlist.length; i++) {
-                                    allprice += JSONData.map.cartlist[i].buyQty * JSONData.map.cartlist[i].breadDesc.price;
-                                };
-
-                                $('#price').text("총 구매가격: " + allprice + "원");
-                                $('#customerName').text(LOGIN_ID + " 님");
-                                
+                            	var allprice = 0;
+                            	
+                            	$.each(JSONData.map.cartlist, function (i, item) {
+	                                
+	                                
+	                                
+	                                var conindex = i;
+	                                var condiv = $(document.createElement('div')).addClass('ui-grid-a').attr({
+	                                	id:'condiv'+conindex
+	                                	
+	                                });
+	                                var conimg = $(document.createElement('div')).addClass('ui-block-a').attr({
+	                                	id:'conimg'+conindex,
+	                                	style: "width:28%"
+	                                });
+	                                var context = $(document.createElement('div')).addClass('ui-block-b').attr({
+	                                	id:'context'+conindex,
+	                                	style: "width:70%"
+	                                });
+	                                
+	                                var cimg =
+	                                    $(document.createElement('img')).attr({
+	                                        src: COMMONWEBSERVER+"/image/breadImg/" + JSONData.map.cartlist[i].breadDesc.storeNo + "/" + JSONData.map.cartlist[i].breadDesc.img,
+	                                        class: "img-rounded",
+	                                        style: "height:70px; width:70px"
+	                                    });
+	                                
+	                                $('#ono').append(condiv.html(conimg.html(cimg)).append(context));
+	                                $('#context'+conindex).html(JSONData.map.cartlist[i].breadDesc.name + "빵 " + JSONData.map.cartlist[i].buyQty + "개" +"<br>"+JSONData.map.cartlist[i].breadDesc.price + "원" + "<br>");
+	                                
+	                                allprice += JSONData.map.cartlist[i].buyQty * JSONData.map.cartlist[i].breadDesc.price;
+	                                
+	                                $('#price').text("총 구매가격: " + allprice + "원");
+	                                $('#customerName').text(LOGIN_ID + " 님");
+                            	})
                             }
                             
                         })
