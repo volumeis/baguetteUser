@@ -20,23 +20,24 @@
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
 </head>
-<!-- //////////////////////////////////////////////////////////////////////////   -->
-
+    
 <body>
     <div data-role="page" class="pages" id="storelist-page">
+        <!-- main.html 에 주입되는 부분-->
         <div data-role="main" class="ui-content main-content ">
             <link rel="stylesheet" href="../css/storeList.css" />
 
             <div class="bgColor">
                 <!-- storeListStart -->
-                <div id="list-store"></div>
+                <div id="list-store"></div> <!-- ajax 시에 element가 생성 되는 부분-->
                 <!-- storeListEnd -->
             </div>
-
-            <script src="../js/pages/storeList.js"></script>
+            
+            <!-- storeList.js : ajax load 시에는 load 되지 않는다. -->
+            <script src="../js/pages/storeList.js"></script> 
         </div>
+        <!-- /main.html 에 주입되는 부분-->
     </div>
 
 </body>
-
 </html>

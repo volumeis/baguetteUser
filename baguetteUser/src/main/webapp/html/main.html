@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- css -->
     <link rel="stylesheet" href="../lib/jquery-mobile-bower/css/jquery.mobile-1.4.5.min.css">
-
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/fakeloader/fakeLoader.css">
     <link rel="stylesheet" href="../lib/jquery-ui/themes/pepper-grinder/jquery-ui.min.css">
     <link rel="stylesheet" href="../js/plugIn/jquery.m.toast.css">
     <link rel="stylesheet" href="../css/common.css">
-    <!-- 폰트 패밀리 적용 -경철 -->
     <link rel="stylesheet" href="../css/header.css">
 
     <!-- js -->
@@ -20,25 +19,20 @@
     <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=600264d1d1714d9835001e0deda0b346"></script>
 
     <script src="../lib/jquery/jquery.min.js"></script>
-    <script src="../js/common/common.js"></script>
-    <script src="../js/common/event.js"></script>
-    <script src="../js/common/page.js"></script>
-    <script src="../js/common/closer.js"></script>
-    <script src="../js/common/swipe.js"></script> <!--    좌->우 메뉴, 우->좌 카트 민호 -->
-    <script src="../js/common/loader.js"></script> <!-- 페이지간 로더 -->
-    
+    <script src="../js/common/common.js"></script>    <!-- 공통 변수 및 계정 처리 -->
+    <script src="../js/common/event.js"></script>    <!-- page event 처리-->
+    <script src="../js/common/page.js"></script>    <!-- page include 및 js include -->
+    <script src="../js/common/closer.js"></script>    <!-- domain object closer : get set -->
+    <script src="../js/common/swipe.js"></script>    <!-- swipe -->
+    <script src="../js/common/loader.js"></script>    <!-- page loader : fakeLoader -->
 
     <script src="../lib/fakeloader/fakeLoader.js"></script>
     <script src="../js/plugIn/jQery.headroom.js"></script>
     <script src="../js/plugIn/headroom.js"></script>
     <script src="../lib/handlebars/handlebars.min.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../js/plugIn/jquery.m.toast.js"></script>
+    <script type="text/javascript" src="../js/plugIn/jquery.m.toast.js"></script>
 
- <!--
-cbfbdb2372a8e873e875c838efca8260
-600264d1d1714d9835001e0deda0b346
--->
     <script src="../lib/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
     <script src="../lib/jquery-ui/jquery-ui.min.js"></script>
 
@@ -46,29 +40,38 @@ cbfbdb2372a8e873e875c838efca8260
 
 <body>
 
+    <!-- header -->
     <div data-role="header" id="header" class="header headroom" data-theme="b">
+        <!-- left-panel-->
         <a id="left-panel" href="#menuPanel" data-display="push" class="ui-btn-left">
             <span class="glyphicon glyphicon-menu-hamburger"></span>
         </a>
+        <!-- title -->
         <a href="#storelist-page" style="text-decoration: none">
             <div id="baguette-font">Baguette</div>
         </a>
+        <!-- right-map -->
         <a id="right-map" href="#map-page" data-transition="slidedown" data-display="push" class="ui-btn-right">
             <span class="glyphicon glyphicon-map-marker"></span>
         </a>
+        <!-- right-cart -->
         <a id="right-panel" href="cart.html" data-transition="slide" data-display="push" class="ui-btn-right">
             <span class="glyphicon glyphicon-shopping-cart"><span class="badge"></span></span>
         </a>
     </div>
 
+    <!-- pages -->
     <div data-role="page" id="main-page" class="pages"></div>
     <div data-role="page" id="storelist-page" class="pages"></div>
-    <!-- <div data-role="page" id="cart-page" class="pages"></div> -->
     <div data-role="page" id="map-page" class="pages"></div>
-    <!-- <div data-role="page" id="customerinfo-page" class="pages"></div> -->
+
+    <!-- loader -->
+    <div id="homeloader"></div>
+    <div id="confirmloader"></div>
+    <div id="fakeloader"></div>
 
     <!-- 내 위치 설정 -->
-    <div class="modal fade" id="codeError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-role="none">
+    <div class="modal fade" id='MyPosDlg' tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-role="none">
         <div class="modal-dialog modal-sm" data-role="none">
             <div class="modal-content" data-role="none">
                 <div class="modal-header">
@@ -81,9 +84,7 @@ cbfbdb2372a8e873e875c838efca8260
             </div>
         </div>
     </div>
-    <div id="homeloader"></div>
-    <div id="confirmloader"></div>
-    <div id="fakeloader"></div>
+
     <script>
         $("#header").headroom({
             "offset": 205,
@@ -95,9 +96,9 @@ cbfbdb2372a8e873e875c838efca8260
             }
         });
     </script>
-    
+
     <script id="store-list-template" type="text/x-handlebars-template">
-         <table data-role="none" id="store-table"  class="table">
+        <table data-role="none" id="store-table" class="table">
             <thead>
                 <th>#</th>
                 <th>가게명</th>
@@ -118,4 +119,5 @@ cbfbdb2372a8e873e875c838efca8260
     <div class="ui-loader-background"> </div>
 
 </body>
+
 </html>
