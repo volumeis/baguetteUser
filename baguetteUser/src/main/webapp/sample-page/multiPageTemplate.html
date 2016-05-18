@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>multiPageTemplate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+    
+    <div data-role="page" id="one"><!-- page-->
+        <div data-role="header"><!-- header -->
+            <h1>My Title - page one</h1>
+        </div>
+        <div data-role="main" class="ui-content"><!-- main-content -->
+            <p>this page id is one</p>
+            <a data-role="button" href="#two"> go to page two</a>
+        </div>
+        <div data-role="footer"><!-- footer -->
+            <h3>Footer</h3>
+        </div>
+    </div><!-- /page -->
+    
+    <div data-role="page" id="two"><!-- page-->
+        <div data-role="header"><!-- header -->
+            <h1>My Title - page two</h1>
+        </div>
+        <div data-role="main" class="ui-content"><!-- main-content -->
+            <p>this page id is two</p>
+        </div>
+        <div data-role="footer"><!-- footer -->
+            <h3><a data-role="button" href="#one"> go to page one</a></h3>
+        </div>
+    </div><!-- /page -->
+    
+</body>
+</html>
