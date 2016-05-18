@@ -101,15 +101,20 @@ public class CustomerContorller {
 	public void addCustomer(@RequestBody Customer reqCustomer, HttpSession session, Model model) throws Exception {
 		System.out.println("/customer/getCode : POST");
 		String joinPhone = reqCustomer.getCustomerTel().replace("-", "");
-		Random random = new Random();
-		int joinCode = random.nextInt(10000);
+		String joinCode = "";
+		int ranNum = new Random().nextInt(10000);
+		if(ranNum < 1000){
+			joinCode += "0";
+		}
+		joinCode += ranNum;
 
 		session.setAttribute("joinPhone", joinPhone);
 		session.setAttribute("joinCode", joinCode);
 		
 		System.out.println("" + joinPhone + " : " + joinCode);
 		HttpClient httpClient = new DefaultHttpClient();
-		String url = "http://http://java78bit404.iptime.org:30025/joinController/sendSms?phone=" + joinPhone + "&rannum=" + joinCode;
+		String url = "http://52.79.152.131:3000/joinController/sendSms?phone=" + joinPhone + "&rannum=" + joinCode;
+//		String url = "http://localhost:3000/joinController/sendSms?phone=" + joinPhone + "&rannum=" + joinCode;
 		HttpGet httpGet = new HttpGet(url);
 		httpGet.setHeader("Accept", "application/json");
 		httpGet.setHeader("Content-Type", "application/json");
