@@ -3,18 +3,19 @@
  */
 
 //민호 pc tomcat 서버
-//var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
-var COMMONWEBSERVER = "";
+var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
+//var COMMONWEBSERVER = "http://52.79.152.131:8080"; 
+//var COMMONWEBSERVER = "";
 
 //민호 pc database 서버
 var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
 //var COMM1000pxSERVER = "";
-//depreciate
-//var COMMONDBSERVER = "http://java78bit404.iptime.org:5025";
 
 //민호 pc node.js 서버
-var COMMONNODESERVER = "http://java78bit404.iptime.org:30025";
+//var COMMONNODESERVER = "http://java78bit404.iptime.org:30025";
 //var COMMONNODESERVER = "http://localhost:3000";
+var COMMONNODESERVER = "http://52.79.152.131:3000";
+
 
 var LOGIN_NO;
 var LOGIN_ID;
