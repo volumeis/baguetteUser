@@ -34,12 +34,16 @@ function callStoreHome() {
 }
 
 $(document).on('click', '#customerinfo', function () {
-    $.mobile.changePage("customerInfo.html");
+    $.mobile.changePage("customerInfo.html",{
+        transition : "flip"
+    });
 
 });
 
 $(document).on('click', '#storelist', function () {
-    $.mobile.changePage($("#storelist-page"));
+    $.mobile.changePage($("#storelist-page"),{
+        transition : "pop"
+    });
 
 });
 
