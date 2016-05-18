@@ -245,7 +245,6 @@ function logout() {
             if ( $("#login-page").size() > 0) {
 
             } else {
-                alert("로그아웃 되었다");
                 location.href = "index.html";
             }
             console.log("logout customer");
