@@ -55,7 +55,7 @@
 		 
 	<!-- SQL : SELECT LIST -->
 	<select  id="getStoreList"  parameterType="string"	resultMap="storeSelectMap">
-		SELECT sno , sname, saddr, stel, simg, sinfo, slat, slng
+		SELECT sno , sname, saddr, stel, simg, sinfo, slat, slng, stime
 		FROM store
 		<where>
 		saddr Like '%${value}%'
