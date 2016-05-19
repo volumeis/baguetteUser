@@ -1,44 +1,46 @@
 {
-    "name": "baguetteUser",
-    "homepage": "https://github.com/volumeis/baguetteUser",
-    "authors": [
+  "name": "baguetteUser",
+  "homepage": "https://github.com/volumeis/baguetteUser",
+  "authors": [
     "Minho <minho.yoo.dev@gmail.com>"
   ],
-    "description": "",
-    "main": "",
-    "moduleType": [],
-    "license": "MIT",
-    "ignore": [
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
   ],
-    "dependencies": {
-        "bootstrap": "~3.3.6",
-        "jquery": "1.11.3",
-        "jquery.rateit": "latest",
-        "jquery-mobile-bower": "1.4.5",
-        "fakeloader": "latest",
-        "handlebars": "^4.0.5",
-        "dynatable": "^0.3.1",
-        "jquery-ui": "^1.11.4",
-        "animate-transition" : "latest"
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "jquery": "1.11.3",
+    "jquery.rateit": "latest",
+    "jquery-mobile-bower": "1.4.5",
+    "fakeloader": "latest",
+    "handlebars": "^4.0.5",
+    "dynatable": "^0.3.1",
+    "jquery-ui": "^1.11.4",
+    "animate-transition": "latest",
+    "Swiper": "swiper#^3.3.1"
+  },
+  "install": {
+    "path": "src/main/webapp/lib",
+    "sources": {
+      "bootstrap": "bower_components/bootstrap/dist/**",
+      "jquery": "bower_components/jquery/dist/**",
+      "jquery-mobile-bower": "bower_components/jquery-mobile-bower/**",
+      "jquery.rateit": "bower_components/jquery.rateit/scripts/**",
+      "fakeloader": "bower_components/fakeloader/*",
+      "handlebars": "bower_components/handlebars/**",
+      "dynatable": "bower_components/dynatable/**",
+      "jquery-ui": "bower_components/jquery-ui/**",
+      "animate-transition": "bower_components/animate-transition/**",
+      "Swiper" : "bower_components/Swiper/dist/**"
         
-    },
-    "install": {
-        "path": "src/main/webapp/lib",
-        "sources": {
-            "bootstrap": "bower_components/bootstrap/dist/**",
-            "jquery": "bower_components/jquery/dist/**",
-            "jquery-mobile-bower": "bower_components/jquery-mobile-bower/**",
-            "jquery.rateit": "bower_components/jquery.rateit/scripts/**",
-            "fakeloader": "bower_components/fakeloader/*",
-            "handlebars": "bower_components/handlebars/**",
-            "dynatable": "bower_components/dynatable/**",
-            "jquery-ui": "bower_components/jquery-ui/**",
-            "animate-transition" : "bower_components/animate-transition/**"
-        }
     }
+  }
 }
