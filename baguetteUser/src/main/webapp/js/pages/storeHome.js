@@ -42,7 +42,7 @@ function loadStoreHome(storeNo) {
                 var cartimg = $(document.createElement('img')).attr({
                     src: COMMONWEBSERVER + "/image/breadImg/" + storeNo + "/" + bread.img,
                     class: "img-rounded",
-                    style: "height:100%; width:100%; border: 1px solid lightgray"
+                    style: "height:100%; width:100%; border: 1px solid lightgray;background-color: white"
                 });
                 //
                 if (i % 2 == 0) {

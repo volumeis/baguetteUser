@@ -3,9 +3,9 @@
  */
 
 //민호 pc tomcat 서버
-var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
+//var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
 //var COMMONWEBSERVER = "http://52.79.152.131:8080"; 
-//var COMMONWEBSERVER = "";
+var COMMONWEBSERVER = "";
 
 //민호 pc database 서버
 var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
