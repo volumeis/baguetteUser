@@ -24,9 +24,9 @@ $(document).one('pagebeforeshow', '#storelist-page', function () {
 $(document).on('pagebeforeshow', '#storehome-page', function () {
     console.log('Loader started- storehome-page ');
     $("#homeloader").fakeLoader({
-        timeToHide: 1800,
+        timeToHide: 2300,
         zIndex: "9999",
-        //        bgColor: "#FFFFFF",
+                bgColor: "rgba(255, 255, 255, 0.2)",
         bgColor: "transperant",
         imagePath: COMMONWEBSERVER + "/image/brandImg/homeLoader.gif"
     });
