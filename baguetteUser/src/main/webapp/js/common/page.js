@@ -23,7 +23,7 @@ $(document).one("pagecreate", function () {
     
     $("#map-page").load("map.html [data-role=main]", function () {
         console.log('map.js init');
-        $.getScript("../js/pages/mapFunc.js");
+//        $.getScript("../js/pages/mapFunc.js");
         $.getScript("../js/pages/map.js");
     });
     

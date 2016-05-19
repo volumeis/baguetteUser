@@ -1,3 +1,5 @@
+$('#map').height(WINDOW_HEIGHT - 120);
+
 //test closer
 var _markerMaker = markerMaker();
 
@@ -19,23 +21,25 @@ var geocoder = new daum.maps.services.Geocoder();
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new daum.maps.LatLng(myPosition.getLat(), myPosition.getLng()), // 지도의 중심좌표
-        level: 4 // 지도의 확대 레벨
+        level: 6 // 지도의 확대 레벨
     };
-var map;
-
+//맵 저장 변수
+//var map;
+  var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 $('#getMyLocation').on('click', function () {
     console.log();
     MYLOCATION.set();
-//    MYLOCATION.marking(map);
+    //    MYLOCATION.marking(map);
 });
 
 $(document).one("pageshow", "#map-page", function () {
-    map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+  
     map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+    map.relayout();
+
     //내 위치 확인하기
     $('#storeSearchIpt').on('change', function () {
-        console.log($('#storeSearchIpt').val());
-        stores.set($('#storeSearchIpt').val());
+
     });
     if (MYLOCATION.get() != null)
         MYLOCATION.marking(map);
@@ -72,24 +76,35 @@ $('#myLocationBtn').on('click', function () {
 
 //스토어 리스트 출력
 function getStores() {
-    var data = stores.get();
-    var html = template(data);
-    //생성된 HTML을 DOM에 주입
-    $('#store-table').empty();
-    $('#store-table').append(html);
-    console.log(data);
-    //    마커 표시
-    _markerMaker.set(stores);
-    _markerMaker.addMarker();
-
-
+    console.log($('#storeSearchIpt').val());
+    stores.set($('#storeSearchIpt').val());
+    $('.swiper-wrapper').html('');
+    setTimeout(function () {
+        /*
+        * 지도 표시방법 변경 리스트 제거
+        * 
+        * 민호
+        * 05.19.16
+        */
+        var data = stores.get();
+//        var html = template(data);
+//        생성된 HTML을 DOM에 주입
+//        $('#store-table').empty();
+//        $('#store-table').append(html);
+        console.log(data);
+        //    마커 표시
+        _markerMaker.set(stores);
+        _markerMaker.addMarker();
+        //첫번째 마커로 이동
+        map.setCenter(markerSetArry[0].marker.getPosition());
+    }, 1000 * 1.5);
 }
 
-function markerController(type) {
-    if (type === 'myLocation') {
-
-    }
-}
+//function markerController(type) {
+//    if (type === 'myLocation') {
+//
+//    }
+//}
 
 function markerMaker() {
     //내부변수 size
@@ -129,6 +144,21 @@ function markerMaker() {
                     '        </div>' +
                     '    </div>' +
                     '</div>';
+                var content2 = 
+                    '<div class="swiper-slide">' +
+                    '<div class="content">' +
+                    '   <div class="content_text">' + 
+                    '       <div class="item_thumb"><img src="../image/storeImg/store_2001.jpg"></div> ' +
+                    '       <div class="item_name">' + store.storeName + '</div>' +
+                    '       <p>' +
+                    '          <div class="item_addr">'+ store.storeAddr +'</div> ' +
+                    '          <div class="item_phone">' + store.storeTel + '</div>' +
+                    '          <div class="item_time">' + store.storeTime + '</div>' +
+                    '       </p>' +
+                    '   </div>' +
+                    '</div>' + 
+                    '</div>';
+                $('.map_search_bottom .swiper-wrapper').append(content2);
                 var overlay = new daum.maps.CustomOverlay({
                     content: content,
                     map: null,
@@ -146,8 +176,9 @@ function markerMaker() {
                 (function (markerSet, store) {
                     daum.maps.event.addListener(markerSet.marker, 'click', function () {
                         if (!selectedMarker || selectedMarker != markerSet.marker) {
-
-                            markerSet.overlay.setMap(map);
+                            $('.map_search_bottom .content_container').html('');
+//                            오버레이 해제 중 05.19.16 민호
+//                            markerSet.overlay.setMap(map);
                             //                            console.log('나올거야')
                             //개선해야하는 코드 -_-
                             if (selectedMarker != null) {
@@ -204,7 +235,7 @@ function makeOverlay(map, marker, store) {
 
 //오버레이 닫기
 function closeOverlay() {
-    console.log('응??');
+    console.log('closeOverlay()');
     for (var i = 0; i < markerSetArry.length; i++) {
         if (markerSetArry[i].marker == selectedMarker) {
             markerSetArry[i].overlay.setMap(null);
