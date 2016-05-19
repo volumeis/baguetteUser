@@ -3,9 +3,9 @@
  */
 
 //민호 pc tomcat 서버
-//var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
+var COMMONWEBSERVER = "http://java78bit404.iptime.org:8025";
 //var COMMONWEBSERVER = "http://52.79.152.131:8080"; 
-var COMMONWEBSERVER = "";
+//var COMMONWEBSERVER = "";
 
 //민호 pc database 서버
 var COMMONDBSERVER = "http://java78bit404.iptime.org:3025";
@@ -22,6 +22,12 @@ var LOGIN_ID;
 var LOGIN_PW;
 var QUERYSTRING;
 var MYLOCATION = myLocation();
+
+var WINDOW_HEIGHT = $(window).height();
+var WINDOW_WIDTH =  $(window).width();
+
+//test용 빵가게 루프용 공용변수  05.19.16
+var TESTSTORENO = 2001;
 
 //$(document).off('.data-api');
 /**
@@ -50,7 +56,7 @@ function getParameter(qs) {
  * 민호
  * 05.18.16
  */
-function loginCheck(){
+function loginCheck() {
     $.ajax({
         url: COMMONWEBSERVER + "/customer/loginCheck",
         method: "POST",
@@ -78,13 +84,13 @@ $(document).on('pageshow', function (e, data) {
         ($.mobile.activePage[0].id != 'login-page')) {
         console.log('로그인된 계정 : ' + LOGIN_ID);
         loginCheck();
-        
+
         // 카트 뱃지 전역으로 사용하기 위해서
         // - 경철
-        
+
         //예외 처리 추가 - 민호
-        if(LOGIN_NO != null){        	
-        	countCart();
+        if (LOGIN_NO != null) {
+            countCart();
         }
     }
 });
@@ -134,15 +140,15 @@ function countCart() {
         },
         success: function (JSONData, status) {
 
-        	console.log("1 : " + status)
+            console.log("1 : " + status)
             if (JSONData.cartcount != null) {
                 $(".badge").text(JSONData.cartcount.cartCount);
             } else {
                 $(".badge").text("");
             }
         },
-        error: function(status){
-        	console.log("2 : " + status)
+        error: function (status) {
+            console.log("2 : " + status)
         }
 
     });
@@ -175,6 +181,9 @@ function getRealContentHeight() {
 function myLocation() {
     //내 위치
     var locPosition;
+    var locAddr;
+    var addrFlag = false;
+    var marker;
     return {
         //내 위치 저장
         set: function () {
@@ -196,28 +205,38 @@ function myLocation() {
         },
         //내 위치 마킹
         marking: function (map, callback) {
+            //좌표값 변환을 위해 대기하는 시간 2초
+            $.mobile.loading('show');
+            setTimeout(function () {
+                
+                console.log('marking-my-position');
+                if (marker != null) {
+                    marker.setPosition(locPosition);
+                } else {
+                    marker = new daum.maps.Marker({
+                        map: map,
+                        position: locPosition,
+                        draggable: true
+                    });
+                }
 
-            console.log('marking-my-position');
+                var iwContent = '<div style="padding:5px;">' + locAddr + '</div>', // 인포윈도우에 표시할 내용
+                    iwRemoveable = true;
 
-            var marker = new daum.maps.Marker({
-                map: map,
-                position: locPosition
-            });
+                // 인포윈도우를 생성합니다
+                var infowindow = new daum.maps.InfoWindow({
+                    content: iwContent,
+                    removable: iwRemoveable
+                });
 
-            var iwContent = '<div style="padding:5px;">현재 나의 위치</div>', // 인포윈도우에 표시할 내용
-                iwRemoveable = true;
+                // 인포윈도우를 마커위에 표시합니다 
+                infowindow.open(map, marker);
 
-            // 인포윈도우를 생성합니다
-            var infowindow = new daum.maps.InfoWindow({
-                content: iwContent,
-                removable: iwRemoveable
-            });
-
-            // 인포윈도우를 마커위에 표시합니다 
-            infowindow.open(map, marker);
-
-            // 지도 중심좌표를 접속위치로 변경합니다
-            map.setCenter(locPosition);
+                // 지도 중심좌표를 접속위치로 변경합니다
+                map.setCenter(locPosition);
+                
+                $.mobile.loading('hide');
+            }, 1000 * 2);
         }
     }
 
@@ -227,7 +246,22 @@ function myLocation() {
 
         locPosition = new daum.maps.LatLng(lat, lon);
         console.log("가져온location : " + locPosition);
+
+        /*
+         * 현재위치를 주소로 변환
+         * 민호
+         * 05.19.16
+         */
+        new daum.maps.services.Geocoder().coord2detailaddr(locPosition, function (status, result) {
+            if (status === daum.maps.services.Status.OK) {
+                console.log('변환된addr : ' + result[0].roadAddress.name)
+                locAddr = result[0].roadAddress.name;
+                addrFlag = true;
+            }
+        });
+
         $.mobile.loading('hide');
+
         if ($.mobile.activePage[0].id == 'map-page') {
             MYLOCATION.marking(map);
         }
@@ -249,8 +283,8 @@ function logout() {
             "Content-Type": "application/json"
         },
         success: function (JSONData, status) {
-            
-            if ( $("#login-page").size() > 0) {
+
+            if ($("#login-page").size() > 0) {
 
             } else {
                 location.href = "index.html";
