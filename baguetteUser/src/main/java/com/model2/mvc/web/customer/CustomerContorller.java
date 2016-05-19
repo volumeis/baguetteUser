@@ -82,10 +82,10 @@ public class CustomerContorller {
 		System.out.println("/customer/loginCheck : POST");
 		Customer customer = (Customer) session.getAttribute("customer");
 		/**
-		 * 페이지에 바로 접근시 디폴트 유저 cNo 1001,010-1234-1234,1234 로 세션정보 저장 민호 04.26.16
+		 * 페이지에 바로 접근시 디폴트 유저 cNo 1001,01012341234,1234 로 세션정보 저장 민호 04.26.16
 		 */
 		if (session.getAttribute("customer") == null) {
-			Customer testCustomer = customerService.getCustomer("testCtel");
+			Customer testCustomer = customerService.getCustomer("01012341234");
 
 			session.setAttribute("customer", testCustomer);
 			model.addAttribute("customer", testCustomer);
