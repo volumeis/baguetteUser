@@ -6,10 +6,15 @@
  */
 $(document).one('pagebeforeshow', '#storelist-page', function () {
     console.log('loader started - storelist-page');
-    $("#fakeloader").fakeLoader({
-        timeToHide: 4000, //Time in milliseconds for fakeLoader disappear
-        zIndex: "9999", //Default zIndex
-        spinner: "spinner1" //Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
+    $("#confirmloader").fakeLoader({
+        timeToHide: 4000,
+        zIndex: "9999",
+        bgColor: "#FFFFFF",
+        imagePath: COMMONWEBSERVER + "/image/brandImg/mainLoader.gif"
+    });
+    $(".fl").css({
+        "top": $(window).height() / 2 - 200 / 2,
+        "left": $(window).width() / 2 - 200 / 2,
     });
 });
 
