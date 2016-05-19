@@ -45,12 +45,12 @@ function getParameter(qs) {
 }
 
 /**
- * 세션체크 이벤
+ *  로그인 체크 
  * 
  * 민호
- * 04.26.16
+ * 05.18.16
  */
-$(document).on('loadCustomerInfo', function () {
+function loginCheck(){
     $.ajax({
         url: COMMONWEBSERVER + "/customer/loginCheck",
         method: "POST",
@@ -71,17 +71,21 @@ $(document).on('loadCustomerInfo', function () {
     });
 
     $("#customerID").text(LOGIN_ID)
-});
+}
 
 $(document).on('pageshow', function (e, data) {
     if (($.mobile.activePage[0].id != 'join-page') &&
         ($.mobile.activePage[0].id != 'login-page')) {
         console.log('로그인된 계정 : ' + LOGIN_ID);
-        $(document).trigger('loadCustomerInfo');
+        loginCheck();
         
         // 카트 뱃지 전역으로 사용하기 위해서
         // - 경철
-        countCart();
+        
+        //예외 처리 추가 - 민호
+        if(LOGIN_NO != null){        	
+        	countCart();
+        }
     }
 });
 
@@ -130,11 +134,15 @@ function countCart() {
         },
         success: function (JSONData, status) {
 
+        	console.log("1 : " + status)
             if (JSONData.cartcount != null) {
                 $(".badge").text(JSONData.cartcount.cartCount);
             } else {
                 $(".badge").text("");
             }
+        },
+        error: function(status){
+        	console.log("2 : " + status)
         }
 
     });

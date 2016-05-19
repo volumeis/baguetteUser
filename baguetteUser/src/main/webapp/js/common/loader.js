@@ -28,14 +28,12 @@ $(document).on('pagebeforeshow', '#storehome-page', function () {
         zIndex: "9999",
         //        bgColor: "#FFFFFF",
         bgColor: "transperant",
-        imagePath: COMMONWEBSERVER + "/image/brandImg/appStart.gif"
+        imagePath: COMMONWEBSERVER + "/image/brandImg/homeLoader.gif"
     });
     $(".fl").css({
-        "top": $(window).height() / 2 - 170 / 2,
-        "left": $(window).width() / 2 - 170 / 2,
-        //170 은 이미지 파일 크기
-        //        "width": $(window).width(),
-        //        "height": "auto" 
+        "top": $(window).height() / 2 - 180 / 2,
+        "left": $(window).width() / 2 - 180 / 2,
+        //180 은 이미지 파일 크기
     });
 })
 $(document).on('pagebeforehide', '#storehome-page', function () {
@@ -58,11 +56,11 @@ $(document).on('pagebeforeshow', '#confirm-page', function () {
         timeToHide: 4000,
         zIndex: "9999",
         bgColor: "#FFFFFF",
-        imagePath: COMMONWEBSERVER + "/image/brandImg/loader02.gif"
+        imagePath: COMMONWEBSERVER + "/image/brandImg/confirmLoader.gif"
     });
     $(".fl").css({
-        "top": $(window).height() / 2 - 170 / 2,
-        "left": $(window).width() / 2 - 170 / 2,
+        "top": $(window).height() / 2 - 210 / 2,
+        "left": $(window).width() / 2 - 210 / 2,
     });
 })
 $(document).on('pagebeforehide', '#confirm-page', function () {
