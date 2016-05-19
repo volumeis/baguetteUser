@@ -1,6 +1,6 @@
 $(function () {
     $.ajax({
-        url: COMMONWEBSERVER + "/store/getStoreListShort/" + "서울 서초구", //
+        url: COMMONWEBSERVER + "/store/getStoreListShort/" + "서울", //초기 가게 리스팅 부분 구현 중 . 민호 . 05.18.16
         method: "GET",
         dataType: "json",
         headers: {
