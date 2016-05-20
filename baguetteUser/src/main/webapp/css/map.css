@@ -35,8 +35,7 @@
 }
 .item_addr{
     font-size: 15px;
-    margin-bottom:15px;
-}
+ }
 .item_phone{
     float: left;
     width: 50%;
@@ -46,7 +45,6 @@
     float: left;
     width: 50%;
     font-size: 13px;
-    text-align: right;
 }
 
 
