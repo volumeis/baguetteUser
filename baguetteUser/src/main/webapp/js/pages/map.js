@@ -105,6 +105,7 @@ function getStores() {
     console.log($('#storeSearchIpt').val());
     stores.set($('#storeSearchIpt').val());
     removeAllMarkers(markerSetArry);
+    markerSetArry = [];
     swiper.removeAllSlides();
     setTimeout(function () {
         /*
@@ -122,6 +123,7 @@ function getStores() {
         //    마커 표시
         _markerMaker.set(stores);
         _markerMaker.addMarker();
+         
         //첫번째 마커로 이동
         map.setCenter(markerSetArry[0].marker.getPosition());
     }, 1000 * 1.5);
@@ -153,6 +155,10 @@ function markerMaker() {
                     map: map,
                     image: markerImage
                 });
+//                if(i === 0){
+//                    selectedMarker = marker;
+//                    marker.setImage(clickedMarkerImage);
+//                }
                 marker.normalImage = markerImage;
                 
                 var content =
@@ -167,12 +173,12 @@ function markerMaker() {
                     '                <img src="' + COMMONWEBSERVER + "/image/storeImg/" + store.storeImg + '.jpg" >' +
                     '           </div>' +
                     '            <div class="desc">' +
-                    '                <div class="ellipsis">' + store.storeAddr +
                     '                <div><a id=' + store.storeNo + '>상점으로</a></div>' +
                     '            </div>' +
                     '        </div>' +
                     '    </div>' +
                     '</div>';
+                
                 swiper.appendSlide(
                     '<div class="swiper-slide">' +
                     '<div class="content">' +
@@ -215,14 +221,14 @@ function markerMaker() {
                             markerSet.marker.setImage(clickedMarkerImage);
 
                             //                            오버레이 해제 중 05.19.16 민호
-                            //                            markerSet.overlay.setMap(map);
+//                            markerSet.overlay.setMap(map);
                             //                            console.log('나올거야')
                             //개선해야하는 코드 -_-
-                            //if (selectedMarker != null) {
+//                            if (selectedMarker != null) {
                             //    console.log('오긴와');
-                            //    closeOverlay();
-                                //selectedMarker.setMap(null);
-                            //}
+//                                closeOverlay();
+//                                markerSet.overlay.setMap(null);
+//                            }
                         }
                         //                        console.log('그냥그냥');
                         selectedMarker = markerSet.marker;
