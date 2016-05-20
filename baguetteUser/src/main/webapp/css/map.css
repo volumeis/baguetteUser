@@ -18,6 +18,7 @@
     height: 100px;
     border: gray 1px solid;
     margin: 5px;
+    box-shadow: 2px 2px 2px 0px gray;
 }
 .map_search_bottom .content div,
 .map_search_bottom .content p div{
