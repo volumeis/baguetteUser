@@ -148,13 +148,10 @@ function markerMaker() {
                     '<div class="swiper-slide">' +
                     '<div class="content">' +
                     '   <div class="content_text">' + 
-                    '       <div class="item_thumb"><img src="../image/storeImg/store_2001.jpg"></div> ' +
                     '       <div class="item_name">' + store.storeName + '</div>' +
-                    '       <p>' +
                     '          <div class="item_addr">'+ store.storeAddr +'</div> ' +
-                    '          <div class="item_phone">' + store.storeTel + '</div>' +
+                    '          <div class="item_phone">' + store.storeTel +'</div>' +
                     '          <div class="item_time">' + store.storeTime + '</div>' +
-                    '       </p>' +
                     '   </div>' +
                     '</div>' + 
                     '</div>';
