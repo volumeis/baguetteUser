@@ -1,5 +1,23 @@
 $('#map').height(WINDOW_HEIGHT - 120);
 
+var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    spaceBetween: 30,
+    onSlideChangeStart: function (swiper) {
+        console.log('swipper onSlideChangeStart');
+//        markerSetArry[swiper.activeIndex].marker.setImage(markerImage);
+       
+    },
+    onSlideChangeEnd: function (swiper) {
+        console.log('swipper onSlideChangeEnd');
+        !!selectedMarker && selectedMarker.setImage(markerImage);
+        markerSetArry[swiper.activeIndex].marker.setImage(clickedMarkerImage);
+        selectedMarker = markerSetArry[swiper.activeIndex].marker;
+        map.panTo(markerSetArry[swiper.activeIndex].marker.getPosition());
+        
+    }
+});
 //test closer
 var _markerMaker = markerMaker();
 
@@ -12,7 +30,7 @@ var source = $("#store-list-template").html();
 var template = Handlebars.compile(source);
 
 //내 현재위치 : 강남역
-var myPosition = new daum.maps.LatLng(37.497916606749946, 127.02753373032039);
+var defaultPosition = new daum.maps.LatLng(37.49579649348827, 127.02753373032039);
 
 var mapTypeControl = new daum.maps.MapTypeControl();
 //주소-좌표간 변환 서비스 객체를 생성한다.
@@ -20,12 +38,12 @@ var geocoder = new daum.maps.services.Geocoder();
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new daum.maps.LatLng(myPosition.getLat(), myPosition.getLng()), // 지도의 중심좌표
+        center: new daum.maps.LatLng(defaultPosition.getLat(), defaultPosition.getLng()), // 지도의 중심좌표
         level: 6 // 지도의 확대 레벨
     };
 //맵 저장 변수
 //var map;
-  var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 $('#getMyLocation').on('click', function () {
     console.log();
     MYLOCATION.set();
@@ -33,9 +51,10 @@ $('#getMyLocation').on('click', function () {
 });
 
 $(document).one("pageshow", "#map-page", function () {
-  
+
     map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
     map.relayout();
+    map.setCenter(defaultPosition);
 
     //내 위치 확인하기
     $('#storeSearchIpt').on('change', function () {
@@ -59,6 +78,13 @@ var markerImage = new daum.maps.MarkerImage(
         alt: '마커이미지'
     }
 );
+var clickedMarkerImage = new daum.maps.MarkerImage(
+    '../image/brandImg/clickedMarker.png',
+    new daum.maps.Size(50, 50), {
+        offset: new daum.maps.Point(25, 50),
+        alt: '클릭된마커이미지'
+    }
+);
 //지도에 표시될 마커 객체를 가진 배열
 var markers = [];
 //지도에 표시될 오버레이 객체를 가진 ㅐ배열
@@ -78,19 +104,20 @@ $('#myLocationBtn').on('click', function () {
 function getStores() {
     console.log($('#storeSearchIpt').val());
     stores.set($('#storeSearchIpt').val());
-    $('.swiper-wrapper').html('');
+    removeAllMarkers(markerSetArry);
+    swiper.removeAllSlides();
     setTimeout(function () {
         /*
-        * 지도 표시방법 변경 리스트 제거
-        * 
-        * 민호
-        * 05.19.16
-        */
+         * 지도 표시방법 변경 리스트 제거
+         * 
+         * 민호
+         * 05.19.16
+         */
         var data = stores.get();
-//        var html = template(data);
-//        생성된 HTML을 DOM에 주입
-//        $('#store-table').empty();
-//        $('#store-table').append(html);
+        //        var html = template(data);
+        //        생성된 HTML을 DOM에 주입
+        //        $('#store-table').empty();
+        //        $('#store-table').append(html);
         console.log(data);
         //    마커 표시
         _markerMaker.set(stores);
@@ -126,6 +153,8 @@ function markerMaker() {
                     map: map,
                     image: markerImage
                 });
+                marker.normalImage = markerImage;
+                
                 var content =
                     '<div class="wrap">' +
                     '    <div class="info">' +
@@ -144,18 +173,19 @@ function markerMaker() {
                     '        </div>' +
                     '    </div>' +
                     '</div>';
-                var content2 = 
+                swiper.appendSlide(
                     '<div class="swiper-slide">' +
                     '<div class="content">' +
-                    '   <div class="content_text">' + 
+                    '   <div class="content_text">' +
                     '       <div class="item_name">' + store.storeName + '</div>' +
-                    '          <div class="item_addr">'+ store.storeAddr +'</div> ' +
+                    '          <div class="item_addr">' + store.storeAddr + '</div> ' +
                     '          <div class="item_phone">' + store.storeTel +'</div>' +
                     '          <div class="item_time">' + store.storeTime + '</div>' +
                     '   </div>' +
-                    '</div>' + 
-                    '</div>';
-                $('.map_search_bottom .swiper-wrapper').append(content2);
+                    '</div>' +
+                    '</div>');
+
+
                 var overlay = new daum.maps.CustomOverlay({
                     content: content,
                     map: null,
@@ -170,26 +200,34 @@ function markerMaker() {
                 markerSetArry.push(markerSet);
 
                 // 마커에 click 이벤트를 등록합니다
-                (function (markerSet, store) {
+                (function (markerSet, store, i) {
                     daum.maps.event.addListener(markerSet.marker, 'click', function () {
                         if (!selectedMarker || selectedMarker != markerSet.marker) {
-                            $('.map_search_bottom .content_container').html('');
-//                            오버레이 해제 중 05.19.16 민호
-//                            markerSet.overlay.setMap(map);
+                            swiper.slideTo(i);
+                            
+                            map.panTo(markerSetArry[i].marker.getPosition());
+
+                            // 클릭된 마커 객체가 null이 아니면
+                            // 클릭된 마커의 이미지를 기본 이미지로 변경하고
+                            !!selectedMarker && selectedMarker.setImage(markerImage);
+
+                            // 현재 클릭된 마커의 이미지는 클릭 이미지로 변경합니다
+                            markerSet.marker.setImage(clickedMarkerImage);
+
+                            //                            오버레이 해제 중 05.19.16 민호
+                            //                            markerSet.overlay.setMap(map);
                             //                            console.log('나올거야')
                             //개선해야하는 코드 -_-
-                            if (selectedMarker != null) {
-                                console.log('오긴와');
-                                closeOverlay();
+                            //if (selectedMarker != null) {
+                            //    console.log('오긴와');
+                            //    closeOverlay();
                                 //selectedMarker.setMap(null);
-                            }
+                            //}
                         }
                         //                        console.log('그냥그냥');
                         selectedMarker = markerSet.marker;
-
-
                     });
-                })(markerSet, store);
+                })(markerSet, store, i);
             }
         },
         setMap: function () {
@@ -229,6 +267,13 @@ function makeOverlay(map, marker, store) {
         });
     }
 }
+//마커 지우기
+function removeAllMarkers(markers) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].marker.setMap(null);
+    }
+}
+
 
 //오버레이 닫기
 function closeOverlay() {
