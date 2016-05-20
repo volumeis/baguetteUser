@@ -10,9 +10,9 @@
 var PANELSTATE = false;
 $(document).on("pageshow", function () {
     var activePage = $.mobile.activePage[0].id;
-    if (activePage === 'storelist-page' ||
-        activePage === 'cart-page' ||
+    if (activePage === 'cart-page' ||
         activePage === 'storehome-page' ||
+        activePage === 'storelist-page' ||
         activePage === 'customerinfo-page') {
 
         //좌 -> 우 스와이프
@@ -34,24 +34,25 @@ $(document).on("pageshow", function () {
             }
         });
     } else if (activePage === 'map-page') {
-        $('.swipe-area').on("swiperight", function () {
-            if ($.mobile.activePage.jqmData("panel") !== "open") {
-                console.log('swiperight on ! ')
-                $("#menuPanel").panel("open");
-            }
-        });
-        $('.swipe-area').on("swipeleft", function () {
-            console.log('swipeleft on ! ');
-            $.mobile.changePage("cart.html", {
-                direction: "reverse",
-                transition: "slide"
-            });
-        });
+//        $('.swipe-area').on("swiperight", function () {
+//            if ($.mobile.activePage.jqmData("panel") !== "open") {
+//                console.log('swiperight on ! ')
+//                $("#menuPanel").panel("open");
+//            }
+//        });
+//        $('.swipe-area').on("swipeleft", function () {
+//            console.log('swipeleft on ! ');
+//            $.mobile.changePage("cart.html", {
+//                //                direction: "reverse",
+//                transition: "slide"
+//            });
+//        });
     } else if (activePage === 'join-page') {
         $('#' + activePage).on("swiperight", function (e) {
             window.history.back();
         });
     }
+
 });
 
 

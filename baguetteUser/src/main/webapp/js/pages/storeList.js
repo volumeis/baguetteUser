@@ -28,19 +28,23 @@ $(function () {
 
                 var figuere = $(document.createElement('div')).html(img.add(figcaption)).addClass('figre');
 
-                var storeLink =
-                    $(document.createElement('a')).attr({
-                        id: store.storeNo
-                    });
+                var storeLink = $(document.createElement('a')).attr({
+                    //                        id: store.storeNo
+                    id: TESTSTORENO
+                });
                 var storeBlockA = $(document.createElement('div')).addClass('ui-block-a').html(storeLink.html(figuere));
                 $('#list-store').append(storeBlockA);
+                TESTSTORENO++;
+                if (TESTSTORENO > 2005) {
+                    TESTSTORENO = 2001;
+                }
             });
         },
         complete: function () {
             console.log('complete : storeList ajax');
             callStoreHome();
             $('#MyPosDlg').modal();
-            
+
         },
         error: function (JSONData, status) {
             console.log('error : storeList ajax');
@@ -49,6 +53,6 @@ $(function () {
     });
 });
 
-$('#myLocBtn').on('click',function(){
-   MYLOCATION.set();
+$('#myLocBtn').on('click', function () {
+    MYLOCATION.set();
 });

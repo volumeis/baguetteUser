@@ -6,8 +6,6 @@ var swiper = new Swiper('.swiper-container', {
     spaceBetween: 30,
     onSlideChangeStart: function (swiper) {
         console.log('swipper onSlideChangeStart');
-//        markerSetArry[swiper.activeIndex].marker.setImage(markerImage);
-       
     },
     onSlideChangeEnd: function (swiper) {
         console.log('swipper onSlideChangeEnd');
@@ -15,7 +13,18 @@ var swiper = new Swiper('.swiper-container', {
         markerSetArry[swiper.activeIndex].marker.setImage(clickedMarkerImage);
         selectedMarker = markerSetArry[swiper.activeIndex].marker;
         map.panTo(markerSetArry[swiper.activeIndex].marker.getPosition());
-        
+    },
+    onTap: function (swiper) {
+        console.log('swipper onTap');
+        var storeId = $('.swiper-slide-active .content .content_text').attr("id");
+        console.log(storeId);
+        $.mobile.changePage("storeHome.html", {
+            dataUrl: "storeHome.html?parameter=" + storeId,
+            data: {
+                'parameter': storeId
+            },
+            transition: "slideup"
+        });
     }
 });
 //test closer
@@ -72,7 +81,7 @@ var selectedMarker = null;
 var selectedMarkerBuffer = null;
 //마커의 이미지,크기,옵션
 var markerImage = new daum.maps.MarkerImage(
-    '../image/brandImg/logoMarker.gif',
+    '../image/brandImg/logoMarker.png',
     new daum.maps.Size(50, 50), {
         offset: new daum.maps.Point(25, 50),
         alt: '마커이미지'
@@ -100,13 +109,15 @@ $('#myLocationBtn').on('click', function () {
     MYLOCATION.set()
 })
 
-//스토어 리스트 출력
+//지역기반검색
 function getStores() {
     console.log($('#storeSearchIpt').val());
     stores.set($('#storeSearchIpt').val());
     removeAllMarkers(markerSetArry);
     markerSetArry = [];
+    map.setLevel(4)
     swiper.removeAllSlides();
+    $.mobile.loading('show');
     setTimeout(function () {
         /*
          * 지도 표시방법 변경 리스트 제거
@@ -123,7 +134,7 @@ function getStores() {
         //    마커 표시
         _markerMaker.set(stores);
         _markerMaker.addMarker();
-         
+        $.mobile.loading('hide');
         //첫번째 마커로 이동
         map.setCenter(markerSetArry[0].marker.getPosition());
     }, 1000 * 1.5);
@@ -178,11 +189,15 @@ function markerMaker() {
                     '        </div>' +
                     '    </div>' +
                     '</div>';
+                tmpNo = store.storeNo;
+                if(tmpNo > 2006){
+                    tmpNo = TESTSTORENO;    
+                }
                 
                 swiper.appendSlide(
                     '<div class="swiper-slide">' +
                     '<div class="content">' +
-                    '   <div class="content_text">' +
+                    '   <div id = '+ tmpNo +' class="content_text">' +
                     '       <div class="item_name">' + store.storeName + '</div>' +
                     '          <div class="item_addr">' + store.storeAddr + '</div> ' +
                     '          <div class="item_phone">' + store.storeTel +'</div>' +
@@ -190,6 +205,10 @@ function markerMaker() {
                     '   </div>' +
                     '</div>' +
                     '</div>');
+                   TESTSTORENO++;
+                if (TESTSTORENO > 2005) {
+                    TESTSTORENO = 2001;
+                }
 
 
                 var overlay = new daum.maps.CustomOverlay({

@@ -27,7 +27,10 @@ var WINDOW_HEIGHT = $(window).height();
 var WINDOW_WIDTH =  $(window).width();
 
 //test용 빵가게 루프용 공용변수  05.19.16
+//storelist에서 사용
 var TESTSTORENO = 2001;
+var TESTSTORENO2 = 2001;
+
 
 //$(document).off('.data-api');
 /**

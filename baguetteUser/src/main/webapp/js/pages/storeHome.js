@@ -41,7 +41,7 @@ function loadStoreHome(storeNo) {
 
                 var cartimg = $(document.createElement('img')).attr({
 //                  src: COMMONWEBSERVER + "/image/breadImg/" + storeNo + "/" + bread.img,
-                    src: COMMONWEBSERVER + "/image/breadImg/" + TESTSTORENO + "/" + bread.img,
+                    src: COMMONWEBSERVER + "/image/breadImg/" + storeNo + "/" + bread.img,
                     class: "img-rounded",
                     style: "height:100%; width:100%; border: 1px solid lightgray;background-color: white"
                 });
@@ -87,13 +87,14 @@ function loadStoreHome(storeNo) {
         },
         error: function () {
             $('#cartdiv').append('<div>메롱</div>')
-        },
-        complate : function(){
-            TESTSTORENO++;
-            if(TESTSTORENO === 2006){
-                TESTSTORENO = 2001;
-            }
         }
+//        ,
+//        complate : function(){
+//            TESTSTORENO++;
+//            if(TESTSTORENO === 2006){
+//                TESTSTORENO = 2001;
+//            }
+//        }
     });
 }
 
